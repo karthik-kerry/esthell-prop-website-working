@@ -875,7 +875,7 @@ width: 100%;
   top: 90%; 
   left: 52%;
   transform: translate(-50%, -50%); 
-  width: auto;
+  width:300px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -895,7 +895,7 @@ width: 100%;
 }
 .ListingformItem{
   height: 44px;
-  width: 157px; 
+  width:120px; 
   font-size: 14px;
   font-weight: 400;
 }

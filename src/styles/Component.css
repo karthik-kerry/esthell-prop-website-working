@@ -197,16 +197,19 @@
     width:100%;
   }
   .footerText{
-  max-width:380px;
+  max-width:320px;
   }
   .footerTopLeft{
     margin-left: 0;
   }
   .footerTop{
-   
+
     align-items: flex-start;
     justify-content:flex-start ;
     flex-direction: column;
+  }
+  .iconContainer {
+    margin-left: 20px;
   }
   .footerBottom{
     width: auto;
@@ -228,7 +231,7 @@
     width:100%;
   }
   .footerText{
-  max-width:280px;
+  max-width:250px;
   }
   .footerTopLeft{
     margin-left: 0;
@@ -243,6 +246,9 @@
   .footerBottom{
     width: auto;
     flex-direction: column;
+  }
+  .iconContainer {
+    margin-left: 20px;
   }
   .CategoryContainer{
      display: grid;

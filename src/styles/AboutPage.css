@@ -433,8 +433,8 @@
     width: 80%;
   }
   .whoAreWeImg {
-  height: 340px;
-  width: 440px;
+          height: 240px;
+        width: 320px;
 }
 .whoAreWeHeading {
   text-align: center;
@@ -500,7 +500,13 @@
   justify-content: center;
   gap:20px;
 }
+.missionImage {
+ height: 300px;
+  width: 300px;
+}
 .visionImage{
+  height: 300px;
+  width: 300px;
   margin-top: 0;
 }
 .visionText {

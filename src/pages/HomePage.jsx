@@ -83,14 +83,14 @@ export default function HomePage() {
   const [imageSrc, setImageSrc] = useState(HomeBg);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isMobile, setIsMobile] = useState(false);
-  const buttonStyles = (isActive) => ({
+   const buttonStyles = (isActive) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     gap: screenWidth <= 480 ? 10 : 10,
     backgroundColor: isActive ? "#001C6B" : "#FFFFFF",
     height: screenWidth <= 480 ? 38 : 56,
-    width: screenWidth <= 480 ? "135px" : "auto",
+    width: screenWidth <= 380 ? "110px" : screenWidth <= 480 ? "115px" : "auto",
     color: isActive ? "white" : "#2D2D2D99",
     border: "none",
     borderRadius: screenWidth <= 480 ? 8 : 8,

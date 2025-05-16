@@ -326,6 +326,10 @@
 } */
 
 .hpPropTitle {
+   word-wrap: break-word;
+    text-align: center;  
+   white-space: normal;
+   line-height: 1.5px;
   color: #1b1b1b;
   font-size: 40px;
   font-weight: 600;
@@ -902,8 +906,8 @@
   width: 68px;
 }
 .exploreByPropertyCard {
-  height:180px;
-  width: 162px;
+  height:142px;
+  width: 142px;
 }
 .exploreByPropertyCardTitle{
     font-size: 18px;
@@ -941,6 +945,10 @@
   font-size: 16px;
 }
 .hpPropTitle{
+  text-align: center; 
+    white-space: normal; 
+    word-break: break-word;
+     line-height: 1.5px;
 font-size: 24px;
   font-weight: 600;
 }
@@ -953,6 +961,7 @@ font-size: 24px;
   flex-direction: column;
 }
 .citiesTitle{
+  
   font-size: 24px;
   font-weight: 600;
 }
@@ -1024,7 +1033,7 @@ font-size: 24px;
   top: 90%; 
   left: 52%;
   transform: translate(-50%, -50%); 
-  width: auto;
+  width: 300px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -1044,7 +1053,7 @@ font-size: 24px;
 }
 .HomeformItem{
   height: 44px;
-  width: 157px; 
+  width: 120px; 
   font-size: 14px;
   font-weight: 400;
 }
@@ -1069,7 +1078,7 @@ font-size: 24px;
   top: 90%; 
   left: 50%;
   transform: translate(-50%, -50%); 
-  width: auto;
+  width:290px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -1133,10 +1142,10 @@ font-size: 24px;
   font-weight: 400;
 }
 .hpPropTitle{
-   word-wrap: break-word;
-    text-align: center;  
-    line-height: 1.5;  
-   white-space: normal;
+  text-align: center; 
+    white-space: normal; 
+    word-break: break-word;
+    line-height: 1.5px;
 }
 .card{
   width:100%;
