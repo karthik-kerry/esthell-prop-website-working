@@ -1,0 +1,732 @@
+/* hero section */
+.aboutHeroContainer {
+  position: relative;
+  height: 380px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutHeroImage {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.aboutHeroOverlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  z-index: 1;
+}
+
+.aboutHeroTitle,
+.aboutHeroSubtitle {
+  color: white;
+  font-size: 40px;
+  font-weight: 600;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.aboutHeroTitle {
+  top: 25%;
+}
+
+.aboutHeroSubtitle {
+  top: 40%;
+}
+
+.aboutHeroDescription {
+  color: #fff;
+  font-size: 14px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.aboutcontentSection {
+  background-color: rgb(242, 246, 250);
+}
+
+.aboutcontentWrapper {
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  gap: 30px;
+  padding-left: 90px;
+  padding-right: 90px;
+  padding-top: 100px;
+  padding-bottom: 70px;
+  background-color: rgb(242, 246, 250);
+}
+/* section */
+.sectionContainer1 {
+  display: flex;
+  gap: 30px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.whoAreWeImg {
+  height: 460px;
+  width: 640px;
+}
+
+.whoAreWeTextContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.whoAreWeHeading {
+  font-weight: 600;
+  font-size: 42px;
+}
+
+.whoAreWeParagraph1 {
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: -30px;
+}
+
+.whoAreWeParagraph2 {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.whoAreWeButton {
+  width: 170px !important;
+  height: 48px;
+  gap: 10px;
+  border-radius: 12px;
+  background-color: #001c6b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+}
+/* mission */
+.ourMissionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.missionSection {
+  display: flex;
+  gap: 30px;
+}
+
+.missionText {
+  font-weight: 600;
+  font-size: 42px;
+}
+
+.missionParagraph {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.missionImage {
+  width: 370px;
+  height: 380px;
+}
+
+.visionSection {
+  display: flex;
+  gap: 30px;
+}
+
+.visionImage {
+  width: 370px;
+  height: 380px;
+  margin-top: -100px;
+}
+
+.visionText {
+  font-weight: 600;
+  font-size: 42px;
+}
+
+.visionParagraph {
+  font-weight: 400;
+  font-size: 16px;
+}
+/* core values */
+.coreValuesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.coreValuesTitle {
+  font-weight: 600;
+  font-size: 42px;
+}
+
+.coreValuesSubtitle {
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: -30px;
+  margin-bottom: 80px;
+}
+
+.coreValuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 100%;
+  height: 100%;
+}
+
+.coreValueItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.coreValueItemAlt {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #001c6b;
+  padding: 20px;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.coreValueIcon {
+  width: 20px;
+  height: 20px;
+  background-color: #001c6b;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.coreValueIconWhite {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.coreValueText {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.coreValueDescription {
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: -7px;
+}
+
+.coreValueTextWhite {
+  font-weight: 500;
+  font-size: 18px;
+  color: white;
+}
+
+.coreValueDescriptionWhite {
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: -7px;
+  color: white;
+}
+/* statistics */
+.statisticsContainer {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #001c6b;
+  padding-top: 25px;
+  padding-bottom: 15px;
+  padding-left: 100px;
+  padding-right: 100px;
+  border-radius: 30px;
+  margin-top: 100px;
+}
+
+.statisticsItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.statisticsNumber {
+  font-weight: 600;
+  font-size: 52px;
+  color: white;
+  margin-top: -10px;
+}
+
+.statisticsDescription {
+  font-weight: 400;
+  font-size: 18px;
+  color: white;
+  margin-top: -60px;
+}
+/* why choose us */
+.whyChooseUsContainer {
+  display: flex;
+  gap: 30px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.whyChooseUsImage {
+  height: 375px;
+  width: 525px;
+}
+
+.whyChooseUsTextContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.whyChooseUsTitle {
+  font-weight: 600;
+  font-size: 42px;
+  margin-top: 5px;
+}
+
+.whyChooseUsSubtitle {
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: -30px;
+}
+
+.whyChooseUsPoints {
+  font-weight: 400;
+  font-size: 16px;
+}
+/* what client say */
+.clientsSayContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.clientsSayTitle {
+  font-weight: 600;
+  font-size: 42px;
+}
+
+.clientsSaySubtitle {
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: -30px;
+  margin-bottom: 80px;
+}
+
+.clientsSayCardsContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.clientCard {
+  background-color: white;
+  padding: 20px;
+}
+
+.clientTestimonial {
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.clientInfoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clientInfo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.clientImage {
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+}
+
+.clientName {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.clientLocation {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: -10px;
+}
+
+.quoteIcon {
+  width: 42px;
+  height: 32px;
+}
+
+
+@media (max-width: 980px) {
+
+.sectionContainer1{
+  flex-direction: column;
+}
+.statisticsContainer{
+   padding-left: 50px;
+  padding-right: 50px;
+}
+.whyChooseUsContainer{
+  flex-direction: column;
+}
+.whyChooseUsTextContainer{
+  align-items: center;
+  justify-items: center;
+}
+.clientsSayContainer{
+  margin-top: 0;
+}
+}
+@media (max-width: 480px) {
+  .aboutcontentWrapper{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .aboutHeroTitle{
+    width:70%;
+    font-size: 32px;
+  }
+  .aboutHeroDescription{
+    width: 80%;
+  }
+  .whoAreWeImg {
+  height: 340px;
+  width: 440px;
+}
+.whoAreWeHeading {
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.sectionContainer1{
+  flex-direction: column;
+}
+.statisticsContainer{
+   padding-left: 50px;
+  padding-right: 50px;
+   display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
+  grid-template-rows: repeat(2, 1fr); /* Creates 2 rows */
+  gap: 20px; /* Space between the grid items */
+  padding: 20px;
+}
+.statisticsNumber{
+  font-size: 42px;
+}
+.statisticsDescription{
+  margin-top:-40px;
+  font-size: 14px;
+  align-items:center ;
+}
+.whyChooseUsContainer{
+  flex-direction: column;
+}
+.whyChooseUsTextContainer{
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+}
+.whoAreWeParagraph1{
+  text-align:center ;
+   margin-top:0;
+}
+.whoAreWeParagraph2 {
+  text-align:center ;
+}
+
+.clientsSayContainer{
+  margin-top: 0;
+}
+.whoAreWeButton{
+   width:100% !important;
+}
+.ourMissionContainer{
+  margin-top: 0;
+  gap: 50px;
+}
+.missionSection{
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+   gap:20px;
+}
+.visionSection{
+   flex-direction: column;
+    align-items: center;
+  justify-content: center;
+  gap:20px;
+}
+.visionImage{
+  margin-top: 0;
+}
+.visionText {
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+}
+.missionText {
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+}
+.missionParagraph{
+  text-align: center;
+}
+.visionParagraph{
+   text-align: center;
+}
+.coreValuesTitle{
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+}
+.coreValuesSubtitle{
+  text-align: center;
+   font-weight: 400;
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+.coreValuesGrid{
+   grid-template-columns: repeat(1, 1fr);
+}
+.coreValueItem{
+   border-right:hidden;
+  border-bottom: 1px solid #e0e0e0;
+}
+.whyChooseUsImage {
+  height: 300px;
+  width: 425px;
+}
+.whyChooseUsTitle {
+  text-align:center;
+  font-weight: 600;
+  font-size: 24px;
+}
+.whyChooseUsSubtitle {
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 0;
+}
+.whyChooseUsPoints {
+  text-align:left;
+  font-weight: 400;
+  font-size: 16px;
+}
+.clientsSayTitle{
+  text-align:center;
+  font-weight: 600;
+  font-size: 24px;
+}
+.clientsSaySubtitle {
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  margin-top:0;
+  margin-bottom: 50px;
+}
+.clientsSayCardsContainer{
+  flex-direction: column;
+}
+}
+@media (max-width: 380px) {
+   .aboutcontentWrapper{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+   .aboutHeroTitle{
+    top:20%;
+    width:70%;
+    font-size: 32px;
+  }
+  .aboutHeroDescription{
+    width: 80%;
+  }
+.whoAreWeImg {
+  height: 240px;
+  width: 340px;
+}
+.whoAreWeHeading {
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.sectionContainer1{
+  flex-direction: column;
+}
+.statisticsContainer{
+   display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
+  grid-template-rows: repeat(2, 1fr); /* Creates 2 rows */
+  gap: 20px; /* Space between the grid items */
+  padding: 20px;
+}
+.statisticsDescription{
+   margin-top:-40px;
+  font-size: 14px;
+  align-items:center ;
+}
+.statisticsNumber{
+  font-size: 42px;
+}
+.whyChooseUsContainer{
+  flex-direction: column;
+}
+.whyChooseUsTextContainer{
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+}
+.whoAreWeParagraph1{
+  text-align:center ;
+   margin-top:0;
+}
+.whoAreWeParagraph2 {
+  text-align:center ;
+}
+
+.clientsSayContainer{
+  margin-top: 0;
+}
+.whoAreWeButton{
+   width:100% !important;
+}
+.ourMissionContainer{
+  margin-top: 0;
+  gap: 50px;
+}
+.missionSection{
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+   gap:20px;
+}
+.visionSection{
+   flex-direction: column;
+    align-items: center;
+  justify-content: center;
+  gap:20px;
+}
+.visionImage{
+   width: 270px;
+  height: 280px;
+}
+.missionImage {
+  width: 270px;
+  height: 280px;
+}
+.visionText {
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+}
+.missionText {
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+}
+.missionParagraph{
+  text-align: center;
+}
+.visionParagraph{
+   text-align: center;
+}
+.coreValuesTitle{
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+}
+.coreValuesSubtitle{
+  text-align: center;
+   font-weight: 400;
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+.coreValuesGrid{
+   grid-template-columns: repeat(1, 1fr);
+}
+.coreValueItem{
+   border-right:hidden;
+  border-bottom: 1px solid #e0e0e0;
+}
+.whyChooseUsImage {
+  height: 200px;
+  width: 325px;
+}
+.whyChooseUsTitle {
+  text-align:center;
+  font-weight: 600;
+  font-size: 24px;
+}
+.whyChooseUsSubtitle {
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 0;
+}
+.whyChooseUsPoints {
+  text-align:left;
+  font-weight: 400;
+  font-size: 16px;
+}
+.clientsSayTitle{
+  text-align:center;
+  font-weight: 600;
+  font-size: 24px;
+}
+.clientsSaySubtitle {
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  margin-top:0;
+  margin-bottom: 50px;
+}
+.clientsSayCardsContainer{
+  flex-direction: column;
+}
+}

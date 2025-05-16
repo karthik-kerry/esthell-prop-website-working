@@ -1,0 +1,253 @@
+.headerContainer {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s;
+}
+
+.headerLogo {
+  margin-left: 20px;
+  margin-top: 8px;
+  height: 60px;
+  width: 50px;
+}
+
+.headerLinksContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.headerLink {
+  font-size: 16px;
+  font-weight: 500;
+  color: #2d2d2d99;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.headerLinkActive {
+  color: #001c6b;
+}
+
+.headerLinkHovered {
+  color: #001c6b;
+}
+
+.HeaderEnquiryButton {
+  margin-right: 20px;
+  background-color: #001c6b;
+  color: white;
+  height: 47px;
+  width: 140px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Footer */
+.footerTop {
+  background-color: #a6d5cf;
+  width: 100%;
+  min-height: 94px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+.footerTopLeft,
+.footerTopMiddle,
+.footerTopRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.footerTopLeft {
+  margin-left: 80px;
+}
+
+.footerTopRight {
+  margin-right: 80px;
+}
+.iconContainer {
+  height: 32px;
+  width: 32px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerText {
+  color: #1b1b1b;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+  max-width: 500px;
+}
+
+.footerBottom {
+  background-color: #00174e;
+  height: 100%;
+  padding: 50px;
+  display: flex;
+}
+
+.footerBottomLeft {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5%;
+}
+
+.footerLink {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.socialIcons {
+  display: flex;
+  gap: 20px;
+}
+
+.socialIcon {
+  background-color: white;
+  height: 42px;
+  width: 42px;
+  border-radius: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.CategoryContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footerCategory {
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.footerLinkItem {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.footerCopyright {
+  background-color: #00174e;
+  border-style: solid;
+  border-top-color: #ffffff33;
+  border-top-width: 1px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerCopyright p {
+  color: white;
+  font-size: 16px;
+}
+.mobileDrawerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+@media (max-width: 980px) {
+ .CategoryContainer {
+  gap: 20px;
+ }
+ .footerText{
+  max-width: 405px;
+ }
+}
+@media (max-width: 480px) {
+  .headerLinksContainer {
+    display: none;        
+  }
+  .HeaderEnquiryButton{
+    margin-top: 10px;
+    width:100%;
+  }
+  .footerText{
+  max-width:380px;
+  }
+  .footerTopLeft{
+    margin-left: 0;
+  }
+  .footerTop{
+   
+    align-items: flex-start;
+    justify-content:flex-start ;
+    flex-direction: column;
+  }
+  .footerBottom{
+    width: auto;
+    flex-direction: column;
+  }
+  .CategoryContainer{
+     display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 30px;
+  width: 100%;
+  }
+}
+@media (max-width: 380px) {
+  .headerLinksContainer {
+    display: none;        
+  }
+  .HeaderEnquiryButton{
+    margin-top: 10px;
+    width:100%;
+  }
+  .footerText{
+  max-width:280px;
+  }
+  .footerTopLeft{
+    margin-left: 0;
+  }
+  .footerTop{
+    padding-left:15px;
+    align-items: flex-start;
+    justify-content:flex-start ;
+    flex-direction: column;
+    width: auto;
+  }
+  .footerBottom{
+    width: auto;
+    flex-direction: column;
+  }
+  .CategoryContainer{
+     display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 30px;
+  width: 100%;
+  }
+}

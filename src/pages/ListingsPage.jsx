@@ -1,0 +1,1012 @@
+import React, { useState, useEffect } from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { Collapse, Pagination, Dropdown, Input, Space, Modal } from "antd";
+import { DownOutlined, PlusOutlined, SearchOutlined } from "@ant-design/icons";
+import { Slider, Button, Checkbox } from "antd";
+import { TbHomeDollar } from "react-icons/tb";
+import { FaRegHeart } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa6";
+import { FaChevronLeft } from "react-icons/fa";
+import { LuBedDouble } from "react-icons/lu";
+import { PiBathtub } from "react-icons/pi";
+import { AiOutlineHome } from "react-icons/ai";
+import Property from "../assets/property.jpg";
+import Property1 from "../assets/property1.jpg";
+import HeroBg from "../assets/hero_bg.png";
+import HeroImg from "../assets/hero_img.png";
+import Logo from "../assets/logo.png";
+import { FaPhone } from "react-icons/fa6";
+import { FaLocationDot } from "react-icons/fa6";
+import EsthellFlats from "../assets/esthell_apartments.png";
+import "../styles/ListingsPage.css";
+import { useNavigate,useLocation } from "react-router-dom";
+
+export default function ListingsPage() {
+  const { Panel } = Collapse;
+  const totalProperties = 8;
+  const pageSize = 5;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
+  const properties = Array.from(
+    { length: totalProperties },
+    (_, index) => `Property ${index + 1}`
+  );
+  const currentProperties = properties.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
+  const [disabled, setDisabled] = useState(false);
+  const [selectedLocations, setSelectedLocations] = useState([]);
+  const images = [Property, Property1];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [areaValue, setAreaValue] = useState([20, 50]);
+  const [budgetValue, setBudgetValue] = useState([30, 70]);
+  const [activeButton, setActiveButton] = useState("buy");
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const buttonStyles = (isActive) => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: screenWidth <= 480 ? 10 : 10,
+    backgroundColor: isActive ? "#001C6B" : "#FFFFFF",
+    height: screenWidth <= 480 ? 38 : 56,
+    width: screenWidth <= 380 ? "120px" : screenWidth <= 480 ? "135px" : "auto",
+    color: isActive ? "white" : "#2D2D2D99",
+    border: "none",
+    borderRadius: screenWidth <= 480 ? 8 : 8,
+    fontSize: screenWidth <= 480 ? 10 : 16,
+    fontWeight: "500",
+    cursor: "pointer",
+  });
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  const [activeButtons, setActiveButtons] = useState({
+    button1: false,
+    button2: false,
+    button3: false,
+    button4: false,
+    button5: false,
+    button6: false,
+    button7: false,
+    button8: false,
+    button9: false,
+    button10: false,
+    button11: false,
+    button12: false,
+    button13: false,
+    button14: false,
+    button15: false,
+    button16: false,
+    button17: false,
+    button18: false,
+    button19: false,
+    button20: false,
+    button21: false,
+  });
+  const navigate = useNavigate();
+  const handleEnquiryClick = () => {
+    navigate("/contact");
+  };
+  const handleCardClick = () => {
+    navigate("/details");
+  };
+  const checkScreenWidth = () => {
+    if (window.innerWidth <= 480) {
+      setIsMobileView(true);
+    } else {
+      setIsMobileView(false);
+    }
+  };
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const hideModal = () => {
+    setIsModalVisible(false);
+  };
+  const onPageChange = (page) => {
+    setCurrentPage(page);
+  };
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+  const onShowSizeChange = (current, pageSize) => {
+    console.log(current, pageSize);
+  };
+  
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 480);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // const handleChange = (value) => {
+  //   setValue(value);
+  // };
+  // const formatValue = (value) => {
+  //   if (value >= 10000000) {
+  //     return `${(value / 10000000).toFixed(1)} Cr`;
+  //   } else {
+  //     return `${(value / 100000).toFixed(1)} L`;
+  //   }
+  // };
+  const onCheck = (e) => {
+    const value = e.target.value;
+    if (e.target.checked) {
+      setSelectedLocations((prev) => [...prev, value]);
+    } else {
+      setSelectedLocations((prev) => prev.filter((item) => item !== value));
+    }
+  };
+
+  const onAreaChange = (newValue) => {
+    setAreaValue(newValue);
+  };
+
+  const onBudgetChange = (newValue) => {
+    setBudgetValue(newValue);
+  };
+
+  const handleClick = (buttonId) => {
+    setActiveButtons((prevState) => ({
+      ...prevState,
+      [buttonId]: !prevState[buttonId],
+    }));
+  };
+
+  useEffect(() => {
+    checkScreenWidth();
+    window.addEventListener("resize", checkScreenWidth);
+
+    return () => {
+      window.removeEventListener("resize", checkScreenWidth);
+    };
+  }, []);
+  const dropDownItems = [
+    {
+      key: "1",
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="#">
+          1st menu item
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="#">
+          2nd menu item
+        </a>
+      ),
+      //   icon: <SmileOutlined />,
+      //   disabled: true,
+    },
+    {
+      key: "3",
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="#">
+          3rd menu item
+        </a>
+      ),
+      //   disabled: true,
+    },
+  ];
+  const items = [
+    {
+      key: "1",
+      label: <span style={{ fontWeight: 500 }}>Budget</span>,
+      children: (
+        <Slider
+          range
+          min={0}
+          max={100}
+          step={1}
+          value={budgetValue}
+          onChange={onBudgetChange}
+          className="sliderContainer"
+          trackStyle={{
+            backgroundColor: "#001C6B",
+          }}
+          handleStyle={{
+            backgroundColor: "#001C6B",
+            borderColor: "#001C6B",
+            color: "#001C6B",
+          }}
+        />
+      ),
+    },
+    {
+      key: "2",
+      label: <span style={{ fontWeight: 500 }}>Type of property</span>,
+      children: (
+        <div className="buttonContainer">
+          <div className="buttonRow">
+            <Button
+              onClick={() => handleClick("button1")}
+              icon={<PlusOutlined />}
+              className={`button ${
+                activeButtons.button1 ? "active" : "inactive"
+              } button1`}
+            >
+              <p>1 BHK</p>
+            </Button>
+            <Button
+              onClick={() => handleClick("button2")}
+              icon={<PlusOutlined />}
+              className={`button ${
+                activeButtons.button2 ? "active" : "inactive"
+              } button2`}
+            >
+              <p>2 BHK</p>
+            </Button>
+          </div>
+          <div className="buttonRow">
+            <Button
+              onClick={() => handleClick("button3")}
+              icon={<PlusOutlined />}
+              className={`button ${
+                activeButtons.button3 ? "active" : "inactive"
+              } button3`}
+            >
+              <p>3 BHK</p>
+            </Button>
+            <Button
+              onClick={() => handleClick("button4")}
+              icon={<PlusOutlined />}
+              className={`button ${
+                activeButtons.button4 ? "active" : "inactive"
+              } button4`}
+            >
+              <p>4 BHK</p>
+            </Button>
+          </div>
+        </div>
+      ),
+    },
+    {
+      key: "3",
+      label: <span style={{ fontWeight: 500 }}> Construction Status</span>,
+      children: (
+        <div className="buttonContainer">
+          <div className="buttonRow">
+            <Button
+              onClick={() => handleClick("button5")}
+              icon={<PlusOutlined />}
+              className={`button ${
+                activeButtons.button5 ? "active" : "inactive"
+              } button5`}
+            >
+              <p>New launch</p>
+            </Button>
+            <Button
+              onClick={() => handleClick("button6")}
+              icon={<PlusOutlined />}
+              className={`button ${
+                activeButtons.button6 ? "active" : "inactive"
+              } button6`}
+            >
+              <p>Under construction</p>
+            </Button>
+          </div>
+          <div className="buttonRow">
+            <Button
+              onClick={() => handleClick("button7")}
+              icon={<PlusOutlined />}
+              className={`button ${
+                activeButtons.button7 ? "active" : "inactive"
+              } button7`}
+            >
+              <p>Ready to move</p>
+            </Button>
+          </div>
+        </div>
+      ),
+    },
+    {
+      key: "4",
+      label: <span style={{ fontWeight: 500 }}>Posted by</span>,
+      children: (
+        <div className="buttonContainer">
+          <div className="buttonRow">
+            <Button
+              onClick={() => handleClick("button8")}
+              icon={<PlusOutlined />}
+              className={`button ${
+                activeButtons.button8 ? "active" : "inactive"
+              } button8`}
+            >
+              <p>Owner</p>
+            </Button>
+            <Button
+              onClick={() => handleClick("button9")}
+              icon={<PlusOutlined />}
+              className={`button ${
+                activeButtons.button9 ? "active" : "inactive"
+              } button9`}
+            >
+              <p>Builder</p>
+            </Button>
+          </div>
+          <div className="buttonRow">
+            <Button
+              onClick={() => handleClick("button10")}
+              icon={<PlusOutlined />}
+              className={`button ${
+                activeButtons.button10 ? "active" : "inactive"
+              } button10`}
+            >
+              <p>Dealer</p>
+            </Button>
+            <Button
+              onClick={() => handleClick("button11")}
+              icon={<PlusOutlined />}
+              className={`button ${
+                activeButtons.button11 ? "active" : "inactive"
+              } button11`}
+            >
+              <p>Feature Dealer</p>
+            </Button>
+          </div>
+        </div>
+      ),
+    },
+
+    {
+      key: "5",
+      label: <span style={{ fontWeight: 500 }}>Area (sq.ft.)</span>,
+      children: (
+        <div>
+          <Slider
+            className="sliderContainer"
+            range
+            min={0}
+            max={100}
+            step={1}
+            value={areaValue}
+            onChange={onAreaChange}
+            trackStyle={{
+              backgroundColor: "#001C6B",
+            }}
+            handleStyle={{
+              backgroundColor: "#001C6B",
+              borderColor: "#001C6B",
+              color: "#001C6B",
+            }}
+          />
+        </div>
+      ),
+    },
+    {
+      key: "6",
+      label: <span style={{ fontWeight: 500 }}>Localities</span>,
+      children: (
+        <div className="localitiesCheckboxWrapper">
+          <Checkbox value="GST Road" onChange={onCheck}>
+            GST Road
+          </Checkbox>
+          <Checkbox value="OMR" onChange={onCheck}>
+            OMR
+          </Checkbox>
+          <Checkbox value="Tambaram" onChange={onCheck}>
+            Tambaram
+          </Checkbox>
+          <Checkbox value="ECR" onChange={onCheck}>
+            ECR
+          </Checkbox>
+          <Checkbox value="Guduvancheri" onChange={onCheck}>
+            Guduvancheri
+          </Checkbox>
+          <div className="localitiesMoreButtonWrapper">
+            <SearchOutlined />
+            <p className="localitiesSearchText">More Localities</p>
+          </div>
+        </div>
+      ),
+    },
+    {
+      key: "7",
+      label: <span style={{ fontWeight: 500 }}>Purchase type</span>,
+      children: (
+        <>
+          <div className="buttonRow">
+            <Button
+              className={`button ${
+                activeButtons.button12 ? "active" : "inactive"
+              } button12`}
+              onClick={() => handleClick("button12")}
+              icon={
+                <PlusOutlined
+                  style={{
+                    color: activeButtons.button12 ? "white" : "#1B1B1BCC",
+                    opacity: "70%",
+                  }}
+                />
+              }
+            >
+              <p>Resale</p>
+            </Button>
+            <Button
+              className={`button ${
+                activeButtons.button13 ? "active" : "inactive"
+              } button13`}
+              onClick={() => handleClick("button13")}
+              icon={
+                <PlusOutlined
+                  style={{
+                    color: activeButtons.button13 ? "white" : "#1B1B1BCC",
+                    opacity: "70%",
+                  }}
+                />
+              }
+            >
+              <p>New Booking</p>
+            </Button>
+          </div>
+        </>
+      ),
+    },
+    {
+      key: "8",
+      label: <span style={{ fontWeight: 500 }}>Amenities</span>,
+      children: (
+        <>
+          <div className="buttonContainer2">
+            <Button
+              className={`button ${
+                activeButtons.button14 ? "active" : "inactive"
+              } button14`}
+              onClick={() => handleClick("button14")}
+              icon={
+                <PlusOutlined
+                  style={{
+                    color: activeButtons.button14 ? "white" : "#1B1B1BCC",
+                    opacity: "70%",
+                  }}
+                />
+              }
+            >
+              <p>Vaastu Compliant</p>
+            </Button>
+            <Button
+              className={`button ${
+                activeButtons.button15 ? "active" : "inactive"
+              } button15`}
+              onClick={() => handleClick("button15")}
+              icon={
+                <PlusOutlined
+                  style={{
+                    color: activeButtons.button15 ? "white" : "#1B1B1BCC",
+                    opacity: "70%",
+                  }}
+                />
+              }
+            >
+              <p>Security Personnel</p>
+            </Button>
+            <Button
+              className={`button ${
+                activeButtons.button16 ? "active" : "inactive"
+              } button16`}
+              onClick={() => handleClick("button16")}
+              icon={
+                <PlusOutlined
+                  style={{
+                    color: activeButtons.button16 ? "white" : "#1B1B1BCC",
+                    opacity: "70%",
+                  }}
+                />
+              }
+            >
+              <p>Gymnasium</p>
+            </Button>
+            <Button
+              className={`button ${
+                activeButtons.button17 ? "active" : "inactive"
+              } button17`}
+              onClick={() => handleClick("button17")}
+              icon={
+                <PlusOutlined
+                  style={{
+                    color: activeButtons.button17 ? "white" : "#1B1B1BCC",
+                    opacity: "70%",
+                  }}
+                />
+              }
+            >
+              <p>Park</p>
+            </Button>
+            <Button
+              className={`button ${
+                activeButtons.button18 ? "active" : "inactive"
+              } button18`}
+              onClick={() => handleClick("button18")}
+              icon={
+                <PlusOutlined
+                  style={{
+                    color: activeButtons.button18 ? "white" : "#1B1B1BCC",
+                    opacity: "70%",
+                  }}
+                />
+              }
+            >
+              <p>Parking</p>
+            </Button>
+            <p className="moreText">+ 6 More</p>
+          </div>
+        </>
+      ),
+    },
+    {
+      key: "9",
+      label: <span style={{ fontWeight: 500 }}> Furnishing status</span>,
+      children: (
+        <div className="buttonContainer3">
+          <Button
+            className={`button ${
+              activeButtons.button19 ? "active" : "inactive"
+            } button19`}
+            onClick={() => handleClick("button19")}
+            icon={
+              <PlusOutlined
+                style={{
+                  color: activeButtons.button19 ? "white" : "#1B1B1BCC",
+                  opacity: "70%",
+                }}
+              />
+            }
+          >
+            <p>Furnished</p>
+          </Button>
+          <Button
+            className={`button ${
+              activeButtons.button20 ? "active" : "inactive"
+            } button20`}
+            onClick={() => handleClick("button20")}
+            icon={
+              <PlusOutlined
+                style={{
+                  color: activeButtons.button20 ? "white" : "#1B1B1BCC",
+                  opacity: "70%",
+                }}
+              />
+            }
+          >
+            <p>Unfurnished</p>
+          </Button>
+          <Button
+            className={`button ${
+              activeButtons.button21 ? "active" : "inactive"
+            } button21`}
+            onClick={() => handleClick("button21")}
+            icon={
+              <PlusOutlined
+                style={{
+                  color: activeButtons.button21 ? "white" : "#1B1B1BCC",
+                  opacity: "70%",
+                }}
+              />
+            }
+          >
+            <p>Semifurnished</p>
+          </Button>
+        </div>
+      ),
+    },
+  ];
+
+  return (
+    <div>
+      <Header />
+      {/* hero section */}
+      <div className="ListingHeroContainer">
+        <img src={HeroBg} className="ListingHeroBackgroundImage" />
+        <div className="ListingHeroBlurEffect" />
+        <div className="ListingHeroForm">
+          <div className="ListingHeroButtonGroup">
+            <Button
+              style={buttonStyles(activeButton === "buy")}
+              onClick={() => setActiveButton("buy")}
+            >
+              <TbHomeDollar
+                color={activeButton === "buy" ? "white" : "#2D2D2D99"}
+              />
+              Buy a Property
+            </Button>
+
+            <Button
+              style={buttonStyles(activeButton === "rent")}
+              onClick={() => setActiveButton("rent")}
+            >
+              <TbHomeDollar
+                color={activeButton === "rent" ? "white" : "#2D2D2D99"}
+              />
+              Rent a Property
+            </Button>
+            <Button
+              style={buttonStyles(activeButton === "commercial")}
+              onClick={() => setActiveButton("commercial")}
+            >
+              <TbHomeDollar
+                color={activeButton === "commercial" ? "white" : "#2D2D2D99"}
+              />
+              Commercial
+            </Button>
+          </div>
+
+          {window.innerWidth <= 480 ? (
+            <div className="ListingSearchForm">
+              <Input className="ListingLocation" placeholder="Location" />
+
+              {/* Grid layout for smaller screens */}
+              <div className="listingGrid">
+                <Dropdown menu={{ items: dropDownItems }}>
+                  <a onClick={(e) => e.preventDefault()}>
+                    <Space className="ListingformItem">
+                      Property Type
+                      <DownOutlined />
+                    </Space>
+                  </a>
+                </Dropdown>
+
+                <Dropdown menu={{ items: dropDownItems }}>
+                  <a onClick={(e) => e.preventDefault()}>
+                    <Space className="ListingformItem">
+                      Property Size
+                      <DownOutlined />
+                    </Space>
+                  </a>
+                </Dropdown>
+
+                <Dropdown menu={{ items: dropDownItems }}>
+                  <a onClick={(e) => e.preventDefault()}>
+                    <Space className="ListingformItem">
+                      Min Range
+                      <DownOutlined />
+                    </Space>
+                  </a>
+                </Dropdown>
+
+                <Dropdown menu={{ items: dropDownItems }}>
+                  <a onClick={(e) => e.preventDefault()}>
+                    <Space className="ListingformItem">
+                      Max Range
+                      <DownOutlined />
+                    </Space>
+                  </a>
+                </Dropdown>
+              </div>
+
+              <Button className="ListingSearchButton" onClick={() => {}}>
+                Search
+              </Button>
+            </div>
+          ) : (
+            <div className="ListingSearchForm">
+              <Input className="ListingLocation" placeholder="Location" />
+
+              <Dropdown menu={{ items: dropDownItems }}>
+                <a onClick={(e) => e.preventDefault()}>
+                  <Space className="ListingformItem">
+                    Property Type
+                    <DownOutlined />
+                  </Space>
+                </a>
+              </Dropdown>
+
+              <Dropdown menu={{ items: dropDownItems }}>
+                <a onClick={(e) => e.preventDefault()}>
+                  <Space className="ListingformItem">
+                    Property Size
+                    <DownOutlined />
+                  </Space>
+                </a>
+              </Dropdown>
+
+              <Dropdown menu={{ items: dropDownItems }}>
+                <a onClick={(e) => e.preventDefault()}>
+                  <Space className="ListingformItem">
+                    Min Range
+                    <DownOutlined />
+                  </Space>
+                </a>
+              </Dropdown>
+
+              <Dropdown menu={{ items: dropDownItems }}>
+                <a onClick={(e) => e.preventDefault()}>
+                  <Space className="ListingformItem">
+                    Max Range
+                    <DownOutlined />
+                  </Space>
+                </a>
+              </Dropdown>
+
+              <Button className="ListingSearchButton" onClick={() => {}}>
+                Search
+              </Button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="listingsContainer">
+        {isMobileView && (
+          <Modal
+            title="Filters"
+            visible={isModalVisible}
+            onCancel={hideModal}
+            width={300}
+            footer={null}
+            style={{ height: "auto" }}
+          >
+            <Collapse
+              items={items}
+              defaultActiveKey={items.map((item) => item.key)}
+              bordered={false}
+              expandIconPosition="end"
+              expandIcon={({ isActive }) => (
+                <DownOutlined rotate={isActive ? 180 : 0} />
+              )}
+              className="collapseContainer"
+            />
+            <div style={{ display: "flex", gap: 5 }}>
+              <Button className="ClearButton">Clear All</Button>
+              <Button className="ApplyFilterButton">Apply Filter</Button>
+            </div>
+          </Modal>
+        )}
+
+        {!isMobileView && (
+          <div className="filterContainer">
+            <div className="filterHeader">
+              <p className="filterTitle">Filters</p>
+              <p className="clearAll">Clear All</p>
+            </div>
+            <div className="separatorLine" />
+            <Collapse
+              items={items}
+              defaultActiveKey={items.map((item) => item.key)}
+              bordered={false}
+              expandIconPosition="end"
+              expandIcon={({ isActive }) => (
+                <DownOutlined rotate={isActive ? 180 : 0} />
+              )}
+              className="collapseContainer"
+            />
+          </div>
+        )}
+
+        {/* featured properties */}
+        <div className="featuredPropertiesContainer">
+          <div className="featuredPropertiesHeader">
+            <p className="featuredTitle">Featured Properties</p>
+            <Button className="filtersButton" onClick={showModal}>
+              Filters
+            </Button>
+          </div>
+          <div className="propertyList">
+            {currentProperties.map((property, index) => (
+              <div key={index} className="propertyItem" onClick={() => {}}>
+                <div className="propertyImageWrapper">
+                  <div className="imageContainer">
+                    <img
+                      src={images[currentIndex]}
+                      alt={`Property ${currentIndex + 1}`}
+                      className="propertyImage"
+                    />
+                    <button
+                      onClick={handlePrev}
+                      className="navigationButton prevButton"
+                    >
+                      <FaChevronLeft color="white" />
+                    </button>
+                    <button
+                      onClick={handleNext}
+                      className="navigationButton nextButton"
+                    >
+                      <FaChevronRight color="white" />
+                    </button>
+                    <div className="stepIndicator">
+                      {images.map((_, index) => (
+                        <div
+                          key={index}
+                          className={`stepDot ${
+                            currentIndex === index ? "activeStepDot" : ""
+                          }`}
+                          onClick={() => setCurrentIndex(index)}
+                        ></div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="propertyStatusWrapper" >
+                    <p className="propertyVerified">Verified</p>
+                    <p className="propertyResale">Resale</p>
+                    <FaRegHeart className="propertyIcon" />
+                  </div>
+                </div>
+
+                <div className="propertyInfoWrapper"  onClick={handleCardClick}>
+                  <div className="propertyHeader">
+                    <div className="propertyDetails">
+                      <p className="propertyName">Esthell Homes</p>
+                      <p className="propertyLocation">
+                        Apartment / Plot in{" "}
+                        <span className="propertyLocationDetails">
+                          Velachery, Chennai
+                        </span>
+                      </p>
+                    </div>
+                    <p className="propertyPrice">₹30L</p>
+                  </div>
+                  <div className="propertySpecs">
+                    <div className="propertySpecItem">
+                      <LuBedDouble color="#001C6B" />
+                      <span className="text">2 BHK</span>
+                    </div>
+                    <div className="propertySpecItem">
+                      <PiBathtub color="#001C6B" />
+                      <span className="text">3 Baths</span>
+                    </div>
+                    <div className="propertySpecItem">
+                      <AiOutlineHome color="#001C6B" />
+                      <span className="text">1000 Sqft</span>
+                    </div>
+                  </div>
+                  <div className="propertyHighlightsWrapper">
+                    <p className="hpPropHighlightsText">Highlights: </p>
+                    <p className="propertyHighlight">North facing</p>
+                    <p className="propertyHighlight">North facing</p>
+                  </div>
+                  <p className="propertyDescription">
+                    Lorem ipsum dolor sit amet consectetur. Sit arcu fermentum
+                    in proin morbi aliquet ultrices sagittis.
+                  </p>
+                  <div className="propertyFooter">
+                    <div className="propertyFooterLeft">
+                      <img src={Logo} className="propertyLogo" />
+                      <div>
+                        <p className="propertyFooterName">Esthell Properties</p>
+                        <p className="propertyFooterDate">
+                          Listed on: 20 mar 2025
+                        </p>
+                      </div>
+                    </div>
+                    <div className="propertyFooterRight">
+                      <Button
+                        onClick={handleEnquiryClick}
+                        className="propertyEnquiryButton"
+                      >
+                        Enquiry Now
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="paginationContainer">
+            <Pagination
+              align="end"
+              showSizeChanger={false}
+              defaultCurrent={3}
+              current={currentPage}
+              pageSize={pageSize}
+              total={totalProperties}
+              onChange={onPageChange}
+            />
+          </div>
+        </div>
+      </div>
+      {/* card details */}
+      <div className="cardContainer">
+        <div
+          className="card"
+          onMouseMove={(e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            e.currentTarget.style.background = `radial-gradient(circle at ${x}px ${y}px, #0037D1, #001C6B)`;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background =
+              "linear-gradient(to right, #001C6B, #0037D1)";
+          }}
+        >
+          {isMobile ? (
+            <>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <img src={Logo} className="cardImg" />
+                <p className="cardText">Esthell Golden Square</p>
+              </div>
+              <div className="positionStyle">
+                <p className="startFrom">Starts From</p>
+                <p className="startPrice">1.62 Cr + Regn</p>
+                <p className="subText">2.5 & 3 BHK, Duplex & penthouse</p>
+              </div>
+              <div className="cardButtons">
+                <div className="cardContactInfo" onClick={() => {}}>
+                  <FaPhone color="white" />
+                  <p style={{ color: "white", fontSize: 16 }}>+91 7218212345</p>
+                </div>
+                <div className="cardLocationInfo" onClick={() => {}}>
+                  <FaLocationDot color="white" />
+                  <p style={{ color: "white", fontSize: 16 }}>
+                    Velachery, Chennai.
+                  </p>
+                </div>
+                <div>
+                  <Button onClick={handleEnquiryClick} className="cardButton">
+                    Enquiry Now
+                  </Button>
+                </div>
+              </div>
+
+              <img src={EsthellFlats} className="cardImage" />
+            </>
+          ) : (
+            <>
+              <img src={Logo} className="cardImg" />
+              <p className="cardText">
+                Esthell Golden
+                <br /> Square
+              </p>
+              <div className="cardButtons">
+                <Button onClick={handleEnquiryClick} className="cardButton">
+                  Enquiry Now
+                </Button>
+                <div className="cardContactInfo" onClick={() => {}}>
+                  <FaPhone color="white" />
+                  <p style={{ color: "white", fontSize: 16 }}>+91 7218212345</p>
+                </div>
+                <div className="cardLocationInfo" onClick={() => {}}>
+                  <FaLocationDot color="white" />
+                  <p style={{ color: "white", fontSize: 16 }}>
+                    Velachery, Chennai.
+                  </p>
+                </div>
+              </div>
+              <div className="positionStyle">
+                <p className="startFrom">Starts From</p>
+                <p className="startPrice">1.62 Cr + Regn</p>
+                <p className="subText">2.5 & 3 BHK, Duplex & penthouse</p>
+              </div>
+              <img src={EsthellFlats} className="cardImage" />
+            </>
+          )}
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+}

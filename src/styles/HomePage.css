@@ -1,0 +1,1193 @@
+/* hero section */
+/* HeroSection.css */
+.HomeHeroContainer {
+  position: relative;
+  width: 100%;
+  height: 520px;
+}
+
+.HomeHeroBackgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.HomeHeroText {
+  color: white;
+  font-size: 40px;
+  font-weight: 600;
+  position: absolute;
+  bottom:100%;
+  z-index: 100;
+  margin-bottom: 100px;
+}
+
+.HomeHeroDescription {
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  bottom: 95%;
+  z-index: 100;
+  margin-bottom: 50px;
+}
+
+.HomeHeroForm {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  position: absolute;
+  z-index: 100;
+  top: 60%;
+  left: 5%;
+  max-width: 90%;
+}
+
+.HomeHeroButtonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+ 
+}
+
+.HomeSearchForm {
+  height: 40px;
+  background-color: white;
+  width: 100%;
+  border-radius: 16px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.HomeLocation{
+  height: 44px;
+  width: 130px;
+  border-width: 1px;
+  border-color:#0A51A333 ;
+  border-radius: 8px;
+  margin-right: 10px;
+
+}
+
+.HomeformItem {
+  height: 44px;
+  width: 150px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0a51a333;
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #bfbfbf;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+.HomeSearchButton{
+  background-color: #001C6B;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  height: 46px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 12px;
+}
+
+/* how it works */
+.howItWorksContainer {
+  background-color: #f2f6fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+.sectionTitle {
+  color: #1b1b1b;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 0;
+}
+
+.sectionSubtitle {
+  color: #1b1b1b;
+  font-size: 16px;
+  line-height: 0;
+}
+
+.howItWorksSteps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.stepContainer {
+  height: 100%;
+  width: 30%;
+  border-radius: 24px;
+  border-width: 1px;
+  border-color: #00000029;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stepContainer:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.stepIcon {
+  width: 72px;
+  margin-bottom: 10px;
+}
+
+.stepTitle {
+  color: #1b1b1b;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 0;
+  margin-bottom: 8px;
+}
+
+.stepDescription {
+  color: #1b1b1bcc;
+  font-size: 16px;
+  text-align: center;
+}
+/* explore properties */
+.exploreByPropertyContainer {
+  background-color: #001c6b;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.exploreByPropertyTextContainer {
+  width: 33%;
+}
+
+.exploreByPropertyTitle {
+  color: white;
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.exploreByPropertyDescription {
+  color: white;
+  font-size: 16px;
+}
+
+.exploreByPropertyScrollContainer {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.exploreByPropertyCard {
+  background-color: white;
+  height: 200px;
+  width: 180px;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.exploreByPropertyCardImage {
+  width: 92px;
+}
+
+.exploreByPropertyCardTitle {
+  color: #1b1b1b;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 0;
+}
+
+.exploreByPropertyCardDescription {
+  color: #1b1b1bcc;
+  font-size: 16px;
+  line-height: 0;
+}
+
+/* why choose us */
+.chooseUsContainer {
+  background-color: #f2f6fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+.chooseUsTitle {
+  color: #1b1b1b;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 0;
+}
+
+.chooseUsSubtitle {
+  color: #1b1b1b;
+  font-size: 16px;
+  line-height: 0;
+}
+
+.chooseUsCardContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.chooseUsCard {
+  height: 160px;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #001c6b;
+  border-radius: 24px;
+  padding: 20px;
+  background-color: white;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.chooseUsCard:hover {
+  background-color: #001c6b;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.chooseUsCard p {
+  color: #1b1b1b;
+}
+
+.chooseUsCard p[data-default-color] {
+  color: #1b1b1b;
+}
+
+.chooseUsCard p.chooseUsCardSubtitle {
+  color: #1b1b1bcc;
+  font-size: 16px;
+}
+
+.chooseUsCard p.chooseUsCardTitle {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 0;
+}
+
+/* properties card */
+.hpPropContainer {
+  background-color: #f2f6fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+/* .hpPropContainer {
+  background-color: #f2f6fa;
+  display: flex !important;
+  flex-direction: column  !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 50px !important;
+} */
+
+.hpPropTitle {
+  color: #1b1b1b;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 0;
+}
+
+.hpPropSubtitle {
+  color: #1b1b1b;
+  font-size: 16px;
+  line-height: 0;
+}
+
+.hpPropCardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.hpPropCard {
+  height: auto;
+  width: auto;
+  border-radius: 20px;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #00000029;
+  padding: 20px;
+}
+
+.hpPropImgContainer {
+  height: 289px;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.hpPropImageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.hpPropImage {
+  height: 289px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.homePagePrevButton,
+.homePageNextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #1b1b1b4d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.homePagePrevButton {
+  left: 10px;
+}
+
+.homePageNextButton {
+  right: 10px;
+}
+
+.hpPropStepIndicator {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.hpStepIndicatorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  cursor: pointer;
+}
+
+.hpStepIndicatorDotActive {
+  background-color: #ffffff;
+}
+
+.homePageLabelContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 96%;
+  position: relative;
+  bottom: 103%;
+  left: 2%;
+}
+
+.homePageVerifiedLabel,
+.homePageResaleLabel {
+  text-transform: uppercase;
+  border-radius: 4px;
+  color: white;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homePageVerifiedLabel {
+  background-color: #42a418;
+  width: 54px;
+  height: 20px;
+  font-size: 10px;
+}
+
+.homePageResaleLabel {
+  background-color: #1b1b1b66;
+  width: 60px;
+  height: 22px;
+  font-size: 14px;
+}
+.hpPropDetailsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hpPropName{
+  color: #1b1b1b;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: -10px;
+}
+.hpPropLocation{
+  color: #1b1b1bcc;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.hpPropPrice {
+  color: #1b1b1b;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: -3px;
+}
+
+.hpPropDetails {
+  background-color: #0a51a30d;
+  width: 95%;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.hpPropDetailItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #1b1b1b;
+}
+
+.hpPropHighlights {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.hpPropHighlightsText{
+  color:#1B1B1BCC ;
+}
+
+.hpPropHighlightItem {
+  background-color: #f4f4f4;
+  padding: 5px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1b1b1b;
+}
+
+.viewAllPropButton {
+  background-color: #001c6b;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  height: 48px;
+  width: auto;
+  padding: 10px 16px;
+  border-radius: 12px;
+}
+/* cities with listing */
+.citiesWithListingContainer {
+  background-color: #f2f6fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  overflow: hidden;
+}
+
+.citiesTitle {
+  color: #1b1b1b;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 0;
+}
+
+.citiesSubtitle {
+  color: #1b1b1b;
+  font-size: 16px;
+  line-height: 0;
+}
+
+.citiesScrollContainer {
+  margin-top: 40px;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.citiesScrollWrapper1 {
+  display: flex;
+  gap: 20px;
+  animation: scrollLeft 10s linear infinite;
+}
+.citiesScrollWrapper2 {
+  display: flex;
+  gap: 20px;
+  animation: scrollRight 10s linear infinite;
+}
+
+.scrollWrapper:hover {
+  animation-play-state: paused;
+}
+
+.scrollWrapper:active {
+  animation-play-state: running;
+}
+
+.cityCard {
+  height: 230px;
+  width: 230px;
+  border-radius: 20px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.cityImage {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.cityOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+}
+
+.cityLabel {
+  position: absolute;
+  bottom: 25px;
+  left: 20px;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.cityProperties {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  color: white;
+  font-size: 18px;
+  z-index: 2;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+/* info card */
+.cardContainer {
+  background-color: #f2f6fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  overflow: hidden;
+}
+
+.card {
+  height: 325px;
+  width: 80%;
+  border-radius: 40px;
+  background: linear-gradient(to right, #001c6b, #0037d1);
+  margin-bottom: 120px;
+  padding: 20px 40px;
+  position: relative;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.cardImg {
+  width: 54px;
+}
+
+.cardText {
+  color: white;
+  font-size: 38px;
+  font-weight: 500;
+}
+
+.cardButtons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.cardButton {
+  background-color: white;
+  padding: 10px 16px;
+  height: 48px;
+  border-radius: 12px;
+  color: #001c6b;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.cardContactInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.cardContactInfo p {
+  color: white;
+  font-size: 16px;
+}
+
+.cardLocationInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.cardLocationInfo p {
+  color: white;
+  font-size: 16px;
+}
+
+.cardPriceInfo {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.priceInfo p {
+  color: white;
+}
+.positionStyle {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.startFrom{
+  color: white;
+  text-transform: uppercase;
+  font-size: 22px;
+  line-height: 0;
+}
+.startPrice {
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 0;
+}
+
+.subText {
+  color: white;
+  font-size: 22px;
+  opacity: 0.9;
+}
+
+.cardImage {
+  width: 300px;
+  position: absolute;
+  bottom: 0;
+  right: 3%;
+}
+
+.card:hover {
+  background: radial-gradient(circle at var(--x) var(--y), #0037d1, #001c6b);
+}
+
+.card:hover .cardButton {
+  background-color: white;
+  color: #001c6b;
+}
+
+.card:hover .contactInfo p {
+  color: white;
+}
+
+.card:hover .locationInfo p {
+  color: white;
+}
+
+.card:hover .priceInfo p {
+  color: white;
+}
+@media (max-width: 980px) {
+.HomeHeroText {
+   font-size: 38px;
+}
+.HomeformItem{
+  height: 44px;
+  width: 110px; 
+}
+.stepTitle{
+  font-size:19px;
+}
+.exploreByPropertyContainer{
+  gap:20px;
+  padding:40px;
+}
+.chooseUsCard p.chooseUsCardTitle{
+    font-size: 18px;
+    word-wrap: break-word;
+    text-align: center;  
+    line-height: 1.2;  
+   white-space: normal;
+}
+.chooseUsCard p.chooseUsCardSubtitle{
+  margin-top: -5px;
+  font-size: 14px;
+  text-align: center;
+  
+}
+.hpPropCardGrid{
+  padding: 0;
+}
+.hpPropDetailItem{
+  gap:5px;
+}
+.hpPropDetailItem .text {
+  font-size: 14px;       
+}
+.hpPropHighlightsText{
+ font-size: 14px;
+}
+.facingDirText{
+   font-size: 14px;
+}
+.cardButtons{
+  gap:15px;
+}
+.cardImage{
+  height: 280px;
+  width:230px;
+  right: 3%;
+  bottom:1px;
+}
+.positionStyle {
+  top:10px;
+}
+
+}
+@media (max-width: 480px) {
+  .hpPropContainer{
+    padding: 30px;
+  }
+  .HomeHeroForm{
+    top:55%;
+  }
+.HomeHeroDescription{
+   bottom:25%;
+}
+.HomeHeroButtonGroup{
+  gap:8px;
+}
+.sectionTitle{
+  margin-top: 100px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.sectionSubtitle{
+  font-size: 14px;
+  font-weight: 400;
+   word-wrap: break-word;
+    text-align: center;  
+    line-height: 1.5;  
+   white-space: normal;
+  
+}
+.howItWorksSteps{
+  flex-direction: column;
+}
+.stepContainer{
+  width:100%;
+}
+.stepDescription{
+  font-size: 14px;
+}
+.exploreByPropertyContainer{
+  flex-direction: column;
+}
+.exploreByPropertyTextContainer{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.exploreByPropertyTitle{
+  font-size: 24px;
+  font-weight: 600;
+}
+.exploreByPropertyDescription{
+  font-size: 14px;
+  font-weight: 400;
+}
+.exploreByPropertyScrollGridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  grid-template-rows: repeat(2, 1fr); 
+  gap: 12px; 
+}
+.exploreByPropertyCardImage {
+  width: 68px;
+}
+.exploreByPropertyCard {
+  height:180px;
+  width: 162px;
+}
+.exploreByPropertyCardTitle{
+    font-size: 18px;
+  font-weight: 600;
+}
+.exploreByPropertyCardDescription{
+  font-size: 12px;
+  font-weight: 400;
+}
+.chooseUsTitle{
+   font-size: 24px;
+  font-weight: 600;
+}
+.chooseUsSubtitle {
+  font-size: 14px;
+  line-height: 0;
+}
+.chooseUsCardContainer{
+  flex-direction: column;
+}
+.chooseUsCard
+{
+  width: 100%;
+  height: auto;
+  align-items: center;
+  justify-items: center;
+}
+.chooseUsCard p.chooseUsCardTitle {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 0;
+}
+.chooseUsCard p.chooseUsCardSubtitle {
+  color: #1b1b1bcc;
+  font-size: 16px;
+}
+.hpPropTitle{
+font-size: 24px;
+  font-weight: 600;
+}
+.hpPropSubtitle {
+  font-size: 14px;
+  line-height: 0;
+}
+.hpPropCardGrid{
+  display: flex;
+  flex-direction: column;
+}
+.citiesTitle{
+  font-size: 24px;
+  font-weight: 600;
+}
+.citiesSubtitle{
+  font-size: 14px;
+}
+.cityCard{
+   height:140px;
+  width: 140px;
+}
+.cityLabel{
+  font-size: 14px;
+}
+.cityProperties{
+  font-size: 12px;
+}
+.card{
+  width:100%;
+  height: 675px;
+}
+.cardButtons{
+  position: absolute;
+  top: 31%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap:0;
+}
+
+.cardLocationInfo{
+  width: 100%;
+  margin-top:-15px;
+}
+.cardButton{
+  width: 100%;
+}
+.cardText {
+  font-size: 20px;
+  font-weight: 500;
+}
+.positionStyle{
+  position: absolute;
+  top: 120px;
+  width: 80%;
+  transform: translateX(-50%);
+}
+.cardImage{
+  height: 296px;
+  width: 329px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 10 px;
+  right:13%;
+}
+.startFrom{
+  font-size: 16px;
+  font-weight: 400;
+}
+.startPrice{
+    font-size: 24px;
+    font-weight: 600;
+}
+.subText{
+  font-size: 18px;
+    font-weight: 400;
+}
+.HomeSearchForm{
+  margin-top: 150px;
+  position: absolute;
+  top: 90%; 
+  left: 52%;
+  transform: translate(-50%, -50%); 
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  gap:10px;
+}
+.HomeGrid{
+  display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px; 
+}
+.HomeLocation{
+  width: 100%;
+}
+.HomeSearchButton{
+  width: 100%;
+}
+.HomeformItem{
+  height: 44px;
+  width: 157px; 
+  font-size: 14px;
+  font-weight: 400;
+}
+}
+@media (max-width: 380px) {
+   .hpPropContainer{
+    padding: 30px;
+  }
+  .HomeHeroForm{
+    top:55%;
+  }
+  .HomeHeroDescription{
+   bottom:65%;
+}
+  .HomeHeroButtonGroup{
+    margin-bottom: 20px;
+  gap:8px;
+}
+  .HomeSearchForm{
+  margin-top: 125px;
+  position: absolute;
+  top: 90%; 
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  gap:10px;
+}
+.HomeGrid{
+  display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px; 
+}
+.HomeLocation{
+  width: 100%;
+}
+.HomeSearchButton{
+  width: 100%;
+}
+.HomeformItem{
+  height: 44px;
+  width:120px; 
+  font-size: 14px;
+  font-weight: 400;
+}
+.sectionTitle{
+  margin-top: 100px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.sectionSubtitle{
+  font-size: 14px;
+  font-weight: 400;
+   word-wrap: break-word;
+    text-align: center;  
+    line-height: 1.5;  
+   white-space: normal;
+}
+.exploreByPropertyTitle{
+  font-size: 22px;
+  font-weight: 600;
+}
+.exploreByPropertyDescription{
+  font-size: 14x;
+  font-weight: 400;
+}
+.stepDescription{
+  font-size: 14px;
+}
+.exploreByPropertyCardImage {
+  width: 48px;
+}
+.exploreByPropertyCard {
+  height:140px;
+  width: 122px;
+}
+.exploreByPropertyCardTitle{
+  font-size: 18px;
+  font-weight: 600;
+}
+.exploreByPropertyCardDescription{
+  font-size: 12px;
+  font-weight: 400;
+}
+.hpPropTitle{
+   word-wrap: break-word;
+    text-align: center;  
+    line-height: 1.5;  
+   white-space: normal;
+}
+.card{
+  width:100%;
+  height: 675px;
+}
+.cardButtons{
+  position: absolute;
+  top: 31%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap:0;
+}
+
+.cardLocationInfo{
+  width: 100%;
+  margin-top:-15px;
+}
+.cardButton{
+  width: 100%;
+}
+.cardText {
+  font-size: 20px;
+  font-weight: 500;
+}
+.positionStyle{
+  position: absolute;
+  top: 120px;
+  width: 80%;
+  transform: translateX(-50%);
+}
+.cardImage{
+  height: 296px;
+  width: 329px;
+  border-bottom-right-radius: 28px;
+  border-bottom-left-radius: 15px;
+  right:4%;
+}
+.startFrom{
+  font-size: 16px;
+  font-weight: 400;
+}
+.startPrice{
+    font-size: 24px;
+    font-weight: 600;
+}
+.subText{
+  font-size: 18px;
+    font-weight: 400;
+}
+
+}
+
+
