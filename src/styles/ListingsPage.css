@@ -883,9 +883,13 @@ width: 100%;
   gap:10px;
 }
 .listingGrid{
-  display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px; 
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+}
+.ListingGrid1,.ListingGrid2{
+  display: flex;
+  gap:10px
 }
 .ListingLocation{
   width: 100%;
@@ -925,9 +929,13 @@ width: 100%;
   margin-top: 150px;
 }
 .listingGrid{
-  display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px; 
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+}
+.ListingGrid1,.ListingGrid2{
+  display: flex;
+  gap:10px
 }
 .ListingLocation{
   width: 100%;

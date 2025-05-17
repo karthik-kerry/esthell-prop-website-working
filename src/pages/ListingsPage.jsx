@@ -665,42 +665,45 @@ export default function ListingsPage() {
 
               {/* Grid layout for smaller screens */}
               <div className="listingGrid">
-                <Dropdown menu={{ items: dropDownItems }}>
-                  <a onClick={(e) => e.preventDefault()}>
-                    <Space className="ListingformItem">
-                      Property Type
-                      <DownOutlined />
-                    </Space>
-                  </a>
-                </Dropdown>
-
-                <Dropdown menu={{ items: dropDownItems }}>
-                  <a onClick={(e) => e.preventDefault()}>
-                    <Space className="ListingformItem">
-                      Property Size
-                      <DownOutlined />
-                    </Space>
-                  </a>
-                </Dropdown>
-
-                <Dropdown menu={{ items: dropDownItems }}>
-                  <a onClick={(e) => e.preventDefault()}>
-                    <Space className="ListingformItem">
-                      Min Range
-                      <DownOutlined />
-                    </Space>
-                  </a>
-                </Dropdown>
-
-                <Dropdown menu={{ items: dropDownItems }}>
-                  <a onClick={(e) => e.preventDefault()}>
-                    <Space className="ListingformItem">
-                      Max Range
-                      <DownOutlined />
-                    </Space>
-                  </a>
-                </Dropdown>
-              </div>
+                            <div className="ListingGrid1">
+                            <Dropdown menu={{ items: dropDownItems }}>
+                              <a onClick={(e) => e.preventDefault()}>
+                                <Space className="ListingformItem">
+                                  Property Type
+                                  <DownOutlined />
+                                </Space>
+                              </a>
+                            </Dropdown>
+          
+                            <Dropdown menu={{ items: dropDownItems }}>
+                              <a onClick={(e) => e.preventDefault()}>
+                                <Space className="ListingformItem">
+                                  Property Size
+                                  <DownOutlined />
+                                </Space>
+                              </a>
+                            </Dropdown>
+                            </div>
+                             <div className="ListingGrid2" >
+                            <Dropdown menu={{ items: dropDownItems }}>
+                              <a onClick={(e) => e.preventDefault()}>
+                                <Space className="ListingformItem">
+                                  Min Range
+                                  <DownOutlined />
+                                </Space>
+                              </a>
+                            </Dropdown>
+          
+                            <Dropdown menu={{ items: dropDownItems }}>
+                              <a onClick={(e) => e.preventDefault()}>
+                                <Space className="ListingformItem">
+                                  Max Range
+                                  <DownOutlined />
+                                </Space>
+                              </a>
+                            </Dropdown>
+                            </div>
+                          </div>
 
               <Button className="ListingSearchButton" onClick={() => {}}>
                 Search

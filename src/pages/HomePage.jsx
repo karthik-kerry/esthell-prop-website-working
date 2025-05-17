@@ -228,7 +228,8 @@ export default function HomePage() {
                 <Input className="HomeLocation" placeholder="Location" />
 
                 {/* Grid layout for smaller screens */}
-                <div className="HomeGrid">
+              <div className="HomeGrid">
+                  <div className="homeGrid1">
                   <Dropdown menu={{ items }}>
                     <a onClick={(e) => e.preventDefault()}>
                       <Space className="HomeformItem">
@@ -246,7 +247,8 @@ export default function HomePage() {
                       </Space>
                     </a>
                   </Dropdown>
-
+                  </div>
+                   <div className="homeGrid2" >
                   <Dropdown menu={{ items }}>
                     <a onClick={(e) => e.preventDefault()}>
                       <Space className="HomeformItem">
@@ -264,7 +266,9 @@ export default function HomePage() {
                       </Space>
                     </a>
                   </Dropdown>
+                  </div>
                 </div>
+
 
                 <Button className="HomeSearchButton" onClick={() => {}}>
                   Search

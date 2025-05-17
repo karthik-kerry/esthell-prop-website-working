@@ -948,7 +948,7 @@
   text-align: center; 
     white-space: normal; 
     word-break: break-word;
-     line-height: 1.5px;
+     line-height: 30px;
 font-size: 24px;
   font-weight: 600;
 }
@@ -1041,9 +1041,13 @@ font-size: 24px;
   gap:10px;
 }
 .HomeGrid{
-  display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px; 
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+}
+.homeGrid1,.homeGrid2{
+  display: flex;
+  gap:10px
 }
 .HomeLocation{
   width: 100%;
@@ -1086,9 +1090,12 @@ font-size: 24px;
   gap:10px;
 }
 .HomeGrid{
-  display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px; 
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+}
+.homeGrid1,.homeGrid2{
+  display: flex;
 }
 .HomeLocation{
   width: 100%;
