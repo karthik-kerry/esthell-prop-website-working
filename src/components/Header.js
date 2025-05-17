@@ -117,7 +117,7 @@ export default function Header() {
               {link.name}
             </Link>
           ))}
-           <Button onClick={() => {}} className="HeaderEnquiryButton">
+           <Button  onClick={handleEnquiryClick}  className="HeaderEnquiryButton">
             Enquiry Now
           </Button>
         </div>

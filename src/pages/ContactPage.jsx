@@ -22,10 +22,10 @@ export default function ContactPage() {
   const handleChange = (value) => {
     setSelectedValue(value);
   };
-  const location = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 550);
-  }, [location]);
+  // const location = useLocation();
+  // useEffect(() => {
+  //   window.scrollTo(0, 550);
+  // }, [location]);
 
   return (
     <div>
