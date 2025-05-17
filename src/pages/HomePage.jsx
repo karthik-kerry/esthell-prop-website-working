@@ -38,7 +38,6 @@ import { PiBathtub } from "react-icons/pi";
 import { AiOutlineHome } from "react-icons/ai";
 import "../styles/HomePage.css";
 
-
 const items = [
   {
     key: "1",
@@ -68,11 +67,133 @@ const items = [
     //   disabled: true,
   },
 ];
+const currentProperties = [
+  {
+    id: 1,
+    name: "Esthell Homes",
+    location: "kolathur, Chennai",
+    price: "₹1.64L",
+    type: "Apartment / Plot ",
+    images: ["/image1.jpg", "/image2.jpg", "/image3.jpg"],
+    yearBuilt:2025,
+    facing:"East",
+    specs: {
+      bedrooms: 2.5,
+      baths: 2,
+      sqft: "1492 Sqft",
+    },
+    details:{
+     specification:"2BHK +2 T + S",
+     furnishing:"No",
+     flatNo:"9C",
+     FloorNo:"9",
+     builtUpArea:"1492",
+    },
+    highlights: ["East facing"],
+    description:
+      "Spacious 2.5 BHK with 2 bathrooms, ideally located near schools and the railway station for convenient living.",
+    listedOn: "20 Mar 2025",
+    company: {
+      name: "Esthell Properties",
+      logo: "/logo.png",
+    },
+  },
+  {
+    id: 2,
+    name: "Esthell Homes",
+    location: " kolathur, Chennai",
+    price: "₹2.07 Cr",
+    type: "Apartment / Plot ",
+    images: ["/image4.jpg", "/image5.jpg", "/image6.jpg"],
+     yearBuilt:2025,
+    facing:"West",
+    specs: {
+      bedrooms: 3,
+      baths: 3,
+      sqft: "1930 Sqft",
+    },
+     details:{
+     specification:"3BHK +3T",
+     furnishing:"No",
+     flatNo:"5B",
+     FloorNo:"5",
+     builtUpArea:"1930",
+    },
+    highlights: ["West facing"],
+    description:
+      "Spacious 3 BHK with 3 bathrooms, perfectly located near the railway station and top schools for your convenience.",
+    listedOn: "20 mar 2025",
+    company: {
+      name: "Esthell Homes",
+      logo: "/logo.png",
+    },
+  },
+  {
+    id: 3,
+    name: "Esthell Homes",
+    location: "Velachery, Chenna",
+    price: "₹ 3.24 Cr",
+    type: "Apartment / Plot ",
+    images: ["/image7.jpg", "/image8.jpg", "/image9.jpg"],
+     yearBuilt:2025,
+    facing:"East",
+    specs: {
+      bedrooms: "DUPLEX 4",
+      baths: 3,
+      sqft: "2897 Sqft",
+    },
+     details:{
+     specification:"4BHK +3T",
+     furnishing:"No",
+     flatNo:"11 C",
+     FloorNo:"11",
+     builtUpArea:"2897",
+    },
+    highlights: ["East Facing"],
+    description:
+      "Spacious DUPLEX apartment perfectly located near the railway station and top schools—ideal for modern living!",
+    listedOn: "20 mar 2025",
+    company: {
+      name: "Esthell Homes",
+      logo: "/logo.png",
+    },
+  },
+  {
+    id: 4,
+    name: "Olive Sands",
+    location: " Uthandi, Chennai",
+    price: "₹9 Cr",
+    type: "Individual Villa / Plot ",
+    images: ["/image10.jpg", "/image11.jpg", "/image12.jpg"],
+     yearBuilt:2025,
+    facing:"South",
+    specs: {
+      bedrooms: false,
+      baths: false,
+      sqft: "4.55 Grounds",
+    },
+     details:{
+     specification:"-",
+     furnishing:"No",
+     flatNo:"-",
+     FloorNo:"-",
+     builtUpArea:"4.55 Grounds",
+    },
+    highlights: ["South facing plot"],
+    description:
+      "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
+    listedOn: "20 mar 2025",
+    company: {
+      name: "Esthell Homes",
+      logo: "/logo.png",
+    },
+  },
+];
 
 export default function HomePage() {
   const navigate = useNavigate();
   const handleEnquiryClick = () => {
-    navigate('/contact');
+    navigate("/contact");
   };
   const scrollContainerRef = useRef(null);
   const topScrollContainerRef = useRef(null);
@@ -83,7 +204,7 @@ export default function HomePage() {
   const [imageSrc, setImageSrc] = useState(HomeBg);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isMobile, setIsMobile] = useState(false);
-   const buttonStyles = (isActive) => ({
+  const buttonStyles = (isActive) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -99,8 +220,11 @@ export default function HomePage() {
     cursor: "pointer",
   });
 
-  const handleCardClick = () => {
-    navigate("/details");
+ const handleViewAll = () => {
+  navigate('/listings'); 
+};
+  const handleCardClick = (property) => {
+    navigate("/details", { state: { property } });
   };
 
   const handleNext = () => {
@@ -180,13 +304,13 @@ export default function HomePage() {
 
           <div className="HomeHeroForm">
             {window.innerWidth <= 480 ? (
-            <h1 className="HomeHeroText">
-              Find Your Dream Home With Ease
-            </h1>) : (
+              <h1 className="HomeHeroText">Find Your Dream Home With Ease</h1>
+            ) : (
               <h1 className="HomeHeroText">
-              Find Your Dream Home
-              <br /> With Ease
-            </h1>)}
+                Find Your Dream Home
+                <br /> With Ease
+              </h1>
+            )}
             <p className="HomeHeroDescription">
               Explore apartments, villas, and homes for rent or sale – verified
               listings, personalized
@@ -228,47 +352,46 @@ export default function HomePage() {
                 <Input className="HomeLocation" placeholder="Location" />
 
                 {/* Grid layout for smaller screens */}
-              <div className="HomeGrid">
+                <div className="HomeGrid">
                   <div className="homeGrid1">
-                  <Dropdown menu={{ items }}>
-                    <a onClick={(e) => e.preventDefault()}>
-                      <Space className="HomeformItem">
-                        Property Type
-                        <DownOutlined />
-                      </Space>
-                    </a>
-                  </Dropdown>
+                    <Dropdown menu={{ items }}>
+                      <a onClick={(e) => e.preventDefault()}>
+                        <Space className="HomeformItem">
+                          Property Type
+                          <DownOutlined />
+                        </Space>
+                      </a>
+                    </Dropdown>
 
-                  <Dropdown menu={{ items }}>
-                    <a onClick={(e) => e.preventDefault()}>
-                      <Space className="HomeformItem">
-                        Property Size
-                        <DownOutlined />
-                      </Space>
-                    </a>
-                  </Dropdown>
+                    <Dropdown menu={{ items }}>
+                      <a onClick={(e) => e.preventDefault()}>
+                        <Space className="HomeformItem">
+                          Property Size
+                          <DownOutlined />
+                        </Space>
+                      </a>
+                    </Dropdown>
                   </div>
-                   <div className="homeGrid2" >
-                  <Dropdown menu={{ items }}>
-                    <a onClick={(e) => e.preventDefault()}>
-                      <Space className="HomeformItem">
-                        Min Range
-                        <DownOutlined />
-                      </Space>
-                    </a>
-                  </Dropdown>
+                  <div className="homeGrid2">
+                    <Dropdown menu={{ items }}>
+                      <a onClick={(e) => e.preventDefault()}>
+                        <Space className="HomeformItem">
+                          Min Range
+                          <DownOutlined />
+                        </Space>
+                      </a>
+                    </Dropdown>
 
-                  <Dropdown menu={{ items }}>
-                    <a onClick={(e) => e.preventDefault()}>
-                      <Space className="HomeformItem">
-                        Max Range
-                        <DownOutlined />
-                      </Space>
-                    </a>
-                  </Dropdown>
+                    <Dropdown menu={{ items }}>
+                      <a onClick={(e) => e.preventDefault()}>
+                        <Space className="HomeformItem">
+                          Max Range
+                          <DownOutlined />
+                        </Space>
+                      </a>
+                    </Dropdown>
                   </div>
                 </div>
-
 
                 <Button className="HomeSearchButton" onClick={() => {}}>
                   Search
@@ -579,8 +702,8 @@ export default function HomePage() {
             Hand-Picked selection of quality places
           </p>
           <div className="hpPropCardGrid">
-            {Array.from({ length: 6 }).map((_, index) => (
-              <div key={index} className="hpPropCard">
+            {currentProperties.map((property, index) => (
+              <div key={property.id} className="hpPropCard">
                 <div className="hpPropImgContainer">
                   <div className="hpPropImageWrapper">
                     <img
@@ -617,45 +740,47 @@ export default function HomePage() {
                     <FaRegHeart color="white" />
                   </div>
                 </div>
-                <div className="hpPropDetailsContainer"  onClick={handleCardClick}>
+                <div
+                  className="hpPropDetailsContainer"
+                 onClick={() => handleCardClick(property)}
+                >
                   <div>
-                    <p className="hpPropName">Esthell Homes</p>
+                    <p className="hpPropName">{property.name}</p>
                     <p className="hpPropLocation">
-                      Apartment / Plot in{" "}
+                      {property.type} in{" "}
                       <span style={{ color: "#1B1B1BCC", fontWeight: "300" }}>
-                        Velachery, Chennai
+                        {property.location}
                       </span>
                     </p>
                   </div>
-                  <p className="hpPropPrice">₹30L</p>
+                  <p className="hpPropPrice">{property.price}</p>
                 </div>
-                <div className="hpPropDetails" onClick={handleCardClick}>
+                <div className="hpPropDetails" onClick={() => handleCardClick(property)}>
                   <div className="hpPropDetailItem">
                     <LuBedDouble color="#001C6B" />{" "}
-                    <span className="text">2 BHK</span>
+                    <span className="text">{property.specs.bedrooms} BHK</span>
                   </div>
                   <div className="hpPropDetailItem">
                     <PiBathtub color="#001C6B" />
-                    <span className="text">3 Baths</span>
+                    <span className="text">{property.specs.baths} Baths</span>
                   </div>
                   <div className="hpPropDetailItem">
                     <AiOutlineHome color="#001C6B" />
-                    <span className="text">1000 Sqft</span>
+                    <span className="text">{property.specs.sqft}</span>
                   </div>
                 </div>
-                <div className="hpPropHighlights" onClick={handleCardClick}>
+                <div className="hpPropHighlights" onClick={() => handleCardClick(property)}>
                   <p className="hpPropHighlightsText">Highlights: </p>
-                  <p className="hpPropHighlightItem">
-                    <span className="facingDirText"> North facing</span>
-                  </p>
-                  <p className="hpPropHighlightItem">
-                    <span className="facingDirText"> North facing</span>
-                  </p>
+                  {property.highlights.map((highlight, idx) => (
+                    <p key={idx} className="propertyHighlight">
+                      {highlight}
+                    </p>
+                  ))}
                 </div>
               </div>
             ))}
           </div>
-          <Button className="viewAllPropButton" onClick={handleCardClick}>
+          <Button className="viewAllPropButton" onClick={handleViewAll}>
             View All Properties
           </Button>
         </div>
@@ -978,7 +1103,7 @@ export default function HomePage() {
                   <br /> Square
                 </p>
                 <div className="cardButtons">
-                  <Button  onClick={handleEnquiryClick} className="cardButton">
+                  <Button onClick={handleEnquiryClick} className="cardButton">
                     Enquiry Now
                   </Button>
                   <div className="cardContactInfo" onClick={() => {}}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { FaChevronRight } from "react-icons/fa6";
@@ -44,19 +44,20 @@ import {
   FaRegThumbsUp,
  FaRegThumbsDown
 } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from "react-router-dom";
 
 
+export default function DetailsPage() {
+   const location = useLocation();
+  const property = location.state?.property;
 
-export default function AboutPage() {
   const navigate = useNavigate();
     const handleEnquiryClick = () => {
       navigate('/contact'); 
     };
-     const handleViewAll = () => {
-      navigate('/listings'); 
-    };
+    const handleViewAll = () => {
+  navigate('/listings'); 
+};
   const [rating, setRating] = useState(4.2);
   const starProgress = [
     { progress: 100, label: "5", filled: true },
@@ -66,16 +67,16 @@ export default function AboutPage() {
     { progress: 0, label: "1", filled: false },
   ];
   const image = [
-    { src: AcGym, name: "AC Gym" },
+    { src: AcGym, name: "Air-Conditioned Gymnasium" },
     { src: PowerBackup, name: "Power Backup" },
-    { src: MultiPuposeHall, name: "Multipurpose Hall" },
+    { src: MultiPuposeHall, name: "Air-Conditioned Multipurpose Hall" },
     { src: VideoDoorPhone, name: "Video Door Phone" },
     { src: SwimmingPool, name: "Swimming Pool" },
     { src: CCTV, name: "CCTV" },
-    { src: AccessEntry, name: "Access Entry" },
+    { src: AccessEntry, name: "Access Controlled Entry" },
     { src: ModernLandscaping, name: "Modern Landscaping" },
-    { src: Parking, name: "Parking" },
-    { src: WallSharing, name: "Wall Sharing" },
+    { src: Parking, name: "Visitor Car Parking" },
+    { src: WallSharing, name: "No Common Wall Sharing" },
     { src: Games, name: "Games" },
   ];
   const progressWidth = (rating / 5) * 100;
@@ -134,10 +135,11 @@ export default function AboutPage() {
         window.removeEventListener("resize", handleResize);
       };
     }, []);
-    const location = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+  
 
   return (
     <div>
@@ -203,20 +205,20 @@ export default function AboutPage() {
              {/* mobile static */}
              {isMobile && (
           <div className="detailPagePropertyContainer">
-            <p className="detailPagePropertyTitle">AB Properties</p>
+            <p className="detailPagePropertyTitle">{property.name}</p>
             <p className="detailPagePropertySubTitle">
               Apartment / Plot in{" "}
-              <span className="detailPageLocation">kolathur, Chennai</span>
+              <span className="detailPageLocation">{property.location}</span>
             </p>
             <div className="detailPagePriceContainer">
-              <p className="detailPagePrice">₹30L</p>
+              <p className="detailPagePrice">{property.price}</p>
               <p className="detailPageCharges">+ Charges</p>
             </div>
             <div className="detailPageDivider" />
             <div className="detailPageAgentContainer">
-              <p className="detailPageAgentName">Esthell Properties</p>
+              <p className="detailPageAgentName">{property.company.name}</p>
               <p className="detailPageAgentListedDate">
-                Listed on: 20 mar 2025
+                Listed on: {property.listedOn}
               </p>
             </div>
             <div>
@@ -227,29 +229,31 @@ export default function AboutPage() {
             <div className="detailPageHouseInfoContainer">
               <div className="detailPagHouseInfoItem">
                 <LuBedDouble className="detailPageInfoIcon" />
-                2.5
+               {property.price}
               </div>
               <div className="detailPagHouseInfoItem">
-                <PiBathtub className="detailPageInfoIcon" />3 Baths
+                <PiBathtub className="detailPageInfoIcon" />{property.specs.baths} Baths
               </div>
               <div className="detailPagHouseInfoItem">
                 <AiOutlineHome className="detailPageInfoIcon" />
-                1000 Sqft
+               {property.specs.sqft}
               </div>
               <div className="detailPagHouseInfoItem">
                 <AiOutlineCalendar className="detailPageInfoIcon" />
-                Year Built: 2025
+                Year Built:{property.yearBuilt}
               </div>
               <div className="detailPagHouseInfoItem">
                 <AiOutlineCompass className="detailPageInfoIcon" />
-                Facing: EAST
+                Facing:{property.facing}
               </div>
             </div>
 
             {/* Highlights */}
             <div className="detailPageHighlightsContainer">
               <p className="detailPageHighlightLabel">Highlights: </p>
-              <p className="detailPageHighlightItem">North facing</p>
+              {property.highlights.map((highlight, idx) => (
+                <p key={idx} className="propertyHighlight">{highlight}</p>
+              ))}
               <p className="detailPageHighlightItem detailPageHighlightItemGreen">
                 No Brokerage
               </p>
@@ -265,9 +269,7 @@ export default function AboutPage() {
             {/* content */}
             <div className="detailPageTextContainer">
               <p className="detailPageText">
-                Lorem ipsum dolor sit amet consectetur. Sit arcu fermentum in
-                proin morbi aliquet. Veslum pulvinar sed consectetur ultrices
-                sagittis. Suspendisse justo risus cursus turpis.
+                {property.description}
               </p>
             </div>
 
@@ -276,16 +278,16 @@ export default function AboutPage() {
               <p className="detailPageDetailsHeader">Details</p>
               <div className="detailPageDetailsContainer">
                 {[
-                  { label: "Type", value: "2 BHK + 2 T + S" },
-                  { label: "Super Built-up area sqft", value: "1492" },
-                  { label: "Furnishing", value: "No" },
-                  { label: "Bathrooms", value: "2" },
-                  { label: "Facing", value: "East" },
-                  { label: "Flat No", value: "-" },
-                  { label: "Floor", value: "-" },
+                 { label: "Type", value: property.details?.specification },
+                 { label: "Super Built-up area sqft", value: property.details?.builtUpArea},
+                  { label: "Furnishing", value: property.details?.furnishing },
+                  { label: "Bathrooms", value:property.specs?.baths },
+                  { label: "Facing", value: property.facing },
+                  { label: "Flat No", value: property.details?.flatNo },
+                  { label: "Floor", value:property.details?.FloorNo },
                   {
                     label: "Project Name",
-                    value: "Esthell Properties, Chennai.",
+                    value:property.name,
                   },
                 ].map((item, index) => (
                   <div key={index} className="detailPageDetailItem">
@@ -304,7 +306,8 @@ export default function AboutPage() {
             </div>
 
             {/*Amenities */}
-         
+         {property.id !== 4 && (
+          <>
             <div className="imageGrid">
               {image.map((image, index) => (
                 <div key={index} className="imageContainer">
@@ -357,6 +360,7 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
+            </>)}
 
             {/* location */}
             <div className="DetailPageLocation">
@@ -487,20 +491,20 @@ export default function AboutPage() {
           {/* static */}
   {!isMobile && (
           <div className="detailPagePropertyContainer">
-            <p className="detailPagePropertyTitle">AB Properties</p>
+            <p className="detailPagePropertyTitle">{property.name}</p>
             <p className="detailPagePropertySubTitle">
-              Apartment / Plot in{" "}
-              <span className="detailPageLocation">kolathur, Chennai</span>
+              {property.type} in{" "}
+              <span className="detailPageLocation"> {property.location}</span>
             </p>
             <div className="detailPagePriceContainer">
-              <p className="detailPagePrice">₹30L</p>
+              <p className="detailPagePrice">{property.price}</p>
               <p className="detailPageCharges">+ Charges</p>
             </div>
             <div className="detailPageDivider" />
             <div className="detailPageAgentContainer">
-              <p className="detailPageAgentName">Esthell Properties</p>
+              <p className="detailPageAgentName">{property.company.name}</p>
               <p className="detailPageAgentListedDate">
-                Listed on: 20 mar 2025
+                Listed on:  {property.listedOn}
               </p>
             </div>
             <div>

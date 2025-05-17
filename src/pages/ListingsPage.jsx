@@ -28,14 +28,14 @@ export default function ListingsPage() {
   const pageSize = 5;
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
-  const properties = Array.from(
-    { length: totalProperties },
-    (_, index) => `Property ${index + 1}`
-  );
-  const currentProperties = properties.slice(
-    (currentPage - 1) * pageSize,
-    currentPage * pageSize
-  );
+  // const properties = Array.from(
+  //   { length: totalProperties },
+  //   (_, index) => `Property ${index + 1}`
+  // );
+  // const currentProperties = properties.slice(
+  //   (currentPage - 1) * pageSize,
+  //   currentPage * pageSize
+  // );
   const [disabled, setDisabled] = useState(false);
   const [selectedLocations, setSelectedLocations] = useState([]);
   const images = [Property, Property1];
@@ -65,6 +65,129 @@ export default function ListingsPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+  const currentProperties = [
+  {
+    id: 1,
+    name: "Esthell Homes",
+    location: "kolathur, Chennai",
+    price: "₹1.64L",
+    type: "Apartment / Plot ",
+    images: ["/image1.jpg", "/image2.jpg", "/image3.jpg"],
+    yearBuilt:2025,
+    facing:"East",
+    specs: {
+      bedrooms: 2.5,
+      baths: 2,
+      sqft: "1492 Sqft",
+    },
+    details:{
+     specification:"2BHK +2 T + S",
+     furnishing:"No",
+     flatNo:"9C",
+     FloorNo:"9",
+     builtUpArea:"1492",
+    },
+    highlights: ["East facing"],
+    description:
+      "Spacious 2.5 BHK with 2 bathrooms, ideally located near schools and the railway station for convenient living.",
+    listedOn: "20 Mar 2025",
+    company: {
+      name: "Esthell Properties",
+      logo: "/logo.png",
+    },
+  },
+  {
+    id: 2,
+    name: "Esthell Homes",
+    location: " kolathur, Chennai",
+    price: "₹2.07 Cr",
+    type: "Apartment / Plot ",
+    images: ["/image4.jpg", "/image5.jpg", "/image6.jpg"],
+     yearBuilt:2025,
+    facing:"West",
+    specs: {
+      bedrooms: 3,
+      baths: 3,
+      sqft: "1930 Sqft",
+    },
+     details:{
+     specification:"3BHK +3T",
+     furnishing:"No",
+     flatNo:"5B",
+     FloorNo:"5",
+     builtUpArea:"1930",
+    },
+    highlights: ["West facing"],
+    description:
+      "Spacious 3 BHK with 3 bathrooms, perfectly located near the railway station and top schools for your convenience.",
+    listedOn: "20 mar 2025",
+    company: {
+      name: "Esthell Homes",
+      logo: "/logo.png",
+    },
+  },
+  {
+    id: 3,
+    name: "Esthell Homes",
+    location: "Velachery, Chenna",
+    price: "₹ 3.24 Cr",
+    type: "Apartment / Plot ",
+    images: ["/image7.jpg", "/image8.jpg", "/image9.jpg"],
+     yearBuilt:2025,
+    facing:"East",
+    specs: {
+      bedrooms: "DUPLEX 4",
+      baths: 3,
+      sqft: "2897 Sqft",
+    },
+     details:{
+     specification:"4BHK +3T",
+     furnishing:"No",
+     flatNo:"11 C",
+     FloorNo:"11",
+     builtUpArea:"2897",
+    },
+    highlights: ["East Facing"],
+    description:
+      "Spacious DUPLEX apartment perfectly located near the railway station and top schools—ideal for modern living!",
+    listedOn: "20 mar 2025",
+    company: {
+      name: "Esthell Homes",
+      logo: "/logo.png",
+    },
+  },
+  {
+    id: 4,
+    name: "Olive Sands",
+    location: " Uthandi, Chennai",
+    price: "₹9 Cr",
+    type: "Individual Villa / Plot ",
+    images: ["/image10.jpg", "/image11.jpg", "/image12.jpg"],
+     yearBuilt:2025,
+    facing:"South",
+    specs: {
+      bedrooms: false,
+      baths: false,
+      sqft: "4.55 Grounds",
+    },
+     details:{
+     specification:"-",
+     furnishing:"No",
+     flatNo:"-",
+     FloorNo:"-",
+     builtUpArea:"4.55 Grounds",
+    },
+    highlights: ["South facing plot"],
+    description:
+      "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
+    listedOn: "20 mar 2025",
+    company: {
+      name: "Esthell Homes",
+      logo: "/logo.png",
+    },
+  },
+];
+
 
   const [activeButtons, setActiveButtons] = useState({
     button1: false,
@@ -93,9 +216,9 @@ export default function ListingsPage() {
   const handleEnquiryClick = () => {
     navigate("/contact");
   };
-  const handleCardClick = () => {
-    navigate("/details");
-  };
+ const handleCardClick = (property) => {
+  navigate("/details", { state: { property } });
+};
   const checkScreenWidth = () => {
     if (window.innerWidth <= 480) {
       setIsMobileView(true);
@@ -814,7 +937,7 @@ export default function ListingsPage() {
           </div>
           <div className="propertyList">
             {currentProperties.map((property, index) => (
-              <div key={index} className="propertyItem" onClick={() => {}}>
+              <div key={property.id} className="propertyItem" onClick={() => handleCardClick(property)}>
                 <div className="propertyImageWrapper">
                   <div className="imageContainer">
                     <img
@@ -853,49 +976,49 @@ export default function ListingsPage() {
                   </div>
                 </div>
 
-                <div className="propertyInfoWrapper"  onClick={handleCardClick}>
+                <div className="propertyInfoWrapper"  onClick={() => handleCardClick(property)}>
                   <div className="propertyHeader">
                     <div className="propertyDetails">
-                      <p className="propertyName">Esthell Homes</p>
+                      <p className="propertyName">{property.name}</p>
                       <p className="propertyLocation">
-                        Apartment / Plot in{" "}
+                        {property.type} in{" "}
                         <span className="propertyLocationDetails">
-                          Velachery, Chennai
+                         {property.location}
                         </span>
                       </p>
                     </div>
-                    <p className="propertyPrice">₹30L</p>
+                    <p className="propertyPrice">{property.price}</p>
                   </div>
                   <div className="propertySpecs">
                     <div className="propertySpecItem">
                       <LuBedDouble color="#001C6B" />
-                      <span className="text">2 BHK</span>
+                      <span className="text">{property.specs.bedrooms} BHK</span>
                     </div>
                     <div className="propertySpecItem">
                       <PiBathtub color="#001C6B" />
-                      <span className="text">3 Baths</span>
+                      <span className="text">{property.specs.baths} Baths</span>
                     </div>
                     <div className="propertySpecItem">
                       <AiOutlineHome color="#001C6B" />
-                      <span className="text">1000 Sqft</span>
+                      <span className="text">{property.specs.sqft}</span>
                     </div>
                   </div>
                   <div className="propertyHighlightsWrapper">
                     <p className="hpPropHighlightsText">Highlights: </p>
-                    <p className="propertyHighlight">North facing</p>
-                    <p className="propertyHighlight">North facing</p>
+                      {property.highlights.map((highlight, idx) => (
+                <p key={idx} className="propertyHighlight">{highlight}</p>
+              ))}
                   </div>
                   <p className="propertyDescription">
-                    Lorem ipsum dolor sit amet consectetur. Sit arcu fermentum
-                    in proin morbi aliquet ultrices sagittis.
+                    {property.description}
                   </p>
                   <div className="propertyFooter">
                     <div className="propertyFooterLeft">
                       <img src={Logo} className="propertyLogo" />
                       <div>
-                        <p className="propertyFooterName">Esthell Properties</p>
+                        <p className="propertyFooterName">{property.company.name}</p>
                         <p className="propertyFooterDate">
-                          Listed on: 20 mar 2025
+                          Listed on: {property.listedOn}
                         </p>
                       </div>
                     </div>
