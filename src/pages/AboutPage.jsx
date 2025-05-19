@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HeroBg from "../assets/hero_bg.png";
@@ -32,72 +32,52 @@ const contentStyle = {
 export default function AboutPage() {
   const [dotPosition, setDotPosition] = useState("bottom");
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  
+
   const handlePositionChange = ({ target: { value } }) => {
     setDotPosition(value);
   };
-   useEffect(() => {
-      const handleResize = () => {
-        setScreenWidth(window.innerWidth);
-      };
-      handleResize();
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }, []);
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <div>
       <Header />
-      <div
-        className="aboutHeroContainer"
-      >
-        <img
-          src={HeroBg}
-         className="aboutHeroImage"
-        />
-        <div
-          className="aboutHeroOverlay"
-        >
-             {window.innerWidth <= 480 ? (
-              <>
-          <h1
-           className="aboutHeroTitle"
-          >
-            Building Trust, One Property  at a Time
-          </h1>
-          <p
-            className="aboutHeroDescription"
-          >
-            Welcome to Esthell Properties — your trusted partner in finding
-            dream homes, smart investments, and rental spaces. We guide you with
-            expertise, honesty, and a personal touch every step of the way.
-          </p>
-          </>):( <>
-          <h1
-           className="aboutHeroTitle"
-          >
-            Building Trust, One Property 
-          </h1>
-          <h1
-           className="aboutHeroSubtitle"
-          >
-            at a Time
-          </h1>
-          <p
-            className="aboutHeroDescription"
-          >
-            Welcome to Esthell Properties — your trusted partner in finding
-            dream homes, smart investments, and rental spaces. We guide you with
-            expertise, honesty, and a personal touch every step of the way.
-          </p>
-          </>)}
+      <div className="aboutHeroContainer">
+        <img src={HeroBg} className="aboutHeroImage" />
+        <div className="aboutHeroOverlay">
+          {window.innerWidth <= 480 ? (
+            <>
+              <h1 className="aboutHeroTitle">
+                Building Trust, One Property at a Time
+              </h1>
+              <p className="aboutHeroDescription">
+                Welcome to Esthell Properties — your trusted partner in finding
+                dream homes, smart investments, and rental spaces. We guide you
+                with expertise, honesty, and a personal touch every step of the
+                way.
+              </p>
+            </>
+          ) : (
+            <>
+              <h1 className="aboutHeroTitle">Building Trust, One Property</h1>
+              <h1 className="aboutHeroSubtitle">at a Time</h1>
+              <p className="aboutHeroDescription">
+                Welcome to Esthell Properties — your trusted partner in finding
+                dream homes, smart investments, and rental spaces. We guide you
+                with expertise, honesty, and a personal touch every step of the
+                way.
+              </p>
+            </>
+          )}
         </div>
       </div>
-      <div
-      className="aboutcontentSection"
-      >
-        <div
-         className="aboutcontentWrapper"
-        >
+      <div className="aboutcontentSection">
+        <div className="aboutcontentWrapper">
           {/* who are we */}
           <div className="sectionContainer1">
             <img src={AboutUs1} className="whoAreWeImg" />
@@ -124,32 +104,33 @@ export default function AboutPage() {
           {/* our mission */}
           <div className="ourMissionContainer">
             <div className="missionSection">
-              
-                 {window.innerWidth <= 480 ? (
-                  <>
+              {window.innerWidth <= 480 ? (
+                <>
                   <img src={Mission1} className="missionImage" />
                   <div>
-                <p className="missionText">Our Mission</p>
-                <p className="missionParagraph">
-                  To deliver exceptional real estate experiences by offering
-                  personalized solutions, transparent processes, and long-term
-                  support for every buyer, seller, and investor we serve.
-                </p>
-              </div>
-              
-              </>   ) : (
-                <>
-                <div>
-                <p className="missionText">Our Mission</p>
-                <p className="missionParagraph">
-                  To deliver exceptional real estate experiences by offering
-                  personalized solutions, transparent processes, and long-term
-                  support for every buyer, seller, and investor we serve.
-                </p>
-              </div>
-              <img src={Mission1} className="missionImage" />
+                    <p className="missionText">Our Mission</p>
+                    <p className="missionParagraph">
+                      To deliver exceptional real estate experiences by offering
+                      personalized solutions, transparent processes, and
+                      long-term support for every buyer, seller, and investor we
+                      serve.
+                    </p>
+                  </div>
                 </>
-                  )}
+              ) : (
+                <>
+                  <div>
+                    <p className="missionText">Our Mission</p>
+                    <p className="missionParagraph">
+                      To deliver exceptional real estate experiences by offering
+                      personalized solutions, transparent processes, and
+                      long-term support for every buyer, seller, and investor we
+                      serve.
+                    </p>
+                  </div>
+                  <img src={Mission1} className="missionImage" />
+                </>
+              )}
             </div>
 
             <div className="visionSection">
@@ -173,7 +154,33 @@ export default function AboutPage() {
             </p>
 
             <div className="coreValuesGrid">
-              <div className="coreValueItem">
+              {/* <div className="coreValueItem">
+                <img src={Integrity} className="coreValueIcon" />
+                <p className="coreValueText">Integrity</p>
+                <p className="coreValueDescription">
+                  We operate with honesty, ethics, and accountability in all our
+                  dealings.
+                </p>
+              </div> */}
+              <div
+                className="coreValueItem"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#001C6B";
+                  e.currentTarget.style.color = "white";
+                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.transition = "all 0.3s ease-in-out";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "white"));
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#f2f6fa";
+                  e.currentTarget.style.color = "#001C6B";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "#001C6B"));
+                }}
+              >
                 <img src={Integrity} className="coreValueIcon" />
                 <p className="coreValueText">Integrity</p>
                 <p className="coreValueDescription">
@@ -182,16 +189,48 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="coreValueItemAlt">
-                <img src={CustomerCentric} className="coreValueIconWhite" />
-                <p className="coreValueTextWhite">Customer-Centric Approach</p>
-                <p className="coreValueDescriptionWhite">
+              <div className="coreValueItem" 
+                 onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#001C6B";
+                  e.currentTarget.style.color = "white";
+                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.transition = "all 0.3s ease-in-out";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "white"));
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#f2f6fa";
+                  e.currentTarget.style.color = "#001C6B";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "#001C6B"));
+                }}>
+                <img src={CustomerCentric} className="coreValueIcon" />
+                <p className="coreValueText">Customer-Centric Approach</p>
+                <p className="coreValueDescription">
                   Your needs, goals, and satisfaction are our top priority —
                   always.
                 </p>
               </div>
 
-              <div className="coreValueItem">
+              <div className="coreValueItem"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#001C6B";
+                  e.currentTarget.style.color = "white";
+                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.transition = "all 0.3s ease-in-out";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "white"));
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#f2f6fa";
+                  e.currentTarget.style.color = "#001C6B";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "#001C6B"));
+                }}>
                 <img src={Transparency} className="coreValueIcon" />
                 <p className="coreValueText">Transparency</p>
                 <p className="coreValueDescription">
@@ -200,7 +239,23 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="coreValueItem">
+              <div className="coreValueItem"
+                 onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#001C6B";
+                  e.currentTarget.style.color = "white";
+                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.transition = "all 0.3s ease-in-out";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "white"));
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#f2f6fa";
+                  e.currentTarget.style.color = "#001C6B";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "#001C6B"));
+                }}>
                 <img src={Excellence} className="coreValueIcon" />
                 <p className="coreValueText">Excellence</p>
                 <p className="coreValueDescription">
@@ -209,7 +264,23 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="coreValueItem">
+              <div className="coreValueItem"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#001C6B";
+                  e.currentTarget.style.color = "white";
+                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.transition = "all 0.3s ease-in-out";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "white"));
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#f2f6fa";
+                  e.currentTarget.style.color = "#001C6B";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "#001C6B"));
+                }}>
                 <img src={Innovation} className="coreValueIcon" />
                 <p className="coreValueText">Innovation</p>
                 <p className="coreValueDescription">
@@ -218,7 +289,23 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="coreValueItem">
+              <div className="coreValueItem"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#001C6B";
+                  e.currentTarget.style.color = "white";
+                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.transition = "all 0.3s ease-in-out";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "white"));
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#f2f6fa";
+                  e.currentTarget.style.color = "#001C6B";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "#001C6B"));
+                }}>
                 <img src={Trust} className="coreValueIcon" />
                 <p className="coreValueText">Trust & Reliability</p>
                 <p className="coreValueDescription">
@@ -338,7 +425,6 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
-          
           </div>
         </div>
       </div>
