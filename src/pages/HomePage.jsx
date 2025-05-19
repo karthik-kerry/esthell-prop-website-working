@@ -17,6 +17,7 @@ import VillasIcon from "../assets/villas.png";
 import OfficeIcon from "../assets/office.png";
 import Property from "../assets/property.jpg";
 import Property1 from "../assets/property1.jpg";
+import OliveSands1 from "../assets/OliveSands1.jpg";
 import Chennai from "../assets/chennai.png";
 import Coimbatore from "../assets/coimbatore.png";
 import Madurai from "../assets/madurai.png";
@@ -74,7 +75,7 @@ const currentProperties = [
     location: "Velachery, Chennai",
     price: "₹1.64 Cr",
     type: "Apartment ",
-    images: ["/image1.jpg", "/image2.jpg", "/image3.jpg"],
+     images: [Property1, Property],
     yearBuilt:2025,
     facing:"East",
     specs: {
@@ -120,7 +121,7 @@ const currentProperties = [
     location: " Uthandi, Chennai",
     price: "₹9 Cr",
     type: "Individual Villa ",
-    images: ["/image10.jpg", "/image11.jpg", "/image12.jpg"],
+     images: [OliveSands1, OliveSands1],
      yearBuilt:2025,
     facing:"South",
     specs: {
@@ -169,7 +170,6 @@ export default function HomePage() {
   const topScrollContainerRef = useRef(null);
   const bottomScrollContainerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = [Property, Property1];
   const [activeButton, setActiveButton] = useState("buy");
   const [imageSrc, setImageSrc] = useState(HomeBg);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -196,14 +196,29 @@ export default function HomePage() {
   const handleCardClick = (property) => {
     navigate("/details", { state: { property } });
   };
+   const [currentIndexes, setCurrentIndexes] = useState(
+      currentProperties.map(() => 0)
+    );
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    const handlePrev = (propertyIdx) => {
+    setCurrentIndexes((prev) =>
+      prev.map((idx, i) =>
+        i === propertyIdx
+          ? idx === 0
+            ? currentProperties[propertyIdx].images.length - 1
+            : idx - 1
+          : idx
+      )
+    );
   };
 
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+  const handleNext = (propertyIdx) => {
+    setCurrentIndexes((prev) =>
+      prev.map((idx, i) =>
+        i === propertyIdx
+          ? (idx + 1) % currentProperties[propertyIdx].images.length
+          : idx
+      )
     );
   };
 
@@ -677,29 +692,33 @@ export default function HomePage() {
                 <div className="hpPropImgContainer">
                   <div className="hpPropImageWrapper">
                     <img
-                      src={images[currentIndex]}
-                      alt={`Property ${currentIndex + 1}`}
+                       src={property.images[currentIndexes[index]]}
+                      alt={property.name}
                       className="hpPropImage"
                     />
                     {/* Prev Button */}
-                    <button onClick={handlePrev} className="homePagePrevButton">
+                    <button  onClick={() => handlePrev(index)} className="homePagePrevButton">
                       <FaChevronLeft color="white" />
                     </button>
                     {/* Next Button */}
-                    <button onClick={handleNext} className="homePageNextButton">
+                    <button   onClick={() => handleNext(index)} className="homePageNextButton">
                       <FaChevronRight color="white" />
                     </button>
                     {/* Step Indicator */}
-                    <div className="hpPropStepIndicator">
-                      {images.map((_, index) => (
+                      <div className="hpPropStepIndicator">
+                      {property.images.map((_, imgIdx) => (
                         <div
-                          key={index}
-                          className={`hpStepIndicatorDot ${
-                            currentIndex === index
+                          key={imgIdx}
+                           className={`hpStepIndicatorDot ${
+                            currentIndexes[index] === imgIdx
                               ? "hpStepIndicatorDotActive"
                               : ""
                           }`}
-                          onClick={() => setCurrentIndex(index)}
+                          onClick={() =>
+                            setCurrentIndexes((prev) =>
+                              prev.map((v, i) => (i === index ? imgIdx : v))
+                            )
+                          }
                         ></div>
                       ))}
                     </div>

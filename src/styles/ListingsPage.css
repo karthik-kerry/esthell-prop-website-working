@@ -310,8 +310,9 @@
 
 .propertyImageWrapper {
   height: 289px;
-  width: 300px;
+  width: 500px;
   border-radius: 12px;
+    object-fit: cover; 
 }
 
 .imageContainer {
@@ -323,6 +324,7 @@
 
 .propertyImage {
   height: 298px;
+  width: 100%;
   max-width: 400px;
   border-radius: 12px;
   object-fit: cover;

@@ -13,6 +13,7 @@ import { PiBathtub } from "react-icons/pi";
 import { AiOutlineHome } from "react-icons/ai";
 import Property from "../assets/property.jpg";
 import Property1 from "../assets/property1.jpg";
+import OliveSands1 from "../assets/OliveSands1.jpg";
 import HeroBg from "../assets/hero_bg.png";
 import HeroImg from "../assets/hero_img.png";
 import Logo from "../assets/logo.png";
@@ -20,7 +21,7 @@ import { FaPhone } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import EsthellFlats from "../assets/esthell_apartments.png";
 import "../styles/ListingsPage.css";
-import { useNavigate,useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function ListingsPage() {
   const { Panel } = Collapse;
@@ -28,18 +29,8 @@ export default function ListingsPage() {
   const pageSize = 5;
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
-  // const properties = Array.from(
-  //   { length: totalProperties },
-  //   (_, index) => `Property ${index + 1}`
-  // );
-  // const currentProperties = properties.slice(
-  //   (currentPage - 1) * pageSize,
-  //   currentPage * pageSize
-  // );
   const [disabled, setDisabled] = useState(false);
   const [selectedLocations, setSelectedLocations] = useState([]);
-  const images = [Property, Property1];
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [areaValue, setAreaValue] = useState([20, 50]);
   const [budgetValue, setBudgetValue] = useState([30, 70]);
   const [activeButton, setActiveButton] = useState("buy");
@@ -66,128 +57,97 @@ export default function ListingsPage() {
     window.scrollTo(0, 0);
   }, [location]);
   const currentProperties = [
-  {
-    id: 1,
-    name: "Esthell Homes",
-    location: "kolathur, Chennai",
-    price: "₹1.64L",
-    type: "Apartment / Plot ",
-    images: ["/image1.jpg", "/image2.jpg", "/image3.jpg"],
-    yearBuilt:2025,
-    facing:"East",
-    specs: {
-      bedrooms: 2.5,
-      baths: 2,
-      sqft: "1492 Sqft",
-    },
-    details:{
-     specification:"2BHK +2 T + S",
-     furnishing:"No",
-     flatNo:"9C",
-     FloorNo:"9",
-     builtUpArea:"1492",
-    },
-    highlights: ["East facing"],
-    description:
-      "Spacious 2.5 BHK with 2 bathrooms, ideally located near schools and the railway station for convenient living.",
-    listedOn: "20 Mar 2025",
-    company: {
-      name: "Esthell Properties",
-      logo: "/logo.png",
-    },
-  },
-  {
-    id: 2,
-    name: "Esthell Homes",
-    location: " kolathur, Chennai",
-    price: "₹2.07 Cr",
-    type: "Apartment / Plot ",
-    images: ["/image4.jpg", "/image5.jpg", "/image6.jpg"],
-     yearBuilt:2025,
-    facing:"West",
-    specs: {
-      bedrooms: 3,
-      baths: 3,
-      sqft: "1930 Sqft",
-    },
-     details:{
-     specification:"3BHK +3T",
-     furnishing:"No",
-     flatNo:"5B",
-     FloorNo:"5",
-     builtUpArea:"1930",
-    },
-    highlights: ["West facing"],
-    description:
-      "Spacious 3 BHK with 3 bathrooms, perfectly located near the railway station and top schools for your convenience.",
-    listedOn: "20 mar 2025",
-    company: {
+    {
+      id: 1,
       name: "Esthell Homes",
-      logo: "/logo.png",
+      location: "Velachery, Chennai",
+      price: "₹1.64 Cr",
+      type: "Apartment ",
+      images: [Property1, Property],
+      yearBuilt: 2025,
+      facing: "East",
+      specs: {
+        bedrooms: 2.5,
+        baths: 2,
+        sqft: "1492 Sqft",
+      },
+      details: {
+        specification: "2BHK +2 T + S",
+        furnishing: "No",
+        flatNo: "-",
+        FloorNo: "-",
+        builtUpArea: "1492",
+      },
+      highlights: ["East & West facing"],
+      description:
+        "Spacious 2.5 BHK with 2 bathrooms, ideally located near schools and the railway station for convenient living.",
+      status: "ready to occupy",
+      listedOn: "20 Mar 2025",
+      company: {
+        name: "Esthell Properties",
+        logo: "/logo.png",
+      },
+      detailedInfo: {
+        bedrooms: "2.5 / 3 / Duplex",
+        baths: "2/3/4",
+        sqft: "1492-2897 Sqft",
+        facing: "East & West",
+        description:
+          "Spacious 2.5/3/Duplex BHK with 2/3/4 bathrooms, ideally located near schools and the railway station for convenient living.",
+      },
+      highlightsInfo: {
+        point1: "Just 500 meters from Pallavanthangal Station",
+        point2: "Only 1 km from Velachery Station",
+        point3: "Right across from Sunshine School",
+        point4: "Nestled behind the soon-to-come XB Mall",
+        point5: "Crafted with premium red bricks and river sand",
+      },
     },
-  },
-  {
-    id: 3,
-    name: "Esthell Homes",
-    location: "Velachery, Chenna",
-    price: "₹ 3.24 Cr",
-    type: "Apartment / Plot ",
-    images: ["/image7.jpg", "/image8.jpg", "/image9.jpg"],
-     yearBuilt:2025,
-    facing:"East",
-    specs: {
-      bedrooms: "DUPLEX 4",
-      baths: 3,
-      sqft: "2897 Sqft",
+    {
+      id: 2,
+      name: "Olive Sands",
+      location: " Uthandi, Chennai",
+      price: "₹9 Cr",
+      type: "Individual Villa ",
+      images: [OliveSands1, OliveSands1],
+      yearBuilt: 2025,
+      facing: "South",
+      specs: {
+        bedrooms: false,
+        baths: false,
+        sqft: "4.55 Grounds",
+      },
+      details: {
+        specification: "-",
+        furnishing: "No",
+        flatNo: "-",
+        FloorNo: "-",
+        builtUpArea: "4.55 Grounds",
+      },
+      status: "new",
+      highlights: ["South facing plot"],
+      description:
+        "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
+      listedOn: "20 mar 2025",
+      company: {
+        name: "Esthell Homes",
+        logo: "/logo.png",
+      },
+      detailedInfo: {
+        bedrooms: " ",
+        baths: " ",
+        sqft: "4.55 Grounds",
+        facing: "South",
+        description:
+          "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
+      },
+      highlightsInfo: {
+        point1: "Just 500 meters from Pallavanthangal Station",
+        point2: "Only 1 km from Velachery Station",
+        point3: "Right across from Sunshine School",
+      },
     },
-     details:{
-     specification:"4BHK +3T",
-     furnishing:"No",
-     flatNo:"11 C",
-     FloorNo:"11",
-     builtUpArea:"2897",
-    },
-    highlights: ["East Facing"],
-    description:
-      "Spacious DUPLEX apartment perfectly located near the railway station and top schools—ideal for modern living!",
-    listedOn: "20 mar 2025",
-    company: {
-      name: "Esthell Homes",
-      logo: "/logo.png",
-    },
-  },
-  {
-    id: 4,
-    name: "Olive Sands",
-    location: " Uthandi, Chennai",
-    price: "₹9 Cr",
-    type: "Individual Villa / Plot ",
-    images: ["/image10.jpg", "/image11.jpg", "/image12.jpg"],
-     yearBuilt:2025,
-    facing:"South",
-    specs: {
-      bedrooms: false,
-      baths: false,
-      sqft: "4.55 Grounds",
-    },
-     details:{
-     specification:"-",
-     furnishing:"No",
-     flatNo:"-",
-     FloorNo:"-",
-     builtUpArea:"4.55 Grounds",
-    },
-    highlights: ["South facing plot"],
-    description:
-      "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
-    listedOn: "20 mar 2025",
-    company: {
-      name: "Esthell Homes",
-      logo: "/logo.png",
-    },
-  },
-];
-
+  ];
 
   const [activeButtons, setActiveButtons] = useState({
     button1: false,
@@ -216,9 +176,9 @@ export default function ListingsPage() {
   const handleEnquiryClick = () => {
     navigate("/contact");
   };
- const handleCardClick = (property) => {
-  navigate("/details", { state: { property } });
-};
+  const handleCardClick = (property) => {
+    navigate("/details", { state: { property } });
+  };
   const checkScreenWidth = () => {
     if (window.innerWidth <= 480) {
       setIsMobileView(true);
@@ -236,18 +196,33 @@ export default function ListingsPage() {
   const onPageChange = (page) => {
     setCurrentPage(page);
   };
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+  const [currentIndexes, setCurrentIndexes] = useState(
+    currentProperties.map(() => 0)
+  );
+  const handlePrev = (propertyIdx) => {
+    setCurrentIndexes((prev) =>
+      prev.map((idx, i) =>
+        i === propertyIdx
+          ? idx === 0
+            ? currentProperties[propertyIdx].images.length - 1
+            : idx - 1
+          : idx
+      )
     );
   };
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+
+  const handleNext = (propertyIdx) => {
+    setCurrentIndexes((prev) =>
+      prev.map((idx, i) =>
+        i === propertyIdx
+          ? (idx + 1) % currentProperties[propertyIdx].images.length
+          : idx
+      )
+    );
   };
   const onShowSizeChange = (current, pageSize) => {
     console.log(current, pageSize);
   };
-  
 
   useEffect(() => {
     const handleResize = () => {
@@ -788,45 +763,45 @@ export default function ListingsPage() {
 
               {/* Grid layout for smaller screens */}
               <div className="listingGrid">
-                            <div className="ListingGrid1">
-                            <Dropdown menu={{ items: dropDownItems }}>
-                              <a onClick={(e) => e.preventDefault()}>
-                                <Space className="ListingformItem">
-                                  Property Type
-                                  <DownOutlined />
-                                </Space>
-                              </a>
-                            </Dropdown>
-          
-                            <Dropdown menu={{ items: dropDownItems }}>
-                              <a onClick={(e) => e.preventDefault()}>
-                                <Space className="ListingformItem">
-                                  Property Size
-                                  <DownOutlined />
-                                </Space>
-                              </a>
-                            </Dropdown>
-                            </div>
-                             <div className="ListingGrid2" >
-                            <Dropdown menu={{ items: dropDownItems }}>
-                              <a onClick={(e) => e.preventDefault()}>
-                                <Space className="ListingformItem">
-                                  Min Range
-                                  <DownOutlined />
-                                </Space>
-                              </a>
-                            </Dropdown>
-          
-                            <Dropdown menu={{ items: dropDownItems }}>
-                              <a onClick={(e) => e.preventDefault()}>
-                                <Space className="ListingformItem">
-                                  Max Range
-                                  <DownOutlined />
-                                </Space>
-                              </a>
-                            </Dropdown>
-                            </div>
-                          </div>
+                <div className="ListingGrid1">
+                  <Dropdown menu={{ items: dropDownItems }}>
+                    <a onClick={(e) => e.preventDefault()}>
+                      <Space className="ListingformItem">
+                        Property Type
+                        <DownOutlined />
+                      </Space>
+                    </a>
+                  </Dropdown>
+
+                  <Dropdown menu={{ items: dropDownItems }}>
+                    <a onClick={(e) => e.preventDefault()}>
+                      <Space className="ListingformItem">
+                        Property Size
+                        <DownOutlined />
+                      </Space>
+                    </a>
+                  </Dropdown>
+                </div>
+                <div className="ListingGrid2">
+                  <Dropdown menu={{ items: dropDownItems }}>
+                    <a onClick={(e) => e.preventDefault()}>
+                      <Space className="ListingformItem">
+                        Min Range
+                        <DownOutlined />
+                      </Space>
+                    </a>
+                  </Dropdown>
+
+                  <Dropdown menu={{ items: dropDownItems }}>
+                    <a onClick={(e) => e.preventDefault()}>
+                      <Space className="ListingformItem">
+                        Max Range
+                        <DownOutlined />
+                      </Space>
+                    </a>
+                  </Dropdown>
+                </div>
+              </div>
 
               <Button className="ListingSearchButton" onClick={() => {}}>
                 Search
@@ -937,53 +912,62 @@ export default function ListingsPage() {
           </div>
           <div className="propertyList">
             {currentProperties.map((property, index) => (
-              <div key={property.id} className="propertyItem" onClick={() => handleCardClick(property)}>
+              <div key={property.id} className="propertyItem">
                 <div className="propertyImageWrapper">
                   <div className="imageContainer">
                     <img
-                      src={images[currentIndex]}
-                      alt={`Property ${currentIndex + 1}`}
+                      src={property.images[currentIndexes[index]]}
+                      alt={property.name}
                       className="propertyImage"
                     />
                     <button
-                      onClick={handlePrev}
+                      onClick={() => handlePrev(index)}
                       className="navigationButton prevButton"
                     >
                       <FaChevronLeft color="white" />
                     </button>
                     <button
-                      onClick={handleNext}
+                      onClick={() => handleNext(index)}
                       className="navigationButton nextButton"
                     >
                       <FaChevronRight color="white" />
                     </button>
                     <div className="stepIndicator">
-                      {images.map((_, index) => (
+                      {property.images.map((_, imgIdx) => (
                         <div
-                          key={index}
+                          key={imgIdx}
                           className={`stepDot ${
-                            currentIndex === index ? "activeStepDot" : ""
+                            currentIndexes[index] === imgIdx
+                              ? "activeStepDot"
+                              : ""
                           }`}
-                          onClick={() => setCurrentIndex(index)}
+                          onClick={() =>
+                            setCurrentIndexes((prev) =>
+                              prev.map((v, i) => (i === index ? imgIdx : v))
+                            )
+                          }
                         ></div>
                       ))}
                     </div>
                   </div>
-                  <div className="propertyStatusWrapper" >
+                  <div className="propertyStatusWrapper">
                     <p className="propertyVerified">Verified</p>
-                    <p className="propertySale">Ready to occupy</p>
+                    <p className="propertySale">{property.status}</p>
                     <FaRegHeart className="propertyIcon" />
                   </div>
                 </div>
 
-                <div className="propertyInfoWrapper"  onClick={() => handleCardClick(property)}>
+                <div
+                  className="propertyInfoWrapper"
+                  onClick={() => handleCardClick(property)}
+                >
                   <div className="propertyHeader">
                     <div className="propertyDetails">
                       <p className="propertyName">{property.name}</p>
                       <p className="propertyLocation">
                         {property.type} in{" "}
                         <span className="propertyLocationDetails">
-                         {property.location}
+                          {property.location}
                         </span>
                       </p>
                     </div>
@@ -992,7 +976,9 @@ export default function ListingsPage() {
                   <div className="propertySpecs">
                     <div className="propertySpecItem">
                       <LuBedDouble color="#001C6B" />
-                      <span className="text">{property.specs.bedrooms} BHK</span>
+                      <span className="text">
+                        {property.specs.bedrooms} BHK
+                      </span>
                     </div>
                     <div className="propertySpecItem">
                       <PiBathtub color="#001C6B" />
@@ -1005,18 +991,20 @@ export default function ListingsPage() {
                   </div>
                   <div className="propertyHighlightsWrapper">
                     <p className="hpPropHighlightsText">Highlights: </p>
-                      {property.highlights.map((highlight, idx) => (
-                <p key={idx} className="propertyHighlight">{highlight}</p>
-              ))}
+                    {property.highlights.map((highlight, idx) => (
+                      <p key={idx} className="propertyHighlight">
+                        {highlight}
+                      </p>
+                    ))}
                   </div>
-                  <p className="propertyDescription">
-                    {property.description}
-                  </p>
+                  <p className="propertyDescription">{property.description}</p>
                   <div className="propertyFooter">
                     <div className="propertyFooterLeft">
                       <img src={Logo} className="propertyLogo" />
                       <div>
-                        <p className="propertyFooterName">{property.company.name}</p>
+                        <p className="propertyFooterName">
+                          {property.company.name}
+                        </p>
                         <p className="propertyFooterDate">
                           Listed on: {property.listedOn}
                         </p>
