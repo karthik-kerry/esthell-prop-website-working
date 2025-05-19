@@ -272,6 +272,7 @@ export default function DetailsPage() {
                 {property.description}
               </p>
             </div>
+            <div className="detailPageDivider"/>
 
             {/* details */}
             <div>
@@ -304,7 +305,7 @@ export default function DetailsPage() {
                 ))}
               </div>
             </div>
-
+             <div className="detailPageDivider"/>
             {/*Amenities */}
          {property.id !== 4 && (
           <>
@@ -319,7 +320,7 @@ export default function DetailsPage() {
               ))}
             </div>
             </div>
-
+ <div className="detailPageDivider"/>
             {/* floor plans */}
             <div>
               <p className="detailPageFloorPlansHeader">Floor Plans</p>
@@ -364,7 +365,7 @@ export default function DetailsPage() {
               </div>
             </div>
             </>)}
-
+ <div className="detailPageDivider"/>
             {/* location */}
             <div className="DetailPageLocation">
               <div> <IoLocationOutline  /></div>
@@ -384,7 +385,7 @@ export default function DetailsPage() {
                 title="Google Map"
               ></iframe>
             </div>
-
+ <div className="detailPageDivider"/>
             {/* locality review */}
             <div>
             <p style={{ fontWeight: 500, fontSize: 18 }}>Locality Review</p>
