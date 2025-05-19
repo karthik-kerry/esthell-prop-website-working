@@ -149,16 +149,30 @@ export default function DetailsPage() {
             <div className="detailPageImgContainer">
               <div className="detailPageImageWrapper">
                 <img
-                  src={images[currentIndex]}
-                  alt={`Property ${currentIndex + 1}`}
+                  src={property.images[currentIndex]}
+                  alt={property.name}
                   className="detailPageMainImage"
                 />
                 {/* Prev Button */}
-                <button onClick={handlePrev} className="detailPagePrevButton">
+                <button
+                  onClick={() =>
+                    setCurrentIndex(
+                      currentIndex === 0
+                        ? property.images.length - 1
+                        : currentIndex - 1
+                    )
+                  }
+                  className="detailPagePrevButton"
+                >
                   <FaChevronLeft color="white" />
                 </button>
                 {/* Next Button */}
-                <button onClick={handleNext} className="detailPageNextButton">
+                <button
+                  onClick={() =>
+                    setCurrentIndex((currentIndex + 1) % property.images.length)
+                  }
+                  className="detailPageNextButton"
+                >
                   <FaChevronRight color="white" />
                 </button>
                 {/* Step Indicator */}
@@ -191,14 +205,24 @@ export default function DetailsPage() {
               onMouseUp={handleMouseUpOrLeave}
               onMouseLeave={handleMouseUpOrLeave}
             >
-              <img src={Property1} className="detailPageImage" />
-              <img src={Property} className="detailPageImage" />
-              <img src={Property1} className="detailPageImage" />
-              <img src={Property} className="detailPageImage" />
-              <img
-                src={Property1}
-                className="detailPageImage detailPageImageClickable"
-              />
+              {/* {property.images.map((img, idx) => (
+  <img
+    key={idx}
+    src={img}
+    className={`detailPageImage${idx === 0 ? " detailPageImageClickable" : ""}`}
+    alt={property.name}
+  />
+))} */}
+              {[...Array(5)].map((_, idx) => (
+                <img
+                  key={idx}
+                  src={property.images[idx % property.images.length]}
+                  className={`detailPageImage${
+                    idx === 0 ? " detailPageImageClickable" : ""
+                  }`}
+                  alt={property.name}
+                />
+              ))}
             </div>
             {/* mobile static */}
             {isMobile && (
@@ -409,10 +433,10 @@ export default function DetailsPage() {
                     </div>
                   </div>
                 </div>
-                 <div className="detailPageDivider" />
+                <div className="detailPageDivider" />
               </>
             )}
-           
+
             {/* location */}
             <div className="DetailPageLocation">
               <div>
@@ -607,14 +631,14 @@ export default function DetailsPage() {
                       alt={`Property ${currentIndex + 1}`}
                       className="similarListingsImage"
                     />
-                    {/* Prev Button */}
+
                     <button
                       onClick={handlePrev}
                       className="similarListingsButton similarListingsPrevButton"
                     >
                       <FaChevronLeft color="white" />
                     </button>
-                    {/* Next Button */}
+
                     <button
                       onClick={handleNext}
                       className="similarListingsButton similarListingsNextButton"
