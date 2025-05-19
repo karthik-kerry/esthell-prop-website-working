@@ -104,11 +104,39 @@
   margin-bottom: 8px;
 }
 
-.contactDetails {
+.contactAddressDetails {
   color: white;
   font-size: 16px;
   font-weight: 400;
   text-align: center;
+}
+.contactEmailContainer{
+  display: flex;
+  flex-direction: column;
+}
+.contactEmailDetails1,.contactEmailDetails2 {
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+.contactEmailDetails2 {
+  margin-top: -10px;
+}
+.contactPhoneNoContainer{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.contactDetails1,.contactDetails2 {
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+ 
+}
+.contactDetails2{
+  margin-top: -10px;
 }
 /* talk with us */
 .formContainer {

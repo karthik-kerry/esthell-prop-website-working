@@ -65,7 +65,7 @@ export default function ContactPage() {
             <div className="contactCard">
               <img src={OfficeLocation} className="contactIcon" />
               <p className="contactTitle">Office Address :</p>
-              <p className="contactDetails">
+              <p className="contactAddressDetails">
                 TS No: 1/10, No: 176, Inner Ring Road (South Segment),
                 Velachery, opp. Sunshine School, Chennai, Tamil Nadu 600042
               </p>
@@ -73,14 +73,18 @@ export default function ContactPage() {
             <div className="contactCard">
               <img src={mail} className="contactIcon" />
               <p className="contactTitle">Email Address :</p>
-              <p className="contactDetails">info@esthell.com</p>
-              <p className="contactDetails">info@esthell.com</p>
+              <div className="contactEmailContainer">
+              <p className="contactEmailDetails1">salesegs@esthell.com</p>
+              <p className="contactEmailDetails2">salesegs@esthell.com</p>
+              </div>
             </div>
             <div className="contactCard">
               <img src={phone} className="contactIcon" />
+              <div className="contactPhoneNoContainer">
               <p className="contactTitle">Phone Number :</p>
-              <p className="contactDetails">+91 98888 88888</p>
-              <p className="contactDetails">+91 98888 88888</p>
+              <p className="contactDetails1">+91 74182 01555</p>
+              <p className="contactDetails2">+91 74182 02555</p>
+              </div>
             </div>
           </div>
 
