@@ -160,13 +160,17 @@
 .detailPageHouseInfoContainer {
   background-color: white;
   width: 98%;
+  height:auto;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding:5px;
 }
-
+.detailsInfoText{
+  font-size: 13px;
+  font-weight: 400;
+}
 .detailPagHouseInfoItem {
   display: flex;
   align-items: center;
@@ -179,6 +183,27 @@
   color: #001c6b;
 }
 /* highlights */
+.detailPageHighlightsConttent{
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+}
+
+.detailPageHighlightTitle {
+ font-weight: 500;
+  font-size: 18px;
+}
+
+.detailPageHighlightsList {
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  font-size: 14px;
+}
+.detailPageHighlightsList p{
+  margin-top: -5px;
+}
+
 /* External CSS file (e.g., DetailPageStyles.css) */
 
 .detailPageHighlightsContainer {

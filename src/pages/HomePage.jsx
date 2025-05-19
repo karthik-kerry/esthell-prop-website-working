@@ -71,9 +71,9 @@ const currentProperties = [
   {
     id: 1,
     name: "Esthell Homes",
-    location: "kolathur, Chennai",
-    price: "₹1.64L",
-    type: "Apartment / Plot ",
+    location: "Velachery, Chennai",
+    price: "₹1.64 Cr",
+    type: "Apartment ",
     images: ["/image1.jpg", "/image2.jpg", "/image3.jpg"],
     yearBuilt:2025,
     facing:"East",
@@ -85,85 +85,41 @@ const currentProperties = [
     details:{
      specification:"2BHK +2 T + S",
      furnishing:"No",
-     flatNo:"9C",
-     FloorNo:"9",
+     flatNo:"-",
+     FloorNo:"-",
      builtUpArea:"1492",
     },
-    highlights: ["East facing"],
+    highlights: ["East & West facing"],
     description:
       "Spacious 2.5 BHK with 2 bathrooms, ideally located near schools and the railway station for convenient living.",
+    status:"ready to occupy",
     listedOn: "20 Mar 2025",
     company: {
       name: "Esthell Properties",
       logo: "/logo.png",
     },
+    detailedInfo:{
+      bedrooms: "2.5 / 3 / Duplex",
+      baths: "2/3/4",
+      sqft: "1492-2897 Sqft",
+      facing:"East & West",
+      description:
+      "Spacious 2.5/3/Duplex BHK with 2/3/4 bathrooms, ideally located near schools and the railway station for convenient living.",
+    },
+   highlightsInfo:{
+      point1:"Just 500 meters from Pallavanthangal Station",
+      point2:"Only 1 km from Velachery Station",
+      point3:"Right across from Sunshine School",
+      point4:"Nestled behind the soon-to-come XB Mall",
+      point5:"Crafted with premium red bricks and river sand",
+    },
   },
   {
     id: 2,
-    name: "Esthell Homes",
-    location: " kolathur, Chennai",
-    price: "₹2.07 Cr",
-    type: "Apartment / Plot ",
-    images: ["/image4.jpg", "/image5.jpg", "/image6.jpg"],
-     yearBuilt:2025,
-    facing:"West",
-    specs: {
-      bedrooms: 3,
-      baths: 3,
-      sqft: "1930 Sqft",
-    },
-     details:{
-     specification:"3BHK +3T",
-     furnishing:"No",
-     flatNo:"5B",
-     FloorNo:"5",
-     builtUpArea:"1930",
-    },
-    highlights: ["West facing"],
-    description:
-      "Spacious 3 BHK with 3 bathrooms, perfectly located near the railway station and top schools for your convenience.",
-    listedOn: "20 mar 2025",
-    company: {
-      name: "Esthell Homes",
-      logo: "/logo.png",
-    },
-  },
-  {
-    id: 3,
-    name: "Esthell Homes",
-    location: "Velachery, Chenna",
-    price: "₹ 3.24 Cr",
-    type: "Apartment / Plot ",
-    images: ["/image7.jpg", "/image8.jpg", "/image9.jpg"],
-     yearBuilt:2025,
-    facing:"East",
-    specs: {
-      bedrooms: "DUPLEX 4",
-      baths: 3,
-      sqft: "2897 Sqft",
-    },
-     details:{
-     specification:"4BHK +3T",
-     furnishing:"No",
-     flatNo:"11 C",
-     FloorNo:"11",
-     builtUpArea:"2897",
-    },
-    highlights: ["East Facing"],
-    description:
-      "Spacious DUPLEX apartment perfectly located near the railway station and top schools—ideal for modern living!",
-    listedOn: "20 mar 2025",
-    company: {
-      name: "Esthell Homes",
-      logo: "/logo.png",
-    },
-  },
-  {
-    id: 4,
     name: "Olive Sands",
     location: " Uthandi, Chennai",
     price: "₹9 Cr",
-    type: "Individual Villa / Plot ",
+    type: "Individual Villa ",
     images: ["/image10.jpg", "/image11.jpg", "/image12.jpg"],
      yearBuilt:2025,
     facing:"South",
@@ -179,6 +135,7 @@ const currentProperties = [
      FloorNo:"-",
      builtUpArea:"4.55 Grounds",
     },
+    status:"new",
     highlights: ["South facing plot"],
     description:
       "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
@@ -186,6 +143,19 @@ const currentProperties = [
     company: {
       name: "Esthell Homes",
       logo: "/logo.png",
+    },
+     detailedInfo:{
+      bedrooms: " ",
+      baths: " ",
+      sqft: "4.55 Grounds",
+      facing:"South",
+      description:
+      "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
+    },
+   highlightsInfo:{
+      point1:"Just 500 meters from Pallavanthangal Station",
+      point2:"Only 1 km from Velachery Station",
+      point3:"Right across from Sunshine School",
     },
   },
 ];
@@ -455,14 +425,14 @@ export default function HomePage() {
             <div
               className="stepContainer"
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "scale(1.05)";
-                e.currentTarget.style.boxShadow =
-                  "0 8px 16px rgba(0, 0, 0, 0.2)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
+        e.currentTarget.style.transform = "scale(1.05)";
+        e.currentTarget.style.boxShadow =
+          "0 8px 16px rgba(0, 0, 0, 0.2)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "scale(1)";
+        e.currentTarget.style.boxShadow = "none";
+      }}
             >
               <img src={SearchIcon} className="stepIcon" />
               <p className="stepTitle">01. Search for Location</p>
@@ -736,7 +706,7 @@ export default function HomePage() {
                   </div>
                   <div className="homePageLabelContainer">
                     <p className="homePageVerifiedLabel">Verified</p>
-                    <p className="homePageSaleLabel">Ready to occupy</p>
+                    <p className="homePageSaleLabel">{property.status}</p>
                     <FaRegHeart color="white" />
                   </div>
                 </div>

@@ -42,22 +42,21 @@ import {
   FaLeaf,
   FaShieldAlt,
   FaRegThumbsUp,
- FaRegThumbsDown
+  FaRegThumbsDown,
 } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 
-
 export default function DetailsPage() {
-   const location = useLocation();
+  const location = useLocation();
   const property = location.state?.property;
 
   const navigate = useNavigate();
-    const handleEnquiryClick = () => {
-      navigate('/contact'); 
-    };
-    const handleViewAll = () => {
-  navigate('/listings'); 
-};
+  const handleEnquiryClick = () => {
+    navigate("/contact");
+  };
+  const handleViewAll = () => {
+    navigate("/listings");
+  };
   const [rating, setRating] = useState(4.2);
   const starProgress = [
     { progress: 100, label: "5", filled: true },
@@ -125,21 +124,20 @@ export default function DetailsPage() {
   const handleCardClick = () => {
     navigate("/details");
   };
-   useEffect(() => {
-      const handleResize = () => {
-        setIsMobile(window.innerWidth <= 480);
-      };
-      handleResize();
-      window.addEventListener("resize", handleResize);
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }, []);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 480);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-  
 
   return (
     <div>
@@ -202,49 +200,68 @@ export default function DetailsPage() {
                 className="detailPageImage detailPageImageClickable"
               />
             </div>
-             {/* mobile static */}
-             {isMobile && (
-          <div className="detailPagePropertyContainer">
-            <p className="detailPagePropertyTitle">{property.name}</p>
-            <p className="detailPagePropertySubTitle">
-              Apartment / Plot in{" "}
-              <span className="detailPageLocation">{property.location}</span>
-            </p>
-            <div className="detailPagePriceContainer">
-              <p className="detailPagePrice">{property.price}</p>
-              <p className="detailPageCharges">+ Charges</p>
-            </div>
-            <div className="detailPageDivider" />
-            <div className="detailPageAgentContainer">
-              <p className="detailPageAgentName">{property.company.name}</p>
-              <p className="detailPageAgentListedDate">
-                Listed on: {property.listedOn}
-              </p>
-            </div>
-            <div>
-              <Button onClick={handleEnquiryClick} className="detailPageEnquiryButton">Enquiry Now</Button>
-            </div>
-          </div>)}
+            {/* mobile static */}
+            {isMobile && (
+              <div className="detailPagePropertyContainer">
+                <p className="detailPagePropertyTitle">{property.name}</p>
+                <p className="detailPagePropertySubTitle">
+                  Apartment / Plot in{" "}
+                  <span className="detailPageLocation">
+                    {property.location}
+                  </span>
+                </p>
+                <div className="detailPagePriceContainer">
+                  <p className="detailPageLocation"> Starting From</p>
+                  <p className="detailPagePrice">{property.price}</p>
+                  <p className="detailPageCharges">+ Charges</p>
+                </div>
+                <div className="detailPageDivider" />
+                <div className="detailPageAgentContainer">
+                  <p className="detailPageAgentName">{property.company.name}</p>
+                  <p className="detailPageAgentListedDate">
+                    Listed on: {property.listedOn}
+                  </p>
+                </div>
+                <div>
+                  <Button
+                    onClick={handleEnquiryClick}
+                    className="detailPageEnquiryButton"
+                  >
+                    Enquiry Now
+                  </Button>
+                </div>
+              </div>
+            )}
             {/* houseInfo */}
             <div className="detailPageHouseInfoContainer">
               <div className="detailPagHouseInfoItem">
                 <LuBedDouble className="detailPageInfoIcon" />
-               {property.price}
+                <p className="detailsInfoText">
+                  {property.detailedInfo.bedrooms}
+                </p>
               </div>
               <div className="detailPagHouseInfoItem">
-                <PiBathtub className="detailPageInfoIcon" />{property.specs.baths} Baths
+                <PiBathtub className="detailPageInfoIcon" />
+                <p className="detailsInfoText">
+                  {property.detailedInfo.baths} Baths
+                </p>
               </div>
               <div className="detailPagHouseInfoItem">
                 <AiOutlineHome className="detailPageInfoIcon" />
-               {property.specs.sqft}
+                <p className="detailsInfoText">{property.detailedInfo.sqft}</p>
               </div>
               <div className="detailPagHouseInfoItem">
                 <AiOutlineCalendar className="detailPageInfoIcon" />
-                Year Built:{property.yearBuilt}
+                <p className="detailsInfoText">
+                  {" "}
+                  Year Built:{property.yearBuilt}
+                </p>
               </div>
               <div className="detailPagHouseInfoItem">
                 <AiOutlineCompass className="detailPageInfoIcon" />
-                Facing:{property.facing}
+                <p className="detailsInfoText">
+                  Facing:{property.detailedInfo.facing}
+                </p>
               </div>
             </div>
 
@@ -252,7 +269,9 @@ export default function DetailsPage() {
             <div className="detailPageHighlightsContainer">
               <p className="detailPageHighlightLabel">Highlights: </p>
               {property.highlights.map((highlight, idx) => (
-                <p key={idx} className="propertyHighlight">{highlight}</p>
+                <p key={idx} className="propertyHighlight">
+                  {highlight}
+                </p>
               ))}
               <p className="detailPageHighlightItem detailPageHighlightItemGreen">
                 No Brokerage
@@ -269,26 +288,39 @@ export default function DetailsPage() {
             {/* content */}
             <div className="detailPageTextContainer">
               <p className="detailPageText">
-                {property.description}
+                {property.detailedInfo.description}
               </p>
             </div>
-            <div className="detailPageDivider"/>
+            <div className="detailPageDivider" />
 
+            {/* Highlights Container with 6 star points */}
+            <div className="detailPageHighlightsContten">
+              <p className="detailPageHighlightTitle">Highlights:</p>
+              <div className="detailPageHighlightsList">
+                {Object.values(property.highlightsInfo).map((point, index) => (
+                  <p key={index}>* {point}</p>
+                ))}
+              </div>
+            </div>
+            <div className="detailPageDivider" />
             {/* details */}
             <div>
               <p className="detailPageDetailsHeader">Details</p>
               <div className="detailPageDetailsContainer">
                 {[
-                 { label: "Type", value: property.details?.specification },
-                 { label: "Super Built-up area sqft", value: property.details?.builtUpArea},
+                  { label: "Type", value: property.detailedInfo?.bedrooms },
+                  {
+                    label: "Super Built-up area sqft",
+                    value: property.detailedInfo?.sqft,
+                  },
                   { label: "Furnishing", value: property.details?.furnishing },
-                  { label: "Bathrooms", value:property.specs?.baths },
-                  { label: "Facing", value: property.facing },
+                  { label: "Bathrooms", value: property.detailedInfo?.baths },
+                  { label: "Facing", value: property.detailedInfo?.facing },
                   { label: "Flat No", value: property.details?.flatNo },
-                  { label: "Floor", value:property.details?.FloorNo },
+                  { label: "Floor", value: property.details?.FloorNo },
                   {
                     label: "Project Name",
-                    value:property.name,
+                    value: property.name,
                   },
                 ].map((item, index) => (
                   <div key={index} className="detailPageDetailItem">
@@ -305,73 +337,95 @@ export default function DetailsPage() {
                 ))}
               </div>
             </div>
-             <div className="detailPageDivider"/>
+            <div className="detailPageDivider" />
             {/*Amenities */}
-         {property.id !== 4 && (
-          <>
-          <div>
-             <p className="detailPageAmenitiesHeader">Amenities</p>
-            <div className="imageGrid">
-              {image.map((image, index) => (
-                <div key={index} className="imageContainer">
-                  <img src={image.src} alt={image.name} className="gridImage" />
-                  <p className="imageName">{image.name}</p>
-                </div>
-              ))}
-            </div>
-            </div>
- <div className="detailPageDivider"/>
-            {/* floor plans */}
-            <div>
-              <p className="detailPageFloorPlansHeader">Floor Plans</p>
-              <div className="detailPageFloorPlansContainer">
+            {property.id !== 2 && (
+              <>
                 <div>
-                  <p>SITE PLAN</p>
-                  <img src={SitePlan} className="detailPageFloorPlanImage" />
+                  <p className="detailPageAmenitiesHeader">Amenities</p>
+                  <div className="imageGrid">
+                    {image.map((image, index) => (
+                      <div key={index} className="imageContainer">
+                        <img
+                          src={image.src}
+                          alt={image.name}
+                          className="gridImage"
+                        />
+                        <p className="imageName">{image.name}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
+                <div className="detailPageDivider" />
+                {/* floor plans */}
                 <div>
-                  <p>GROUND FLOOR PLAN</p>
-                  <img
-                    src={GroundFloorPlan}
-                    className="detailPageFloorPlanImage"
-                  />
+                  <p className="detailPageFloorPlansHeader">Floor Plans</p>
+                  <div className="detailPageFloorPlansContainer">
+                    <div>
+                      <p>SITE PLAN</p>
+                      <img
+                        src={SitePlan}
+                        className="detailPageFloorPlanImage"
+                      />
+                    </div>
+                    <div>
+                      <p>GROUND FLOOR PLAN</p>
+                      <img
+                        src={GroundFloorPlan}
+                        className="detailPageFloorPlanImage"
+                      />
+                    </div>
+                  </div>
+                  <div className="detailPageFloorPlansContainer">
+                    <div>
+                      <p>FIRST FLOOR PLAN</p>
+                      <img
+                        src={FirstFloorPlan}
+                        className="detailPageFloorPlanImage"
+                      />
+                    </div>
+                    <div>
+                      <p>TYPICAL FLOOR PLAN</p>
+                      <img
+                        src={TypicalFloorPlan}
+                        className="detailPageFloorPlanImage"
+                      />
+                    </div>
+                  </div>
+                  <div className="detailPageFloorPlansContainer">
+                    <div>
+                      <p>DUPLEX LOWER</p>
+                      <img
+                        src={DuplexLower}
+                        className="detailPageFloorPlanImage"
+                      />
+                    </div>
+                    <div>
+                      <p>DUPLEX UPPER</p>
+                      <img
+                        src={DuplexUpper}
+                        className="detailPageFloorPlanImage"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="detailPageFloorPlansContainer">
-                <div>
-                  <p>FIRST FLOOR PLAN</p>
-                  <img
-                    src={FirstFloorPlan}
-                    className="detailPageFloorPlanImage"
-                  />
-                </div>
-                <div>
-                  <p>TYPICAL FLOOR PLAN</p>
-                  <img
-                    src={TypicalFloorPlan}
-                    className="detailPageFloorPlanImage"
-                  />
-                </div>
-              </div>
-              <div className="detailPageFloorPlansContainer">
-                <div>
-                  <p>DUPLEX LOWER</p>
-                  <img src={DuplexLower} className="detailPageFloorPlanImage" />
-                </div>
-                <div>
-                  <p>DUPLEX UPPER</p>
-                  <img src={DuplexUpper} className="detailPageFloorPlanImage" />
-                </div>
-              </div>
-            </div>
-            </>)}
- <div className="detailPageDivider"/>
+                 <div className="detailPageDivider" />
+              </>
+            )}
+           
             {/* location */}
             <div className="DetailPageLocation">
-              <div> <IoLocationOutline  /></div>
-             <div>
-            <p className="locationText">Esthell Golden Square TS, No: 1/10, No: 176, Inner Ring Road (South Segment), Opp. Sunshine School, Velachery, Chennai – 600 042 Tamil Nadu, India.</p>
-            </div>
+              <div>
+                {" "}
+                <IoLocationOutline />
+              </div>
+              <div>
+                <p className="locationText">
+                  Esthell Golden Square TS, No: 1/10, No: 176, Inner Ring Road
+                  (South Segment), Opp. Sunshine School, Velachery, Chennai –
+                  600 042 Tamil Nadu, India.
+                </p>
+              </div>
             </div>
 
             {/* map */}
@@ -385,142 +439,159 @@ export default function DetailsPage() {
                 title="Google Map"
               ></iframe>
             </div>
- <div className="detailPageDivider"/>
+            <div className="detailPageDivider" />
             {/* locality review */}
             <div>
-            <p style={{ fontWeight: 500, fontSize: 18 }}>Locality Review</p>
-           <div className="ratings-container">
-      {/* Left Section - Average Rating */}
-      <div className="left-panel">
-        <div className="average-score">4.2<span className="small"> / 5</span></div>
-        <div className="stars">★★★★☆</div>
-        <p className="review-rate">Average Rating</p>
-        <p className="review-count">(61 Total Reviews)</p>
+              <p style={{ fontWeight: 500, fontSize: 18 }}>Locality Review</p>
+              <div className="ratings-container">
+                {/* Left Section - Average Rating */}
+                <div className="left-panel">
+                  <div className="average-score">
+                    4.2<span className="small"> / 5</span>
+                  </div>
+                  <div className="stars">★★★★☆</div>
+                  <p className="review-rate">Average Rating</p>
+                  <p className="review-count">(61 Total Reviews)</p>
 
-        <div className="bar-container">
-          <div className="bar">
-           
-            <div className="bar-fill" style={{ width: "70%" }}></div>
-             <span>5 ★</span>
-          </div>
-          <div className="bar">
-           
-            <div className="bar-fill" style={{ width: "50%" }}></div>
-             <span>4 ★</span>
-          </div>
-          <div className="bar">
-           
-            <div className="bar-fill" style={{ width: "10%" }}></div>
-             <span>3 ★</span>
-          </div>
-          <div className="bar">
-            
-            <div className="bar-fill" style={{ width: "10%" }}></div>
-            <span>2 ★</span>
-          </div>
-          <div className="bar">
-          
-            <div className="bar-fill" style={{ width: "10%" }}></div>
-              <span>1 ★</span>
-          </div>
-        </div>
+                  <div className="bar-container">
+                    <div className="bar">
+                      <div className="bar-fill" style={{ width: "70%" }}></div>
+                      <span>5 ★</span>
+                    </div>
+                    <div className="bar">
+                      <div className="bar-fill" style={{ width: "50%" }}></div>
+                      <span>4 ★</span>
+                    </div>
+                    <div className="bar">
+                      <div className="bar-fill" style={{ width: "10%" }}></div>
+                      <span>3 ★</span>
+                    </div>
+                    <div className="bar">
+                      <div className="bar-fill" style={{ width: "10%" }}></div>
+                      <span>2 ★</span>
+                    </div>
+                    <div className="bar">
+                      <div className="bar-fill" style={{ width: "10%" }}></div>
+                      <span>1 ★</span>
+                    </div>
+                  </div>
 
-        <a href="#" className="ratings-link">See how ratings are calculated</a>
-      </div>
+                  <a href="#" className="ratings-link">
+                    See how ratings are calculated
+                  </a>
+                </div>
 
-      {/* Right Section - Feature Ratings */}
-      <div className="right-panel">
-        <h3>Ratings by Features</h3>
-        <div className="features">
-          <div className="feature">
-            <FaCarSide className="icon" /> 
-            <div>
-              <p className="IconText">Connectivity</p>
-              <p className="IconSubText">4.3 out of 5</p>
-            </div>
-          </div>
-          <div className="feature">
-            <FaUtensils className="icon" /> 
-            <div>
-              <p className="IconText">Lifestyle</p>
-              <p className="IconSubText">4.1 out of 5</p>
-            </div>
-          </div>
-          <div className="feature">
-            <FaLeaf className="icon" /> 
-            <div>
-              <p className="IconText">Environment </p>
-              <p className="IconSubText">4.1 out of 5</p>
-            </div>
-          </div>
-          <div className="feature">
-            <FaShieldAlt className="icon" />
-            <div>
-              <p className="IconText">Safety </p>
-              <p className="IconSubText">4.1 out of 5</p>
-            </div>
-          </div>
-        </div>
+                {/* Right Section - Feature Ratings */}
+                <div className="right-panel">
+                  <h3>Ratings by Features</h3>
+                  <div className="features">
+                    <div className="feature">
+                      <FaCarSide className="icon" />
+                      <div>
+                        <p className="IconText">Connectivity</p>
+                        <p className="IconSubText">4.3 out of 5</p>
+                      </div>
+                    </div>
+                    <div className="feature">
+                      <FaUtensils className="icon" />
+                      <div>
+                        <p className="IconText">Lifestyle</p>
+                        <p className="IconSubText">4.1 out of 5</p>
+                      </div>
+                    </div>
+                    <div className="feature">
+                      <FaLeaf className="icon" />
+                      <div>
+                        <p className="IconText">Environment </p>
+                        <p className="IconSubText">4.1 out of 5</p>
+                      </div>
+                    </div>
+                    <div className="feature">
+                      <FaShieldAlt className="icon" />
+                      <div>
+                        <p className="IconText">Safety </p>
+                        <p className="IconSubText">4.1 out of 5</p>
+                      </div>
+                    </div>
+                  </div>
 
-        <h4>Popular Mentions <span className="green-text">100% Positive Mentions</span></h4>
+                  <h4>
+                    Popular Mentions{" "}
+                    <span className="green-text">100% Positive Mentions</span>
+                  </h4>
 
-        <div className="likes-dislikes">
-          <div className="likes">
-            <FaRegThumbsUp className="thumb-icon" />
-             <div className="row1">
-            <p className="mention">Easy Cab/Auto Availability (37)</p>
-            <p className="mention">Good Public Transport (37)</p>
-            <p className="mention">Good Schools are nearby (36)</p>
-            </div>
-            <div className="row2">
-            <p className="mention">Markets at a walkable distance (29)</p>
-            <p className="mention">Metro Connectivity nearby (23)</p>
-            <p className="mention">Well-maintained Roads (17)</p>
-            </div>
-          </div>
+                  <div className="likes-dislikes">
+                    <div className="likes">
+                      <FaRegThumbsUp className="thumb-icon" />
+                      <div className="row1">
+                        <p className="mention">
+                          Easy Cab/Auto Availability (37)
+                        </p>
+                        <p className="mention">Good Public Transport (37)</p>
+                        <p className="mention">Good Schools are nearby (36)</p>
+                      </div>
+                      <div className="row2">
+                        <p className="mention">
+                          Markets at a walkable distance (29)
+                        </p>
+                        <p className="mention">
+                          Metro Connectivity nearby (23)
+                        </p>
+                        <p className="mention">Well-maintained Roads (17)</p>
+                      </div>
+                    </div>
 
-          <div className="dislikes">
-            <FaRegThumbsDown className="thumb-icon" />
-            <div className="row1"> 
-            <p className="mention">Frequent Traffic Jams (20)</p>
-            <p className="mention">Frequent Parking Issues (17)</p>
+                    <div className="dislikes">
+                      <FaRegThumbsDown className="thumb-icon" />
+                      <div className="row1">
+                        <p className="mention">Frequent Traffic Jams (20)</p>
+                        <p className="mention">Frequent Parking Issues (17)</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-          </div>
           </div>
 
           {/* static */}
-  {!isMobile && (
-          <div className="detailPagePropertyContainer">
-            <p className="detailPagePropertyTitle">{property.name}</p>
-            <p className="detailPagePropertySubTitle">
-              {property.type} in{" "}
-              <span className="detailPageLocation"> {property.location}</span>
-            </p>
-            <div className="detailPagePriceContainer">
-              <p className="detailPagePrice">{property.price}</p>
-              <p className="detailPageCharges">+ Charges</p>
-            </div>
-            <div className="detailPageDivider" />
-            <div className="detailPageAgentContainer">
-              <p className="detailPageAgentName">{property.company.name}</p>
-              <p className="detailPageAgentListedDate">
-                Listed on:  {property.listedOn}
+          {!isMobile && (
+            <div className="detailPagePropertyContainer">
+              <p className="detailPagePropertyTitle">{property.name}</p>
+              <p className="detailPagePropertySubTitle">
+                {property.type} in{" "}
+                <span className="detailPageLocation"> {property.location}</span>
               </p>
+              <div className="detailPagePriceContainer">
+                <p className="detailPageLocation"> Starting From</p>
+                <p className="detailPagePrice">{property.price}</p>
+                <p className="detailPageCharges">+ Charges</p>
+              </div>
+              <div className="detailPageDivider" />
+              <div className="detailPageAgentContainer">
+                <p className="detailPageAgentName">{property.company.name}</p>
+                <p className="detailPageAgentListedDate">
+                  Listed on: {property.listedOn}
+                </p>
+              </div>
+              <div>
+                <Button
+                  onClick={handleEnquiryClick}
+                  className="detailPageEnquiryButton"
+                >
+                  Enquiry Now
+                </Button>
+              </div>
             </div>
-            <div>
-              <Button onClick={handleEnquiryClick} className="detailPageEnquiryButton">Enquiry Now</Button>
-            </div>
-          </div>)}
+          )}
         </div>
         {/* view all */}
         <div>
           <div className="similarListingsHeader">
             <p className="similarListingsTitle">Similar Listings</p>
-            <p className="similarListingsViewAll"  onClick={handleViewAll} >View All</p>
+            <p className="similarListingsViewAll" onClick={handleViewAll}>
+              View All
+            </p>
           </div>
           <div className="similarListingsGrid">
             {Array.from({ length: 3 }).map((_, index) => (
