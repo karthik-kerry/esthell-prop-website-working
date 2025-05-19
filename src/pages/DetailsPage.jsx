@@ -77,7 +77,7 @@ export default function DetailsPage() {
     { src: ModernLandscaping, name: "Modern Landscaping" },
     { src: Parking, name: "Visitor Car Parking" },
     { src: WallSharing, name: "No Common Wall Sharing" },
-    { src: Games, name: "Games" },
+    { src: Games, name: "Indoor Games" },
   ];
   const progressWidth = (rating / 5) * 100;
   const images = [Property, Property1];
@@ -308,6 +308,8 @@ export default function DetailsPage() {
             {/*Amenities */}
          {property.id !== 4 && (
           <>
+          <div>
+             <p className="detailPageAmenitiesHeader">Amenities</p>
             <div className="imageGrid">
               {image.map((image, index) => (
                 <div key={index} className="imageContainer">
@@ -315,6 +317,7 @@ export default function DetailsPage() {
                   <p className="imageName">{image.name}</p>
                 </div>
               ))}
+            </div>
             </div>
 
             {/* floor plans */}
@@ -563,7 +566,7 @@ export default function DetailsPage() {
                   </div>
                   <div className="similarListingsStatusContainer">
                     <p className="similarListingsVerifiedTag">Verified</p>
-                    <p className="similarListingsResaleTag">Resale</p>
+                    <p className="similarListingsSaleTag">Ready to occupy</p>
                     <FaRegHeart color="white" />
                   </div>
                 </div>

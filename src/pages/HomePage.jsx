@@ -736,7 +736,7 @@ export default function HomePage() {
                   </div>
                   <div className="homePageLabelContainer">
                     <p className="homePageVerifiedLabel">Verified</p>
-                    <p className="homePageResaleLabel">Resale</p>
+                    <p className="homePageSaleLabel">Ready to occupy</p>
                     <FaRegHeart color="white" />
                   </div>
                 </div>

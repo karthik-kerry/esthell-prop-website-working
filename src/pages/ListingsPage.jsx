@@ -971,7 +971,7 @@ export default function ListingsPage() {
                   </div>
                   <div className="propertyStatusWrapper" >
                     <p className="propertyVerified">Verified</p>
-                    <p className="propertyResale">Resale</p>
+                    <p className="propertySale">Ready to occupy</p>
                     <FaRegHeart className="propertyIcon" />
                   </div>
                 </div>

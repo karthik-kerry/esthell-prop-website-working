@@ -395,18 +395,19 @@
   justify-content: center;
 }
 
-.propertyResale {
+.propertySale {
   background-color: #1b1b1b66;
   text-transform: uppercase;
   border-radius: 4px;
   color: white;
-  width: 60px;
-  height: 22px;
-  font-size: 14px;
+  width: auto;
+  height: auto;
+  font-size: 10px;
   font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 4px;
 }
 
 .propertyIcon {

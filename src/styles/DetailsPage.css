@@ -283,7 +283,7 @@
 
 .detailPageFloorPlanImage {
   margin-top: -50px;
-  width: 310px;
+  width: 350px;
   height: 250px;
 }
 /* location */
@@ -517,7 +517,7 @@ gap:5px;
 }
 
 .similarListingsVerifiedTag,
-.similarListingsResaleTag {
+.similarListingsSaleTag {
   text-transform: uppercase;
   border-radius: 4px;
   font-size: 10px;
@@ -525,6 +525,7 @@ gap:5px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 4px;
 }
 
 .similarListingsVerifiedTag {
@@ -534,12 +535,12 @@ gap:5px;
   height: 20px;
 }
 
-.similarListingsResaleTag {
+.similarListingsSaleTag {
   background-color: #1b1b1b66;
   color: white;
-  width: 60px;
-  height: 22px;
-  font-size: 14px;
+  width:auto;
+  height:auto;
+  font-size: 10px;
 }
 
 .similarListingsPriceContainer {
@@ -616,6 +617,13 @@ gap:5px;
   color: #1b1b1b;
 }
 /* amenities */
+
+.detailPageAmenitiesHeader {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+
 .imageGrid {
   display: grid;
   grid-template-columns: repeat(6, 1fr); 
@@ -637,7 +645,7 @@ gap:5px;
 }
 
 .imageName {
-  font-size: 14px;
+  font-size: 13px;
   color: #1B1B1BCC;
   font-weight: 400;
   margin-top: 6px;
