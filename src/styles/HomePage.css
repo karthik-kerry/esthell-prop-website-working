@@ -479,6 +479,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 }
 .hpPropName{
   color: #1b1b1b;
@@ -507,6 +508,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  cursor: pointer;
 }
 
 .hpPropDetailItem {
@@ -522,9 +524,11 @@
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
+  cursor:"pointer",
 }
 .hpPropHighlightsText{
   color:#1B1B1BCC ;
+  cursor:"pointer",
 }
 
 .hpPropHighlightItem {

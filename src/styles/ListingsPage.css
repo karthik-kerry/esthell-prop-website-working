@@ -437,6 +437,7 @@
   flex-direction: column;
   width: 100%;
   gap: 6px;
+  cursor: pointer;
 }
 
 .propertyHeader {
