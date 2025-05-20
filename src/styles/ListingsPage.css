@@ -259,6 +259,7 @@
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
   color: #001C6B;
+  cursor:pointer;
 }
 
 .separatorLine {
@@ -827,6 +828,7 @@ width: 100%;
   font-weight: 500;
   font-size: 14px;
   color: #001C6B;
+  cursor:pointer;
 }
 .ApplyFilterButton{
   width:50%;

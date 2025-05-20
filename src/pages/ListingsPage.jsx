@@ -31,8 +31,8 @@ export default function ListingsPage() {
   const [isMobile, setIsMobile] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [selectedLocations, setSelectedLocations] = useState([]);
-  const [areaValue, setAreaValue] = useState([20, 50]);
-  const [budgetValue, setBudgetValue] = useState([30, 70]);
+  const [areaValue, setAreaValue] = useState([500, 15000]);
+  const [budgetValue, setBudgetValue] = useState([500000, 25000000]);
   const [activeButton, setActiveButton] = useState("buy");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
@@ -56,6 +56,7 @@ export default function ListingsPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
   const currentProperties = [
     {
       id: 1,
@@ -102,6 +103,13 @@ export default function ListingsPage() {
         point4: "Nestled behind the soon-to-come XB Mall",
         point5: "Crafted with premium red bricks and river sand",
       },
+      filterData: {
+        constructionStatus: "ready to accupy",
+        localities: "Velachery",
+        purchaseType: "new booking",
+        amenities: ["parking", "gymnasium"],
+        furnishing: "Unfurnished",
+      },
     },
     {
       id: 2,
@@ -146,6 +154,13 @@ export default function ListingsPage() {
         point2: "Only 1 km from Velachery Station",
         point3: "Right across from Sunshine School",
       },
+      filterData: {
+        constructionStatus: "under construction",
+        localities: "Uthandi",
+        purchaseType: "new booking",
+        amenities: ["security personnel"],
+        furnishing: "Unfurnished",
+      },
     },
   ];
 
@@ -172,6 +187,34 @@ export default function ListingsPage() {
     button20: false,
     button21: false,
   });
+  const handleClearAll = () => {
+  setActiveButtons({
+    button1: false,
+    button2: false,
+    button3: false,
+    button4: false,
+    button5: false,
+    button6: false,
+    button7: false,
+    button8: false,
+    button9: false,
+    button10: false,
+    button11: false,
+    button12: false,
+    button13: false,
+    button14: false,
+    button15: false,
+    button16: false,
+    button17: false,
+    button18: false,
+    button19: false,
+    button20: false,
+    button21: false,
+  });
+  setAreaValue([500, 15000]);
+  setBudgetValue([500000, 25000000]);
+  setSelectedLocations([]);
+};
   const navigate = useNavigate();
   const handleEnquiryClick = () => {
     navigate("/contact");
@@ -243,17 +286,6 @@ export default function ListingsPage() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  // const handleChange = (value) => {
-  //   setValue(value);
-  // };
-  // const formatValue = (value) => {
-  //   if (value >= 10000000) {
-  //     return `${(value / 10000000).toFixed(1)} Cr`;
-  //   } else {
-  //     return `${(value / 100000).toFixed(1)} L`;
-  //   }
-  // };
   const onCheck = (e) => {
     const value = e.target.value;
     if (e.target.checked) {
@@ -263,12 +295,28 @@ export default function ListingsPage() {
     }
   };
 
-  const onAreaChange = (newValue) => {
-    setAreaValue(newValue);
+  const onAreaChange = (value) => {
+    setAreaValue(value);
   };
 
-  const onBudgetChange = (newValue) => {
-    setBudgetValue(newValue);
+  // Function to format the value with 'sqft'
+  const formatValueArea = (value) => {
+    return value + " sqft";
+  };
+
+  const onBudgetChange = (value) => {
+    setBudgetValue(value);
+  };
+
+  // Function to format the value with 'L' or 'Cr'
+  const formatValueBudget = (value) => {
+    if (value >= 10000000) {
+      // If value is 1 crore or more, show in crores (Cr)
+      return (value / 10000000).toFixed(1) + " Cr";
+    } else {
+      // If value is less than 1 crore, show in lakhs (L)
+      return (value / 100000).toFixed(1) + " L";
+    }
   };
 
   const handleClick = (buttonId) => {
@@ -302,8 +350,6 @@ export default function ListingsPage() {
           2nd menu item
         </a>
       ),
-      //   icon: <SmileOutlined />,
-      //   disabled: true,
     },
     {
       key: "3",
@@ -322,9 +368,9 @@ export default function ListingsPage() {
       children: (
         <Slider
           range
-          min={0}
-          max={100}
-          step={1}
+          min={500000} // Minimum range is 5 Lakhs
+          max={500000000} // Maximum range is 50 Crore
+          step={100000} // Step size set to 1 Lakh (100,000)
           value={budgetValue}
           onChange={onBudgetChange}
           className="sliderContainer"
@@ -335,6 +381,11 @@ export default function ListingsPage() {
             backgroundColor: "#001C6B",
             borderColor: "#001C6B",
             color: "#001C6B",
+          }}
+          tooltipVisible={true}
+          tooltip={{
+            formatter: (value) => formatValueBudget(value),
+            placement: "bottom",
           }}
         />
       ),
@@ -426,54 +477,54 @@ export default function ListingsPage() {
         </div>
       ),
     },
-    {
-      key: "4",
-      label: <span style={{ fontWeight: 500 }}>Posted by</span>,
-      children: (
-        <div className="buttonContainer">
-          <div className="buttonRow">
-            <Button
-              onClick={() => handleClick("button8")}
-              icon={<PlusOutlined />}
-              className={`button ${
-                activeButtons.button8 ? "active" : "inactive"
-              } button8`}
-            >
-              <p>Owner</p>
-            </Button>
-            <Button
-              onClick={() => handleClick("button9")}
-              icon={<PlusOutlined />}
-              className={`button ${
-                activeButtons.button9 ? "active" : "inactive"
-              } button9`}
-            >
-              <p>Builder</p>
-            </Button>
-          </div>
-          <div className="buttonRow">
-            <Button
-              onClick={() => handleClick("button10")}
-              icon={<PlusOutlined />}
-              className={`button ${
-                activeButtons.button10 ? "active" : "inactive"
-              } button10`}
-            >
-              <p>Dealer</p>
-            </Button>
-            <Button
-              onClick={() => handleClick("button11")}
-              icon={<PlusOutlined />}
-              className={`button ${
-                activeButtons.button11 ? "active" : "inactive"
-              } button11`}
-            >
-              <p>Feature Dealer</p>
-            </Button>
-          </div>
-        </div>
-      ),
-    },
+    // {
+    //   key: "4",
+    //   label: <span style={{ fontWeight: 500 }}>Posted by</span>,
+    //   children: (
+    //     <div className="buttonContainer">
+    //       <div className="buttonRow">
+    //         <Button
+    //           onClick={() => handleClick("button8")}
+    //           icon={<PlusOutlined />}
+    //           className={`button ${
+    //             activeButtons.button8 ? "active" : "inactive"
+    //           } button8`}
+    //         >
+    //           <p>Owner</p>
+    //         </Button>
+    //         <Button
+    //           onClick={() => handleClick("button9")}
+    //           icon={<PlusOutlined />}
+    //           className={`button ${
+    //             activeButtons.button9 ? "active" : "inactive"
+    //           } button9`}
+    //         >
+    //           <p>Builder</p>
+    //         </Button>
+    //       </div>
+    //       <div className="buttonRow">
+    //         <Button
+    //           onClick={() => handleClick("button10")}
+    //           icon={<PlusOutlined />}
+    //           className={`button ${
+    //             activeButtons.button10 ? "active" : "inactive"
+    //           } button10`}
+    //         >
+    //           <p>Dealer</p>
+    //         </Button>
+    //         <Button
+    //           onClick={() => handleClick("button11")}
+    //           icon={<PlusOutlined />}
+    //           className={`button ${
+    //             activeButtons.button11 ? "active" : "inactive"
+    //           } button11`}
+    //         >
+    //           <p>Feature Dealer</p>
+    //         </Button>
+    //       </div>
+    //     </div>
+    //   ),
+    // },
 
     {
       key: "5",
@@ -483,9 +534,9 @@ export default function ListingsPage() {
           <Slider
             className="sliderContainer"
             range
-            min={0}
-            max={100}
-            step={1}
+            min={500}
+            max={30000}
+            step={500}
             value={areaValue}
             onChange={onAreaChange}
             trackStyle={{
@@ -496,6 +547,11 @@ export default function ListingsPage() {
               borderColor: "#001C6B",
               color: "#001C6B",
             }}
+            tooltipVisible={true}
+            tooltip={{
+              formatter: (value) => formatValueArea(value),
+              placement: "bottom",
+            }}
           />
         </div>
       ),
@@ -505,6 +561,12 @@ export default function ListingsPage() {
       label: <span style={{ fontWeight: 500 }}>Localities</span>,
       children: (
         <div className="localitiesCheckboxWrapper">
+          <Checkbox value="Velachery" onChange={onCheck}>
+            Velachery
+          </Checkbox>
+          <Checkbox value="Uthandi" onChange={onCheck}>
+            Uthandi
+          </Checkbox>
           <Checkbox value="GST Road" onChange={onCheck}>
             GST Road
           </Checkbox>
@@ -717,67 +779,135 @@ export default function ListingsPage() {
       ),
     },
   ];
-  //   // --- Filtering logic ---
-  // // --- Filtering logic ---
-  // const filteredProperties = currentProperties.filter((property) => {
-  //   // Budget filter (example: you need to map your budgetValue to actual price range)
-  //   if (budgetValue && budgetValue.length === 2) {
-  //     const priceNum = Number(property.price.replace(/[^0-9.]/g, ""));
-  //     if (priceNum < budgetValue[0] || priceNum > budgetValue[1]) {
-  //       return false;
-  //     }
-  //   }
 
-  //   // Type of property filter (BHK)
-  //   if (
-  //     (activeButtons.button1 && !property.detailedInfo.bedrooms.includes("1")) ||
-  //     (activeButtons.button2 && !property.detailedInfo.bedrooms.includes("2")) ||
-  //     (activeButtons.button3 && !property.detailedInfo.bedrooms.includes("3")) ||
-  //     (activeButtons.button4 && !property.detailedInfo.bedrooms.includes("4"))
-  //   ) {
-  //     return false;
-  //   }
+  const isAnyFilterActive =
+    activeButtons.button19 ||
+    activeButtons.button20 ||
+    activeButtons.button21 || // Furnishing
+    areaValue[0] !== 500 ||
+    areaValue[1] !== 15000 || // Area
+    budgetValue[0] !== 500000 ||
+    budgetValue[1] !== 25000000 || // Budget
+    selectedLocations.length > 0 || // Localities
+    activeButtons.button5 ||
+    activeButtons.button6 ||
+    activeButtons.button7 || // Construction Status
+    activeButtons.button12 ||
+    activeButtons.button13; // Purchase type
+    const selectedBHKs = [];
+if (activeButtons.button1) selectedBHKs.push(1);
+if (activeButtons.button2) selectedBHKs.push(2);
+if (activeButtons.button3) selectedBHKs.push(3);
+if (activeButtons.button4) selectedBHKs.push(4);
 
-  //   // Construction Status filter
-  //   if (
-  //     (activeButtons.button5 && property.status.toLowerCase() !== "new launch") ||
-  //     (activeButtons.button6 && property.status.toLowerCase() !== "under construction") ||
-  //     (activeButtons.button7 && property.status.toLowerCase() !== "ready to occupy")
-  //   ) {
-  //     return false;
-  //   }
+  const selectedAmenities = [];
+  if (activeButtons.button14) selectedAmenities.push("vaastu compliant");
+  if (activeButtons.button15) selectedAmenities.push("security personnel");
+  if (activeButtons.button16) selectedAmenities.push("gymnasium");
+  if (activeButtons.button17) selectedAmenities.push("park");
+  if (activeButtons.button18) selectedAmenities.push("parking");
 
-  //   // Localities filter
-  //   if (
-  //     selectedLocations.length > 0 &&
-  //     !selectedLocations.some((loc) =>
-  //       property.location.toLowerCase().includes(loc.toLowerCase())
-  //     )
-  //   ) {
-  //     return false;
-  //   }
+  const filteredProperties = isAnyFilterActive
+    ? currentProperties.filter((property) => {
+         // budget filter
+        let priceStr = property.price.replace(/[^0-9.]/g, "");
+        let priceNum = parseFloat(priceStr);
+        const priceLower = property.price.trim().toLowerCase();
 
-  //   // Area filter
-  //   if (areaValue && areaValue.length === 2) {
-  //     const areaNum = Number(
-  //       String(property.specs.sqft).replace(/[^0-9.]/g, "")
-  //     );
-  //     if (areaNum < areaValue[0] || areaNum > areaValue[1]) {
-  //       return false;
-  //     }
-  //   }
+        if (priceLower.includes("cr")) {
+          priceNum = priceNum * 10000000;
+        } else if (priceLower.includes("l")) {
+          priceNum = priceNum * 100000;
+        }
 
-  //   // Furnishing status filter (fix to match your data)
-  //   if (
-  //     (activeButtons.button19 && property.details.furnishing.toLowerCase() !== "furnished") ||
-  //     (activeButtons.button20 && property.details.furnishing.toLowerCase() !== "No") ||
-  //     (activeButtons.button21 && property.details.furnishing.toLowerCase() !== "semifurnished")
-  //   ) {
-  //     return false;
-  //   }
+        priceNum = Math.round(priceNum);
 
-  //   return true;
-  // });
+        if (priceNum < budgetValue[0] || priceNum > budgetValue[1]) {
+          return false;
+        }
+        //  BHK
+         if (
+        selectedBHKs.length > 0 &&
+        !selectedBHKs.includes(Math.floor(property.specs.bedrooms))
+      ) {
+        return false;
+      }
+
+        // Construction Status filter
+        if (
+          (activeButtons.button5 &&
+            property.filterData.constructionStatus !== "new launch") ||
+          (activeButtons.button6 &&
+            property.filterData.constructionStatus !== "under construction") ||
+          (activeButtons.button7 &&
+            property.filterData.constructionStatus !== "ready to accupy")
+        ) {
+          return false;
+        }
+        // Area filter
+        if (areaValue[0] !== 500 || areaValue[1] !== 15000) {
+          let areaNum = 0;
+          if (
+            typeof property.specs.sqft === "string" &&
+            property.specs.sqft.toLowerCase().includes("ground")
+          ) {
+            areaNum = parseFloat(property.specs.sqft) * 2400;
+          } else {
+            areaNum = Number(
+              String(property.specs.sqft).replace(/[^0-9.]/g, "")
+            );
+          }
+          if (areaNum < areaValue[0] || areaNum > areaValue[1]) {
+            return false;
+          }
+        }
+
+         // Localities filter
+        if (
+          selectedLocations.length > 0 &&
+          !selectedLocations.some((loc) =>
+            property.filterData.localities
+              .toLowerCase()
+              .includes(loc.toLowerCase())
+          )
+        ) {
+          return false;
+        }
+          // Purchase type filter
+        if (
+          (activeButtons.button12 &&
+            property.filterData.purchaseType !== "resale") ||
+          (activeButtons.button13 &&
+            property.filterData.purchaseType !== "new booking")
+        ) {
+          return false;
+        }
+    
+         // amenities  
+        if (
+          selectedAmenities.length > 0 &&
+          !property.filterData.amenities
+            .map((a) => a.toLowerCase())
+            .some((amenity) => selectedAmenities.includes(amenity))
+        ) {
+          return false;
+        }
+
+         // Furnishing status filter
+        if (
+          (activeButtons.button19 &&
+            property.filterData.furnishing.toLowerCase() !== "furnished") ||
+          (activeButtons.button20 &&
+            property.filterData.furnishing.toLowerCase() !== "unfurnished") ||
+          (activeButtons.button21 &&
+            property.filterData.furnishing.toLowerCase() !== "semifurnished")
+        ) {
+          return false;
+        }
+
+        return true;
+      })
+    : [];
 
   return (
     <div>
@@ -882,9 +1012,15 @@ export default function ListingsPage() {
                 </a>
               </Dropdown>
 
-              <Input className="ListingformItemInput" placeholder="Enter Min Range" />
+              <Input
+                className="ListingformItemInput"
+                placeholder="Enter Min Range"
+              />
 
-              <Input className="ListingformItemInput" placeholder="Enter Max Range" />
+              <Input
+                className="ListingformItemInput"
+                placeholder="Enter Max Range"
+              />
 
               <Button className="ListingSearchButton" onClick={() => {}}>
                 Search
@@ -915,7 +1051,7 @@ export default function ListingsPage() {
               className="collapseContainer"
             />
             <div style={{ display: "flex", gap: 5 }}>
-              <Button className="ClearButton">Clear All</Button>
+              <Button className="ClearButton" onClick={handleClearAll}>Clear All</Button>
               <Button className="ApplyFilterButton">Apply Filter</Button>
             </div>
           </Modal>
@@ -925,7 +1061,7 @@ export default function ListingsPage() {
           <div className="filterContainer">
             <div className="filterHeader">
               <p className="filterTitle">Filters</p>
-              <p className="clearAll">Clear All</p>
+              <p className="clearAll" onClick={handleClearAll}>Clear All</p>
             </div>
             <div className="separatorLine" />
             <Collapse
@@ -950,7 +1086,7 @@ export default function ListingsPage() {
             </Button>
           </div>
           <div className="propertyList">
-            {currentProperties.map((property, index) => (
+            {filteredProperties.map((property, index) => (
               <div key={property.id} className="propertyItem">
                 <div className="propertyImageWrapper">
                   <div className="imageContainer">
