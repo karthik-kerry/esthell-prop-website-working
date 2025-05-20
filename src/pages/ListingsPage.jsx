@@ -104,7 +104,7 @@ export default function ListingsPage() {
         point5: "Crafted with premium red bricks and river sand",
       },
       filterData: {
-        constructionStatus: "ready to accupy",
+        constructionStatus: "ready to move",
         localities: "Velachery",
         purchaseType: "new booking",
         amenities: ["parking", "gymnasium"],
@@ -188,33 +188,33 @@ export default function ListingsPage() {
     button21: false,
   });
   const handleClearAll = () => {
-  setActiveButtons({
-    button1: false,
-    button2: false,
-    button3: false,
-    button4: false,
-    button5: false,
-    button6: false,
-    button7: false,
-    button8: false,
-    button9: false,
-    button10: false,
-    button11: false,
-    button12: false,
-    button13: false,
-    button14: false,
-    button15: false,
-    button16: false,
-    button17: false,
-    button18: false,
-    button19: false,
-    button20: false,
-    button21: false,
-  });
-  setAreaValue([500, 15000]);
-  setBudgetValue([500000, 25000000]);
-  setSelectedLocations([]);
-};
+    setActiveButtons({
+      button1: false,
+      button2: false,
+      button3: false,
+      button4: false,
+      button5: false,
+      button6: false,
+      button7: false,
+      button8: false,
+      button9: false,
+      button10: false,
+      button11: false,
+      button12: false,
+      button13: false,
+      button14: false,
+      button15: false,
+      button16: false,
+      button17: false,
+      button18: false,
+      button19: false,
+      button20: false,
+      button21: false,
+    });
+    setAreaValue([500, 15000]);
+    setBudgetValue([500000, 25000000]);
+    setSelectedLocations([]);
+  };
   const navigate = useNavigate();
   const handleEnquiryClick = () => {
     navigate("/contact");
@@ -299,7 +299,6 @@ export default function ListingsPage() {
     setAreaValue(value);
   };
 
-  // Function to format the value with 'sqft'
   const formatValueArea = (value) => {
     return value + " sqft";
   };
@@ -308,13 +307,10 @@ export default function ListingsPage() {
     setBudgetValue(value);
   };
 
-  // Function to format the value with 'L' or 'Cr'
   const formatValueBudget = (value) => {
     if (value >= 10000000) {
-      // If value is 1 crore or more, show in crores (Cr)
       return (value / 10000000).toFixed(1) + " Cr";
     } else {
-      // If value is less than 1 crore, show in lakhs (L)
       return (value / 100000).toFixed(1) + " L";
     }
   };
@@ -781,35 +777,35 @@ export default function ListingsPage() {
   ];
 
   const isAnyFilterActive =
-    activeButtons.button19 ||
-    activeButtons.button20 ||
-    activeButtons.button21 || // Furnishing
     areaValue[0] !== 500 ||
     areaValue[1] !== 15000 || // Area
     budgetValue[0] !== 500000 ||
-    budgetValue[1] !== 25000000 || // Budget
-    selectedLocations.length > 0 || // Localities
-    activeButtons.button5 ||
-    activeButtons.button6 ||
-    activeButtons.button7 || // Construction Status
-    activeButtons.button12 ||
-    activeButtons.button13; // Purchase type
-    const selectedBHKs = [];
-if (activeButtons.button1) selectedBHKs.push(1);
-if (activeButtons.button2) selectedBHKs.push(2);
-if (activeButtons.button3) selectedBHKs.push(3);
-if (activeButtons.button4) selectedBHKs.push(4);
-
+    budgetValue[1] !== 25000000; // Budget
+  const selectedBHKs = [];
+  if (activeButtons.button1) selectedBHKs.push(1);
+  if (activeButtons.button2) selectedBHKs.push(2);
+  if (activeButtons.button3) selectedBHKs.push(3);
+  if (activeButtons.button4) selectedBHKs.push(4);
+  const selectedStatuses = [];
+  if (activeButtons.button5) selectedStatuses.push("new launch");
+  if (activeButtons.button6) selectedStatuses.push("under construction");
+  if (activeButtons.button7) selectedStatuses.push("ready to move");
+  const selectedPurchaseTypes = [];
+  if (activeButtons.button12) selectedPurchaseTypes.push("resale");
+  if (activeButtons.button13) selectedPurchaseTypes.push("new booking");
   const selectedAmenities = [];
   if (activeButtons.button14) selectedAmenities.push("vaastu compliant");
   if (activeButtons.button15) selectedAmenities.push("security personnel");
   if (activeButtons.button16) selectedAmenities.push("gymnasium");
   if (activeButtons.button17) selectedAmenities.push("park");
   if (activeButtons.button18) selectedAmenities.push("parking");
-
+  const selectedFurnishings = [];
+  if (activeButtons.button19) selectedFurnishings.push("furnished");
+  if (activeButtons.button20) selectedFurnishings.push("unfurnished");
+  if (activeButtons.button21) selectedFurnishings.push("semifurnished");
   const filteredProperties = isAnyFilterActive
     ? currentProperties.filter((property) => {
-         // budget filter
+        // budget filter
         let priceStr = property.price.replace(/[^0-9.]/g, "");
         let priceNum = parseFloat(priceStr);
         const priceLower = property.price.trim().toLowerCase();
@@ -826,24 +822,13 @@ if (activeButtons.button4) selectedBHKs.push(4);
           return false;
         }
         //  BHK
-         if (
-        selectedBHKs.length > 0 &&
-        !selectedBHKs.includes(Math.floor(property.specs.bedrooms))
-      ) {
-        return false;
-      }
-
-        // Construction Status filter
         if (
-          (activeButtons.button5 &&
-            property.filterData.constructionStatus !== "new launch") ||
-          (activeButtons.button6 &&
-            property.filterData.constructionStatus !== "under construction") ||
-          (activeButtons.button7 &&
-            property.filterData.constructionStatus !== "ready to accupy")
+          selectedBHKs.length > 0 &&
+          !selectedBHKs.includes(Math.floor(property.specs.bedrooms))
         ) {
           return false;
         }
+
         // Area filter
         if (areaValue[0] !== 500 || areaValue[1] !== 15000) {
           let areaNum = 0;
@@ -862,7 +847,7 @@ if (activeButtons.button4) selectedBHKs.push(4);
           }
         }
 
-         // Localities filter
+        // Localities filter
         if (
           selectedLocations.length > 0 &&
           !selectedLocations.some((loc) =>
@@ -873,17 +858,15 @@ if (activeButtons.button4) selectedBHKs.push(4);
         ) {
           return false;
         }
-          // Purchase type filter
+        // Purchase type filter
         if (
-          (activeButtons.button12 &&
-            property.filterData.purchaseType !== "resale") ||
-          (activeButtons.button13 &&
-            property.filterData.purchaseType !== "new booking")
+          selectedPurchaseTypes.length > 0 &&
+          !selectedPurchaseTypes.includes(property.filterData.purchaseType)
         ) {
           return false;
         }
-    
-         // amenities  
+
+        // amenities
         if (
           selectedAmenities.length > 0 &&
           !property.filterData.amenities
@@ -892,22 +875,28 @@ if (activeButtons.button4) selectedBHKs.push(4);
         ) {
           return false;
         }
+        //  constructionStatus
 
-         // Furnishing status filter
         if (
-          (activeButtons.button19 &&
-            property.filterData.furnishing.toLowerCase() !== "furnished") ||
-          (activeButtons.button20 &&
-            property.filterData.furnishing.toLowerCase() !== "unfurnished") ||
-          (activeButtons.button21 &&
-            property.filterData.furnishing.toLowerCase() !== "semifurnished")
+          selectedStatuses.length > 0 &&
+          !selectedStatuses.includes(property.filterData.constructionStatus)
+        ) {
+          return false;
+        }
+
+        // Furnishing status filter
+        if (
+          selectedFurnishings.length > 0 &&
+          !selectedFurnishings.includes(
+            property.filterData.furnishing.toLowerCase()
+          )
         ) {
           return false;
         }
 
         return true;
       })
-    : [];
+    : currentProperties;
 
   return (
     <div>
@@ -1051,7 +1040,9 @@ if (activeButtons.button4) selectedBHKs.push(4);
               className="collapseContainer"
             />
             <div style={{ display: "flex", gap: 5 }}>
-              <Button className="ClearButton" onClick={handleClearAll}>Clear All</Button>
+              <Button className="ClearButton" onClick={handleClearAll}>
+                Clear All
+              </Button>
               <Button className="ApplyFilterButton">Apply Filter</Button>
             </div>
           </Modal>
@@ -1061,7 +1052,9 @@ if (activeButtons.button4) selectedBHKs.push(4);
           <div className="filterContainer">
             <div className="filterHeader">
               <p className="filterTitle">Filters</p>
-              <p className="clearAll" onClick={handleClearAll}>Clear All</p>
+              <p className="clearAll" onClick={handleClearAll}>
+                Clear All
+              </p>
             </div>
             <div className="separatorLine" />
             <Collapse

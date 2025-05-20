@@ -42,58 +42,39 @@ import "../styles/HomePage.css";
 const propertyType = [
   {
     key: "1",
-    label: (
-      <a target="_blank" rel="noopener noreferrer" href="#">
-        2.5 BHK
-      </a>
-    ),
+    label: "2.5 BHK",
+    value: "2.5 BHK",
   },
   {
     key: "2",
-    label: (
-      <a target="_blank" rel="noopener noreferrer" href="#">
-        3 BHK
-      </a>
-    ),
-    //   icon: <SmileOutlined />,
-    //   disabled: true,
+    label: "3 BHK",
+    value: "3 BHK",
   },
   {
     key: "3",
-    label: (
-      <a target="_blank" rel="noopener noreferrer" href="#">
-        Duplex
-      </a>
-    ),
-    //   disabled: true,
+    label: "Duplex",
+    value: "Duplex",
   },
 ];
+
 const propertySize = [
   {
     key: "1",
-    label: (
-      <a target="_blank" rel="noopener noreferrer" href="#">
-        500-1000 Sqft
-      </a>
-    ),
+    label: "500-1000 Sqft",
+    value: "500-1000 Sqft",
   },
   {
     key: "2",
-    label: (
-      <a target="_blank" rel="noopener noreferrer" href="#">
-        1000-2000 Sqft
-      </a>
-    ),
+    label: "1000-2000 Sqft",
+    value: "1000-2000 Sqft",
   },
   {
     key: "3",
-    label: (
-      <a target="_blank" rel="noopener noreferrer" href="#">
-        2000-3000 Sqft
-      </a>
-    ),
+    label: "2000-3000 Sqft",
+    value: "2000-3000 Sqft",
   },
 ];
+
 const currentProperties = [
   {
     id: 1,
@@ -200,6 +181,11 @@ export default function HomePage() {
   const [imageSrc, setImageSrc] = useState(HomeBg);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isMobile, setIsMobile] = useState(false);
+  const [searchLocation, setSearchLocation] = useState("");
+  const [searchType, setSearchType] = useState("");
+  const [searchSize, setSearchSize] = useState("");
+  const [minRange, setMinRange] = useState("");
+  const [maxRange, setMaxRange] = useState("");
   const buttonStyles = (isActive) => ({
     display: "flex",
     alignItems: "center",
@@ -304,7 +290,36 @@ export default function HomePage() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
+  
+const filterProperties = () => {
+  return currentProperties.filter((property) => {
+    // Location filter (case-insensitive, partial match)
+    if (
+      searchLocation &&
+      !property.location.toLowerCase().includes(searchLocation.toLowerCase())
+    ) {
+      return false;
+    }
+    // Type filter
+    if (searchType && property.type.trim() !== searchType.trim()) {
+      return false;
+    }
+    // Size filter (simple string match)
+    if (searchSize && property.specs.sqft !== searchSize) {
+      return false;
+    }
+    // Min/Max price filter (convert price to number for comparison)
+    if (minRange) {
+      const priceNum = Number(property.price.replace(/[^0-9.]/g, ""));
+      if (priceNum < Number(minRange)) return false;
+    }
+    if (maxRange) {
+      const priceNum = Number(property.price.replace(/[^0-9.]/g, ""));
+      if (priceNum > Number(maxRange)) return false;
+    }
+    return true;
+  });
+};
   return (
     <div>
       <Header />
@@ -360,43 +375,79 @@ export default function HomePage() {
             {/* search form */}
             {window.innerWidth <= 480 ? (
               <div className="HomeSearchForm">
-                <Input className="HomeLocation" placeholder="Location" />
+                <Input
+                  className="HomeLocation"
+                  placeholder="Location"
+                  value={searchLocation}
+                  onChange={(e) => setSearchLocation(e.target.value)}
+                />
 
                 {/* Grid layout for smaller screens */}
                 <div className="HomeGrid">
                   <div className="homeGrid1">
-                    <Dropdown menu={{ items: propertyType }}>
-                      <a onClick={(e) => e.preventDefault()}>
-                        <Space className="HomeformItem">
-                          Property Type
-                          <DownOutlined />
-                        </Space>
-                      </a>
+                    <Dropdown
+                      menu={{
+                        items: propertyType.map((item) => ({
+                          ...item,
+                          onClick: () =>
+                            setSearchType(item.value),
+                        })),
+                      }}
+                    >
+                      <Space className="HomeformItem">
+                        Property Type
+                        <DownOutlined />
+                      </Space>
                     </Dropdown>
 
-                    <Dropdown menu={{ items: propertySize }}>
-                      <a onClick={(e) => e.preventDefault()}>
-                        <Space className="HomeformItem">
-                          Property Size
-                          <DownOutlined />
-                        </Space>
-                      </a>
+                    <Dropdown
+                      menu={{
+                        items: propertySize.map((item) => ({
+                          ...item,
+                          onClick: () =>
+                            setSearchSize(item.value),
+                        })),
+                      }}
+                    >
+                      <Space className="HomeformItem">
+                        Property Size
+                        <DownOutlined />
+                      </Space>
                     </Dropdown>
                   </div>
                   <div className="homeGrid2">
                     <Input
                       className="HomeformItemInput"
-                      placeholder="Enter Min Range"
+                      placeholder="Min Range 5L"
+                      value={minRange}
+                      onChange={(e) => setMinRange(e.target.value)}
                     />
 
                     <Input
                       className="HomeformItemInput"
-                      placeholder="Enter Max Range"
+                      placeholder="Enter Max Range 50Cr"
+                      value={maxRange}
+                      onChange={(e) => setMaxRange(e.target.value)}
                     />
                   </div>
                 </div>
 
-                <Button className="HomeSearchButton" onClick={() => {}}>
+                <Button
+                  className="HomeSearchButton"
+                  
+                  onClick={() => {
+                     const filtered = filterProperties();
+                    navigate("/listings", {
+                      state: {
+                        location: searchLocation,
+                        type: searchType,
+                        size: searchSize,
+                        minRange,
+                        maxRange,
+                      },
+                    });
+                  }}
+                >
                   Search
                 </Button>
               </div>
@@ -404,29 +455,63 @@ export default function HomePage() {
               <div className="HomeSearchForm">
                 <Input className="HomeLocation" placeholder="Location" />
 
-                <Dropdown menu={{ items: propertyType }}>
-                  <a onClick={(e) => e.preventDefault()}>
-                    <Space className="HomeformItem">
-                      Property Type
-                      <DownOutlined />
-                    </Space>
-                  </a>
+                <Dropdown
+                  menu={{
+                    items: propertyType.map((item) => ({
+                      ...item,
+                      onClick: () => setSearchType(item.value),
+                    })),
+                  }}
+                >
+                  <Space className="HomeformItem">
+                   {searchType || "Property Type"}
+                    <DownOutlined />
+                  </Space>
                 </Dropdown>
 
-                <Dropdown menu={{ items: propertySize }}>
-                  <a onClick={(e) => e.preventDefault()}>
-                    <Space className="HomeformItem">
-                      Property Size
-                      <DownOutlined />
-                    </Space>
-                  </a>
+                <Dropdown
+                  menu={{
+                    items: propertySize.map((item) => ({
+                      ...item,
+                      onClick: () => setSearchSize(item.value),
+                    })),
+                  }}
+                >
+                  <Space className="HomeformItem">
+                    {searchSize || "Property Size"}
+                    <DownOutlined />
+                  </Space>
                 </Dropdown>
 
-                <Input className="HomeformItemInput" placeholder="Enter Min Range" />
+                <Input
+                  className="HomeformItemInput"
+                  placeholder="Enter Min Range"
+                  value={minRange}
+                  onChange={(e) => setMinRange(e.target.value)}
+                />
 
-                <Input className="HomeformItemInput" placeholder="Enter Max Range" />
+                <Input
+                  className="HomeformItemInput"
+                  placeholder="Enter Max Range"
+                  value={maxRange}
+                  onChange={(e) => setMaxRange(e.target.value)}
+                />
 
-                <Button className="HomeSearchButton" onClick={() => {}}>
+                <Button
+                  className="HomeSearchButton"
+                  onClick={() => {
+                     const filtered = filterProperties();
+                    navigate("/listings", {
+                      state: {
+                        location: searchLocation,
+                        type: searchType,
+                        size: searchSize,
+                        minRange,
+                        maxRange,
+                      },
+                    });
+                  }}
+                >
                   Search
                 </Button>
               </div>
