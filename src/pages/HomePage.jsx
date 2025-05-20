@@ -385,12 +385,12 @@ export default function HomePage() {
                   </div>
                   <div className="homeGrid2">
                     <Input
-                      className="HomeformItem"
+                      className="HomeformItemInput"
                       placeholder="Enter Min Range"
                     />
 
                     <Input
-                      className="HomeformItem"
+                      className="HomeformItemInput"
                       placeholder="Enter Max Range"
                     />
                   </div>
@@ -422,9 +422,9 @@ export default function HomePage() {
                   </a>
                 </Dropdown>
 
-                <Input className="HomeformItem" placeholder="Enter Min Range" />
+                <Input className="HomeformItemInput" placeholder="Enter Min Range" />
 
-                <Input className="HomeformItem" placeholder="Enter Max Range" />
+                <Input className="HomeformItemInput" placeholder="Enter Max Range" />
 
                 <Button className="HomeSearchButton" onClick={() => {}}>
                   Search

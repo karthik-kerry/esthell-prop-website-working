@@ -907,11 +907,13 @@ h4 {
     position: static; 
     top: auto;
   }
+
 }
 @media (max-width:380px){
   .imageGrid{
         grid-template-columns: repeat(3, 3fr);
   }
+
 }
 
 

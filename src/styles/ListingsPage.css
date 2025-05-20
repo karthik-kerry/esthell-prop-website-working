@@ -90,6 +90,21 @@
   justify-content: space-between;
   margin-right: 10px;
 }
+  .ListingformItemInput{
+     height: 44px;
+  width: 150px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0a51a333;
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #bfbfbf;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 10px;
+  }
 .ListingSearchButton{
   background-color: #001C6B;
   color: white;
@@ -909,6 +924,9 @@ width: 100%;
 .ListingHeroButtonGroup{
   gap:8px;
 }
+  .ListingformItemInput{
+    width: 143px !important;
+  }
 
 }
 @media (max-width: 380px) {
@@ -952,6 +970,9 @@ width: 100%;
   font-size: 14px;
   font-weight: 400;
 }
+  .ListingformItemInput{
+    width: 143px !important;
+  }
   .listingsContainer{
     align-items: center;
     justify-content: center;

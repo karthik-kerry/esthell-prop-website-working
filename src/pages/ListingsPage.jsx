@@ -845,12 +845,12 @@ export default function ListingsPage() {
                 </div>
                 <div className="ListingGrid2">
                   <Input
-                    className="HomeformItem"
+                    className="ListingformItemInput"
                     placeholder="Enter Min Range"
                   />
 
                   <Input
-                    className="HomeformItem"
+                    className="ListingformItemInput"
                     placeholder="Enter Max Range"
                   />
                 </div>
@@ -882,9 +882,9 @@ export default function ListingsPage() {
                 </a>
               </Dropdown>
 
-              <Input className="HomeformItem" placeholder="Enter Min Range" />
+              <Input className="ListingformItemInput" placeholder="Enter Min Range" />
 
-              <Input className="HomeformItem" placeholder="Enter Max Range" />
+              <Input className="ListingformItemInput" placeholder="Enter Max Range" />
 
               <Button className="ListingSearchButton" onClick={() => {}}>
                 Search
