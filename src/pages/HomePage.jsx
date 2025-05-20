@@ -39,12 +39,12 @@ import { PiBathtub } from "react-icons/pi";
 import { AiOutlineHome } from "react-icons/ai";
 import "../styles/HomePage.css";
 
-const items = [
+const propertyType = [
   {
     key: "1",
     label: (
       <a target="_blank" rel="noopener noreferrer" href="#">
-        1st menu item
+        2.5 BHK
       </a>
     ),
   },
@@ -52,7 +52,7 @@ const items = [
     key: "2",
     label: (
       <a target="_blank" rel="noopener noreferrer" href="#">
-        2nd menu item
+        3 BHK
       </a>
     ),
     //   icon: <SmileOutlined />,
@@ -62,10 +62,36 @@ const items = [
     key: "3",
     label: (
       <a target="_blank" rel="noopener noreferrer" href="#">
-        3rd menu item
+        Duplex
       </a>
     ),
     //   disabled: true,
+  },
+];
+const propertySize = [
+  {
+    key: "1",
+    label: (
+      <a target="_blank" rel="noopener noreferrer" href="#">
+        500-1000 Sqft
+      </a>
+    ),
+  },
+  {
+    key: "2",
+    label: (
+      <a target="_blank" rel="noopener noreferrer" href="#">
+        1000-2000 Sqft
+      </a>
+    ),
+  },
+  {
+    key: "3",
+    label: (
+      <a target="_blank" rel="noopener noreferrer" href="#">
+        2000-3000 Sqft
+      </a>
+    ),
   },
 ];
 const currentProperties = [
@@ -75,44 +101,44 @@ const currentProperties = [
     location: "Velachery, Chennai",
     price: "₹1.64 Cr",
     type: "Apartment ",
-     images: [Property1, Property],
-    yearBuilt:2025,
-    facing:"East",
+    images: [Property1, Property],
+    yearBuilt: 2025,
+    facing: "East",
     specs: {
       bedrooms: 2.5,
       baths: 2,
       sqft: "1492 Sqft",
     },
-    details:{
-     specification:"2BHK +2 T + S",
-     furnishing:"No",
-     flatNo:"-",
-     FloorNo:"-",
-     builtUpArea:"1492",
+    details: {
+      specification: "2BHK +2 T + S",
+      furnishing: "No",
+      flatNo: "-",
+      FloorNo: "-",
+      builtUpArea: "1492",
     },
     highlights: ["East & West facing"],
     description:
       "Spacious 2.5 BHK with 2 bathrooms, ideally located near schools and the railway station for convenient living.",
-    status:"ready to occupy",
+    status: "ready to occupy",
     listedOn: "20 Mar 2025",
     company: {
       name: "Esthell Properties",
       logo: "/logo.png",
     },
-    detailedInfo:{
+    detailedInfo: {
       bedrooms: "2.5 / 3 / Duplex",
       baths: "2/3/4",
       sqft: "1492-2897 Sqft",
-      facing:"East & West",
+      facing: "East & West",
       description:
-      "Spacious 2.5/3/Duplex BHK with 2/3/4 bathrooms, ideally located near schools and the railway station for convenient living.",
+        "Spacious 2.5/3/Duplex BHK with 2/3/4 bathrooms, ideally located near schools and the railway station for convenient living.",
     },
-   highlightsInfo:{
-      point1:"Just 500 meters from Pallavanthangal Station",
-      point2:"Only 1 km from Velachery Station",
-      point3:"Right across from Sunshine School",
-      point4:"Nestled behind the soon-to-come XB Mall",
-      point5:"Crafted with premium red bricks and river sand",
+    highlightsInfo: {
+      point1: "Just 500 meters from Pallavanthangal Station",
+      point2: "Only 1 km from Velachery Station",
+      point3: "Right across from Sunshine School",
+      point4: "Nestled behind the soon-to-come XB Mall",
+      point5: "Crafted with premium red bricks and river sand",
     },
   },
   {
@@ -121,22 +147,22 @@ const currentProperties = [
     location: " Uthandi, Chennai",
     price: "₹9 Cr",
     type: "Individual Villa ",
-     images: [OliveSands1, OliveSands1],
-     yearBuilt:2025,
-    facing:"South",
+    images: [OliveSands1, OliveSands1],
+    yearBuilt: 2025,
+    facing: "South",
     specs: {
       bedrooms: false,
       baths: false,
       sqft: "4.55 Grounds",
     },
-     details:{
-     specification:"-",
-     furnishing:"No",
-     flatNo:"-",
-     FloorNo:"-",
-     builtUpArea:"4.55 Grounds",
+    details: {
+      specification: "-",
+      furnishing: "No",
+      flatNo: "-",
+      FloorNo: "-",
+      builtUpArea: "4.55 Grounds",
     },
-    status:"new",
+    status: "new",
     highlights: ["South facing plot"],
     description:
       "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
@@ -145,18 +171,18 @@ const currentProperties = [
       name: "Esthell Homes",
       logo: "/logo.png",
     },
-     detailedInfo:{
+    detailedInfo: {
       bedrooms: " ",
       baths: " ",
       sqft: "4.55 Grounds",
-      facing:"South",
+      facing: "South",
       description:
-      "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
+        "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
     },
-   highlightsInfo:{
-      point1:"Just 500 meters from Pallavanthangal Station",
-      point2:"Only 1 km from Velachery Station",
-      point3:"Right across from Sunshine School",
+    highlightsInfo: {
+      point1: "Just 500 meters from Pallavanthangal Station",
+      point2: "Only 1 km from Velachery Station",
+      point3: "Right across from Sunshine School",
     },
   },
 ];
@@ -190,17 +216,17 @@ export default function HomePage() {
     cursor: "pointer",
   });
 
- const handleViewAll = () => {
-  navigate('/listings'); 
-};
+  const handleViewAll = () => {
+    navigate("/listings");
+  };
   const handleCardClick = (property) => {
     navigate("/details", { state: { property } });
   };
-   const [currentIndexes, setCurrentIndexes] = useState(
-      currentProperties.map(() => 0)
-    );
+  const [currentIndexes, setCurrentIndexes] = useState(
+    currentProperties.map(() => 0)
+  );
 
-    const handlePrev = (propertyIdx) => {
+  const handlePrev = (propertyIdx) => {
     setCurrentIndexes((prev) =>
       prev.map((idx, i) =>
         i === propertyIdx
@@ -339,7 +365,7 @@ export default function HomePage() {
                 {/* Grid layout for smaller screens */}
                 <div className="HomeGrid">
                   <div className="homeGrid1">
-                    <Dropdown menu={{ items }}>
+                    <Dropdown menu={{ items: propertyType }}>
                       <a onClick={(e) => e.preventDefault()}>
                         <Space className="HomeformItem">
                           Property Type
@@ -348,7 +374,7 @@ export default function HomePage() {
                       </a>
                     </Dropdown>
 
-                    <Dropdown menu={{ items }}>
+                    <Dropdown menu={{ items: propertySize }}>
                       <a onClick={(e) => e.preventDefault()}>
                         <Space className="HomeformItem">
                           Property Size
@@ -358,23 +384,15 @@ export default function HomePage() {
                     </Dropdown>
                   </div>
                   <div className="homeGrid2">
-                    <Dropdown menu={{ items }}>
-                      <a onClick={(e) => e.preventDefault()}>
-                        <Space className="HomeformItem">
-                          Min Range
-                          <DownOutlined />
-                        </Space>
-                      </a>
-                    </Dropdown>
+                    <Input
+                      className="HomeformItem"
+                      placeholder="Enter Min Range"
+                    />
 
-                    <Dropdown menu={{ items }}>
-                      <a onClick={(e) => e.preventDefault()}>
-                        <Space className="HomeformItem">
-                          Max Range
-                          <DownOutlined />
-                        </Space>
-                      </a>
-                    </Dropdown>
+                    <Input
+                      className="HomeformItem"
+                      placeholder="Enter Max Range"
+                    />
                   </div>
                 </div>
 
@@ -386,7 +404,7 @@ export default function HomePage() {
               <div className="HomeSearchForm">
                 <Input className="HomeLocation" placeholder="Location" />
 
-                <Dropdown menu={{ items }}>
+                <Dropdown menu={{ items: propertyType }}>
                   <a onClick={(e) => e.preventDefault()}>
                     <Space className="HomeformItem">
                       Property Type
@@ -395,7 +413,7 @@ export default function HomePage() {
                   </a>
                 </Dropdown>
 
-                <Dropdown menu={{ items }}>
+                <Dropdown menu={{ items: propertySize }}>
                   <a onClick={(e) => e.preventDefault()}>
                     <Space className="HomeformItem">
                       Property Size
@@ -404,23 +422,9 @@ export default function HomePage() {
                   </a>
                 </Dropdown>
 
-                <Dropdown menu={{ items }}>
-                  <a onClick={(e) => e.preventDefault()}>
-                    <Space className="HomeformItem">
-                      Min Range
-                      <DownOutlined />
-                    </Space>
-                  </a>
-                </Dropdown>
+                <Input className="HomeformItem" placeholder="Enter Min Range" />
 
-                <Dropdown menu={{ items }}>
-                  <a onClick={(e) => e.preventDefault()}>
-                    <Space className="HomeformItem">
-                      Max Range
-                      <DownOutlined />
-                    </Space>
-                  </a>
-                </Dropdown>
+                <Input className="HomeformItem" placeholder="Enter Max Range" />
 
                 <Button className="HomeSearchButton" onClick={() => {}}>
                   Search
@@ -440,14 +444,14 @@ export default function HomePage() {
             <div
               className="stepContainer"
               onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "scale(1.05)";
-        e.currentTarget.style.boxShadow =
-          "0 8px 16px rgba(0, 0, 0, 0.2)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "scale(1)";
-        e.currentTarget.style.boxShadow = "none";
-      }}
+                e.currentTarget.style.transform = "scale(1.05)";
+                e.currentTarget.style.boxShadow =
+                  "0 8px 16px rgba(0, 0, 0, 0.2)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
             >
               <img src={SearchIcon} className="stepIcon" />
               <p className="stepTitle">01. Search for Location</p>
@@ -692,24 +696,30 @@ export default function HomePage() {
                 <div className="hpPropImgContainer">
                   <div className="hpPropImageWrapper">
                     <img
-                       src={property.images[currentIndexes[index]]}
+                      src={property.images[currentIndexes[index]]}
                       alt={property.name}
                       className="hpPropImage"
                     />
                     {/* Prev Button */}
-                    <button  onClick={() => handlePrev(index)} className="homePagePrevButton">
+                    <button
+                      onClick={() => handlePrev(index)}
+                      className="homePagePrevButton"
+                    >
                       <FaChevronLeft color="white" />
                     </button>
                     {/* Next Button */}
-                    <button   onClick={() => handleNext(index)} className="homePageNextButton">
+                    <button
+                      onClick={() => handleNext(index)}
+                      className="homePageNextButton"
+                    >
                       <FaChevronRight color="white" />
                     </button>
                     {/* Step Indicator */}
-                      <div className="hpPropStepIndicator">
+                    <div className="hpPropStepIndicator">
                       {property.images.map((_, imgIdx) => (
                         <div
                           key={imgIdx}
-                           className={`hpStepIndicatorDot ${
+                          className={`hpStepIndicatorDot ${
                             currentIndexes[index] === imgIdx
                               ? "hpStepIndicatorDotActive"
                               : ""
@@ -731,7 +741,7 @@ export default function HomePage() {
                 </div>
                 <div
                   className="hpPropDetailsContainer"
-                 onClick={() => handleCardClick(property)}
+                  onClick={() => handleCardClick(property)}
                 >
                   <div>
                     <p className="hpPropName">{property.name}</p>
@@ -744,7 +754,10 @@ export default function HomePage() {
                   </div>
                   <p className="hpPropPrice">{property.price}</p>
                 </div>
-                <div className="hpPropDetails" onClick={() => handleCardClick(property)}>
+                <div
+                  className="hpPropDetails"
+                  onClick={() => handleCardClick(property)}
+                >
                   <div className="hpPropDetailItem">
                     <LuBedDouble color="#001C6B" />{" "}
                     <span className="text">{property.specs.bedrooms} BHK</span>
@@ -758,7 +771,10 @@ export default function HomePage() {
                     <span className="text">{property.specs.sqft}</span>
                   </div>
                 </div>
-                <div className="hpPropHighlights" onClick={() => handleCardClick(property)}>
+                <div
+                  className="hpPropHighlights"
+                  onClick={() => handleCardClick(property)}
+                >
                   <p className="hpPropHighlightsText">Highlights: </p>
                   {property.highlights.map((highlight, idx) => (
                     <p key={idx} className="propertyHighlight">

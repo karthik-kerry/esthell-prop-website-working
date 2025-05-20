@@ -717,6 +717,67 @@ export default function ListingsPage() {
       ),
     },
   ];
+  //   // --- Filtering logic ---
+  // // --- Filtering logic ---
+  // const filteredProperties = currentProperties.filter((property) => {
+  //   // Budget filter (example: you need to map your budgetValue to actual price range)
+  //   if (budgetValue && budgetValue.length === 2) {
+  //     const priceNum = Number(property.price.replace(/[^0-9.]/g, ""));
+  //     if (priceNum < budgetValue[0] || priceNum > budgetValue[1]) {
+  //       return false;
+  //     }
+  //   }
+
+  //   // Type of property filter (BHK)
+  //   if (
+  //     (activeButtons.button1 && !property.detailedInfo.bedrooms.includes("1")) ||
+  //     (activeButtons.button2 && !property.detailedInfo.bedrooms.includes("2")) ||
+  //     (activeButtons.button3 && !property.detailedInfo.bedrooms.includes("3")) ||
+  //     (activeButtons.button4 && !property.detailedInfo.bedrooms.includes("4"))
+  //   ) {
+  //     return false;
+  //   }
+
+  //   // Construction Status filter
+  //   if (
+  //     (activeButtons.button5 && property.status.toLowerCase() !== "new launch") ||
+  //     (activeButtons.button6 && property.status.toLowerCase() !== "under construction") ||
+  //     (activeButtons.button7 && property.status.toLowerCase() !== "ready to occupy")
+  //   ) {
+  //     return false;
+  //   }
+
+  //   // Localities filter
+  //   if (
+  //     selectedLocations.length > 0 &&
+  //     !selectedLocations.some((loc) =>
+  //       property.location.toLowerCase().includes(loc.toLowerCase())
+  //     )
+  //   ) {
+  //     return false;
+  //   }
+
+  //   // Area filter
+  //   if (areaValue && areaValue.length === 2) {
+  //     const areaNum = Number(
+  //       String(property.specs.sqft).replace(/[^0-9.]/g, "")
+  //     );
+  //     if (areaNum < areaValue[0] || areaNum > areaValue[1]) {
+  //       return false;
+  //     }
+  //   }
+
+  //   // Furnishing status filter (fix to match your data)
+  //   if (
+  //     (activeButtons.button19 && property.details.furnishing.toLowerCase() !== "furnished") ||
+  //     (activeButtons.button20 && property.details.furnishing.toLowerCase() !== "No") ||
+  //     (activeButtons.button21 && property.details.furnishing.toLowerCase() !== "semifurnished")
+  //   ) {
+  //     return false;
+  //   }
+
+  //   return true;
+  // });
 
   return (
     <div>
@@ -783,23 +844,15 @@ export default function ListingsPage() {
                   </Dropdown>
                 </div>
                 <div className="ListingGrid2">
-                  <Dropdown menu={{ items: dropDownItems }}>
-                    <a onClick={(e) => e.preventDefault()}>
-                      <Space className="ListingformItem">
-                        Min Range
-                        <DownOutlined />
-                      </Space>
-                    </a>
-                  </Dropdown>
+                  <Input
+                    className="HomeformItem"
+                    placeholder="Enter Min Range"
+                  />
 
-                  <Dropdown menu={{ items: dropDownItems }}>
-                    <a onClick={(e) => e.preventDefault()}>
-                      <Space className="ListingformItem">
-                        Max Range
-                        <DownOutlined />
-                      </Space>
-                    </a>
-                  </Dropdown>
+                  <Input
+                    className="HomeformItem"
+                    placeholder="Enter Max Range"
+                  />
                 </div>
               </div>
 
@@ -829,23 +882,9 @@ export default function ListingsPage() {
                 </a>
               </Dropdown>
 
-              <Dropdown menu={{ items: dropDownItems }}>
-                <a onClick={(e) => e.preventDefault()}>
-                  <Space className="ListingformItem">
-                    Min Range
-                    <DownOutlined />
-                  </Space>
-                </a>
-              </Dropdown>
+              <Input className="HomeformItem" placeholder="Enter Min Range" />
 
-              <Dropdown menu={{ items: dropDownItems }}>
-                <a onClick={(e) => e.preventDefault()}>
-                  <Space className="ListingformItem">
-                    Max Range
-                    <DownOutlined />
-                  </Space>
-                </a>
-              </Dropdown>
+              <Input className="HomeformItem" placeholder="Enter Max Range" />
 
               <Button className="ListingSearchButton" onClick={() => {}}>
                 Search

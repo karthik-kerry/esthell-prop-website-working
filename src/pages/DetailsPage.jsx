@@ -146,7 +146,7 @@ export default function DetailsPage() {
         <div className="detailPageContent">
           <div className="detailPageLeft">
             {/* detailes image view */}
-            <div className="detailPageImgContainer">
+            <div className="detailPageImgContainer" >
               <div className="detailPageImageWrapper">
                 <img
                   src={property.images[currentIndex]}
