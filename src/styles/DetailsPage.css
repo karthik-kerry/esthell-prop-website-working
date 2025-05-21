@@ -313,9 +313,33 @@ justify-content: flex-start;
 }
 
 .detailPageFloorPlanImage {
-  margin-top: -50px;
-  width: 350px;
+  width: 100%;
   height: 250px;
+}
+.detailPageFloorPlanSlider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.detailPageFloorPlanSingle {
+  text-align: center;
+}
+.detailPageFloorPlanArrow {
+  background: #f4f4f4;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition:ease-in 0.2s;
+}
+.detailPageFloorPlanArrow:hover {
+  background: #e0e0e0;
 }
 /* location */
 .DetailPageLocation{

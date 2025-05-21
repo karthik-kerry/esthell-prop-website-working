@@ -94,6 +94,15 @@ export default function DetailsPage() {
     },
     zoom: 11,
   };
+  const floorPlans = [
+    { label: "SITE PLAN", src: SitePlan },
+    { label: "GROUND FLOOR PLAN", src: GroundFloorPlan },
+    { label: "FIRST FLOOR PLAN", src: FirstFloorPlan },
+    { label: "TYPICAL FLOOR PLAN", src: TypicalFloorPlan },
+    { label: "DUPLEX LOWER", src: DuplexLower },
+    { label: "DUPLEX UPPER", src: DuplexUpper },
+  ];
+  const [floorPlanIndex, setFloorPlanIndex] = useState(0);
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
@@ -419,7 +428,7 @@ export default function DetailsPage() {
                 </div>
                 <div className="detailPageDivider" />
                 {/* floor plans */}
-                <div>
+                {/* <div>
                   <p className="detailPageFloorPlansHeader">Floor Plans</p>
                   <div className="detailPageFloorPlansContainer">
                     <div>
@@ -469,6 +478,38 @@ export default function DetailsPage() {
                       />
                     </div>
                   </div>
+                </div> */}
+                <div className="detailPageFloorPlanSlider">
+                  <button
+                    className="detailPageFloorPlanArrow"
+                    onClick={() =>
+                      setFloorPlanIndex(
+                        floorPlanIndex === 0
+                          ? floorPlans.length - 1
+                          : floorPlanIndex - 1
+                      )
+                    }
+                  >
+                    <FaChevronLeft color="#001C6B" size={18} />
+                  </button>
+                  <div className="detailPageFloorPlanSingle">
+                    <p>{floorPlans[floorPlanIndex].label}</p>
+                    <img
+                      src={floorPlans[floorPlanIndex].src}
+                      className="detailPageFloorPlanImage"
+                      alt={floorPlans[floorPlanIndex].label}
+                    />
+                  </div>
+                  <button
+                    className="detailPageFloorPlanArrow"
+                    onClick={() =>
+                      setFloorPlanIndex(
+                        (floorPlanIndex + 1) % floorPlans.length
+                      )
+                    }
+                  >
+                    <FaChevronRight color="#001C6B" size={18} />
+                  </button>
                 </div>
                 <div className="detailPageDivider" />
               </>
@@ -477,10 +518,8 @@ export default function DetailsPage() {
             {/* location */}
             <div className="DetailPageLocation">
               <div className="DetailPageLocationWrapper">
-                <IoLocationOutline style={{width:"5%"}}/>
-                <p className="locationText">
-                 {property.address}
-                </p>
+                <IoLocationOutline style={{ width: "5%" }} />
+                <p className="locationText">{property.address}</p>
               </div>
             </div>
 
@@ -646,7 +685,9 @@ export default function DetailsPage() {
               </div>
               <div className="detailcontactItem">
                 <a
-                  href={`https://wa.me/917218212345?text=Hi%20I%20am%20interested%20in%20a%20property%20enquiry%20for%20${encodeURIComponent(property.name)}`}
+                  href={`https://wa.me/917218212345?text=Hi%20I%20am%20interested%20in%20a%20property%20enquiry%20for%20${encodeURIComponent(
+                    property.name
+                  )}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
