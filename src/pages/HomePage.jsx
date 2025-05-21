@@ -102,6 +102,7 @@ const currentProperties = [
     id: 1,
     name: "Esthell Homes",
     location: "Velachery, Chennai",
+    address:"Esthell Golden Square TS, No: 1/10, No: 176, Inner Ring Road (South Segment), Opp. Sunshine School, Velachery, Chennai – 600 042 Tamil Nadu, India.",
     price: "₹1.64 Cr",
     type: "Apartment ",
     images: [Property1, Property],
@@ -137,7 +138,7 @@ const currentProperties = [
         "Spacious 2.5/3/Duplex BHK with 2/3/4 bathrooms, ideally located near schools and the railway station for convenient living.",
     },
     highlightsInfo: {
-      point1: "Just 100m meters from Pallavanthangal Station",
+      point1: "Just 100m meters from Puzhuthivakkam Station",
       point2: "Only 700 from Velachery Station",
       point3: " Opposite from Sunshine School",
       point4: "Nestled behind the soon-to-come XB Mall",
@@ -153,11 +154,13 @@ const currentProperties = [
     },
     startingFrom: "Starting From",
     iconType: ["bed", "bath", "sqft"],
+    map:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3002.0276592160058!2d80.2106945!3d12.9747379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dde1051c295%3A0xdefad79426dff8db!2sEsthell%20Homes!5e1!3m2!1sen!2sin!4v1747815401006!5m2!1sen!2sin"
   },
   {
     id: 2,
     name: "Olive Sands",
     location: " Uthandi, Chennai",
+    address:"Juhu Beach, VRS Salai Rd, Uthandi, Chennai, Tamil Nadu 600119",
     price: "₹9 Cr",
     type: "Individual Villa ",
     images: [OliveSands1, OliveSands1],
@@ -175,7 +178,7 @@ const currentProperties = [
       FloorNo: "-",
       builtUpArea: "4.55 Grounds",
     },
-    status: "new",
+    status: "new property",
     highlights: ["Gated Community", "Sea View plot"],
     description:
       "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
@@ -207,8 +210,11 @@ const currentProperties = [
     },
     startingFrom: "",
     iconType: ["sqfts", "grounds", "frontage"],
+     map:"https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin",
+     
   },
 ];
+
 
 export default function HomePage() {
   const navigate = useNavigate();

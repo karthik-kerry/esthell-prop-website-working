@@ -38,6 +38,8 @@ import SitePlan from "../assets/SitePlan.svg";
 import TypicalFloorPlan from "../assets/TypicalFloorPlan.svg";
 import { IoMdMail } from "react-icons/io";
 import { IoLogoWhatsapp } from "react-icons/io";
+import { LiaRoadSolid } from "react-icons/lia";
+import { IoExpandOutline } from "react-icons/io5";
 import {
   FaCarSide,
   FaUtensils,
@@ -249,19 +251,25 @@ export default function DetailsPage() {
                     Listed on: {property.listedOn}
                   </p>
                 </div>
-                 <div style={{ display: "flex", flexDirection: "column" }}>
-                <div style={{ display: "flex",gap:10}}>
-                  <FaPhoneAlt />
-                  <p style={{marginTop:"-5px"}}>+91 72182 12345 / +91 74182 01555</p>
+                <div className="detailContactContainer">
+                  <div className="detailcontactItem">
+                    <FaPhoneAlt color="#001C6B" />
+                    <p className="detailcontactText">
+                      +91 72182 12345 / +91 74182 01555
+                    </p>
+                  </div>
+                  <div className="detailcontactItem">
+                    <IoMdMail color="#001C6B" />
+                    <p className="detailcontactText">
+                      vpraveen@esthellproperties.com
+                    </p>
+                  </div>
                 </div>
-                <div style={{ display: "flex",gap:10 }}>
-                  <IoMdMail />
-                  <p style={{marginTop:"-5px"}}>vpraveen@esthellproperties.com</p>
-                </div>
-              </div>
-                <div style={{ display: "flex",gap:10}}>
-                     <IoLogoWhatsapp color="#67C15E" style={{height:52,width:55,marginTop:-10
-                }}/>
+                <div className="detailcontactItem">
+                  <IoLogoWhatsapp
+                    color="#67C15E"
+                    className="detailwhatsappIcon"
+                  />
                   <Button
                     onClick={handleEnquiryClick}
                     className="detailPageEnquiryButton"
@@ -273,7 +281,7 @@ export default function DetailsPage() {
             )}
             {/* houseInfo */}
             <div className="detailPageHouseInfoContainer">
-              <div className="detailPagHouseInfoItem">
+              {/* <div className="detailPagHouseInfoItem">
                 <LuBedDouble className="detailPageInfoIcon" />
                 <p className="detailsInfoText">
                   {property.detailedInfo.bedrooms}
@@ -288,7 +296,27 @@ export default function DetailsPage() {
               <div className="detailPagHouseInfoItem">
                 <AiOutlineHome className="detailPageInfoIcon" />
                 <p className="detailsInfoText">{property.detailedInfo.sqft}</p>
-              </div>
+              </div> */}
+              {property.iconType.map((type, idx) => (
+                <div className="detailPagHouseInfoItem" key={type + idx}>
+                  {type === "bed" && <LuBedDouble color="#001C6B" />}
+                  {type === "bath" && <PiBathtub color="#001C6B" />}
+                  {type === "sqft" && <AiOutlineHome color="#001C6B" />}
+                  {type === "sqfts" && <AiOutlineHome color="#001C6B" />}
+                  {type === "grounds" && <IoExpandOutline color="#001C6B" />}
+                  {type === "frontage" && <LiaRoadSolid color="#001C6B" />}
+
+                  {/* Add more icon types as needed */}
+                  <span className="text">
+                    {type === "bed" && `${property.specs.bedrooms} BHK`}
+                    {type === "bath" && `${property.specs.baths} Baths`}
+                    {type === "sqfts" && property.detailedInfo.sqfts}
+                    {type === "sqft" && property.specs.sqft}
+                    {type === "grounds" && property.specs.sqft}
+                    {type === "frontage" && property.detailedInfo.frontage}
+                  </span>
+                </div>
+              ))}
               <div className="detailPagHouseInfoItem">
                 <AiOutlineCalendar className="detailPageInfoIcon" />
                 <p className="detailsInfoText"> {property.builtStatus}</p>
@@ -448,15 +476,10 @@ export default function DetailsPage() {
 
             {/* location */}
             <div className="DetailPageLocation">
-              <div>
-                {" "}
-                <IoLocationOutline />
-              </div>
-              <div>
+              <div className="DetailPageLocationWrapper">
+                <IoLocationOutline style={{width:"5%"}}/>
                 <p className="locationText">
-                  Esthell Golden Square TS, No: 1/10, No: 176, Inner Ring Road
-                  (South Segment), Opp. Sunshine School, Velachery, Chennai –
-                  600 042 Tamil Nadu, India.
+                 {property.address}
                 </p>
               </div>
             </div>
@@ -464,7 +487,7 @@ export default function DetailsPage() {
             {/* map */}
             <div className="detailPageMapContainer">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.9870076954066!2d80.28735957367391!3d13.10000951205284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f8124677793%3A0x97f482509d2f1ff1!2sKerry%20Indev%20Corporate%20Office!5e0!3m2!1sen!2sin!4v1746779168972!5m2!1sen!2sin"
+                src={property.map}
                 className="detailPageMapIframe"
                 allowFullScreen=""
                 loading="lazy"
@@ -607,19 +630,31 @@ export default function DetailsPage() {
                   Listed on: {property.listedOn}
                 </p>
               </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <div style={{ display: "flex",gap:10}}>
-                  <FaPhoneAlt />
-                  <p style={{marginTop:"-5px"}}>+91 72182 12345 / +91 74182 01555</p>
+              <div className="detailContactContainer">
+                <div className="detailcontactItem">
+                  <FaPhoneAlt color="#001C6B" />
+                  <p className="detailcontactText">
+                    +91 72182 12345 / +91 74182 01555
+                  </p>
                 </div>
-                <div style={{ display: "flex",gap:10 }}>
-                  <IoMdMail />
-                  <p style={{marginTop:"-5px"}}>vpraveen@esthellproperties.com</p>
+                <div className="detailcontactItem">
+                  <IoMdMail color="#001C6B" />
+                  <p className="detailcontactText">
+                    vpraveen@esthellproperties.com
+                  </p>
                 </div>
               </div>
-              <div style={{ display: "flex",gap:10}}>
-                <IoLogoWhatsapp color="#67C15E" style={{height:52,width:55,marginTop:-10
-                }}/>
+              <div className="detailcontactItem">
+                <a
+                  href={`https://wa.me/917218212345?text=Hi%20I%20am%20interested%20in%20a%20property%20enquiry%20for%20${encodeURIComponent(property.name)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <IoLogoWhatsapp
+                    color="#67C15E"
+                    className="detailwhatsappIcon"
+                  />
+                </a>
                 <Button
                   onClick={handleEnquiryClick}
                   className="detailPageEnquiryButton"
