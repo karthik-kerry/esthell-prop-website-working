@@ -60,121 +60,122 @@ export default function ListingsPage() {
   }, [location]);
 
   const currentProperties = [
-  {
-    id: 1,
-    name: "Esthell Homes",
-    location: "Velachery, Chennai",
-    address:"Esthell Golden Square TS, No: 1/10, No: 176, Inner Ring Road (South Segment), Opp. Sunshine School, Velachery, Chennai – 600 042 Tamil Nadu, India.",
-    price: "₹1.64 Cr",
-    type: "Apartment ",
-    images: [Property1, Property],
-    builtStatus:"Ready To Occupy",
-    facing: "East",
-    specs: {
-      bedrooms: "2.5/3/Duplex",
-      baths: "2/3/4",
-      sqft: "1492-2897 Sqft",
-    },
-    details: {
-      specification: "2BHK +2 T + S",
-      furnishing: "No",
-      flatNo: "-",
-      FloorNo: "-",
-      builtUpArea: "1492",
-    },
-    highlights: ["Behind XB mall", "700m from Velachery station"],
-    description:
-      "Discover premium 2.5, 3 BHK & Duplex apartments with 2–4 bathrooms, located in the heart of Velachery.",
-    status: "ready to occupy",
-    listedOn: "20 Mar 2025",
-    company: {
-      name: "Esthell Properties",
-      logo: "/logo.png",
-    },
-    detailedInfo: {
-      bedrooms: "2.5 / 3 / Duplex",
-      baths: "2/3/4",
-      sqft: "1492-2897 Sqft",
-      facing: "East & West",
-      description:
-        "Spacious 2.5/3/Duplex BHK with 2/3/4 bathrooms, ideally located near schools and the railway station for convenient living.",
-    },
-    highlightsInfo: {
-      point1: "Just 100m meters from Puzhuthivakkam Station",
-      point2: "Only 700 from Velachery Station",
-      point3: " Opposite from Sunshine School",
-      point4: "Nestled behind the soon-to-come XB Mall",
-      point5: "Crafted with red bricks and river sand",
-      point6:"No common wall sharing"
-    },
-    filterData: {
-      constructionStatus: "ready to move",
-      localities: "Velachery",
-      purchaseType: "new booking",
-      amenities: ["parking", "gymnasium"],
-      furnishing: "Unfurnished",
-    },
-    startingFrom: "Starting From",
-    iconType: ["bed", "bath", "sqft"],
-     map:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3002.0276592160058!2d80.2106945!3d12.9747379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dde1051c295%3A0xdefad79426dff8db!2sEsthell%20Homes!5e1!3m2!1sen!2sin!4v1747815401006!5m2!1sen!2sin"
-  },
-  {
-    id: 2,
-    name: "Olive Sands",
-    location: " Uthandi, Chennai",
-    address:"Juhu Beach, VRS Salai Rd, Uthandi, Chennai, Tamil Nadu 600119",
-    price: "₹9 Cr",
-    type: "Individual Villa ",
-    images: [OliveSands1, OliveSands1],
-    builtStatus:"New Property",
-    facing: "South",
-    specs: {
-      bedrooms: false,
-      baths: false,
-      sqft: "4.55 Grounds",
-    },
-    details: {
-      specification: "-",
-      furnishing: "No",
-      flatNo: "-",
-      FloorNo: "-",
-      builtUpArea: "4.55 Grounds",
-    },
-    status: "new property",
-    highlights: ["Gated Community", "Sea View plot"],
-    description:
-      "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
-    listedOn: "20 mar 2025",
-    company: {
+    {
+      id: 1,
       name: "Esthell Homes",
-      logo: "/logo.png",
+      location: "Velachery, Chennai",
+      address:
+        "Esthell Golden Square TS, No: 1/10, No: 176, Inner Ring Road (South Segment), Opp. Sunshine School, Velachery, Chennai – 600 042 Tamil Nadu, India.",
+      price: "₹1.64 Cr",
+      type: "Apartment ",
+      images: [Property1, Property],
+      builtStatus: "Ready To Occupy",
+      facing: "East",
+      specs: {
+        bedrooms: "2.5/3/Duplex",
+        baths: "2/3/4",
+        sqft: "1492-2897 Sqft",
+      },
+      details: {
+        specification: "2BHK +2 T + S",
+        furnishing: "No",
+        flatNo: "-",
+        FloorNo: "-",
+        builtUpArea: "1492",
+      },
+      highlights: ["Behind XB mall", "700m from Velachery station"],
+      description:
+        "Discover premium 2.5, 3 BHK & Duplex apartments with 2–4 bathrooms, located in the heart of Velachery.",
+      status: "ready to occupy",
+      listedOn: "20 Mar 2025",
+      company: {
+        name: "Esthell Properties",
+        logo: "/logo.png",
+      },
+      detailedInfo: {
+        bedrooms: "2.5 / 3 / Duplex",
+        baths: "2/3/4",
+        sqft: "1492-2897 Sqft",
+        facing: "East & West",
+        description:
+          "Spacious 2.5/3/Duplex BHK with 2/3/4 bathrooms, ideally located near schools and the railway station for convenient living.",
+      },
+      highlightsInfo: {
+        point1: "Just 100m meters from Puzhuthivakkam Station",
+        point2: "Only 700 from Velachery Station",
+        point3: " Opposite from Sunshine School",
+        point4: "Nestled behind the soon-to-come XB Mall",
+        point5: "Crafted with red bricks and river sand",
+        point6: "No common wall sharing",
+      },
+      filterData: {
+        constructionStatus: "ready to move",
+        localities: "Velachery",
+        purchaseType: "new booking",
+        amenities: ["parking", "gymnasium"],
+        furnishing: "Unfurnished",
+      },
+      startingFrom: "Starting From",
+      iconType: ["bed", "bath", "sqft"],
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3002.0276592160058!2d80.2106945!3d12.9747379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dde1051c295%3A0xdefad79426dff8db!2sEsthell%20Homes!5e1!3m2!1sen!2sin!4v1747815401006!5m2!1sen!2sin",
     },
-    detailedInfo: {
-      bedrooms: " ",
-      baths: " ",
-      sqft: "4.55 Grounds",
-      sqfts: "10922 Sqft",
-      frontage: "150 ft frontage",
+    {
+      id: 2,
+      name: "Olive Sands",
+      location: " Uthandi, Chennai",
+      address: "Juhu Beach, VRS Salai Rd, Uthandi, Chennai, Tamil Nadu 600119",
+      price: "₹9 Cr",
+      type: "Individual Villa ",
+      images: [OliveSands1, OliveSands1],
+      builtStatus: "New Property",
       facing: "South",
+      specs: {
+        bedrooms: false,
+        baths: false,
+        sqft: "4.55 Grounds",
+      },
+      details: {
+        specification: "-",
+        furnishing: "No",
+        flatNo: "-",
+        FloorNo: "-",
+        builtUpArea: "4.55 Grounds",
+      },
+      status: "new property",
+      highlights: ["Gated Community", "Sea View plot"],
       description:
         "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
+      listedOn: "20 mar 2025",
+      company: {
+        name: "Esthell Homes",
+        logo: "/logo.png",
+      },
+      detailedInfo: {
+        bedrooms: " ",
+        baths: " ",
+        sqft: "4.55 Grounds",
+        sqfts: "10922 Sqft",
+        frontage: "150 ft frontage",
+        facing: "South",
+        description:
+          "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
+      },
+      highlightsInfo: {
+        point1:
+          "Beach Property, just 10m from Uthandi Toll(ECR), in a secure gated community",
+      },
+      filterData: {
+        constructionStatus: "under construction",
+        localities: "Uthandi",
+        purchaseType: "new booking",
+        amenities: ["security personnel"],
+        furnishing: "Unfurnished",
+      },
+      startingFrom: "",
+      iconType: ["sqfts", "grounds", "frontage"],
+      map: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin",
     },
-    highlightsInfo: {
-      point1:
-        "Beach Property, just 10m from Uthandi Toll(ECR), in a secure gated community",
-    },
-    filterData: {
-      constructionStatus: "under construction",
-      localities: "Uthandi",
-      purchaseType: "new booking",
-      amenities: ["security personnel"],
-      furnishing: "Unfurnished",
-    },
-    startingFrom: "",
-    iconType: ["sqfts", "grounds", "frontage"],
-      map:"https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin"
-  },
-];
+  ];
 
   const [activeButtons, setActiveButtons] = useState({
     button1: false,
@@ -834,27 +835,51 @@ export default function ListingsPage() {
           return false;
         }
         //  BHK
-        if (
-          selectedBHKs.length > 0 &&
-          !selectedBHKs.includes(Math.floor(property.specs.bedrooms))
-        ) {
-          return false;
+
+        if (selectedBHKs.length > 0) {
+          const bhkValues = String(property.specs.bedrooms)
+            .split("/")
+            .map((v) => {
+              if (v.toLowerCase().includes("duplex")) return 4;
+              const num = parseInt(v);
+              return isNaN(num) ? null : num;
+            })
+            .filter((v) => v !== null);
+          if (!selectedBHKs.some((bhk) => bhkValues.includes(bhk))) {
+            return false;
+          }
         }
 
         // Area filter
+
         if (areaValue[0] !== 500 || areaValue[1] !== 15000) {
-          let areaNum = 0;
+          let minSqft = 0,
+            maxSqft = 0;
           if (
             typeof property.specs.sqft === "string" &&
             property.specs.sqft.toLowerCase().includes("ground")
           ) {
-            areaNum = parseFloat(property.specs.sqft) * 2400;
+            const grounds = parseFloat(property.specs.sqft);
+            if (!isNaN(grounds)) {
+              minSqft = maxSqft = grounds * 2400;
+            }
+          } else if (
+            typeof property.specs.sqft === "string" &&
+            property.specs.sqft.includes("-")
+          ) {
+            const [min, max] = property.specs.sqft
+              .replace(/[^\d\-]/g, "")
+              .split("-")
+              .map(Number);
+            minSqft = min;
+            maxSqft = max;
           } else {
-            areaNum = Number(
-              String(property.specs.sqft).replace(/[^0-9.]/g, "")
+            minSqft = maxSqft = parseInt(
+              String(property.specs.sqft).replace(/[^0-9]/g, "")
             );
           }
-          if (areaNum < areaValue[0] || areaNum > areaValue[1]) {
+         
+          if (areaValue[1] < minSqft || areaValue[0] > maxSqft) {
             return false;
           }
         }
@@ -1151,36 +1176,40 @@ export default function ListingsPage() {
                         </span>
                       </p>
                     </div>
-                  
-                     <div className="ListingpriceWrapper"> 
-                   <p className="propertyStartFrom">{property.startingFrom}</p>
-                  <p className="propertyPrice">{property.price}</p>
-                  </div>
-                  
+
+                    <div className="ListingpriceWrapper">
+                      <p className="propertyStartFrom">
+                        {property.startingFrom}
+                      </p>
+                      <p className="propertyPrice">{property.price}</p>
+                    </div>
                   </div>
                   <div className="propertySpecs">
-                     {property.iconType.map((type, idx) => (
-                                        <div className="propertySpecItem" key={type + idx}>
-                                          {type === "bed" && <LuBedDouble color="#001C6B" />}
-                                          {type === "bath" && <PiBathtub color="#001C6B" />}
-                                          {type === "sqft" && <AiOutlineHome color="#001C6B" />}
-                                          {type === "sqfts" && <AiOutlineHome color="#001C6B" />}
-                                          {type === "grounds" && (
-                                            <IoExpandOutline color="#001C6B" />
-                                          )}
-                                          {type === "frontage" && <LiaRoadSolid color="#001C6B" />}
-                    
-                                          {/* Add more icon types as needed */}
-                                          <span className="text">
-                                            {type === "bed" && `${property.specs.bedrooms} BHK`}
-                                            {type === "bath" && `${property.specs.baths} Baths`}
-                                            {type === "sqfts" && property.detailedInfo.sqfts}
-                                            {type === "sqft" && property.specs.sqft}
-                                            {type === "grounds" && property.specs.sqft}
-                                            {type === "frontage" && property.detailedInfo.frontage}
-                                          </span>
-                                        </div>
-                                      ))}
+                    {property.iconType.map((type, idx) => (
+                      <div className="propertySpecItem" key={type + idx}>
+                        {type === "bed" && <LuBedDouble color="#001C6B" />}
+                        {type === "bath" && <PiBathtub color="#001C6B" />}
+                        {type === "sqft" && <AiOutlineHome color="#001C6B" />}
+                        {type === "sqfts" && <AiOutlineHome color="#001C6B" />}
+                        {type === "grounds" && (
+                          <IoExpandOutline color="#001C6B" />
+                        )}
+                        {type === "frontage" && (
+                          <LiaRoadSolid color="#001C6B" />
+                        )}
+
+                        {/* Add more icon types as needed */}
+                        <span className="text">
+                          {type === "bed" && `${property.specs.bedrooms} BHK`}
+                          {type === "bath" && `${property.specs.baths} Baths`}
+                          {type === "sqfts" && property.detailedInfo.sqfts}
+                          {type === "sqft" && property.specs.sqft}
+                          {type === "grounds" && property.specs.sqft}
+                          {type === "frontage" &&
+                            property.detailedInfo.frontage}
+                        </span>
+                      </div>
+                    ))}
                     {/* <div className="propertySpecItem">
                       <LuBedDouble color="#001C6B" />
                       <span className="text">
