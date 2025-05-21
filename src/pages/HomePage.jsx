@@ -39,6 +39,10 @@ import { PiBathtub } from "react-icons/pi";
 import { AiOutlineHome } from "react-icons/ai";
 import { LiaRoadSolid } from "react-icons/lia";
 import { IoExpandOutline } from "react-icons/io5";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
 import "../styles/HomePage.css";
 
 const propertyType = [
@@ -102,11 +106,12 @@ const currentProperties = [
     id: 1,
     name: "Esthell Homes",
     location: "Velachery, Chennai",
-    address:"Esthell Golden Square TS, No: 1/10, No: 176, Inner Ring Road (South Segment), Opp. Sunshine School, Velachery, Chennai – 600 042 Tamil Nadu, India.",
+    address:
+      "Esthell Golden Square TS, No: 1/10, No: 176, Inner Ring Road (South Segment), Opp. Sunshine School, Velachery, Chennai – 600 042 Tamil Nadu, India.",
     price: "₹1.64 Cr",
     type: "Apartment ",
     images: [Property1, Property],
-    builtStatus:"Ready To Occupy",
+    builtStatus: "Ready To Occupy",
     facing: "East",
     specs: {
       bedrooms: "2.5/3/Duplex",
@@ -143,7 +148,7 @@ const currentProperties = [
       point3: " Opposite from Sunshine School",
       point4: "Nestled behind the soon-to-come XB Mall",
       point5: "Crafted with red bricks and river sand",
-      point6:"No common wall sharing"
+      point6: "No common wall sharing",
     },
     filterData: {
       constructionStatus: "ready to move",
@@ -154,17 +159,17 @@ const currentProperties = [
     },
     startingFrom: "Starting From",
     iconType: ["bed", "bath", "sqft"],
-    map:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3002.0276592160058!2d80.2106945!3d12.9747379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dde1051c295%3A0xdefad79426dff8db!2sEsthell%20Homes!5e1!3m2!1sen!2sin!4v1747815401006!5m2!1sen!2sin"
+    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3002.0276592160058!2d80.2106945!3d12.9747379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dde1051c295%3A0xdefad79426dff8db!2sEsthell%20Homes!5e1!3m2!1sen!2sin!4v1747815401006!5m2!1sen!2sin",
   },
   {
     id: 2,
     name: "Olive Sands",
     location: " Uthandi, Chennai",
-    address:"Juhu Beach, VRS Salai Rd, Uthandi, Chennai, Tamil Nadu 600119",
+    address: "Juhu Beach, VRS Salai Rd, Uthandi, Chennai, Tamil Nadu 600119",
     price: "₹9 Cr",
     type: "Individual Villa ",
     images: [OliveSands1, OliveSands1],
-    builtStatus:"New Property",
+    builtStatus: "New Property",
     facing: "South",
     specs: {
       bedrooms: false,
@@ -210,11 +215,9 @@ const currentProperties = [
     },
     startingFrom: "",
     iconType: ["sqfts", "grounds", "frontage"],
-     map:"https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin",
-     
+    map: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin",
   },
 ];
-
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -831,28 +834,27 @@ export default function HomePage() {
           <div className="hpPropCardGrid">
             {currentProperties.map((property, index) => (
               <div key={property.id} className="hpPropCard">
-                <div className="hpPropImgContainer">
+                {/* <div className="hpPropImgContainer">
                   <div className="hpPropImageWrapper">
                     <img
                       src={property.images[currentIndexes[index]]}
                       alt={property.name}
                       className="hpPropImage"
                     />
-                    {/* Prev Button */}
+                  
                     <button
                       onClick={() => handlePrev(index)}
                       className="homePagePrevButton"
                     >
                       <FaChevronLeft color="white" />
                     </button>
-                    {/* Next Button */}
-                    <button
+                     <button
                       onClick={() => handleNext(index)}
                       className="homePageNextButton"
                     >
                       <FaChevronRight color="white" />
                     </button>
-                    {/* Step Indicator */}
+                  
                     <div className="hpPropStepIndicator">
                       {property.images.map((_, imgIdx) => (
                         <div
@@ -875,6 +877,33 @@ export default function HomePage() {
                     <p className="homePageVerifiedLabel">Verified</p>
                     <p className="homePageSaleLabel">{property.status}</p>
                     <FaRegHeart color="white" />
+                  </div>
+                </div> */}
+                <div className="hpPropImgContainer">
+                  <div className="hpPropImageWrapper">
+                    <Swiper
+                      modules={[Pagination]}
+                      pagination={{ clickable: true }}
+                      spaceBetween={10}
+                      slidesPerView={1}
+                      style={{ borderRadius: 12 }}
+                    >
+                      {property.images.map((img, idx) => (
+                        <SwiperSlide key={idx}>
+                          <img
+                            src={img}
+                            alt={property.name}
+                            className="hpPropImage"
+                           
+                          />
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </div>
+                  <div className="homePageLabelContainer">
+                    <p className="homePageVerifiedLabel">Verified</p>
+                    <p className="homePageSaleLabel">{property.status}</p>
+                    <FaRegHeart color="white" style={{zIndex:100}} />
                   </div>
                 </div>
                 <div

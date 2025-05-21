@@ -388,7 +388,10 @@
   max-width: 400px;
   margin: 0 auto;
 }
-
+.hpPropImageScrollWrapper.active {
+  cursor: grabbing;
+  user-select: none;
+}
 .hpPropImage {
   height: 289px;
   width: 100%;
@@ -460,6 +463,7 @@
   align-items: center;
   justify-content: center;
   padding: 4px;
+  z-index: 100;
 }
 
 .homePageVerifiedLabel {
