@@ -36,6 +36,7 @@ import FirstFloorPlan from "../assets/FirstFloorPlan.svg";
 import GroundFloorPlan from "../assets/GroundFloorPlan.svg";
 import SitePlan from "../assets/SitePlan.svg";
 import TypicalFloorPlan from "../assets/TypicalFloorPlan.svg";
+import OliveSands1 from "../assets/OliveSands1.jpg";
 import { IoMdMail } from "react-icons/io";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { LiaRoadSolid } from "react-icons/lia";
@@ -82,6 +83,123 @@ export default function DetailsPage() {
     { src: Parking, name: "Visitor Car Parking" },
     { src: Games, name: "Indoor Games" },
   ];
+  const currentProperties = [
+  {
+    id: 1,
+    name: "Esthell Homes",
+    location: "Velachery, Chennai",
+    address:"Esthell Golden Square TS, No: 1/10, No: 176, Inner Ring Road (South Segment), Opp. Sunshine School, Velachery, Chennai – 600 042 Tamil Nadu, India.",
+    price: "₹1.64 Cr",
+    type: "Apartment ",
+    images: [Property1, Property],
+    builtStatus:"Ready To Occupy",
+    facing: "East",
+    specs: {
+      bedrooms: "2.5/3/Duplex",
+      baths: "2/3/4",
+      sqft: "1492-2897 Sqft",
+    },
+    details: {
+      specification: "2BHK +2 T + S",
+      furnishing: "No",
+      flatNo: "-",
+      FloorNo: "-",
+      builtUpArea: "1492",
+    },
+    highlights: ["Behind XB mall", "700m from Velachery station"],
+    description:
+      "Discover premium 2.5, 3 BHK & Duplex apartments with 2–4 bathrooms, located in the heart of Velachery.",
+    status: "ready to occupy",
+    listedOn: "20 Mar 2025",
+    company: {
+      name: "Esthell Properties",
+      logo: "/logo.png",
+    },
+    detailedInfo: {
+      bedrooms: "2.5 / 3 / Duplex",
+      baths: "2/3/4",
+      sqft: "1492-2897 Sqft",
+      facing: "East & West",
+      description:
+        "Spacious 2.5/3/Duplex BHK with 2/3/4 bathrooms, ideally located near schools and the railway station for convenient living.",
+    },
+    highlightsInfo: {
+      point1: "Just 100m meters from Puzhuthivakkam Station",
+      point2: "Only 700 from Velachery Station",
+      point3: " Opposite from Sunshine School",
+      point4: "Nestled behind the soon-to-come XB Mall",
+      point5: "Crafted with red bricks and river sand",
+      point6:"No common wall sharing"
+    },
+    filterData: {
+      constructionStatus: "ready to move",
+      localities: "Velachery",
+      purchaseType: "new booking",
+      amenities: ["parking", "gymnasium"],
+      furnishing: "Unfurnished",
+    },
+    startingFrom: "Starting From",
+    iconType: ["bed", "bath", "sqft"],
+    map:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3002.0276592160058!2d80.2106945!3d12.9747379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dde1051c295%3A0xdefad79426dff8db!2sEsthell%20Homes!5e1!3m2!1sen!2sin!4v1747815401006!5m2!1sen!2sin"
+  },
+  {
+    id: 2,
+    name: "Olive Sands",
+    location: " Uthandi, Chennai",
+    address:"Juhu Beach, VRS Salai Rd, Uthandi, Chennai, Tamil Nadu 600119",
+    price: "₹9 Cr",
+    type: "Individual Villa ",
+    images: [OliveSands1, OliveSands1],
+    builtStatus:"New Property",
+    facing: "South",
+    specs: {
+      bedrooms: false,
+      baths: false,
+      sqft: "4.55 Grounds",
+    },
+    details: {
+      specification: "-",
+      furnishing: "No",
+      flatNo: "-",
+      FloorNo: "-",
+      builtUpArea: "4.55 Grounds",
+    },
+    status: "new property",
+    highlights: ["Gated Community", "Sea View plot"],
+    description:
+      "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
+    listedOn: "20 mar 2025",
+    company: {
+      name: "Esthell Homes",
+      logo: "/logo.png",
+    },
+    detailedInfo: {
+      bedrooms: " ",
+      baths: " ",
+      sqft: "4.55 Grounds",
+      sqfts: "10922 Sqft",
+      frontage: "150 ft frontage",
+      facing: "South",
+      description:
+        "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
+    },
+    highlightsInfo: {
+      point1:
+        "Beach Property, just 10m from Uthandi Toll(ECR), in a secure gated community",
+    },
+    filterData: {
+      constructionStatus: "under construction",
+      localities: "Uthandi",
+      purchaseType: "new booking",
+      amenities: ["security personnel"],
+      furnishing: "Unfurnished",
+    },
+    startingFrom: "",
+    iconType: ["sqfts", "grounds", "frontage"],
+     map:"https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin",
+     
+  },
+];
   const progressWidth = (rating / 5) * 100;
   const images = [Property, Property1];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -103,6 +221,9 @@ export default function DetailsPage() {
     { label: "DUPLEX UPPER", src: DuplexUpper },
   ];
   const [floorPlanIndex, setFloorPlanIndex] = useState(0);
+  const similarListings = currentProperties
+  .filter((p) => p.id !== property.id)
+  .slice(0, 3);
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
@@ -707,7 +828,7 @@ export default function DetailsPage() {
           )}
         </div>
         {/* view all */}
-        <div>
+        {/* <div>
           <div className="similarListingsHeader">
             <p className="similarListingsTitle">Similar Listings</p>
             <p className="similarListingsViewAll" onClick={handleViewAll}>
@@ -742,7 +863,7 @@ export default function DetailsPage() {
                     >
                       <FaChevronRight color="white" />
                     </button>
-                    {/* Step Indicator */}
+                
                     <div className="similarListingsStepIndicator">
                       {images.map((_, index) => (
                         <div
@@ -797,7 +918,85 @@ export default function DetailsPage() {
               </div>
             ))}
           </div>
+        </div> */}
+        
+
+<div>
+  <div className="similarListingsHeader">
+    <p className="similarListingsTitle">Similar Listings</p>
+    <p className="similarListingsViewAll" onClick={handleViewAll}>
+      View All
+    </p>
+  </div>
+  <div className="similarListingsGrid">
+    {similarListings.length === 0 && (
+      <div style={{ padding: 24, color: "#888" }}>No similar listings found.</div>
+    )}
+   {similarListings.map((property) => (
+  <div
+    key={property.id}
+    onClick={() => navigate("/details", { state: { property } })}
+    className="similarListingsCard"
+  >
+    <div className="similarListingsImageContainer">
+      <div className="similarListingsImageWrapper">
+        <img
+          src={property.images[0]}
+          alt={property.name}
+          className="similarListingsImage"
+        />
+      </div>
+      <div className="similarListingsStatusContainer">
+        <p className="similarListingsVerifiedTag">Verified</p>
+        <p className="similarListingsSaleTag">{property.status}</p>
+        <FaRegHeart color="white" />
+      </div>
+    </div>
+    <div className="similarListingsPriceContainer">
+      <div>
+        <p className="similarListingsDescription">{property.name}</p>
+        <p className="similarListingsLocation">
+          {property.type} in{" "}
+          <span className="similarListingsArea"> {property.location}</span>
+        </p>
+      </div>
+      <div className="priceWrapper">
+        <p className="hpStartFrom">{property.startingFrom}</p>
+        <p className="hpPropPrice">{property.price}</p>
+      </div>
+    </div>
+    <div className="similarListPropContainer">
+      {property.iconType.map((type, idx) => (
+        <div className="hpPropDetailItem" key={type + idx}>
+          {type === "bed" && <LuBedDouble color="#001C6B" />}
+          {type === "bath" && <PiBathtub color="#001C6B" />}
+          {type === "sqft" && <AiOutlineHome color="#001C6B" />}
+          {type === "sqfts" && <AiOutlineHome color="#001C6B" />}
+          {type === "grounds" && <IoExpandOutline color="#001C6B" />}
+          {type === "frontage" && <LiaRoadSolid color="#001C6B" />}
+          <span className="text">
+            {type === "bed" && `${property.specs.bedrooms} BHK`}
+            {type === "bath" && `${property.specs.baths} Baths`}
+            {type === "sqfts" && property.detailedInfo.sqfts}
+            {type === "sqft" && property.specs.sqft}
+            {type === "grounds" && property.specs.sqft}
+            {type === "frontage" && property.detailedInfo.frontage}
+          </span>
         </div>
+      ))}
+    </div>
+    <div className="similarListingsHighlightsContainer">
+      <p className="similarListingshighlightText">Highlights: </p>
+      {property.highlights.slice(0, 2).map((highlight, idx) => (
+        <p key={idx} className="similarListingsHighlight">
+          {highlight}
+        </p>
+      ))}
+    </div>
+  </div>
+))}
+  </div>
+</div>
       </div>
       <Footer />
     </div>
