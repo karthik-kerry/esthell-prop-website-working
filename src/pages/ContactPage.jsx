@@ -82,8 +82,8 @@ export default function ContactPage() {
               <img src={phone} className="contactIcon" />
               <div className="contactPhoneNoContainer">
               <p className="contactTitle">Phone Number :</p>
-              <p className="contactDetails1">+91 74182 01555</p>
-              <p className="contactDetails2">+91 74182 02555</p>
+              <p className="contactDetails1">+91-72182 12345</p>
+              <p className="contactDetails2">+91-74182 01555</p>
               </div>
             </div>
           </div>
@@ -104,9 +104,9 @@ export default function ContactPage() {
                     value={selectedValue}
                     onChange={handleChange}
                   >
-                    <Option value="product1">Product 1</Option>
-                    <Option value="product2">Product 2</Option>
-                    <Option value="product3">Product 3</Option>
+                    <Option value="product1">Buy</Option>
+                    <Option value="product2">Rent</Option>
+                    <Option value="product3">Commercial</Option>
                   </Select>
                 </div>
                 <TextArea
@@ -146,7 +146,7 @@ export default function ContactPage() {
 
         <div className="mapContainer">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.9870076954066!2d80.28735957367391!3d13.10000951205284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f8124677793%3A0x97f482509d2f1ff1!2sKerry%20Indev%20Corporate%20Office!5e0!3m2!1sen!2sin!4v1746779168972!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3002.0276592160058!2d80.2106945!3d12.9747379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dde1051c295%3A0xdefad79426dff8db!2sEsthell%20Homes!5e1!3m2!1sen!2sin!4v1747818028570!5m2!1sen!2sin"
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
