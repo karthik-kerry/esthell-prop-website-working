@@ -30,15 +30,15 @@ export default function Footer() {
             <FaPhoneAlt />
           </div>
           <div>
-            <p className="footerText">+91-74182 01555</p>
-            <p className="footerText" style={{marginTop:-10}}>+91-74182 02555</p>
+            <p className="footerText">+91-72182 12345</p>
+            <p className="footerText" style={{marginTop:-10}}>+91-74182 01555</p>
           </div>
         </div>
         <div className="footerTopRight">
           <div className="iconContainer">
             <MdMail />
           </div>
-          <p className="footerText">salesegs@esthell.com</p>
+          <p className="footerText">vpraveen@esthellproperties.com</p>
         </div>
       </div>
       <div className="footerBottom">

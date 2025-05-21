@@ -36,6 +36,8 @@ import FirstFloorPlan from "../assets/FirstFloorPlan.svg";
 import GroundFloorPlan from "../assets/GroundFloorPlan.svg";
 import SitePlan from "../assets/SitePlan.svg";
 import TypicalFloorPlan from "../assets/TypicalFloorPlan.svg";
+import { IoMdMail } from "react-icons/io";
+import { IoLogoWhatsapp } from "react-icons/io";
 import {
   FaCarSide,
   FaUtensils,
@@ -44,6 +46,7 @@ import {
   FaRegThumbsUp,
   FaRegThumbsDown,
 } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function DetailsPage() {
@@ -73,9 +76,8 @@ export default function DetailsPage() {
     { src: SwimmingPool, name: "Swimming Pool" },
     { src: CCTV, name: "CCTV" },
     { src: AccessEntry, name: "Access Controlled Entry" },
-    { src: ModernLandscaping, name: "Modern Landscaping" },
+    { src: ModernLandscaping, name: "Landscaping" },
     { src: Parking, name: "Visitor Car Parking" },
-    { src: WallSharing, name: "No Common Wall Sharing" },
     { src: Games, name: "Indoor Games" },
   ];
   const progressWidth = (rating / 5) * 100;
@@ -146,7 +148,7 @@ export default function DetailsPage() {
         <div className="detailPageContent">
           <div className="detailPageLeft">
             {/* detailes image view */}
-            <div className="detailPageImgContainer" >
+            <div className="detailPageImgContainer">
               <div className="detailPageImageWrapper">
                 <img
                   src={property.images[currentIndex]}
@@ -190,6 +192,7 @@ export default function DetailsPage() {
               </div>
               <div className="detailPageInfoContainer">
                 <p className="detailPageVerifiedTag">Verified</p>
+                <p className="propertySale">{property.status}</p>
                 <div className="detailPageIcons">
                   <TbShare color="white" className="detailPageShareIcon" />
                   <FaRegHeart color="white" className="detailPageHeartIcon" />
@@ -213,7 +216,7 @@ export default function DetailsPage() {
     alt={property.name}
   />
 ))} */}
-              {[...Array(5)].map((_, idx) => (
+              {[...Array(2)].map((_, idx) => (
                 <img
                   key={idx}
                   src={property.images[idx % property.images.length]}
@@ -235,7 +238,7 @@ export default function DetailsPage() {
                   </span>
                 </p>
                 <div className="detailPagePriceContainer">
-                  <p className="detailPageLocation"> Starting From</p>
+                  <p className="detailStartFrom">{property.startingFrom}</p>
                   <p className="detailPagePrice">{property.price}</p>
                   <p className="detailPageCharges">+ Charges</p>
                 </div>
@@ -246,7 +249,19 @@ export default function DetailsPage() {
                     Listed on: {property.listedOn}
                   </p>
                 </div>
-                <div>
+                 <div style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex",gap:10}}>
+                  <FaPhoneAlt />
+                  <p style={{marginTop:"-5px"}}>+91 72182 12345 / +91 74182 01555</p>
+                </div>
+                <div style={{ display: "flex",gap:10 }}>
+                  <IoMdMail />
+                  <p style={{marginTop:"-5px"}}>vpraveen@esthellproperties.com</p>
+                </div>
+              </div>
+                <div style={{ display: "flex",gap:10}}>
+                     <IoLogoWhatsapp color="#67C15E" style={{height:52,width:55,marginTop:-10
+                }}/>
                   <Button
                     onClick={handleEnquiryClick}
                     className="detailPageEnquiryButton"
@@ -276,10 +291,7 @@ export default function DetailsPage() {
               </div>
               <div className="detailPagHouseInfoItem">
                 <AiOutlineCalendar className="detailPageInfoIcon" />
-                <p className="detailsInfoText">
-                  {" "}
-                  Year Built:{property.yearBuilt}
-                </p>
+                <p className="detailsInfoText"> {property.builtStatus}</p>
               </div>
               <div className="detailPagHouseInfoItem">
                 <AiOutlineCompass className="detailPageInfoIcon" />
@@ -297,7 +309,7 @@ export default function DetailsPage() {
                   {highlight}
                 </p>
               ))}
-              <p className="detailPageHighlightItem detailPageHighlightItemGreen">
+              {/* <p className="detailPageHighlightItem detailPageHighlightItemGreen">
                 No Brokerage
               </p>
               <p className="detailPageHighlightItem">
@@ -306,7 +318,7 @@ export default function DetailsPage() {
                   className="detailPageHighlightIcon"
                 />
                 3D Floor Plans Available
-              </p>
+              </p> */}
             </div>
 
             {/* content */}
@@ -340,12 +352,9 @@ export default function DetailsPage() {
                   { label: "Furnishing", value: property.details?.furnishing },
                   { label: "Bathrooms", value: property.detailedInfo?.baths },
                   { label: "Facing", value: property.detailedInfo?.facing },
-                  { label: "Flat No", value: property.details?.flatNo },
-                  { label: "Floor", value: property.details?.FloorNo },
-                  {
-                    label: "Project Name",
-                    value: property.name,
-                  },
+                  // { label: "Flat No", value: property.details?.flatNo },
+
+                  // { label: "Floor", value: property.details?.FloorNo },
                 ].map((item, index) => (
                   <div key={index} className="detailPageDetailItem">
                     <div className="detailPageDetailLabel">
@@ -587,7 +596,7 @@ export default function DetailsPage() {
                 <span className="detailPageLocation"> {property.location}</span>
               </p>
               <div className="detailPagePriceContainer">
-                <p className="detailPageLocation"> Starting From</p>
+                <p className="detailStartFrom">{property.startingFrom}</p>
                 <p className="detailPagePrice">{property.price}</p>
                 <p className="detailPageCharges">+ Charges</p>
               </div>
@@ -598,7 +607,19 @@ export default function DetailsPage() {
                   Listed on: {property.listedOn}
                 </p>
               </div>
-              <div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex",gap:10}}>
+                  <FaPhoneAlt />
+                  <p style={{marginTop:"-5px"}}>+91 72182 12345 / +91 74182 01555</p>
+                </div>
+                <div style={{ display: "flex",gap:10 }}>
+                  <IoMdMail />
+                  <p style={{marginTop:"-5px"}}>vpraveen@esthellproperties.com</p>
+                </div>
+              </div>
+              <div style={{ display: "flex",gap:10}}>
+                <IoLogoWhatsapp color="#67C15E" style={{height:52,width:55,marginTop:-10
+                }}/>
                 <Button
                   onClick={handleEnquiryClick}
                   className="detailPageEnquiryButton"

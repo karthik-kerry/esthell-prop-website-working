@@ -74,8 +74,8 @@ export default function ContactPage() {
               <img src={mail} className="contactIcon" />
               <p className="contactTitle">Email Address :</p>
               <div className="contactEmailContainer">
-              <p className="contactEmailDetails1">salesegs@esthell.com</p>
-              <p className="contactEmailDetails2">salesegs@esthell.com</p>
+              <p className="contactEmailDetails1">vpraveen@esthellproperties.com</p>
+              <p className="contactEmailDetails2">vpraveen@esthellproperties.com</p>
               </div>
             </div>
             <div className="contactCard">

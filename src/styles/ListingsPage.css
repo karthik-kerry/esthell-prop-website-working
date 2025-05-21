@@ -414,7 +414,7 @@
 }
 
 .propertySale {
-  background-color: #1b1b1b66;
+  background-color: #521da4;
   text-transform: uppercase;
   border-radius: 4px;
   color: white;
@@ -469,14 +469,23 @@
   color: #1b1b1bcc;
   font-weight: 300;
 }
-
+.ListingpriceWrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top: -20px;
+}
 .propertyPrice {
   color: #1b1b1b;
   font-size: 20px;
   font-weight: 600;
   margin-top: -5px;
 }
-
+.propertyStartFrom{
+  font-weight: 200;
+    font-size: 14px;
+}
 .propertySpecs {
   background-color: #0a51a30d;
   width: 95%;
@@ -504,6 +513,8 @@
 }
 
 .propertyHighlight {
+  font-size: 12px;
+  font-weight: 400;
   background-color: #f4f4f4;
   padding: 5px;
   border-radius: 4px;

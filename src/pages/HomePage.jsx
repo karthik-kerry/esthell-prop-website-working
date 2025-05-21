@@ -37,41 +37,63 @@ import { FaChevronLeft } from "react-icons/fa";
 import { LuBedDouble } from "react-icons/lu";
 import { PiBathtub } from "react-icons/pi";
 import { AiOutlineHome } from "react-icons/ai";
+import { LiaRoadSolid } from "react-icons/lia";
+import { IoExpandOutline } from "react-icons/io5";
 import "../styles/HomePage.css";
 
 const propertyType = [
   {
     key: "1",
-    label: "2.5 BHK",
-    value: "2.5 BHK",
+    label: "1 -2 BHK",
+    value: "1 -2 BHK",
   },
   {
     key: "2",
-    label: "3 BHK",
-    value: "3 BHK",
+    label: "2 -3 BHK",
+    value: "2 -3 BHK",
   },
   {
     key: "3",
-    label: "Duplex",
-    value: "Duplex",
+    label: "3 -4 BHK",
+    value: "3 -4 BHK",
+  },
+  {
+    key: "4",
+    label: "4 -5 BHK",
+    value: "4 -5 BHK",
+  },
+  {
+    key: "5",
+    label: "5+ BHK",
+    value: "5+ BHK",
   },
 ];
 
 const propertySize = [
   {
     key: "1",
-    label: "500-1000 Sqft",
-    value: "500-1000 Sqft",
+    label: "500-1500 Sqft",
+    value: "500-1500 Sqft",
   },
   {
     key: "2",
-    label: "1000-2000 Sqft",
-    value: "1000-2000 Sqft",
+    label: "1500-3000 Sqft",
+    value: "1500-3000 Sqft",
   },
   {
     key: "3",
-    label: "2000-3000 Sqft",
-    value: "2000-3000 Sqft",
+    label: "3000-5000 Sqft",
+    value: "3000-5000 Sqft",
+  },
+  {
+    key: "4",
+    label: "5000-8000 Sqft",
+    value: "5000-8000 Sqft",
+  },
+  {
+    key: "5",
+    label: "8000+ Sqft",
+    value: "8000+ Sqft",
   },
 ];
 
@@ -83,12 +105,12 @@ const currentProperties = [
     price: "₹1.64 Cr",
     type: "Apartment ",
     images: [Property1, Property],
-    yearBuilt: 2025,
+    builtStatus:"Ready To Occupy",
     facing: "East",
     specs: {
-      bedrooms: 2.5,
-      baths: 2,
-      sqft: "1492 Sqft",
+      bedrooms: "2.5/3/Duplex",
+      baths: "2/3/4",
+      sqft: "1492-2897 Sqft",
     },
     details: {
       specification: "2BHK +2 T + S",
@@ -97,9 +119,9 @@ const currentProperties = [
       FloorNo: "-",
       builtUpArea: "1492",
     },
-    highlights: ["East & West facing"],
+    highlights: ["Behind XB mall", "700m from Velachery station"],
     description:
-      "Spacious 2.5 BHK with 2 bathrooms, ideally located near schools and the railway station for convenient living.",
+      "Discover premium 2.5, 3 BHK & Duplex apartments with 2–4 bathrooms, located in the heart of Velachery.",
     status: "ready to occupy",
     listedOn: "20 Mar 2025",
     company: {
@@ -115,12 +137,22 @@ const currentProperties = [
         "Spacious 2.5/3/Duplex BHK with 2/3/4 bathrooms, ideally located near schools and the railway station for convenient living.",
     },
     highlightsInfo: {
-      point1: "Just 500 meters from Pallavanthangal Station",
-      point2: "Only 1 km from Velachery Station",
-      point3: "Right across from Sunshine School",
+      point1: "Just 100m meters from Pallavanthangal Station",
+      point2: "Only 700 from Velachery Station",
+      point3: " Opposite from Sunshine School",
       point4: "Nestled behind the soon-to-come XB Mall",
-      point5: "Crafted with premium red bricks and river sand",
+      point5: "Crafted with red bricks and river sand",
+      point6:"No common wall sharing"
     },
+    filterData: {
+      constructionStatus: "ready to move",
+      localities: "Velachery",
+      purchaseType: "new booking",
+      amenities: ["parking", "gymnasium"],
+      furnishing: "Unfurnished",
+    },
+    startingFrom: "Starting From",
+    iconType: ["bed", "bath", "sqft"],
   },
   {
     id: 2,
@@ -129,7 +161,7 @@ const currentProperties = [
     price: "₹9 Cr",
     type: "Individual Villa ",
     images: [OliveSands1, OliveSands1],
-    yearBuilt: 2025,
+    builtStatus:"New Property",
     facing: "South",
     specs: {
       bedrooms: false,
@@ -144,7 +176,7 @@ const currentProperties = [
       builtUpArea: "4.55 Grounds",
     },
     status: "new",
-    highlights: ["South facing plot"],
+    highlights: ["Gated Community", "Sea View plot"],
     description:
       "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
     listedOn: "20 mar 2025",
@@ -156,15 +188,25 @@ const currentProperties = [
       bedrooms: " ",
       baths: " ",
       sqft: "4.55 Grounds",
+      sqfts: "10922 Sqft",
+      frontage: "150 ft frontage",
       facing: "South",
       description:
         "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
     },
     highlightsInfo: {
-      point1: "Just 500 meters from Pallavanthangal Station",
-      point2: "Only 1 km from Velachery Station",
-      point3: "Right across from Sunshine School",
+      point1:
+        "Beach Property, just 10m from Uthandi Toll(ECR), in a secure gated community",
     },
+    filterData: {
+      constructionStatus: "under construction",
+      localities: "Uthandi",
+      purchaseType: "new booking",
+      amenities: ["security personnel"],
+      furnishing: "Unfurnished",
+    },
+    startingFrom: "",
+    iconType: ["sqfts", "grounds", "frontage"],
   },
 ];
 
@@ -256,7 +298,13 @@ export default function HomePage() {
     if (!container) return;
     container.isDragging = false;
   };
-
+  function parsePriceInput(input) {
+    if (!input) return 0;
+    let str = input.toString().replace(/,/g, "").trim().toLowerCase();
+    if (str.endsWith("l")) return parseFloat(str) * 100000;
+    if (str.endsWith("cr")) return parseFloat(str) * 10000000;
+    return parseFloat(str);
+  }
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 480) {
@@ -290,36 +338,36 @@ export default function HomePage() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  
-const filterProperties = () => {
-  return currentProperties.filter((property) => {
-    // Location filter (case-insensitive, partial match)
-    if (
-      searchLocation &&
-      !property.location.toLowerCase().includes(searchLocation.toLowerCase())
-    ) {
-      return false;
-    }
-    // Type filter
-    if (searchType && property.type.trim() !== searchType.trim()) {
-      return false;
-    }
-    // Size filter (simple string match)
-    if (searchSize && property.specs.sqft !== searchSize) {
-      return false;
-    }
-    // Min/Max price filter (convert price to number for comparison)
-    if (minRange) {
-      const priceNum = Number(property.price.replace(/[^0-9.]/g, ""));
-      if (priceNum < Number(minRange)) return false;
-    }
-    if (maxRange) {
-      const priceNum = Number(property.price.replace(/[^0-9.]/g, ""));
-      if (priceNum > Number(maxRange)) return false;
-    }
-    return true;
-  });
-};
+
+  const filterProperties = () => {
+    return currentProperties.filter((property) => {
+      // Location filter (case-insensitive, partial match)
+      if (
+        searchLocation &&
+        !property.location.toLowerCase().includes(searchLocation.toLowerCase())
+      ) {
+        return false;
+      }
+      // Type filter
+      if (searchType && property.type.trim() !== searchType.trim()) {
+        return false;
+      }
+      // Size filter (simple string match)
+      if (searchSize && property.specs.sqft !== searchSize) {
+        return false;
+      }
+      // Min/Max price filter (convert price to number for comparison)
+      if (minRange) {
+        const priceNum = Number(property.price.replace(/[^0-9.]/g, ""));
+        if (priceNum < Number(minRange)) return false;
+      }
+      if (maxRange) {
+        const priceNum = Number(property.price.replace(/[^0-9.]/g, ""));
+        if (priceNum > Number(maxRange)) return false;
+      }
+      return true;
+    });
+  };
   return (
     <div>
       <Header />
@@ -389,8 +437,7 @@ const filterProperties = () => {
                       menu={{
                         items: propertyType.map((item) => ({
                           ...item,
-                          onClick: () =>
-                            setSearchType(item.value),
+                          onClick: () => setSearchType(item.value),
                         })),
                       }}
                     >
@@ -404,8 +451,7 @@ const filterProperties = () => {
                       menu={{
                         items: propertySize.map((item) => ({
                           ...item,
-                          onClick: () =>
-                            setSearchSize(item.value),
+                          onClick: () => setSearchSize(item.value),
                         })),
                       }}
                     >
@@ -417,6 +463,7 @@ const filterProperties = () => {
                   </div>
                   <div className="homeGrid2">
                     <Input
+                      prefix="₹"
                       className="HomeformItemInput"
                       placeholder="Min Range 5L"
                       value={minRange}
@@ -424,6 +471,7 @@ const filterProperties = () => {
                     />
 
                     <Input
+                      prefix="₹"
                       className="HomeformItemInput"
                       placeholder="Enter Max Range 50Cr"
                       value={maxRange}
@@ -434,9 +482,7 @@ const filterProperties = () => {
 
                 <Button
                   className="HomeSearchButton"
-                  
                   onClick={() => {
-                     const filtered = filterProperties();
                     navigate("/listings", {
                       state: {
                         location: searchLocation,
@@ -464,7 +510,7 @@ const filterProperties = () => {
                   }}
                 >
                   <Space className="HomeformItem">
-                   {searchType || "Property Type"}
+                    {searchType || "Property Type"}
                     <DownOutlined />
                   </Space>
                 </Dropdown>
@@ -484,6 +530,7 @@ const filterProperties = () => {
                 </Dropdown>
 
                 <Input
+                  prefix="₹"
                   className="HomeformItemInput"
                   placeholder="Enter Min Range"
                   value={minRange}
@@ -491,6 +538,7 @@ const filterProperties = () => {
                 />
 
                 <Input
+                  prefix="₹"
                   className="HomeformItemInput"
                   placeholder="Enter Max Range"
                   value={maxRange}
@@ -500,7 +548,6 @@ const filterProperties = () => {
                 <Button
                   className="HomeSearchButton"
                   onClick={() => {
-                     const filtered = filterProperties();
                     navigate("/listings", {
                       state: {
                         location: searchLocation,
@@ -837,24 +884,37 @@ const filterProperties = () => {
                       </span>
                     </p>
                   </div>
-                  <p className="hpPropPrice">{property.price}</p>
+                  <div className="priceWrapper">
+                    <p className="hpStartFrom">{property.startingFrom}</p>
+                    <p className="hpPropPrice">{property.price}</p>
+                  </div>
                 </div>
                 <div
                   className="hpPropDetails"
                   onClick={() => handleCardClick(property)}
                 >
-                  <div className="hpPropDetailItem">
-                    <LuBedDouble color="#001C6B" />{" "}
-                    <span className="text">{property.specs.bedrooms} BHK</span>
-                  </div>
-                  <div className="hpPropDetailItem">
-                    <PiBathtub color="#001C6B" />
-                    <span className="text">{property.specs.baths} Baths</span>
-                  </div>
-                  <div className="hpPropDetailItem">
-                    <AiOutlineHome color="#001C6B" />
-                    <span className="text">{property.specs.sqft}</span>
-                  </div>
+                  {property.iconType.map((type, idx) => (
+                    <div className="hpPropDetailItem" key={type + idx}>
+                      {type === "bed" && <LuBedDouble color="#001C6B" />}
+                      {type === "bath" && <PiBathtub color="#001C6B" />}
+                      {type === "sqft" && <AiOutlineHome color="#001C6B" />}
+                      {type === "sqfts" && <AiOutlineHome color="#001C6B" />}
+                      {type === "grounds" && (
+                        <IoExpandOutline color="#001C6B" />
+                      )}
+                      {type === "frontage" && <LiaRoadSolid color="#001C6B" />}
+
+                      {/* Add more icon types as needed */}
+                      <span className="text">
+                        {type === "bed" && `${property.specs.bedrooms} BHK`}
+                        {type === "bath" && `${property.specs.baths} Baths`}
+                        {type === "sqfts" && property.detailedInfo.sqfts}
+                        {type === "sqft" && property.specs.sqft}
+                        {type === "grounds" && property.specs.sqft}
+                        {type === "frontage" && property.detailedInfo.frontage}
+                      </span>
+                    </div>
+                  ))}
                 </div>
                 <div
                   className="hpPropHighlights"

@@ -21,6 +21,8 @@ import { FaPhone } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import EsthellFlats from "../assets/esthell_apartments.png";
 import "../styles/ListingsPage.css";
+import { LiaRoadSolid } from "react-icons/lia";
+import { IoExpandOutline } from "react-icons/io5";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function ListingsPage() {
@@ -58,111 +60,117 @@ export default function ListingsPage() {
   }, [location]);
 
   const currentProperties = [
-    {
-      id: 1,
-      name: "Esthell Homes",
-      location: "Velachery, Chennai",
-      price: "₹1.64 Cr",
-      type: "Apartment ",
-      images: [Property1, Property],
-      yearBuilt: 2025,
-      facing: "East",
-      specs: {
-        bedrooms: 2.5,
-        baths: 2,
-        sqft: "1492 Sqft",
-      },
-      details: {
-        specification: "2BHK +2 T + S",
-        furnishing: "No",
-        flatNo: "-",
-        FloorNo: "-",
-        builtUpArea: "1492",
-      },
-      highlights: ["East & West facing"],
-      description:
-        "Spacious 2.5 BHK with 2 bathrooms, ideally located near schools and the railway station for convenient living.",
-      status: "ready to occupy",
-      listedOn: "20 Mar 2025",
-      company: {
-        name: "Esthell Properties",
-        logo: "/logo.png",
-      },
-      detailedInfo: {
-        bedrooms: "2.5 / 3 / Duplex",
-        baths: "2/3/4",
-        sqft: "1492-2897 Sqft",
-        facing: "East & West",
-        description:
-          "Spacious 2.5/3/Duplex BHK with 2/3/4 bathrooms, ideally located near schools and the railway station for convenient living.",
-      },
-      highlightsInfo: {
-        point1: "Just 500 meters from Pallavanthangal Station",
-        point2: "Only 1 km from Velachery Station",
-        point3: "Right across from Sunshine School",
-        point4: "Nestled behind the soon-to-come XB Mall",
-        point5: "Crafted with premium red bricks and river sand",
-      },
-      filterData: {
-        constructionStatus: "ready to move",
-        localities: "Velachery",
-        purchaseType: "new booking",
-        amenities: ["parking", "gymnasium"],
-        furnishing: "Unfurnished",
-      },
+  {
+    id: 1,
+    name: "Esthell Homes",
+    location: "Velachery, Chennai",
+    price: "₹1.64 Cr",
+    type: "Apartment ",
+    images: [Property1, Property],
+    builtStatus:"Ready To Occupy",
+    facing: "East",
+    specs: {
+      bedrooms: "2.5/3/Duplex",
+      baths: "2/3/4",
+      sqft: "1492-2897 Sqft",
     },
-    {
-      id: 2,
-      name: "Olive Sands",
-      location: " Uthandi, Chennai",
-      price: "₹9 Cr",
-      type: "Individual Villa ",
-      images: [OliveSands1, OliveSands1],
-      yearBuilt: 2025,
+    details: {
+      specification: "2BHK +2 T + S",
+      furnishing: "No",
+      flatNo: "-",
+      FloorNo: "-",
+      builtUpArea: "1492",
+    },
+    highlights: ["Behind XB mall", "700m from Velachery station"],
+    description:
+      "Discover premium 2.5, 3 BHK & Duplex apartments with 2–4 bathrooms, located in the heart of Velachery.",
+    status: "ready to occupy",
+    listedOn: "20 Mar 2025",
+    company: {
+      name: "Esthell Properties",
+      logo: "/logo.png",
+    },
+    detailedInfo: {
+      bedrooms: "2.5 / 3 / Duplex",
+      baths: "2/3/4",
+      sqft: "1492-2897 Sqft",
+      facing: "East & West",
+      description:
+        "Spacious 2.5/3/Duplex BHK with 2/3/4 bathrooms, ideally located near schools and the railway station for convenient living.",
+    },
+    highlightsInfo: {
+      point1: "Just 100m meters from Pallavanthangal Station",
+      point2: "Only 700 from Velachery Station",
+      point3: " Opposite from Sunshine School",
+      point4: "Nestled behind the soon-to-come XB Mall",
+      point5: "Crafted with red bricks and river sand",
+      point6:"No common wall sharing"
+    },
+    filterData: {
+      constructionStatus: "ready to move",
+      localities: "Velachery",
+      purchaseType: "new booking",
+      amenities: ["parking", "gymnasium"],
+      furnishing: "Unfurnished",
+    },
+    startingFrom: "Starting From",
+    iconType: ["bed", "bath", "sqft"],
+  },
+  {
+    id: 2,
+    name: "Olive Sands",
+    location: " Uthandi, Chennai",
+    price: "₹9 Cr",
+    type: "Individual Villa ",
+    images: [OliveSands1, OliveSands1],
+    builtStatus:"New Property",
+    facing: "South",
+    specs: {
+      bedrooms: false,
+      baths: false,
+      sqft: "4.55 Grounds",
+    },
+    details: {
+      specification: "-",
+      furnishing: "No",
+      flatNo: "-",
+      FloorNo: "-",
+      builtUpArea: "4.55 Grounds",
+    },
+    status: "new",
+    highlights: ["Gated Community", "Sea View plot"],
+    description:
+      "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
+    listedOn: "20 mar 2025",
+    company: {
+      name: "Esthell Homes",
+      logo: "/logo.png",
+    },
+    detailedInfo: {
+      bedrooms: " ",
+      baths: " ",
+      sqft: "4.55 Grounds",
+      sqfts: "10922 Sqft",
+      frontage: "150 ft frontage",
       facing: "South",
-      specs: {
-        bedrooms: false,
-        baths: false,
-        sqft: "4.55 Grounds",
-      },
-      details: {
-        specification: "-",
-        furnishing: "No",
-        flatNo: "-",
-        FloorNo: "-",
-        builtUpArea: "4.55 Grounds",
-      },
-      status: "new",
-      highlights: ["South facing plot"],
       description:
         "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
-      listedOn: "20 mar 2025",
-      company: {
-        name: "Esthell Homes",
-        logo: "/logo.png",
-      },
-      detailedInfo: {
-        bedrooms: " ",
-        baths: " ",
-        sqft: "4.55 Grounds",
-        facing: "South",
-        description:
-          "Premium 4.55 grounds south-facing plot available at ₹9 Cr – perfect for your next dream development!",
-      },
-      highlightsInfo: {
-        point1: "Just 500 meters from Pallavanthangal Station",
-        point2: "Only 1 km from Velachery Station",
-        point3: "Right across from Sunshine School",
-      },
-      filterData: {
-        constructionStatus: "under construction",
-        localities: "Uthandi",
-        purchaseType: "new booking",
-        amenities: ["security personnel"],
-        furnishing: "Unfurnished",
-      },
     },
-  ];
+    highlightsInfo: {
+      point1:
+        "Beach Property, just 10m from Uthandi Toll(ECR), in a secure gated community",
+    },
+    filterData: {
+      constructionStatus: "under construction",
+      localities: "Uthandi",
+      purchaseType: "new booking",
+      amenities: ["security personnel"],
+      furnishing: "Unfurnished",
+    },
+    startingFrom: "",
+    iconType: ["sqfts", "grounds", "frontage"],
+  },
+];
 
   const [activeButtons, setActiveButtons] = useState({
     button1: false,
@@ -1139,23 +1147,50 @@ export default function ListingsPage() {
                         </span>
                       </p>
                     </div>
-                    <p className="propertyPrice">{property.price}</p>
+                  
+                     <div className="ListingpriceWrapper"> 
+                   <p className="propertyStartFrom">{property.startingFrom}</p>
+                  <p className="propertyPrice">{property.price}</p>
+                  </div>
+                  
                   </div>
                   <div className="propertySpecs">
-                    <div className="propertySpecItem">
+                     {property.iconType.map((type, idx) => (
+                                        <div className="propertySpecItem" key={type + idx}>
+                                          {type === "bed" && <LuBedDouble color="#001C6B" />}
+                                          {type === "bath" && <PiBathtub color="#001C6B" />}
+                                          {type === "sqft" && <AiOutlineHome color="#001C6B" />}
+                                          {type === "sqfts" && <AiOutlineHome color="#001C6B" />}
+                                          {type === "grounds" && (
+                                            <IoExpandOutline color="#001C6B" />
+                                          )}
+                                          {type === "frontage" && <LiaRoadSolid color="#001C6B" />}
+                    
+                                          {/* Add more icon types as needed */}
+                                          <span className="text">
+                                            {type === "bed" && `${property.specs.bedrooms} BHK`}
+                                            {type === "bath" && `${property.specs.baths} Baths`}
+                                            {type === "sqfts" && property.detailedInfo.sqfts}
+                                            {type === "sqft" && property.specs.sqft}
+                                            {type === "grounds" && property.specs.sqft}
+                                            {type === "frontage" && property.detailedInfo.frontage}
+                                          </span>
+                                        </div>
+                                      ))}
+                    {/* <div className="propertySpecItem">
                       <LuBedDouble color="#001C6B" />
                       <span className="text">
                         {property.specs.bedrooms} BHK
                       </span>
-                    </div>
-                    <div className="propertySpecItem">
+                    </div> */}
+                    {/* <div className="propertySpecItem">
                       <PiBathtub color="#001C6B" />
                       <span className="text">{property.specs.baths} Baths</span>
                     </div>
                     <div className="propertySpecItem">
                       <AiOutlineHome color="#001C6B" />
                       <span className="text">{property.specs.sqft}</span>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="propertyHighlightsWrapper">
                     <p className="hpPropHighlightsText">Highlights: </p>

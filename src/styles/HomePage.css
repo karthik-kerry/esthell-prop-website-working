@@ -470,10 +470,15 @@
 }
 
 .homePageSaleLabel {
-  background-color: #1b1b1b66;
+  background-color: #521da4;
   width: auto;
   height: auto;
   font-size: 10px;
+}
+.hpStartFrom{
+  width:"auto";
+  font-weight: 200;
+  font-size: 14px;
 }
 .hpPropDetailsContainer {
   display: flex;
@@ -492,12 +497,18 @@
   font-size: 14px;
   font-weight: 500;
 }
-
+.priceWrapper{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items:flex-end;
+  justify-content: flex-end;
+}
 .hpPropPrice {
   color: #1b1b1b;
   font-size: 20px;
   font-weight: 600;
-  margin-top: -3px;
+  margin-top: -10px;
 }
 
 .hpPropDetails {
@@ -509,6 +520,8 @@
   justify-content: space-between;
   padding: 10px;
   cursor: pointer;
+  flex-wrap: wrap;
+  gap:10px;
 }
 
 .hpPropDetailItem {
@@ -527,6 +540,8 @@
   cursor:"pointer",
 }
 .hpPropHighlightsText{
+  font-size: 14px;
+  font-weight: 400;
   color:#1B1B1BCC ;
   cursor:"pointer",
 }
@@ -729,7 +744,10 @@
   color: white;
   font-size: 16px;
 }
-
+.text{
+  font-weight: 400;
+  font-size: 13px;
+}
 .cardLocationInfo {
   display: flex;
   align-items: center;

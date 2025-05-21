@@ -323,6 +323,10 @@ display: flex;
 flex-direction: row;
 gap:5px;
 }
+.detailStartFrom{
+  font-weight: 200;
+  font-size: 14px;
+}
 .locationText{
   margin-top: -10px;
   font-size: 14px;
