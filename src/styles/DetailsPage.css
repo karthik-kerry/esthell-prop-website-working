@@ -600,7 +600,7 @@ gap:5px;
 }
 
 .similarListingsSaleTag {
-  background-color: #1b1b1b66;
+  background-color: #001C6B;
   color: white;
   width:auto;
   height:auto;
@@ -645,6 +645,9 @@ gap:5px;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  flex-wrap: wrap;
+  cursor: pointer;
+  gap: 10px;
 }
 
 .similarListPropItem {
@@ -669,6 +672,8 @@ gap:5px;
 
 .similarListingshighlightText {
   color: #1b1b1bcc;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .similarListingsHighlight {
@@ -679,6 +684,8 @@ gap:5px;
   align-items: center;
   justify-content: center;
   color: #1b1b1b;
+  font-size: 13px;
+  font-weight: 400;
 }
 /* amenities */
 
