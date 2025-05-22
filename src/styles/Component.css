@@ -126,6 +126,16 @@
   display: flex;
   gap: 20px;
 }
+.socialIcons a, .socialIcons svg {
+  vertical-align: middle;
+}
+
+.socialIcons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 
 .socialIcon {
   background-color: white;

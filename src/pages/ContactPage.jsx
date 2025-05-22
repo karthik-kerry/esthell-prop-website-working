@@ -1,143 +1,165 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HeroBg from "../assets/hero_bg.png";
-import OfficeLocation from "../assets/OfficeLoc.svg";
+import OfficeLocation from "../assets/officeLocation.svg";
 import { TiSocialFacebook } from "react-icons/ti";
 import { RiInstagramFill } from "react-icons/ri";
 import { IoLogoLinkedin } from "react-icons/io5";
 import { IoLogoWhatsapp } from "react-icons/io";
-import phone from "../assets/phone.svg";
-import mail from "../assets/mail.svg";
+import officeMail from "../assets/officeMail.svg";
+import officePhone from "../assets/officePhone.svg";
 import { Input, Button, Select } from "antd";
 import "../styles/ContactUsPage.css";
-import { useNavigate,useLocation } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
   const { TextArea } = Input;
   const { Option } = Select;
-  const [selectedValue, setSelectedValue] = useState(null);
-  const [value, setValue] = useState("");
+  const form = useRef();
+  const [selectedValue, setSelectedValue] = useState("");
+  const [submittedData, setSubmittedData] = useState(null);
   const handleChange = (value) => {
     setSelectedValue(value);
   };
-  // const location = useLocation();
-  // useEffect(() => {
-  //   window.scrollTo(0, 550);
-  // }, [location]);
-
+  const sendEmail = (e) => {
+    e.preventDefault();
+    const formData = new FormData(form.current);
+    const data = Object.fromEntries(formData.entries());
+    console.log("Form Data:", data);
+    setSubmittedData(data);
+    // emailjs
+    //   .sendForm(
+    //     "service_ekwkjks",
+    //     "template_7xitgzq",
+    //     form.current,
+    //     "VMqSQ0o0aZJrOybL3"
+    //   )
+    //   .then(
+    //     (result) => {
+    //       alert("Message sent!");
+    //     },
+    //     (error) => {
+    //       alert("Failed to send message");
+    //     }
+    //   );
+  };
   return (
     <div>
       <Header />
       {/* hero section */}
-      <div
-       className="contactHeroContainer"
-      >
-        <img
-          src={HeroBg}
-         className="contactHeroBgImage"
-        />
-        <div
-         className="contactOverlay"
-        >
-          <h1
-           className="contactHeroTitle"
-          >
-            Contact Us
-          </h1>
-          <p
-           className="contactHeroDescription"
-          >
+      <div className="contactHeroContainer">
+        <img src={HeroBg} className="contactHeroBgImage" />
+        <div className="contactOverlay">
+          <h1 className="contactHeroTitle">Contact Us</h1>
+          <p className="contactHeroDescription">
             We’d love to hear from you. Reach out to us for any property-related
             assistance.
           </p>
         </div>
       </div>
-      <div
-      className="contactContactSection"
-      >
-        <div
-          className="contactWrapper"
-        >
-          {/* info */}
-          <div className="contactInfoContainer">
-            <div className="contactCard">
-              <img src={OfficeLocation} className="contactIcon" />
-              <p className="contactTitle">Office Address :</p>
-              <p className="contactAddressDetails">
-                TS No: 1/10, No: 176, Inner Ring Road (South Segment),
-                Velachery, opp. Sunshine School, Chennai, Tamil Nadu 600042
-              </p>
-            </div>
-            <div className="contactCard">
-              <img src={mail} className="contactIcon" />
-              <p className="contactTitle">Email Address :</p>
-              <div className="contactEmailContainer">
-              <p className="contactEmailDetails1">vpraveen@esthellproperties.com</p>
-              <p className="contactEmailDetails2">vpraveen@esthellproperties.com</p>
-              </div>
-            </div>
-            <div className="contactCard">
-              <img src={phone} className="contactIcon" />
-              <div className="contactPhoneNoContainer">
-              <p className="contactTitle">Phone Number :</p>
-              <p className="contactDetails1">+91-72182 12345</p>
-              <p className="contactDetails2">+91-74182 01555</p>
-              </div>
-            </div>
-          </div>
-
+      <div className="contactContactSection">
+        <div className="contactWrapper">
           {/* talk with us */}
           <div className="formContainer">
-            <div className="formCard">
+            <form ref={form} onSubmit={sendEmail} className="formCard">
               <div className="formFields">
                 <div className="fieldRow">
-                  <Input className="inputField" placeholder="Name" />
-                  <Input className="inputField" placeholder="Email Address" />
+                  <Input
+                    name="user_name"
+                    className="inputField"
+                    placeholder="Name"
+                    required
+                  />
+                  <Input
+                    name="user_email"
+                    className="inputField"
+                    placeholder="Email Address"
+                    type="email"
+                    required
+                  />
                 </div>
                 <div className="fieldRow">
-                  <Input className="inputField" placeholder="Phone Number" />
+                  <Input
+                    name="user_phone"
+                    className="inputField"
+                    placeholder="Phone Number"
+                    required
+                  />
                   <Select
+                    name="user_selection"
                     className="selectField"
                     placeholder="Buy"
-                    value={selectedValue}
-                    onChange={handleChange}
+                    value={selectedValue || undefined}
+                    onChange={(value) => handleChange(value)}
                   >
-                    <Option value="product1">Buy</Option>
-                    <Option value="product2">Rent</Option>
-                    <Option value="product3">Commercial</Option>
+                    <Option value="buy">Buy</Option>
+                    <Option value="rent">Rent</Option>
+                    <Option value="commercial">Commercial</Option>
                   </Select>
+                  {/* Hidden input to include in FormData */}
+                  <input
+                    type="hidden"
+                    name="user_selection"
+                    value={selectedValue}
+                  />
                 </div>
                 <TextArea
+                  name="message"
                   className="textArea"
                   placeholder="Write Your Message Here!"
                   autoSize={{ minRows: 5, maxRows: 6 }}
+                  required
                 />
-                <Button className="submitButton">Enquiry Now</Button>
+                <Button htmlType="submit" className="submitButton">
+                  Enquiry Now
+                </Button>
               </div>
-            </div>
+            </form>
+
             <div className="contactInfo">
-              <p className="contactInfoTitle">Talk With Us</p>
-              <p className="contactInfoText">
-                Have questions about buying, selling, or renting a property? Our
-                expert team is here to help you every step of the way. Whether
-                you're exploring options or ready to make a move, feel free to
-                reach out — we're just a message or call away.
-              </p>
+              <div className="contactUsInfoContainer">
+                <div className="contactUsCard">
+                  <img src={OfficeLocation} className="contactIcon" />
+                  <p>
+                    TS No: 1/10, No: 176, Inner Ring Road (South Segment),,
+                    Velachery,, Opp. Sunshine School,, Chennai, Tamil Nadu
+                    600042
+                  </p>
+                </div>
+                <div className="contactUsCard">
+                  <img src={officeMail} className="contactIcon" />
+                  <p>vpraveen@esthellproperties.com</p>
+                </div>
+                <div className="contactUsCard">
+                  <img src={officePhone} className="contactIcon" />
+                  <p>+91-72182 12345</p>
+                  <p>+91-74182 01555</p>
+                </div>
+              </div>
               <p className="contactInfoSubtitle">Social Media :</p>
               <div className="socialIconsContainer">
                 <div className="ContactSocialIcons">
-                  <TiSocialFacebook size={20} color="white" />
-                </div>
-                <div className="ContactSocialIcons">
-                  <RiInstagramFill size={20} color="white" />
+                  <a
+                    href="https://www.instagram.com/esthellproperties?igsh=MWhjY21tN3VzMWRnaQ=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <RiInstagramFill size={20} color="white" />
+                  </a>
                 </div>
                 <div className="ContactSocialIcons">
                   <IoLogoLinkedin size={20} color="white" />
                 </div>
                 <div className="ContactSocialIcons">
-                  <IoLogoWhatsapp size={20} color="white" />
+                  <a
+                    href="https://wa.me/917218212345?text=Hi%20I%20am%20interested%20in%20a%20property%20enquiry"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <IoLogoWhatsapp size={24} color="white" />
+                  </a>
                 </div>
               </div>
             </div>

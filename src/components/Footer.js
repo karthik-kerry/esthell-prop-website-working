@@ -56,16 +56,27 @@ export default function Footer() {
           <p className="footerCategory">Connect with us</p>
           <div className="socialIcons">
             <div className="socialIcon">
-              <TiSocialFacebook size={20} color="#00174E" />
-            </div>
-            <div className="socialIcon">
-              <RiInstagramFill size={20} color="#00174E" />
+               <a
+                    href="https://www.instagram.com/esthellproperties?igsh=MWhjY21tN3VzMWRnaQ=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                     <RiInstagramFill size={20} color="#00174E" />
+                  </a>
+             
             </div>
             <div className="socialIcon">
               <IoLogoLinkedin size={20} color="#00174E" />
             </div>
             <div className="socialIcon">
-              <IoLogoWhatsapp size={20} color="#00174E" />
+               <a
+                    href="https://wa.me/917218212345?text=Hi%20I%20am%20interested%20in%20a%20property%20enquiry"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                     <IoLogoWhatsapp size={20} color="#00174E" />
+                  </a>
+             
             </div>
           </div>
         </div>
