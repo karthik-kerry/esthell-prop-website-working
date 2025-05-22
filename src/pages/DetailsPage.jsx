@@ -6,11 +6,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import { TbShare } from "react-icons/tb";
 import Property from "../assets/property.jpg";
 import Property1 from "../assets/property1.jpg";
-import plainimage from "../assets/plain.png";
-import Visualimage from "../assets/visual.png";
-import { Rate, Progress, Flex, Divider, Button } from "antd";
-import { StarFilled, StarOutlined } from "@ant-design/icons";
-import dimensionalView from "../assets/dimensionalView.png";
+import { Button,Modal } from "antd";
 import { LuBedDouble } from "react-icons/lu";
 import { PiBathtub } from "react-icons/pi";
 import { AiOutlineHome, AiOutlineCalendar } from "react-icons/ai";
@@ -28,7 +24,6 @@ import Parking from "../assets/Parking.png";
 import PowerBackup from "../assets/PowerBackup.png";
 import SwimmingPool from "../assets/SwimmingPool.png";
 import VideoDoorPhone from "../assets/VideoDoorPhone.png";
-import WallSharing from "../assets/WallSharing.png";
 import DuplexLower from "../assets/DuplexLower.svg";
 import DuplexUpper from "../assets/DuplexUpper.svg";
 import FirstFloorPlan from "../assets/FirstFloorPlan.svg";
@@ -55,6 +50,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import { auth, googleProvider } from "../firebase";
+import { signInWithPopup } from "firebase/auth";
 
 export default function DetailsPage() {
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -76,6 +73,7 @@ export default function DetailsPage() {
     navigate("/listings");
   };
   const [rating, setRating] = useState(4.2);
+
   const starProgress = [
     { progress: 100, label: "5", filled: true },
     { progress: 100, label: "4", filled: true },
@@ -109,6 +107,8 @@ export default function DetailsPage() {
       facing: "East",
       specs: {
         bedrooms: "2.5/3/Duplex",
+        bedroomsDisplay:"2.5 & 3 BHK / Duplex",
+        bathsDisplay:"2-4",
         baths: "2/3/4",
         sqft: "1492-2897 Sqft",
       },
@@ -129,8 +129,8 @@ export default function DetailsPage() {
         logo: "/logo.png",
       },
       detailedInfo: {
-        bedrooms: "2.5 / 3 / Duplex",
-        baths: "2/3/4",
+        bedrooms: "2.5 & 3 BHK / Duplex",
+       baths: "2-4",
         sqft: "1492-2897 Sqft",
         facing: "East & West",
         description:
@@ -287,6 +287,19 @@ export default function DetailsPage() {
     window.scrollTo(0, 0);
   }, [location]);
 
+   const handleGoogleSignIn = async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    const user = result.user;
+    console.log("Google User Data:", user); // Log user data
+    alert("Google Sign-In successful!");
+    // You can redirect or update UI here
+  } catch (error) {
+    alert("Google Sign-In failed: " + error.message);
+  }
+};
+
+
   return (
     <div>
       <Header />
@@ -297,6 +310,9 @@ export default function DetailsPage() {
 
             <div className="detailPageImgContainer">
               <div className="detailPageImageWrapper">
+                 <button onClick={handleGoogleSignIn} style={{padding: 10, fontSize: 16}}>
+      Sign in with Google
+    </button>
                 <Swiper
                   modules={[Pagination]}
                   pagination={{ clickable: true }}
@@ -425,22 +441,7 @@ export default function DetailsPage() {
             )}
             {/* houseInfo */}
             <div className="detailPageHouseInfoContainer">
-              {/* <div className="detailPagHouseInfoItem">
-                <LuBedDouble className="detailPageInfoIcon" />
-                <p className="detailsInfoText">
-                  {property.detailedInfo.bedrooms}
-                </p>
-              </div>
-              <div className="detailPagHouseInfoItem">
-                <PiBathtub className="detailPageInfoIcon" />
-                <p className="detailsInfoText">
-                  {property.detailedInfo.baths} Baths
-                </p>
-              </div>
-              <div className="detailPagHouseInfoItem">
-                <AiOutlineHome className="detailPageInfoIcon" />
-                <p className="detailsInfoText">{property.detailedInfo.sqft}</p>
-              </div> */}
+
               {property.iconType.map((type, idx) => (
                 <div className="detailPagHouseInfoItem" key={type + idx}>
                   {type === "bed" && <LuBedDouble color="#001C6B" />}
@@ -452,8 +453,8 @@ export default function DetailsPage() {
 
                   {/* Add more icon types as needed */}
                   <span className="text">
-                    {type === "bed" && `${property.specs.bedrooms} BHK`}
-                    {type === "bath" && `${property.specs.baths} Baths`}
+                    {type === "bed" && property.specs.bedroomsDisplay}
+                        {type === "bath" && `${property.specs.bathsDisplay} Baths`}
                     {type === "sqfts" && property.detailedInfo.sqfts}
                     {type === "sqft" && property.specs.sqft}
                     {type === "grounds" && property.specs.sqft}

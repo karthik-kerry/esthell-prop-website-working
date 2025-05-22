@@ -78,6 +78,8 @@ export default function ListingsPage() {
       facing: "East",
       specs: {
         bedrooms: "2.5/3/Duplex",
+        bedroomsDisplay:"2.5 & 3 BHK / Duplex",
+        bathsDisplay:"2-4",
         baths: "2/3/4",
         sqft: "1492-2897 Sqft",
       },
@@ -98,8 +100,8 @@ export default function ListingsPage() {
         logo: "/logo.png",
       },
       detailedInfo: {
-        bedrooms: "2.5 / 3 / Duplex",
-        baths: "2/3/4",
+       bedrooms: "2.5 & 3 BHK / Duplex",
+         baths: "2-4",
         sqft: "1492-2897 Sqft",
         facing: "East & West",
         description:
@@ -1214,8 +1216,8 @@ export default function ListingsPage() {
 
                         {/* Add more icon types as needed */}
                         <span className="text">
-                          {type === "bed" && `${property.specs.bedrooms} BHK`}
-                          {type === "bath" && `${property.specs.baths} Baths`}
+                         {type === "bed" && property.specs.bedroomsDisplay}
+                        {type === "bath" && `${property.specs.bathsDisplay} Baths`}
                           {type === "sqfts" && property.detailedInfo.sqfts}
                           {type === "sqft" && property.specs.sqft}
                           {type === "grounds" && property.specs.sqft}

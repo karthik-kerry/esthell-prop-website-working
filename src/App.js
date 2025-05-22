@@ -7,6 +7,7 @@ import ContactPage from "./pages/ContactPage";
 import DetailsPage from "./pages/DetailsPage"
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes>

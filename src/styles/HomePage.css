@@ -570,6 +570,66 @@
   padding: 10px 16px;
   border-radius: 12px;
 }
+/* modal */
+.ant-modal-content{
+  padding: 0 !important;
+  border-radius: 20px;
+}
+.modalContainer{
+  display: flex;
+}
+.modalLeft,.modalRight{
+  width:50%;
+}
+.modalLeft {
+  position: relative;
+}
+.modalRight{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modalLogo {
+  position: absolute;
+  top:12px;
+  left: 0;
+  width: 50px;
+  height: 60px;
+  z-index: 3;
+}
+.modalButton{
+  width: 80%;
+  height: 44px;
+  border: 1.5px solid #001C6B;
+  border-radius: 12px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+.modalImg{
+  width:100%;
+  height:100%;
+  border-top-left-radius:8px;
+  border-bottom-left-radius: 8px;
+}
+.modalImgTextBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; 
+  color: white;
+  text-align:left;
+  padding: 16px 16px;
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  z-index: 2;
+}
+
+
 /* cities with listing */
 .citiesWithListingContainer {
   background-color: #f2f6fa;

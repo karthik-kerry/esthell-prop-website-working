@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import HomeBg from "../assets/HomeBg.png";
 import HomeBg1 from "../assets/HomeBg1.png";
 import HeroImg from "../assets/hero_img.png";
-import { Button, Dropdown, Input, Space } from "antd";
+import { Button, Dropdown, Input, Space, Modal } from "antd";
 import { TbHomeDollar } from "react-icons/tb";
 import { DownOutlined } from "@ant-design/icons";
 import SearchIcon from "../assets/search.png";
@@ -31,19 +31,22 @@ import EsthellFlats from "../assets/esthell_apartments.png";
 import Logo from "../assets/logo.png";
 import { FaPhone } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
-import { FaRegHeart,FaHeart } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa6";
-import { FaChevronLeft } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { LuBedDouble } from "react-icons/lu";
 import { PiBathtub } from "react-icons/pi";
 import { AiOutlineHome } from "react-icons/ai";
 import { LiaRoadSolid } from "react-icons/lia";
 import { IoExpandOutline } from "react-icons/io5";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FcGoogle } from "react-icons/fc";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import "../styles/HomePage.css";
+import loginHeroImage from "../assets/loginHeroImage.png";
+import { signInWithPopup } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase";
 
 const propertyType = [
   {
@@ -115,6 +118,8 @@ const currentProperties = [
     facing: "East",
     specs: {
       bedrooms: "2.5/3/Duplex",
+      bedroomsDisplay: "2.5 & 3 BHK / Duplex",
+      bathsDisplay: "2-4",
       baths: "2/3/4",
       sqft: "1492-2897 Sqft",
     },
@@ -135,8 +140,8 @@ const currentProperties = [
       logo: "/logo.png",
     },
     detailedInfo: {
-      bedrooms: "2.5 / 3 / Duplex",
-      baths: "2/3/4",
+      bedrooms: "2.5 & 3 BHK / Duplex",
+      baths: "2-4",
       sqft: "1492-2897 Sqft",
       facing: "East & West",
       description:
@@ -149,8 +154,8 @@ const currentProperties = [
       point4: "Nestled behind the soon-to-come XB Mall",
       point5: "Crafted with red bricks and river sand",
       point6: "No wall sharing",
-       point7:"Vaastu Complaints",
-        point8:"Rooms with double-layer brick walls."
+      point7: "Vaastu Complaints",
+      point8: "Rooms with double-layer brick walls.",
     },
     filterData: {
       constructionStatus: "ready to move",
@@ -222,6 +227,9 @@ const currentProperties = [
 ];
 
 export default function HomePage() {
+  const [user] = useAuthState(auth);
+  const isLoggedIn = !!user;
+  console.log("User is logged in:", isLoggedIn);
   const navigate = useNavigate();
   const handleEnquiryClick = () => {
     navigate("/contact");
@@ -230,7 +238,6 @@ export default function HomePage() {
   const scrollContainerRef = useRef(null);
   const topScrollContainerRef = useRef(null);
   const bottomScrollContainerRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [activeButton, setActiveButton] = useState("buy");
   const [imageSrc, setImageSrc] = useState(HomeBg);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -240,6 +247,8 @@ export default function HomePage() {
   const [searchSize, setSearchSize] = useState("");
   const [minRange, setMinRange] = useState("");
   const [maxRange, setMaxRange] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const buttonStyles = (isActive) => ({
     display: "flex",
     alignItems: "center",
@@ -264,13 +273,17 @@ export default function HomePage() {
   const handleViewAll = () => {
     navigate("/listings");
   };
-  const handleCardClick = (property) => {
-    navigate("/details", { state: { property } });
-  };
+
   const [currentIndexes, setCurrentIndexes] = useState(
     currentProperties.map(() => 0)
   );
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
 
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
   const handlePrev = (propertyIdx) => {
     setCurrentIndexes((prev) =>
       prev.map((idx, i) =>
@@ -322,6 +335,14 @@ export default function HomePage() {
     if (str.endsWith("cr")) return parseFloat(str) * 10000000;
     return parseFloat(str);
   }
+
+  const handlePropertyCardClick = (property) => {
+    if (isLoggedIn) {
+      navigate("/details", { state: { property } });
+    } else {
+      setIsModalOpen(true);
+    }
+  };
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 480) {
@@ -355,6 +376,18 @@ export default function HomePage() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  //   const handleGoogleSignIn = async () => {
+  //   try {
+  //     const result = await signInWithPopup(auth, googleProvider);
+  //     const user = result.user;
+  //     console.log("Google User Data:", user);
+  //     alert("Google Sign-In successful!");
+  //     // You can redirect or update UI here
+  //   } catch (error) {
+  //     alert("Google Sign-In failed: " + error.message);
+  //   }
+  // };
 
   const filterProperties = () => {
     return currentProperties.filter((property) => {
@@ -832,7 +865,28 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
+        <Modal
+          closable={{ "aria-label": "Custom Close Button" }}
+          open={isModalOpen}
+          footer={null}
+          onCancel={() => setIsModalOpen(false)}
+        >
+          <div className="modalContainer">
+            <div className="modalLeft">
+              <img src={Logo} className="modalLogo" alt="Logo" />
+              <img src={loginHeroImage} className="modalImg" />
+              <div className="modalImgTextBottom">
+                <p style={{ margin: 0 }}>Welcome to Esthell Properties</p>
+              </div>
+            </div>
+            <div className="modalRight">
+              <Button className="modalButton">
+                <FcGoogle size={24} />
+                Login with Google
+              </Button>
+            </div>
+          </div>
+        </Modal>
         {/* Featured properties for sales */}
         <div className="hpPropContainer">
           <h2 className="hpPropTitle">Featured Properties for Sales</h2>
@@ -841,7 +895,11 @@ export default function HomePage() {
           </p>
           <div className="hpPropCardGrid">
             {currentProperties.map((property, index) => (
-              <div key={property.id} className="hpPropCard">
+              <div
+                key={property.id}
+                className="hpPropCard"
+                onClick={() => handlePropertyCardClick(property)}
+              >
                 <div className="hpPropImgContainer">
                   <div className="hpPropImageWrapper">
                     <Swiper
@@ -882,7 +940,7 @@ export default function HomePage() {
                 </div>
                 <div
                   className="hpPropDetailsContainer"
-                  onClick={() => handleCardClick(property)}
+                  onClick={() => handlePropertyCardClick(property)}
                 >
                   <div>
                     <p className="hpPropName">{property.name}</p>
@@ -900,7 +958,7 @@ export default function HomePage() {
                 </div>
                 <div
                   className="hpPropDetails"
-                  onClick={() => handleCardClick(property)}
+                  onClick={() => handlePropertyCardClick(property)}
                 >
                   {property.iconType.map((type, idx) => (
                     <div className="hpPropDetailItem" key={type + idx}>
@@ -915,8 +973,9 @@ export default function HomePage() {
 
                       {/* Add more icon types as needed */}
                       <span className="text">
-                        {type === "bed" && `${property.specs.bedrooms} BHK`}
-                        {type === "bath" && `${property.specs.baths} Baths`}
+                        {type === "bed" && property.specs.bedroomsDisplay}
+                        {type === "bath" &&
+                          `${property.specs.bathsDisplay} Baths`}
                         {type === "sqfts" && property.detailedInfo.sqfts}
                         {type === "sqft" && property.specs.sqft}
                         {type === "grounds" && property.specs.sqft}
@@ -927,7 +986,7 @@ export default function HomePage() {
                 </div>
                 <div
                   className="hpPropHighlights"
-                  onClick={() => handleCardClick(property)}
+                  onClick={() => handlePropertyCardClick(property)}
                 >
                   <p className="hpPropHighlightsText">Highlights: </p>
                   {property.highlights.map((highlight, idx) => (
