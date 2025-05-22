@@ -84,10 +84,10 @@ export default function AboutPage() {
             <div className="whoAreWeTextContainer">
               <p className="whoAreWeHeading">Who We Are</p>
               <p className="whoAreWeParagraph1">
-                Founded in [Year], Esthell Properties is a real estate builders
+                Founded in <b>2015</b>, Esthell Properties is a real estate builders
                 & construction company based in Chennai, Tamil Nadu. With deep
                 market knowledge and a passion for excellence, we specialize in
-                premium residential properties including apartments, villas, and
+                premium residential properties including apartments, villas, Malls, Hotels & Resorts and
                 gated communities.
               </p>
               <p className="whoAreWeParagraph2">
@@ -139,7 +139,7 @@ export default function AboutPage() {
                 <p className="visionText">Our Vision</p>
                 <p className="visionParagraph">
                   To become one of the most trusted and innovative real estate
-                  firms in South India, redefining the way people experience
+                  firms in PAN India, redefining the way people experience
                   buying, selling, and living in homes.
                 </p>
               </div>
@@ -207,10 +207,10 @@ export default function AboutPage() {
                     .forEach((p) => (p.style.color = "#001C6B"));
                 }}>
                 <img src={CustomerCentric} className="coreValueIcon" />
-                <p className="coreValueText">Customer-Centric Approach</p>
+                <p className="coreValueText">Trust & Reliability</p>
                 <p className="coreValueDescription">
-                  Your needs, goals, and satisfaction are our top priority —
-                  always.
+                   We build long-lasting relationships by delivering on our
+                  promises consistently.
                 </p>
               </div>
 
@@ -282,10 +282,10 @@ export default function AboutPage() {
                     .forEach((p) => (p.style.color = "#001C6B"));
                 }}>
                 <img src={Innovation} className="coreValueIcon" />
-                <p className="coreValueText">Innovation</p>
+                <p className="coreValueText">Customer-Centric Approach</p>
                 <p className="coreValueDescription">
-                  We adopt modern tools and smart technologies to enhance your
-                  property journey.
+                 Your needs, goals, and satisfaction are our top priority —
+                  always.
                 </p>
               </div>
 
@@ -307,10 +307,10 @@ export default function AboutPage() {
                     .forEach((p) => (p.style.color = "#001C6B"));
                 }}>
                 <img src={Trust} className="coreValueIcon" />
-                <p className="coreValueText">Trust & Reliability</p>
+                <p className="coreValueText">Innovation</p>
                 <p className="coreValueDescription">
-                  We build long-lasting relationships by delivering on our
-                  promises consistently.
+                We adopt modern tools and smart technologies to enhance your
+                  property journey.
                 </p>
               </div>
             </div>
@@ -347,19 +347,19 @@ export default function AboutPage() {
               </p>
               <div>
                 <p className="whyChooseUsPoints">
-                  ✅Over 5+ years of real estate experience.
+                  ✅ Over 5+ years of real estate experience.
                 </p>
                 <p className="whyChooseUsPoints">
-                  ✅Verified and legally clear properties.
+                  ✅ Verified and legally clear properties.
                 </p>
                 <p className="whyChooseUsPoints">
-                  ✅Strong network of builders and landlords.
+                  ✅ Strong network of builders and landlords.
                 </p>
                 <p className="whyChooseUsPoints">
-                  ✅Dedicated team of experienced professionals.
+                  ✅ Dedicated team of experienced professionals.
                 </p>
                 <p className="whyChooseUsPoints">
-                  ✅End-to-end support: from site visit to registration.
+                  ✅ End-to-end support: from site visit to registration.
                 </p>
               </div>
             </div>

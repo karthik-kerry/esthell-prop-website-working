@@ -88,7 +88,7 @@ export default function ListingsPage() {
         FloorNo: "-",
         builtUpArea: "1492",
       },
-      highlights: ["Behind XB mall", "700m from Velachery station"],
+      highlights: ["Behind upcoming XB mall", "700m from Velachery station"],
       description:
         "Discover premium 2.5, 3 BHK & Duplex apartments with 2–4 bathrooms, located in the heart of Velachery.",
       status: "ready to occupy",
@@ -107,11 +107,13 @@ export default function ListingsPage() {
       },
       highlightsInfo: {
         point1: "Just 100m meters from Puzhuthivakkam Station",
-        point2: "Only 700 from Velachery Station",
-        point3: " Opposite from Sunshine School",
+        point2: "Only 700m from Velachery Station",
+        point3: " Opposite to Sunshine School",
         point4: "Nestled behind the soon-to-come XB Mall",
         point5: "Crafted with red bricks and river sand",
-        point6: "No common wall sharing",
+        point6: "No wall sharing",
+        point7:"Vaastu Complaints",
+         point8:"Rooms with double-layer brick walls."
       },
       filterData: {
         constructionStatus: "ready to move",
