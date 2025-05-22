@@ -44,9 +44,9 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import "../styles/HomePage.css";
 import loginHeroImage from "../assets/loginHeroImage.png";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../firebase";
+import { auth,googleProvider  } from "../firebase";
 
 const propertyType = [
   {
@@ -377,17 +377,17 @@ export default function HomePage() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  //   const handleGoogleSignIn = async () => {
-  //   try {
-  //     const result = await signInWithPopup(auth, googleProvider);
-  //     const user = result.user;
-  //     console.log("Google User Data:", user);
-  //     alert("Google Sign-In successful!");
-  //     // You can redirect or update UI here
-  //   } catch (error) {
-  //     alert("Google Sign-In failed: " + error.message);
-  //   }
-  // };
+    const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      console.log("Google User Data:", user);
+      alert("Google Sign-In successful!");
+      // You can redirect or update UI here
+    } catch (error) {
+      alert("Google Sign-In failed: " + error.message);
+    }
+  };
 
   const filterProperties = () => {
     return currentProperties.filter((property) => {
@@ -880,7 +880,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="modalRight">
-              <Button className="modalButton">
+              <Button className="modalButton" onClick={handleGoogleSignIn}>
                 <FcGoogle size={24} />
                 Login with Google
               </Button>
