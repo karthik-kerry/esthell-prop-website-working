@@ -302,7 +302,43 @@ justify-content: flex-start;
   color: #001c6b;
 }
 /* floor plans */
+.fullScreen {
+ position: fixed !important;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(30, 30, 30, 0.572);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fullScreenView{
+  border-radius: 12px;
+  padding: 24px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+}
+.fullScreenImage {
+  width: 70vw !important;
+  height: 70vh !important;
+  object-fit: contain;
+}
+.closeIcon{
+  position: absolute;
+  top: 12px; right: 12px;
+  background: none;
+  border:2px solid #001C6B;
+  border-radius: 50%;
+  font-size: 25px;
+  cursor: pointer;
+  color: #001C6B;
+  z-index: 2;
+}
 .detailPageFloorPlansHeader {
   font-weight: 500;
   font-size: 18px;

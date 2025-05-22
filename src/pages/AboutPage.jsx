@@ -206,7 +206,7 @@ export default function AboutPage() {
                     .querySelectorAll("p")
                     .forEach((p) => (p.style.color = "#001C6B"));
                 }}>
-                <img src={CustomerCentric} className="coreValueIcon" />
+                <img src={Trust} className="coreValueIcon" />
                 <p className="coreValueText">Trust & Reliability</p>
                 <p className="coreValueDescription">
                    We build long-lasting relationships by delivering on our
@@ -281,7 +281,7 @@ export default function AboutPage() {
                     .querySelectorAll("p")
                     .forEach((p) => (p.style.color = "#001C6B"));
                 }}>
-                <img src={Innovation} className="coreValueIcon" />
+                <img src={CustomerCentric} className="coreValueIcon" />
                 <p className="coreValueText">Customer-Centric Approach</p>
                 <p className="coreValueDescription">
                  Your needs, goals, and satisfaction are our top priority —
@@ -306,7 +306,7 @@ export default function AboutPage() {
                     .querySelectorAll("p")
                     .forEach((p) => (p.style.color = "#001C6B"));
                 }}>
-                <img src={Trust} className="coreValueIcon" />
+                <img src={Innovation} className="coreValueIcon" />
                 <p className="coreValueText">Innovation</p>
                 <p className="coreValueDescription">
                 We adopt modern tools and smart technologies to enhance your

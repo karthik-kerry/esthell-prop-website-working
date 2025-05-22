@@ -57,6 +57,8 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 
 export default function DetailsPage() {
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const toggleFullScreen = () => setIsFullScreen((v) => !v);
   const location = useLocation();
   const property = location.state?.property;
   const [favoriteMap, setFavoriteMap] = useState({});
@@ -541,58 +543,8 @@ export default function DetailsPage() {
                 </div>
                 <div className="detailPageDivider" />
                 {/* floor plans */}
-                {/* <div>
-                  <p className="detailPageFloorPlansHeader">Floor Plans</p>
-                  <div className="detailPageFloorPlansContainer">
-                    <div>
-                      <p>SITE PLAN</p>
-                      <img
-                        src={SitePlan}
-                        className="detailPageFloorPlanImage"
-                      />
-                    </div>
-                    <div>
-                      <p>GROUND FLOOR PLAN</p>
-                      <img
-                        src={GroundFloorPlan}
-                        className="detailPageFloorPlanImage"
-                      />
-                    </div>
-                  </div>
-                  <div className="detailPageFloorPlansContainer">
-                    <div>
-                      <p>FIRST FLOOR PLAN</p>
-                      <img
-                        src={FirstFloorPlan}
-                        className="detailPageFloorPlanImage"
-                      />
-                    </div>
-                    <div>
-                      <p>TYPICAL FLOOR PLAN</p>
-                      <img
-                        src={TypicalFloorPlan}
-                        className="detailPageFloorPlanImage"
-                      />
-                    </div>
-                  </div>
-                  <div className="detailPageFloorPlansContainer">
-                    <div>
-                      <p>DUPLEX LOWER</p>
-                      <img
-                        src={DuplexLower}
-                        className="detailPageFloorPlanImage"
-                      />
-                    </div>
-                    <div>
-                      <p>DUPLEX UPPER</p>
-                      <img
-                        src={DuplexUpper}
-                        className="detailPageFloorPlanImage"
-                      />
-                    </div>
-                  </div>
-                </div> */}
-                <div className="detailPageFloorPlanSlider">
+               
+                {/* <div className="detailPageFloorPlanSlider">
                   <button
                     className="detailPageFloorPlanArrow"
                     onClick={() =>
@@ -623,7 +575,145 @@ export default function DetailsPage() {
                   >
                     <FaChevronRight color="#001C6B" size={18} />
                   </button>
-                </div>
+                </div> */}
+                <div className="detailPageFloorPlanSlider">
+  <button
+    className="detailPageFloorPlanArrow"
+    onClick={() =>
+      setFloorPlanIndex(
+        floorPlanIndex === 0
+          ? floorPlans.length - 1
+          : floorPlanIndex - 1
+      )
+    }
+  >
+    <FaChevronLeft color="#001C6B" size={18} />
+  </button>
+  <div className="detailPageFloorPlanSingle">
+    <p>{floorPlans[floorPlanIndex].label}</p>
+    <img
+      src={floorPlans[floorPlanIndex].src}
+      className="detailPageFloorPlanImage"
+      alt={floorPlans[floorPlanIndex].label}
+      onClick={toggleFullScreen}
+      style={{ cursor: "zoom-in" }}
+    />
+  </div>
+  <button
+    className="detailPageFloorPlanArrow"
+    onClick={() =>
+      setFloorPlanIndex(
+        (floorPlanIndex + 1) % floorPlans.length
+      )
+    }
+  >
+    <FaChevronRight color="#001C6B" size={18} />
+  </button>
+</div>
+
+{/* {isFullScreen && (
+  <div className="fullScreen" onClick={toggleFullScreen}>
+    <div
+      className="detailPageFloorPlanSingle"
+      onClick={e => e.stopPropagation()}
+      style={{ background: "#fff", borderRadius: 18, padding: 24 }}
+    >
+      <p>{floorPlans[floorPlanIndex].label}</p>
+      <img
+        src={floorPlans[floorPlanIndex].src}
+        className="fullScreenImage"
+        alt={floorPlans[floorPlanIndex].label}
+        style={{ cursor: "zoom-out" }}
+        onClick={toggleFullScreen}
+      />
+    </div>
+  </div>
+)} */}
+{isFullScreen && (
+  <div className="fullScreen" onClick={toggleFullScreen}>
+    <div
+      className="detailPageFloorPlanSingle"
+      onClick={e => e.stopPropagation()}
+      style={{
+        background: "#fff",
+        borderRadius: 18,
+        padding: 24,
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        minWidth: 320,
+      }}
+    >
+      {/* Close Icon */}
+      <button
+        onClick={toggleFullScreen}
+       className="closeIcon"
+        aria-label="Close"
+      >
+        &times;
+      </button>
+      {/* Left Arrow */}
+      <button
+        className="detailPageFloorPlanArrow"
+        onClick={e => {
+          e.stopPropagation();
+          setFloorPlanIndex(
+            floorPlanIndex === 0
+              ? floorPlans.length - 1
+              : floorPlanIndex - 1
+          );
+        }}
+        style={{
+          position: "absolute",
+          left: 12,
+          top: "50%",
+          transform: "translateY(-50%)",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          color: "#001C6B",
+          zIndex: 2,
+        }}
+        aria-label="Previous"
+      >
+        <FaChevronLeft size={24} />
+      </button>
+      {/* Right Arrow */}
+      <button
+        className="detailPageFloorPlanArrow"
+        onClick={e => {
+          e.stopPropagation();
+          setFloorPlanIndex(
+            (floorPlanIndex + 1) % floorPlans.length
+          );
+        }}
+        style={{
+          position: "absolute",
+          right: 12,
+          top: "50%",
+          transform: "translateY(-50%)",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          color: "#001C6B",
+          zIndex: 2,
+        }}
+        aria-label="Next"
+      >
+        <FaChevronRight size={24} />
+      </button>
+      <p style={{ marginBottom: 16 }}>{floorPlans[floorPlanIndex].label}</p>
+      <img
+        src={floorPlans[floorPlanIndex].src}
+        className="fullScreenImage"
+        alt={floorPlans[floorPlanIndex].label}
+        style={{ cursor: "zoom-out" }}
+        onClick={toggleFullScreen}
+      />
+    </div>
+  </div>
+)}
                 <div className="detailPageDivider" />
               </>
             )}
