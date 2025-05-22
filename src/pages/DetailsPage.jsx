@@ -59,14 +59,14 @@ import { Pagination } from "swiper/modules";
 export default function DetailsPage() {
   const location = useLocation();
   const property = location.state?.property;
- const [favoriteMap, setFavoriteMap] = useState({});
+  const [favoriteMap, setFavoriteMap] = useState({});
   const navigate = useNavigate();
-const handleHeartClick = (propertyId) => {
-  setFavoriteMap((prev) => ({
-    ...prev,
-    [propertyId]: !prev[propertyId],
-  }));
-};
+  const handleHeartClick = (propertyId) => {
+    setFavoriteMap((prev) => ({
+      ...prev,
+      [propertyId]: !prev[propertyId],
+    }));
+  };
   const handleEnquiryClick = () => {
     navigate("/contact");
   };
@@ -317,18 +317,16 @@ const handleHeartClick = (propertyId) => {
                 <div className="detailPageIcons">
                   <TbShare color="white" className="detailPageShareIcon" />
 
-               <div
-  onClick={() => handleHeartClick(property.id)}
->
-  {favoriteMap[property.id] ? (
-    <FaHeart color="red" className="detailPageHeartIcon" />
-  ) : (
-    <FaRegHeart
-      color="white"
-      className="detailPageHeartIcon"
-    />
-  )}
-</div>
+                  <div onClick={() => handleHeartClick(property.id)}>
+                    {favoriteMap[property.id] ? (
+                      <FaHeart color="red" className="detailPageHeartIcon" />
+                    ) : (
+                      <FaRegHeart
+                        color="white"
+                        className="detailPageHeartIcon"
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -893,18 +891,21 @@ const handleHeartClick = (propertyId) => {
                   <div className="similarListingsStatusContainer">
                     <p className="similarListingsVerifiedTag">Verified</p>
                     <p className="similarListingsSaleTag">{property.status}</p>
-                   <div
-          onClick={e => {
-            e.stopPropagation(); // Prevent card click
-            handleHeartClick(property.id);
-          }}
-        >
-          {favoriteMap[property.id] ? (
-            <FaHeart color="red" className="detailPageHeartIcon" />
-          ) : (
-            <FaRegHeart color="white" className="detailPageHeartIcon" />
-          )}
-        </div>
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent card click
+                        handleHeartClick(property.id);
+                      }}
+                    >
+                      {favoriteMap[property.id] ? (
+                        <FaHeart color="red" className="detailPageHeartIcon" />
+                      ) : (
+                        <FaRegHeart
+                          color="white"
+                          className="detailPageHeartIcon"
+                        />
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div className="similarListingsPriceContainer">
