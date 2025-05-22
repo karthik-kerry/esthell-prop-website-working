@@ -334,14 +334,14 @@
 .imageContainer {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 330px;
   margin: 0 auto;
 }
 
 .propertyImage {
   height: 298px;
   width: 100%;
-  max-width: 400px;
+  max-width: 330px;
   border-radius: 12px;
   object-fit: cover;
 }
@@ -390,6 +390,7 @@
 }
 
 .propertyStatusWrapper {
+  margin-top: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -397,6 +398,7 @@
   position: relative;
   bottom: 105%;
   left: 2%;
+  z-index: 100;
 }
 
 .propertyVerified {

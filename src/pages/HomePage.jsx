@@ -31,7 +31,7 @@ import EsthellFlats from "../assets/esthell_apartments.png";
 import Logo from "../assets/logo.png";
 import { FaPhone } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart,FaHeart } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa6";
 import { FaChevronLeft } from "react-icons/fa";
 import { LuBedDouble } from "react-icons/lu";
@@ -224,6 +224,7 @@ export default function HomePage() {
   const handleEnquiryClick = () => {
     navigate("/contact");
   };
+  const [favoriteMap, setFavoriteMap] = useState({});
   const scrollContainerRef = useRef(null);
   const topScrollContainerRef = useRef(null);
   const bottomScrollContainerRef = useRef(null);
@@ -252,7 +253,12 @@ export default function HomePage() {
     fontWeight: "500",
     cursor: "pointer",
   });
-
+  const handleHeartClick = (propertyId) => {
+    setFavoriteMap((prev) => ({
+      ...prev,
+      [propertyId]: !prev[propertyId],
+    }));
+  };
   const handleViewAll = () => {
     navigate("/listings");
   };
@@ -834,51 +840,6 @@ export default function HomePage() {
           <div className="hpPropCardGrid">
             {currentProperties.map((property, index) => (
               <div key={property.id} className="hpPropCard">
-                {/* <div className="hpPropImgContainer">
-                  <div className="hpPropImageWrapper">
-                    <img
-                      src={property.images[currentIndexes[index]]}
-                      alt={property.name}
-                      className="hpPropImage"
-                    />
-                  
-                    <button
-                      onClick={() => handlePrev(index)}
-                      className="homePagePrevButton"
-                    >
-                      <FaChevronLeft color="white" />
-                    </button>
-                     <button
-                      onClick={() => handleNext(index)}
-                      className="homePageNextButton"
-                    >
-                      <FaChevronRight color="white" />
-                    </button>
-                  
-                    <div className="hpPropStepIndicator">
-                      {property.images.map((_, imgIdx) => (
-                        <div
-                          key={imgIdx}
-                          className={`hpStepIndicatorDot ${
-                            currentIndexes[index] === imgIdx
-                              ? "hpStepIndicatorDotActive"
-                              : ""
-                          }`}
-                          onClick={() =>
-                            setCurrentIndexes((prev) =>
-                              prev.map((v, i) => (i === index ? imgIdx : v))
-                            )
-                          }
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="homePageLabelContainer">
-                    <p className="homePageVerifiedLabel">Verified</p>
-                    <p className="homePageSaleLabel">{property.status}</p>
-                    <FaRegHeart color="white" />
-                  </div>
-                </div> */}
                 <div className="hpPropImgContainer">
                   <div className="hpPropImageWrapper">
                     <Swiper
@@ -894,7 +855,6 @@ export default function HomePage() {
                             src={img}
                             alt={property.name}
                             className="hpPropImage"
-                           
                           />
                         </SwiperSlide>
                       ))}
@@ -903,7 +863,19 @@ export default function HomePage() {
                   <div className="homePageLabelContainer">
                     <p className="homePageVerifiedLabel">Verified</p>
                     <p className="homePageSaleLabel">{property.status}</p>
-                    <FaRegHeart color="white" style={{zIndex:100}} />
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent card click
+                        handleHeartClick(property.id);
+                      }}
+                      style={{ zIndex: 100, cursor: "pointer" }}
+                    >
+                      {favoriteMap[property.id] ? (
+                        <FaHeart color="red" style={{ zIndex: 100 }} />
+                      ) : (
+                        <FaRegHeart color="white" style={{ zIndex: 100 }} />
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div

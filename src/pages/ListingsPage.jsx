@@ -5,7 +5,7 @@ import { Collapse, Pagination, Dropdown, Input, Space, Modal } from "antd";
 import { DownOutlined, PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import { Slider, Button, Checkbox } from "antd";
 import { TbHomeDollar } from "react-icons/tb";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa6";
 import { FaChevronLeft } from "react-icons/fa";
 import { LuBedDouble } from "react-icons/lu";
@@ -24,6 +24,10 @@ import "../styles/ListingsPage.css";
 import { LiaRoadSolid } from "react-icons/lia";
 import { IoExpandOutline } from "react-icons/io5";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination as SwiperPagination } from "swiper/modules";
 
 export default function ListingsPage() {
   const { Panel } = Collapse;
@@ -39,6 +43,7 @@ export default function ListingsPage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [favoriteMap, setFavoriteMap] = useState({});
   const buttonStyles = (isActive) => ({
     display: "flex",
     alignItems: "center",
@@ -227,6 +232,12 @@ export default function ListingsPage() {
     setAreaValue([500, 15000]);
     setBudgetValue([500000, 25000000]);
     setSelectedLocations([]);
+  };
+  const handleHeartClick = (propertyId) => {
+    setFavoriteMap((prev) => ({
+      ...prev,
+      [propertyId]: !prev[propertyId],
+    }));
   };
   const navigate = useNavigate();
   const handleEnquiryClick = () => {
@@ -878,7 +889,7 @@ export default function ListingsPage() {
               String(property.specs.sqft).replace(/[^0-9]/g, "")
             );
           }
-         
+
           if (areaValue[1] < minSqft || areaValue[0] > maxSqft) {
             return false;
           }
@@ -1120,45 +1131,46 @@ export default function ListingsPage() {
               <div key={property.id} className="propertyItem">
                 <div className="propertyImageWrapper">
                   <div className="imageContainer">
-                    <img
-                      src={property.images[currentIndexes[index]]}
-                      alt={property.name}
-                      className="propertyImage"
-                    />
-                    <button
-                      onClick={() => handlePrev(index)}
-                      className="navigationButton prevButton"
+                    <Swiper
+                      modules={[SwiperPagination]}
+                      pagination={{ clickable: true }}
+                      spaceBetween={10}
+                      slidesPerView={1}
+                      style={{ borderRadius: 12 }}
                     >
-                      <FaChevronLeft color="white" />
-                    </button>
-                    <button
-                      onClick={() => handleNext(index)}
-                      className="navigationButton nextButton"
-                    >
-                      <FaChevronRight color="white" />
-                    </button>
-                    <div className="stepIndicator">
-                      {property.images.map((_, imgIdx) => (
-                        <div
-                          key={imgIdx}
-                          className={`stepDot ${
-                            currentIndexes[index] === imgIdx
-                              ? "activeStepDot"
-                              : ""
-                          }`}
-                          onClick={() =>
-                            setCurrentIndexes((prev) =>
-                              prev.map((v, i) => (i === index ? imgIdx : v))
-                            )
-                          }
-                        ></div>
+                      {property.images.map((img, idx) => (
+                        <SwiperSlide key={idx}>
+                          <img
+                            src={img}
+                            alt={property.name}
+                            className="propertyImage"
+                            style={{
+                              width: "100%",
+                              height: "289px",
+                              objectFit: "cover",
+                              borderRadius: 12,
+                            }}
+                          />
+                        </SwiperSlide>
                       ))}
-                    </div>
+                    </Swiper>
                   </div>
                   <div className="propertyStatusWrapper">
                     <p className="propertyVerified">Verified</p>
                     <p className="propertySale">{property.status}</p>
-                    <FaRegHeart className="propertyIcon" />
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation(); 
+                        handleHeartClick(property.id);
+                      }}
+                      style={{ zIndex: 100, cursor: "pointer" }}
+                    >
+                      {favoriteMap[property.id] ? (
+                        <FaHeart color="red" style={{ zIndex: 100 }} />
+                      ) : (
+                        <FaRegHeart color="white" style={{ zIndex: 100 }} />
+                      )}
+                    </div>
                   </div>
                 </div>
 
