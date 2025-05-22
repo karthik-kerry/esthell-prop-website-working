@@ -893,6 +893,8 @@ h4 {
 }
 /* charges */
 .detailContactContainer {
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -913,9 +915,9 @@ h4 {
 }
 
 .detailwhatsappIcon {
-  height: 52px;
-  width: 55px;
-  margin-top: -10px;
+  height: 42px;
+  width: 45px;
+  margin-top: -5px;
 }
 
 @media (max-width:980px){
