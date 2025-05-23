@@ -887,16 +887,16 @@ export default function HomePage() {
         >
           <div className="modalContainer">
             <div className="modalLeft">
-              <img src={Logo} className="modalLogo" alt="Logo" />
               <img src={loginHeroImage} className="modalImg" />
-              <div className="modalImgTextBottom">
-                <p style={{ margin: 0 }}>Welcome to Esthell Properties</p>
-              </div>
             </div>
             <div className="modalRight">
+                 <img src={Logo} className="modalLogo" alt="Logo" />
+               <div className="modalImgTextBottom">
+                <p style={{ margin: 0 }}>Welcome to Esthell Properties</p>
+              </div>
               <Button className="modalButton" onClick={handleGoogleSignIn}>
                 <FcGoogle size={24} />
-                Login with Google
+                Connect via Google
               </Button>
             </div>
           </div>

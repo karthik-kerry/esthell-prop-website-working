@@ -50,10 +50,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import { auth, googleProvider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, googleProvider } from "../firebase";
+import { FcGoogle } from "react-icons/fc"
 
 export default function DetailsPage() {
+   const [user] = useAuthState(auth);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const toggleFullScreen = () => setIsFullScreen((v) => !v);
   const location = useLocation();
@@ -70,6 +74,11 @@ export default function DetailsPage() {
     return updated;
   });
 };
+useEffect(() => {
+  if (!user) {
+    setIsModalOpen(true);
+  }
+}, [user]);
 useEffect(() => {
   const stored = localStorage.getItem("favorites");
   if (stored) setFavoriteMap(JSON.parse(stored));
@@ -283,18 +292,17 @@ useEffect(() => {
 
   const handleShare = () => {
   const shareData = {
-    title: property.name,
-    text: `Check out this property: ${property.name} in ${property.location}`,
-    url: window.location.href,
+    id: property?.id,
+    title: property?.name,
+    text: `Check out this property: ${property?.name} in ${property?.location}`,
+    url: window?.location?.href,
   };
 
   if (navigator.share) {
     navigator.share(shareData).catch((err) => {
-      // User cancelled or error
       console.error("Share failed:", err);
     });
   } else {
-    // Fallback: copy to clipboard
     navigator.clipboard.writeText(window.location.href);
     alert("Link copied to clipboard!");
   }
@@ -321,7 +329,7 @@ useEffect(() => {
     const user = result.user;
     console.log("Google User Data:", user); // Log user data
     alert("Google Sign-In successful!");
-    // You can redirect or update UI here
+     setIsModalOpen(false);
   } catch (error) {
     alert("Google Sign-In failed: " + error.message);
   }
@@ -346,11 +354,11 @@ useEffect(() => {
                   slidesPerView={1}
                   style={{ borderRadius: 12 }}
                 >
-                  {property.images.map((img, idx) => (
+                  {property?.images.map((img, idx) => (
                     <SwiperSlide key={idx}>
                       <img
                         src={img}
-                        alt={property.name}
+                        alt={property?.name}
                         className="detailPageMainImage"
                       />
                     </SwiperSlide>
@@ -359,12 +367,12 @@ useEffect(() => {
               </div>
               <div className="detailPageInfoContainer">
                 <p className="detailPageVerifiedTag">Verified</p>
-                <p className="propertySale">{property.status}</p>
+                <p className="propertySale">{property?.status}</p>
                 <div className="detailPageIcons">
                   <TbShare color="white" className="detailPageShareIcon"  onClick={handleShare} />
 
-                  <div onClick={() => handleHeartClick(property.id)}>
-                    {favoriteMap[property.id] ? (
+                  <div onClick={() => handleHeartClick(property?.id)}>
+                    {favoriteMap[property?.id] ? (
                       <FaHeart color="red" className="detailPageHeartIcon" />
                     ) : (
                       <FaRegHeart
@@ -396,34 +404,34 @@ useEffect(() => {
               {[...Array(2)].map((_, idx) => (
                 <img
                   key={idx}
-                  src={property.images[idx % property.images.length]}
+                  src={property?.images[idx % property?.images.length]}
                   className={`detailPageImage${
                     idx === 0 ? " detailPageImageClickable" : ""
                   }`}
-                  alt={property.name}
+                  alt={property?.name}
                 />
               ))}
             </div>
             {/* mobile static */}
             {isMobile && (
               <div className="detailPagePropertyContainer">
-                <p className="detailPagePropertyTitle">{property.name}</p>
+                <p className="detailPagePropertyTitle">{property?.name}</p>
                 <p className="detailPagePropertySubTitle">
                   Apartment / Plot in{" "}
                   <span className="detailPageLocation">
-                    {property.location}
+                    {property?.location}
                   </span>
                 </p>
                 <div className="detailPagePriceContainer">
-                  <p className="detailStartFrom">{property.startingFrom}</p>
-                  <p className="detailPagePrice">{property.price}</p>
+                  <p className="detailStartFrom">{property?.startingFrom}</p>
+                  <p className="detailPagePrice">{property?.price}</p>
                   <p className="detailPageCharges">+ Charges</p>
                 </div>
                 <div className="detailPageDivider" />
                 <div className="detailPageAgentContainer">
-                  <p className="detailPageAgentName">{property.company.name}</p>
+                  <p className="detailPageAgentName">{property?.company?.name}</p>
                   <p className="detailPageAgentListedDate">
-                    Listed on: {property.listedOn}
+                    Listed on: {property?.listedOn}
                   </p>
                 </div>
                 <div className="detailContactContainer">
@@ -468,7 +476,7 @@ useEffect(() => {
             {/* houseInfo */}
             <div className="detailPageHouseInfoContainer">
 
-              {property.iconType.map((type, idx) => (
+              {property?.iconType.map((type, idx) => (
                 <div className="detailPagHouseInfoItem" key={type + idx}>
                   {type === "bed" && <LuBedDouble color="#001C6B" />}
                   {type === "bath" && <PiBathtub color="#001C6B" />}
@@ -479,23 +487,23 @@ useEffect(() => {
 
                   {/* Add more icon types as needed */}
                   <span className="text">
-                    {type === "bed" && property.specs.bedroomsDisplay}
-                        {type === "bath" && `${property.specs.bathsDisplay} Baths`}
-                    {type === "sqfts" && property.detailedInfo.sqfts}
-                    {type === "sqft" && property.specs.sqft}
-                    {type === "grounds" && property.specs.sqft}
-                    {type === "frontage" && property.detailedInfo.frontage}
+                    {type === "bed" && property?.specs?.bedroomsDisplay}
+                        {type === "bath" && `${property?.specs?.bathsDisplay} Baths`}
+                    {type === "sqfts" && property?.detailedInfo?.sqfts}
+                    {type === "sqft" && property?.specs?.sqft}
+                    {type === "grounds" && property?.specs?.sqft}
+                    {type === "frontage" && property?.detailedInfo?.frontage}
                   </span>
                 </div>
               ))}
               <div className="detailPagHouseInfoItem">
                 <AiOutlineCalendar className="detailPageInfoIcon" />
-                <p className="detailsInfoText"> {property.builtStatus}</p>
+                <p className="detailsInfoText"> {property?.builtStatus}</p>
               </div>
               <div className="detailPagHouseInfoItem">
                 <AiOutlineCompass className="detailPageInfoIcon" />
                 <p className="detailsInfoText">
-                  Facing:{property.detailedInfo.facing}
+                  Facing:{property?.detailedInfo?.facing}
                 </p>
               </div>
             </div>
@@ -503,7 +511,7 @@ useEffect(() => {
             {/* content */}
             <div className="detailPageTextContainer">
               <p className="detailPageText">
-                {property.detailedInfo.description}
+                {property?.detailedInfo?.description}
               </p>
             </div>
             <div className="detailPageDivider" />
@@ -512,7 +520,7 @@ useEffect(() => {
             <div className="detailPageHighlightsContten">
               <p className="detailPageHighlightTitle">Highlights:</p>
               <div className="detailPageHighlightsList">
-                {Object.values(property.highlightsInfo).map((point, index) => (
+                {Object.values(property?.highlightsInfo).map((point, index) => (
                   <p key={index}>* {point}</p>
                 ))}
               </div>
@@ -523,14 +531,14 @@ useEffect(() => {
               <p className="detailPageDetailsHeader">Details</p>
               <div className="detailPageDetailsContainer">
                 {[
-                  { label: "Type", value: property.detailedInfo?.bedrooms },
+                  { label: "Type", value: property?.detailedInfo?.bedrooms },
                   {
                     label: "Super Built-up area sqft",
-                    value: property.detailedInfo?.sqft,
+                    value: property?.detailedInfo?.sqft,
                   },
-                  { label: "Furnishing", value: property.details?.furnishing },
-                  { label: "Bathrooms", value: property.detailedInfo?.baths },
-                  { label: "Facing", value: property.detailedInfo?.facing },
+                  { label: "Furnishing", value: property?.details?.furnishing },
+                  { label: "Bathrooms", value: property?.detailedInfo?.baths },
+                  { label: "Facing", value: property?.detailedInfo?.facing },
                   // { label: "Flat No", value: property.details?.flatNo },
 
                   // { label: "Floor", value: property.details?.FloorNo },
@@ -551,7 +559,7 @@ useEffect(() => {
             </div>
             <div className="detailPageDivider" />
             {/*Amenities */}
-            {property.id !== 2 && (
+            {property?.id !== 2 && (
               <>
                 <div>
                   <p className="detailPageAmenitiesHeader">Amenities</p>
@@ -718,14 +726,14 @@ useEffect(() => {
             <div className="DetailPageLocation">
               <div className="DetailPageLocationWrapper">
                 <IoLocationOutline style={{ width: "5%" }} />
-                <p className="locationText">{property.address}</p>
+                <p className="locationText">{property?.address}</p>
               </div>
             </div>
 
             {/* map */}
             <div className="detailPageMapContainer">
               <iframe
-                src={property.map}
+                src={property?.map}
                 className="detailPageMapIframe"
                 allowFullScreen=""
                 loading="lazy"
@@ -851,21 +859,21 @@ useEffect(() => {
           {/* static */}
           {!isMobile && (
             <div className="detailPagePropertyContainer">
-              <p className="detailPagePropertyTitle">{property.name}</p>
+              <p className="detailPagePropertyTitle">{property?.name}</p>
               <p className="detailPagePropertySubTitle">
-                {property.type} in{" "}
-                <span className="detailPageLocation"> {property.location}</span>
+                {property?.type} in{" "}
+                <span className="detailPageLocation"> {property?.location}</span>
               </p>
               <div className="detailPagePriceContainer">
-                <p className="detailStartFrom">{property.startingFrom}</p>
-                <p className="detailPagePrice">{property.price}</p>
+                <p className="detailStartFrom">{property?.startingFrom}</p>
+                <p className="detailPagePrice">{property?.price}</p>
                 <p className="detailPageCharges">+ Charges</p>
               </div>
               <div className="detailPageDivider" />
               <div className="detailPageAgentContainer">
-                <p className="detailPageAgentName">{property.company.name}</p>
+                <p className="detailPageAgentName">{property?.company?.name}</p>
                 <p className="detailPageAgentListedDate">
-                  Listed on: {property.listedOn}
+                  Listed on: {property?.listedOn}
                 </p>
               </div>
               <div className="detailContactContainer">
@@ -896,7 +904,7 @@ useEffect(() => {
               <div className="detailcontactItem">
                 <a
                   href={`https://wa.me/917218212345?text=Hi%20I%20am%20interested%20in%20a%20property%20enquiry%20for%20${encodeURIComponent(
-                    property.name
+                    property?.name
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -932,7 +940,7 @@ useEffect(() => {
             )}
             {similarListings.map((property) => (
               <div
-                key={property.id}
+                key={property?.id}
                 onClick={() => navigate("/details", { state: { property } })}
                 className="similarListingsCard"
               >
@@ -945,11 +953,11 @@ useEffect(() => {
                       slidesPerView={1}
                       style={{ borderRadius: 12 }}
                     >
-                      {property.images.map((img, idx) => (
+                      {property?.images.map((img, idx) => (
                         <SwiperSlide key={idx}>
                           <img
                             src={img}
-                            alt={property.name}
+                            alt={property?.name}
                             className="similarListingsImage"
                           />
                         </SwiperSlide>
@@ -958,14 +966,14 @@ useEffect(() => {
                   </div>
                   <div className="similarListingsStatusContainer">
                     <p className="similarListingsVerifiedTag">Verified</p>
-                    <p className="similarListingsSaleTag">{property.status}</p>
+                    <p className="similarListingsSaleTag">{property?.status}</p>
                     <div
                       onClick={(e) => {
                         e.stopPropagation(); // Prevent card click
-                        handleHeartClick(property.id);
+                        handleHeartClick(property?.id);
                       }}
                     >
-                      {favoriteMap[property.id] ? (
+                      {favoriteMap[property?.id] ? (
                         <FaHeart color="red" className="detailPageHeartIcon" />
                       ) : (
                         <FaRegHeart
@@ -979,23 +987,23 @@ useEffect(() => {
                 <div className="similarListingsPriceContainer">
                   <div>
                     <p className="similarListingsDescription">
-                      {property.name}
+                      {property?.name}
                     </p>
                     <p className="similarListingsLocation">
-                      {property.type} in{" "}
+                      {property?.type} in{" "}
                       <span className="similarListingsArea">
                         {" "}
-                        {property.location}
+                        {property?.location}
                       </span>
                     </p>
                   </div>
                   <div className="priceWrapper">
-                    <p className="hpStartFrom">{property.startingFrom}</p>
-                    <p className="hpPropPrice">{property.price}</p>
+                    <p className="hpStartFrom">{property?.startingFrom}</p>
+                    <p className="hpPropPrice">{property?.price}</p>
                   </div>
                 </div>
                 <div className="similarListPropContainer">
-                  {property.iconType.map((type, idx) => (
+                  {property?.iconType.map((type, idx) => (
                     <div className="hpPropDetailItem" key={type + idx}>
                       {type === "bed" && <LuBedDouble color="#001C6B" />}
                       {type === "bath" && <PiBathtub color="#001C6B" />}
@@ -1006,19 +1014,19 @@ useEffect(() => {
                       )}
                       {type === "frontage" && <LiaRoadSolid color="#001C6B" />}
                       <span className="text">
-                        {type === "bed" && `${property.specs.bedrooms} BHK`}
-                        {type === "bath" && `${property.specs.baths} Baths`}
-                        {type === "sqfts" && property.detailedInfo.sqfts}
-                        {type === "sqft" && property.specs.sqft}
-                        {type === "grounds" && property.specs.sqft}
-                        {type === "frontage" && property.detailedInfo.frontage}
+                        {type === "bed" && `${property?.specs?.bedrooms} BHK`}
+                        {type === "bath" && `${property?.specs?.baths} Baths`}
+                        {type === "sqfts" && property?.detailedInfo?.sqfts}
+                        {type === "sqft" && property?.specs?.sqft}
+                        {type === "grounds" && property?.specs?.sqft}
+                        {type === "frontage" && property?.detailedInfo?.frontage}
                       </span>
                     </div>
                   ))}
                 </div>
                 <div className="similarListingsHighlightsContainer">
                   <p className="similarListingshighlightText">Highlights: </p>
-                  {property.highlights.slice(0, 2).map((highlight, idx) => (
+                  {property?.highlights.slice(0, 2).map((highlight, idx) => (
                     <p key={idx} className="similarListingsHighlight">
                       {highlight}
                     </p>
