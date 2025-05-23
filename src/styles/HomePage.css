@@ -385,7 +385,7 @@
 .hpPropImageWrapper {
   position: relative;
   width: 100%;
-  max-width: 330px;
+  max-width:330px;
   margin: 0 auto;
 }
 .hpPropImageScrollWrapper.active {

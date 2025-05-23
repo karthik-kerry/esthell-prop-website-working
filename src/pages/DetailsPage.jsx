@@ -310,9 +310,7 @@ export default function DetailsPage() {
 
             <div className="detailPageImgContainer">
               <div className="detailPageImageWrapper">
-                 <button onClick={handleGoogleSignIn} style={{padding: 10, fontSize: 16}}>
-      Sign in with Google
-    </button>
+                 
                 <Swiper
                   modules={[Pagination]}
                   pagination={{ clickable: true }}
