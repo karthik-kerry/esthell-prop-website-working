@@ -14,7 +14,7 @@
 
 .HomeHeroText {
   color: white;
-  font-size: 40px;
+  font-size: 52px;
   font-weight: 600;
   position: absolute;
   bottom:100%;
@@ -887,6 +887,7 @@
 .card:hover .priceInfo p {
   color: white;
 }
+
 @media (max-width: 980px) {
 .HomeHeroText {
    font-size: 38px;
@@ -1168,6 +1169,11 @@ font-size: 24px;
 }
 }
 @media (max-width: 380px) {
+  .HomeHeroText {
+   font-size: 38px;
+   padding-bottom: 16px;
+   line-height: 48px;
+}
    .hpPropContainer{
     padding: 30px;
   }
@@ -1260,7 +1266,10 @@ font-size: 24px;
   text-align: center; 
     white-space: normal; 
     word-break: break-word;
-    line-height: 1.5px;
+    line-height: 30px;
+}
+.hpPropSubtitle{
+  margin-top: -5px;
 }
 .card{
   width:100%;
