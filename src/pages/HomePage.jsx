@@ -265,11 +265,20 @@ export default function HomePage() {
     cursor: "pointer",
   });
   const handleHeartClick = (propertyId) => {
-    setFavoriteMap((prev) => ({
-      ...prev,
-      [propertyId]: !prev[propertyId],
-    }));
-  };
+   setFavoriteMap((prev) => {
+     const updated = {
+       ...prev,
+       [propertyId]: !prev[propertyId],
+     };
+     localStorage.setItem("favorites", JSON.stringify(updated));
+     return updated;
+   });
+ };
+ useEffect(() => {
+   const stored = localStorage.getItem("favorites");
+   if (stored) setFavoriteMap(JSON.parse(stored));
+ }, []);
+
   const handleViewAll = () => {
     navigate("/listings");
   };
@@ -898,7 +907,7 @@ export default function HomePage() {
               <div
                 key={property.id}
                 className="hpPropCard"
-                onClick={() => handlePropertyCardClick(property)}
+               
               >
                 <div className="hpPropImgContainer">
                   <div className="hpPropImageWrapper">

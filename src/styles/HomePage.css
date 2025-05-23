@@ -367,7 +367,8 @@
 
 .hpPropCard {
   height: auto;
-  width: auto;
+  width: 100%;
+    max-width: 330px;
   border-radius: 20px;
   background-color: white;
   border-style: solid;
@@ -385,7 +386,7 @@
 .hpPropImageWrapper {
   position: relative;
   width: 100%;
-  max-width:330px;
+  max-width: 100%;
   margin: 0 auto;
 }
 .hpPropImageScrollWrapper.active {
@@ -395,7 +396,7 @@
 .hpPropImage {
   height: 289px;
   width: 100%;
-  max-width: 330px;
+ max-width: 100%;
   border-radius: 12px;
   object-fit: cover;
 }
@@ -1166,8 +1167,19 @@ font-size: 24px;
 .HomeformItemInput{
    width: 142px !important; 
 }
+.hpPropCard {
+  height: auto;
+  width: 100%;
+    max-width: 300px;
+}
 }
 @media (max-width: 380px) {
+
+  .hpPropCard {
+  height: auto;
+  width: 100%;
+    max-width: 300px;
+}
    .hpPropContainer{
     padding: 30px;
   }
@@ -1257,10 +1269,13 @@ font-size: 24px;
   font-weight: 400;
 }
 .hpPropTitle{
-  text-align: center; 
-    white-space: normal; 
-    word-break: break-word;
-    line-height: 1.5px;
+
+    text-align: center;
+        white-space: normal;
+        word-break: break-word;
+        line-height: 30px;
+        font-size: 24px;
+        font-weight: 600;
 }
 .card{
   width:100%;

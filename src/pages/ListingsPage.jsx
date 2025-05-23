@@ -272,11 +272,20 @@ export default function ListingsPage() {
     setSelectedLocations([]);
   };
   const handleHeartClick = (propertyId) => {
-    setFavoriteMap((prev) => ({
-      ...prev,
-      [propertyId]: !prev[propertyId],
-    }));
-  };
+   setFavoriteMap((prev) => {
+     const updated = {
+       ...prev,
+       [propertyId]: !prev[propertyId],
+     };
+     localStorage.setItem("favorites", JSON.stringify(updated));
+     return updated;
+   });
+ };
+ useEffect(() => {
+   const stored = localStorage.getItem("favorites");
+   if (stored) setFavoriteMap(JSON.parse(stored));
+ }, []);
+ 
   const navigate = useNavigate();
   const handleEnquiryClick = () => {
     navigate("/contact");

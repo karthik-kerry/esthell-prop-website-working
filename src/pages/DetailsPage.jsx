@@ -61,11 +61,19 @@ export default function DetailsPage() {
   const [favoriteMap, setFavoriteMap] = useState({});
   const navigate = useNavigate();
   const handleHeartClick = (propertyId) => {
-    setFavoriteMap((prev) => ({
+  setFavoriteMap((prev) => {
+    const updated = {
       ...prev,
       [propertyId]: !prev[propertyId],
-    }));
-  };
+    };
+    localStorage.setItem("favorites", JSON.stringify(updated));
+    return updated;
+  });
+};
+useEffect(() => {
+  const stored = localStorage.getItem("favorites");
+  if (stored) setFavoriteMap(JSON.parse(stored));
+}, []);
   const handleEnquiryClick = () => {
     navigate("/contact");
   };
@@ -272,6 +280,26 @@ export default function DetailsPage() {
   const handleCardClick = () => {
     navigate("/details");
   };
+
+  const handleShare = () => {
+  const shareData = {
+    title: property.name,
+    text: `Check out this property: ${property.name} in ${property.location}`,
+    url: window.location.href,
+  };
+
+  if (navigator.share) {
+    navigator.share(shareData).catch((err) => {
+      // User cancelled or error
+      console.error("Share failed:", err);
+    });
+  } else {
+    // Fallback: copy to clipboard
+    navigator.clipboard.writeText(window.location.href);
+    alert("Link copied to clipboard!");
+  }
+};
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 480);
@@ -333,7 +361,7 @@ export default function DetailsPage() {
                 <p className="detailPageVerifiedTag">Verified</p>
                 <p className="propertySale">{property.status}</p>
                 <div className="detailPageIcons">
-                  <TbShare color="white" className="detailPageShareIcon" />
+                  <TbShare color="white" className="detailPageShareIcon"  onClick={handleShare} />
 
                   <div onClick={() => handleHeartClick(property.id)}>
                     {favoriteMap[property.id] ? (
@@ -543,38 +571,7 @@ export default function DetailsPage() {
                 <div className="detailPageDivider" />
                 {/* floor plans */}
                
-                {/* <div className="detailPageFloorPlanSlider">
-                  <button
-                    className="detailPageFloorPlanArrow"
-                    onClick={() =>
-                      setFloorPlanIndex(
-                        floorPlanIndex === 0
-                          ? floorPlans.length - 1
-                          : floorPlanIndex - 1
-                      )
-                    }
-                  >
-                    <FaChevronLeft color="#001C6B" size={18} />
-                  </button>
-                  <div className="detailPageFloorPlanSingle">
-                    <p>{floorPlans[floorPlanIndex].label}</p>
-                    <img
-                      src={floorPlans[floorPlanIndex].src}
-                      className="detailPageFloorPlanImage"
-                      alt={floorPlans[floorPlanIndex].label}
-                    />
-                  </div>
-                  <button
-                    className="detailPageFloorPlanArrow"
-                    onClick={() =>
-                      setFloorPlanIndex(
-                        (floorPlanIndex + 1) % floorPlans.length
-                      )
-                    }
-                  >
-                    <FaChevronRight color="#001C6B" size={18} />
-                  </button>
-                </div> */}
+               
                 <div className="detailPageFloorPlanSlider">
   <button
     className="detailPageFloorPlanArrow"

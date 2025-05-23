@@ -543,7 +543,8 @@ gap:5px;
 
 .similarListingsCard {
   height: auto;
-  width: auto;
+  width: 100%;
+   max-width: 330px;
   border-radius: 20px;
   background-color: white;
   border-style: solid;
@@ -1021,13 +1022,28 @@ h4 {
     position: static; 
     top: auto;
   }
+  .similarListingsCard{
+    width: 100%;
+    max-width: 300px;
+  }
+  .similarListingsGrid{
+  align-items: center;
+  justify-content: center;
+}
 
 }
 @media (max-width:380px){
   .imageGrid{
         grid-template-columns: repeat(3, 3fr);
   }
-
+  .similarListingsCard{
+    width: 100%;
+    max-width: 300px;
+  }
+.similarListingsGrid{
+  align-items: center;
+  justify-content: center;
+}
 }
 
 
