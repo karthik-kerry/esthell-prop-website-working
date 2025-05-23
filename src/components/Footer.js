@@ -10,7 +10,7 @@ import { FaChevronRight } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
-import '../styles/Component.css';
+import "../styles/Component.css";
 
 export default function Footer() {
   return (
@@ -31,7 +31,9 @@ export default function Footer() {
           </div>
           <div>
             <p className="footerText">+91-72182 12345</p>
-            <p className="footerText" style={{marginTop:-10}}>+91-74182 01555</p>
+            <p className="footerText" style={{ marginTop: -10 }}>
+              +91-74182 01555
+            </p>
           </div>
         </div>
         <div className="footerTopRight">
@@ -44,7 +46,9 @@ export default function Footer() {
       <div className="footerBottom">
         <div className="footerBottomLeft">
           <p className="footerCategory">Get Our App</p>
-          <p style={{ color: "white", fontSize: 16 }}>Download the app and book your property</p>
+          <p style={{ color: "white", fontSize: 16, marginTop: -4 }}>
+            Download the app and book your property
+          </p>
           <div className="footerLink">
             <Link to="/">
               <img src={Playstore} style={{ width: 150 }} alt="Play Store" />
@@ -56,69 +60,74 @@ export default function Footer() {
           <p className="footerCategory">Connect with us</p>
           <div className="socialIcons">
             <div className="socialIcon">
-               <a
-                    href="https://www.instagram.com/esthellproperties?igsh=MWhjY21tN3VzMWRnaQ=="
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                     <RiInstagramFill size={20} color="#00174E" />
-                  </a>
-             
+              <a
+                href="https://www.instagram.com/esthellproperties?igsh=MWhjY21tN3VzMWRnaQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <RiInstagramFill size={20} color="#00174E" />
+              </a>
             </div>
             <div className="socialIcon">
               <IoLogoLinkedin size={20} color="#00174E" />
             </div>
             <div className="socialIcon">
-               <a
-                    href="https://wa.me/917218212345?text=Hi%20I%20am%20interested%20in%20a%20property%20enquiry"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                     <IoLogoWhatsapp size={20} color="#00174E" />
-                  </a>
-             
+              <a
+                href="https://wa.me/917218212345?text=Hi%20I%20am%20interested%20in%20a%20property%20enquiry"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IoLogoWhatsapp size={20} color="#00174E" />
+              </a>
             </div>
           </div>
         </div>
         <div className="CategoryContainer">
-        <div>
-          <p className="footerCategory">Explore</p>
-          {['Listings', 'Listings', 'Listings', 'Listings', 'Listings'].map((item, index) => (
-            <Link key={index} to="/" className="footerLinkItem">
-              <FaChevronRight size={16} color="white" />
-              {item}
-            </Link>
-          ))}
+          <div>
+            <p className="footerCategory">Explore</p>
+            {["Listings", "Listings", "Listings", "Listings", "Listings"].map(
+              (item, index) => (
+                <Link key={index} to="/" className="footerLinkItem">
+                  <FaChevronRight size={16} color="white" />
+                  {item}
+                </Link>
+              )
+            )}
+          </div>
+          <div>
+            <p className="footerCategory">Categories</p>
+            {["Apartments", "Home", "Office", "Villas", "Flat"].map(
+              (item, index) => (
+                <Link key={index} to="/" className="footerLinkItem">
+                  <FaChevronRight size={16} color="white" />
+                  {item}
+                </Link>
+              )
+            )}
+          </div>
+          <div>
+            <p className="footerCategory">Locations</p>
+            {["Chennai", "Coimbatore", "Salem", "Tiruvallur", "Madurai"].map(
+              (location, index) => (
+                <Link key={index} to="/" className="footerLinkItem">
+                  <FaChevronRight size={16} color="white" />
+                  {location}
+                </Link>
+              )
+            )}
+          </div>
+          <div>
+            <p className="footerCategory">Quick Links</p>
+            {["About", "FAQ", "Terms & Conditions", "Privacy Policy"].map(
+              (item, index) => (
+                <Link key={index} to="/" className="footerLinkItem">
+                  <FaChevronRight size={16} color="white" />
+                  {item}
+                </Link>
+              )
+            )}
+          </div>
         </div>
-        <div>
-          <p className="footerCategory">Categories</p>
-          {['Apartments', 'Home', 'Office', 'Villas', 'Flat'].map((item, index) => (
-            <Link key={index} to="/" className="footerLinkItem">
-              <FaChevronRight size={16} color="white" />
-              {item}
-            </Link>
-          ))}
-        </div>
-        <div>
-          <p className="footerCategory">Locations</p>
-          {['Chennai', 'Coimbatore', 'Salem', 'Tiruvallur', 'Madurai'].map((location, index) => (
-            <Link key={index} to="/" className="footerLinkItem">
-              <FaChevronRight size={16} color="white" />
-              {location}
-            </Link>
-          ))}
-        </div>
-        <div>
-          <p className="footerCategory">Quick Links</p>
-          {['About', 'FAQ', 'Terms & Conditions', 'Privacy Policy'].map((item, index) => (
-            <Link key={index} to="/" className="footerLinkItem">
-              <FaChevronRight size={16} color="white" />
-              {item}
-            </Link>
-          ))}
-        </div>
-        </div>
-
       </div>
       <div className="footerCopyright">
         <p>Copyright 2025 - All right reserved</p>
