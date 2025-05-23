@@ -27,9 +27,19 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import { FcGoogle } from "react-icons/fc";
 import { Pagination as SwiperPagination } from "swiper/modules";
+import loginHeroImage from "../assets/loginHeroImage.png";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth,googleProvider  } from "../firebase";
+
 
 export default function ListingsPage() {
+  const [user] = useAuthState(auth);
+  const isLoggedIn = !!user;
+  console.log("User is logged in:", isLoggedIn);
+   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const { Panel } = Collapse;
   const totalProperties = 8;
   const pageSize = 5;
@@ -59,11 +69,35 @@ export default function ListingsPage() {
     fontWeight: "500",
     cursor: "pointer",
   });
+  const showLoginModal = () => {
+    setIsLoginModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsLoginModalOpen(false);
+  };
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-
+  
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      console.log("Google User Data:", user);
+      alert("Google Sign-In successful!");
+    } catch (error) {
+      alert("Google Sign-In failed: " + error.message);
+    }
+  };
+   const handlePropertyCardClick = (property) => {
+    if (isLoggedIn) {
+      navigate("/details", { state: { property } });
+    } else {
+      setIsLoginModalOpen(true);
+    }
+  };
   const currentProperties = [
     {
       id: 1,
@@ -1121,6 +1155,28 @@ export default function ListingsPage() {
             />
           </div>
         )}
+             <Modal
+                  closable={{ "aria-label": "Custom Close Button" }}
+                  open={isLoginModalOpen}
+                  footer={null}
+                  onCancel={() => setIsLoginModalOpen(false)}
+                >
+                  <div className="modalContainer">
+                    <div className="modalLeft">
+                      <img src={Logo} className="modalLogo" alt="Logo" />
+                      <img src={loginHeroImage} className="modalImg" />
+                      <div className="modalImgTextBottom">
+                        <p style={{ margin: 0 }}>Welcome to Esthell Properties</p>
+                      </div>
+                    </div>
+                    <div className="modalRight">
+                      <Button className="modalButton" onClick={handleGoogleSignIn}>
+                        <FcGoogle size={24} />
+                        Login with Google
+                      </Button>
+                    </div>
+                  </div>
+                </Modal>
 
         {/* featured properties */}
         <div className="featuredPropertiesContainer">
@@ -1132,7 +1188,8 @@ export default function ListingsPage() {
           </div>
           <div className="propertyList">
             {filteredProperties.map((property, index) => (
-              <div key={property.id} className="propertyItem">
+              <div key={property.id} className="propertyItem" 
+              onClick={() => handlePropertyCardClick(property)}>
                 <div className="propertyImageWrapper">
                   <div className="imageContainer">
                     <Swiper
@@ -1180,7 +1237,7 @@ export default function ListingsPage() {
 
                 <div
                   className="propertyInfoWrapper"
-                  onClick={() => handleCardClick(property)}
+                  onClick={() => handlePropertyCardClick(property)}
                 >
                   <div className="propertyHeader">
                     <div className="propertyDetails">
@@ -1241,7 +1298,7 @@ export default function ListingsPage() {
                       <span className="text">{property.specs.sqft}</span>
                     </div> */}
                   </div>
-                  <div className="propertyHighlightsWrapper">
+                  <div className="propertyHighlightsWrapper" onClick={() => handlePropertyCardClick(property)}>
                     <p className="hpPropHighlightsText">Highlights: </p>
                     {property.highlights.map((highlight, idx) => (
                       <p key={idx} className="propertyHighlight">
