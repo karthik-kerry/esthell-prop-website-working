@@ -500,8 +500,8 @@ export default function HomePage() {
                         })),
                       }}
                     >
-                      <Space className="HomeformItem">
-                        Property Type
+                      <Space className="HomeformItem" style={{ color: searchType ? "black" : "#bfbfbf" }} >
+                         {searchType || "Property Type"}
                         <DownOutlined />
                       </Space>
                     </Dropdown>
@@ -514,8 +514,9 @@ export default function HomePage() {
                         })),
                       }}
                     >
-                      <Space className="HomeformItem">
-                        Property Size
+                      <Space className="HomeformItem" style={{ color: searchSize ? "black" : "#bfbfbf" }} >
+                        
+                     {searchSize || "Property Size"}
                         <DownOutlined />
                       </Space>
                     </Dropdown>
@@ -527,6 +528,7 @@ export default function HomePage() {
                       placeholder="Min Range 5L"
                       value={minRange}
                       onChange={(e) => setMinRange(e.target.value)}
+                       style={{ color: minRange ? "#1b1b1b" : "#bfbfbf" }}
                     />
 
                     <Input
@@ -535,6 +537,7 @@ export default function HomePage() {
                       placeholder="Enter Max Range 50Cr"
                       value={maxRange}
                       onChange={(e) => setMaxRange(e.target.value)}
+                       style={{ color: maxRange ? "#1b1b1b" : "#bfbfbf" }}
                     />
                   </div>
                 </div>
@@ -568,7 +571,7 @@ export default function HomePage() {
                     })),
                   }}
                 >
-                  <Space className="HomeformItem">
+                  <Space className="HomeformItem" style={{ color: searchType ? "black" : "#bfbfbf" }}>
                     {searchType || "Property Type"}
                     <DownOutlined />
                   </Space>
@@ -582,7 +585,7 @@ export default function HomePage() {
                     })),
                   }}
                 >
-                  <Space className="HomeformItem">
+                  <Space className="HomeformItem"  style={{ color: searchSize ? "black" : "#bfbfbf" }}>
                     {searchSize || "Property Size"}
                     <DownOutlined />
                   </Space>
@@ -594,6 +597,7 @@ export default function HomePage() {
                   placeholder="Enter Min Range"
                   value={minRange}
                   onChange={(e) => setMinRange(e.target.value)}
+                  style={{ color: minRange ? "#1b1b1b" : "#bfbfbf" }}
                 />
 
                 <Input
@@ -602,6 +606,7 @@ export default function HomePage() {
                   placeholder="Enter Max Range"
                   value={maxRange}
                   onChange={(e) => setMaxRange(e.target.value)}
+                  style={{ color: maxRange ? "#1b1b1b" : "#bfbfbf" }}
                 />
 
                 <Button
