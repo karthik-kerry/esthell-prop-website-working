@@ -830,6 +830,9 @@
   .filterContainer {
     display: none;
   }
+  .propertySpecs {
+    flex-wrap: wrap;
+  }
   .propertyImage {
     width: 100%;
   }
@@ -1013,6 +1016,9 @@
   }
   .propertyItem {
     flex-direction: column;
+  }
+  .propertySpecs {
+    flex-wrap: wrap;
   }
   .filterContainer {
     display: none;
