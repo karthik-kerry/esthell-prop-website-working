@@ -32,14 +32,13 @@ import { Pagination as SwiperPagination } from "swiper/modules";
 import loginHeroImage from "../assets/loginHeroImage.png";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth,googleProvider  } from "../firebase";
-
+import { auth, googleProvider } from "../firebase";
 
 export default function ListingsPage() {
   const [user] = useAuthState(auth);
   const isLoggedIn = !!user;
   console.log("User is logged in:", isLoggedIn);
-   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const { Panel } = Collapse;
   const totalProperties = 8;
   const pageSize = 5;
@@ -80,7 +79,7 @@ export default function ListingsPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-  
+
   const handleGoogleSignIn = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
@@ -91,7 +90,7 @@ export default function ListingsPage() {
       alert("Google Sign-In failed: " + error.message);
     }
   };
-   const handlePropertyCardClick = (property) => {
+  const handlePropertyCardClick = (property) => {
     if (isLoggedIn) {
       navigate("/details", { state: { property } });
     } else {
@@ -112,8 +111,8 @@ export default function ListingsPage() {
       facing: "East",
       specs: {
         bedrooms: "2.5/3/Duplex",
-        bedroomsDisplay:"2.5 & 3 BHK / Duplex",
-        bathsDisplay:"2-4",
+        bedroomsDisplay: "2.5 & 3 BHK / Duplex",
+        bathsDisplay: "2-4",
         baths: "2/3/4",
         sqft: "1492-2897 Sqft",
       },
@@ -134,8 +133,8 @@ export default function ListingsPage() {
         logo: "/logo.png",
       },
       detailedInfo: {
-       bedrooms: "2.5 & 3 BHK / Duplex",
-         baths: "2-4",
+        bedrooms: "2.5 & 3 BHK / Duplex",
+        baths: "2-4",
         sqft: "1492-2897 Sqft",
         facing: "East & West",
         description:
@@ -148,8 +147,8 @@ export default function ListingsPage() {
         point4: "Nestled behind the soon-to-come XB Mall",
         point5: "Crafted with red bricks and river sand",
         point6: "No wall sharing",
-        point7:"Vaastu Complaints",
-         point8:"Rooms with double-layer brick walls."
+        point7: "Vaastu Complaints",
+        point8: "Rooms with double-layer brick walls.",
       },
       filterData: {
         constructionStatus: "ready to move",
@@ -272,20 +271,20 @@ export default function ListingsPage() {
     setSelectedLocations([]);
   };
   const handleHeartClick = (propertyId) => {
-   setFavoriteMap((prev) => {
-     const updated = {
-       ...prev,
-       [propertyId]: !prev[propertyId],
-     };
-     localStorage.setItem("favorites", JSON.stringify(updated));
-     return updated;
-   });
- };
- useEffect(() => {
-   const stored = localStorage.getItem("favorites");
-   if (stored) setFavoriteMap(JSON.parse(stored));
- }, []);
- 
+    setFavoriteMap((prev) => {
+      const updated = {
+        ...prev,
+        [propertyId]: !prev[propertyId],
+      };
+      localStorage.setItem("favorites", JSON.stringify(updated));
+      return updated;
+    });
+  };
+  useEffect(() => {
+    const stored = localStorage.getItem("favorites");
+    if (stored) setFavoriteMap(JSON.parse(stored));
+  }, []);
+
   const navigate = useNavigate();
   const handleEnquiryClick = () => {
     navigate("/contact");
@@ -1032,11 +1031,10 @@ export default function ListingsPage() {
             </Button>
           </div>
 
-          {window.innerWidth <= 480 ? (
+          {isMobileView ? (
             <div className="ListingSearchForm">
               <Input className="ListingLocation" placeholder="Location" />
 
-              {/* Grid layout for smaller screens */}
               <div className="listingGrid">
                 <div className="ListingGrid1">
                   <Dropdown menu={{ items: dropDownItems }}>
@@ -1164,28 +1162,28 @@ export default function ListingsPage() {
             />
           </div>
         )}
-             <Modal
-                  closable={{ "aria-label": "Custom Close Button" }}
-                  open={isLoginModalOpen}
-                  footer={null}
-                  onCancel={() => setIsLoginModalOpen(false)}
-                >
-                  <div className="modalContainer">
-                    <div className="modalLeft">
-                      <img src={loginHeroImage} className="modalImg" />
-                    </div>
-                    <div className="modalRight">
-                      <img src={Logo} className="modalLogo" alt="Logo" />
-                       <div className="modalImgTextBottom">
-                        <p style={{ margin: 0 }}>Welcome to Esthell Properties</p>
-                      </div>
-                      <Button className="modalButton" onClick={handleGoogleSignIn}>
-                        <FcGoogle size={24} />
-                       Connect via Google
-                      </Button>
-                    </div>
-                  </div>
-                </Modal>
+        <Modal
+          closable={{ "aria-label": "Custom Close Button" }}
+          open={isLoginModalOpen}
+          footer={null}
+          onCancel={() => setIsLoginModalOpen(false)}
+        >
+          <div className="modalContainer">
+            <div className="modalLeft">
+              <img src={loginHeroImage} className="modalImg" />
+            </div>
+            <div className="modalRight">
+              <img src={Logo} className="modalLogo" alt="Logo" />
+              <div className="modalImgTextBottom">
+                <p style={{ margin: 0 }}>Welcome to Esthell Properties</p>
+              </div>
+              <Button className="modalButton" onClick={handleGoogleSignIn}>
+                <FcGoogle size={24} />
+                Connect via Google
+              </Button>
+            </div>
+          </div>
+        </Modal>
 
         {/* featured properties */}
         <div className="featuredPropertiesContainer">
@@ -1197,8 +1195,11 @@ export default function ListingsPage() {
           </div>
           <div className="propertyList">
             {filteredProperties.map((property, index) => (
-              <div key={property.id} className="propertyItem" 
-              onClick={() => handlePropertyCardClick(property)}>
+              <div
+                key={property.id}
+                className="propertyItem"
+                onClick={() => handlePropertyCardClick(property)}
+              >
                 <div className="propertyImageWrapper">
                   <div className="imageContainer">
                     <Swiper
@@ -1230,7 +1231,7 @@ export default function ListingsPage() {
                     <p className="propertySale">{property.status}</p>
                     <div
                       onClick={(e) => {
-                        e.stopPropagation(); 
+                        e.stopPropagation();
                         handleHeartClick(property.id);
                       }}
                       style={{ zIndex: 100, cursor: "pointer" }}
@@ -1282,8 +1283,9 @@ export default function ListingsPage() {
 
                         {/* Add more icon types as needed */}
                         <span className="text">
-                         {type === "bed" && property.specs.bedroomsDisplay}
-                        {type === "bath" && `${property.specs.bathsDisplay} Baths`}
+                          {type === "bed" && property.specs.bedroomsDisplay}
+                          {type === "bath" &&
+                            `${property.specs.bathsDisplay} Baths`}
                           {type === "sqfts" && property.detailedInfo.sqfts}
                           {type === "sqft" && property.specs.sqft}
                           {type === "grounds" && property.specs.sqft}
@@ -1307,7 +1309,10 @@ export default function ListingsPage() {
                       <span className="text">{property.specs.sqft}</span>
                     </div> */}
                   </div>
-                  <div className="propertyHighlightsWrapper" onClick={() => handlePropertyCardClick(property)}>
+                  <div
+                    className="propertyHighlightsWrapper"
+                    onClick={() => handlePropertyCardClick(property)}
+                  >
                     <p className="hpPropHighlightsText">Highlights: </p>
                     {property.highlights.map((highlight, idx) => (
                       <p key={idx} className="propertyHighlight">
