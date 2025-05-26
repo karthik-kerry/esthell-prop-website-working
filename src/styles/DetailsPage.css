@@ -24,9 +24,9 @@
 }
 /* Divider */
 .detailPageDivider {
-  width: 100%; 
-  height: 1px; 
-  background-color: #ccc; 
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
 }
 /* image view */
 
@@ -34,7 +34,6 @@
   height: 560px;
   width: 100%;
   border-radius: 12px;
- 
 }
 
 .detailPageImageWrapper {
@@ -47,7 +46,7 @@
 }
 
 .detailPageMainImage {
-   width: 100%;
+  width: 100%;
   max-width: 100%;
   height: 560px;
   border-radius: 12px;
@@ -168,14 +167,14 @@
 .detailPageHouseInfoContainer {
   background-color: white;
   width: 98%;
-  height:auto;
+  height: auto;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding:5px;
+  padding: 5px;
 }
-.detailsInfoText{
+.detailsInfoText {
   font-size: 13px;
   font-weight: 400;
 }
@@ -191,14 +190,14 @@
   color: #001c6b;
 }
 /* highlights */
-.detailPageHighlightsConttent{
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
+.detailPageHighlightsConttent {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .detailPageHighlightTitle {
- font-weight: 500;
+  font-weight: 500;
   font-size: 18px;
 }
 
@@ -208,7 +207,7 @@ justify-content: flex-start;
   font-weight: 400;
   font-size: 14px;
 }
-.detailPageHighlightsList p{
+.detailPageHighlightsList p {
   margin-top: -5px;
 }
 
@@ -307,8 +306,11 @@ justify-content: flex-start;
 }
 /* floor plans */
 .fullScreen {
- position: fixed !important;
-  top: 0; left: 0; right: 0; bottom: 0;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(30, 30, 30, 0.572);
@@ -318,29 +320,29 @@ justify-content: flex-start;
   align-items: center;
   justify-content: center;
 }
-.fullScreenView{
+.fullScreenView {
   border-radius: 12px;
   padding: 24px;
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 .fullScreenImage {
   width: 70vw !important;
   height: 70vh !important;
   object-fit: contain;
 }
-.closeIcon{
+.closeIcon {
   position: absolute;
-  top: 12px; right: 12px;
+  top: 12px;
+  right: 12px;
   background: none;
-  border:2px solid #001C6B;
+  border: 2px solid #001c6b;
   border-radius: 50%;
   font-size: 25px;
   cursor: pointer;
-  color: #001C6B;
+  color: #001c6b;
   z-index: 2;
 }
 .detailPageFloorPlansHeader {
@@ -379,29 +381,29 @@ justify-content: flex-start;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition:ease-in 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: ease-in 0.2s;
 }
 .detailPageFloorPlanArrow:hover {
   background: #e0e0e0;
 }
 /* location */
-.DetailPageLocation{
-display: flex;
-flex-direction: row;
-gap:5px;
+.DetailPageLocation {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
-.DetailPageLocationWrapper{
+.DetailPageLocationWrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-.detailStartFrom{
+.detailStartFrom {
   font-weight: 200;
   font-size: 14px;
 }
-.locationText{
+.locationText {
   font-size: 14px;
   font-weight: 400;
 }
@@ -508,9 +510,8 @@ gap:5px;
   margin-top: -8px;
 }
 .detailPageEnquiryButton:hover {
-  background-color: #001c6b; 
-  color: white; 
- 
+  background-color: #001c6b;
+  color: white;
 }
 /* similar listings */
 
@@ -544,7 +545,7 @@ gap:5px;
 .similarListingsCard {
   height: auto;
   width: 100%;
-   max-width: 330px;
+  max-width: 330px;
   border-radius: 20px;
   background-color: white;
   border-style: solid;
@@ -558,7 +559,7 @@ gap:5px;
   width: 100%;
   border-radius: 12px;
 }
-.similarListingsImageWrapper{
+.similarListingsImageWrapper {
   position: relative;
   max-width: 330px;
   margin: 0 auto;
@@ -646,10 +647,10 @@ gap:5px;
 }
 
 .similarListingsSaleTag {
-  background-color: #001C6B;
+  background-color: #001c6b;
   color: white;
-  width:auto;
-  height:auto;
+  width: auto;
+  height: auto;
   font-size: 10px;
 }
 
@@ -663,7 +664,6 @@ gap:5px;
   color: #1b1b1b;
   font-size: 20px;
   font-weight: 600;
-  
 }
 
 .similarListingsDescription {
@@ -672,10 +672,9 @@ gap:5px;
   font-weight: 500;
   margin-bottom: -10px;
 }
-.similarListingsArea{
-    color: #1b1b1b;
+.similarListingsArea {
+  color: #1b1b1b;
   font-weight: 300;
-
 }
 
 .similarListingsLocation {
@@ -708,7 +707,6 @@ gap:5px;
   color: #001c6b;
 }
 
-
 .similarListingsHighlightsContainer {
   display: flex;
   align-items: center;
@@ -740,12 +738,11 @@ gap:5px;
   font-size: 18px;
 }
 
-
 .imageGrid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); 
-  gap: 10px; 
-  max-width: 100%; 
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  max-width: 100%;
 }
 
 .imageContainer {
@@ -755,15 +752,15 @@ gap:5px;
 .gridImage {
   width: 29px;
   height: 29px;
-  border-radius:200px; 
-  border: 1.2px solid #0A152E; 
+  border-radius: 200px;
+  border: 1.2px solid #0a152e;
   margin-bottom: 10px;
   padding: 5px;
 }
 
 .imageName {
   font-size: 13px;
-  color: #1B1B1BCC;
+  color: #1b1b1bcc;
   font-weight: 400;
   margin-top: 6px;
 }
@@ -798,13 +795,13 @@ gap:5px;
   font-size: 16px;
   font-weight: 400;
 }
-.IconText{
+.IconText {
   font-size: 14px;
   font-weight: 600;
 }
-.IconSubText{
+.IconSubText {
   margin-top: -5px;
- font-size: 12px;
+  font-size: 12px;
   font-weight: 400;
 }
 .stars {
@@ -818,9 +815,9 @@ gap:5px;
   font-weight: 400;
   margin-bottom: 20px;
 }
-.review-rate{
+.review-rate {
   margin-bottom: -10px;
-font-size: 16px;
+  font-size: 16px;
   font-weight: 400;
 }
 
@@ -848,7 +845,7 @@ font-size: 16px;
   content: "";
   position: absolute;
   height: 10px;
-  background-color:	#ffe234;
+  background-color: #ffe234;
   border-radius: 5px;
   top: 0;
   left: 0;
@@ -864,15 +861,15 @@ font-size: 16px;
 }
 
 .features {
- margin-top: -10px;
+  margin-top: -10px;
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   gap: 10px;
 }
 
 .feature {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
   font-size: 16px;
@@ -885,8 +882,8 @@ font-size: 16px;
 }
 
 .icon {
-  color: #001C6B;
-  border:1px solid #001C6B;
+  color: #001c6b;
+  border: 1px solid #001c6b;
   border-radius: 50%;
   padding: 3px;
 }
@@ -908,29 +905,31 @@ h4 {
   flex-direction: column;
   gap: 15px;
 }
-.row1,.row2{
-    display: flex;
-    flex-direction: row;
+.row1,
+.row2 {
+  display: flex;
+  flex-direction: row;
 }
-.likes, .dislikes {
+.likes,
+.dislikes {
   display: flex;
   flex-direction: column;
 }
 
 .thumb-icon {
-  color: #001C6B;
+  color: #001c6b;
   font-size: 18px;
 }
 
 .dislikes .thumb-icon {
-  color: #001C6B;
+  color: #001c6b;
 }
 
 .mention {
   font-size: 12px;
-  margin-left:10px;
+  margin-left: 10px;
   background-color: #f5f5f5;
-  padding:5px;
+  padding: 5px;
 }
 /* charges */
 .detailContactContainer {
@@ -950,7 +949,8 @@ h4 {
   font-weight: 400;
   font-size: 14px;
 }
-.phoneLink,.emailLink{
+.phoneLink,
+.emailLink {
   text-decoration: none;
   color: inherit;
 }
@@ -961,93 +961,91 @@ h4 {
   margin-top: -5px;
 }
 
-@media (max-width:980px){
-  .detailPageLeft{
-     width: 65%;
+@media (max-width: 980px) {
+  .detailPageLeft {
+    width: 65%;
   }
-  .detailPageFloorPlanImage{
+  .detailPageFloorPlanImage {
     width: 260px;
   }
-  .features{
+  .features {
     flex-wrap: wrap;
   }
 }
-@media (max-width:480px){
-  .detailPageLeft{
+@media (max-width: 480px) {
+  .detailPageLeft {
     width: 100%;
   }
-  .detailPageWrapper{
-   padding-left: 30px; 
-   padding-right: 30px;
+  .detailPageWrapper {
+    padding-left: 30px;
+    padding-right: 30px;
   }
-  .detailPageContent{
+  .detailPageContent {
     flex-direction: column;
   }
-  .detailPageMainImage{
+  .detailPageMainImage {
     width: 100%;
   }
-  .detailPagHouseInfoItem{
+  .detailPagHouseInfoItem {
     font-size: 13px;
     font-weight: 400;
   }
-  .detailPagHouseInfoItem{
-    gap:0;
+  .detailPagHouseInfoItem {
+    gap: 0;
   }
-  .detailPageHighlightsContainer{
+  .detailPageHighlightsContainer {
     flex-wrap: wrap;
   }
-  .detailPageHighlightItem{
-    margin-top:-2px;
+  .detailPageHighlightItem {
+    margin-top: -2px;
   }
-  .imageGrid{
-     grid-template-columns: repeat(3, 3fr);
-    gap:5px;
+  .imageGrid {
+    grid-template-columns: repeat(3, 3fr);
+    gap: 5px;
   }
-  .detailPageFloorPlansContainer{
+  .detailPageFloorPlansContainer {
     flex-direction: column;
     gap: 15px;
   }
-  .detailPageFloorPlanImage{
-    margin-top:-20px;
+  .detailPageHouseInfoContainer {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .detailPageFloorPlanImage {
+    margin-top: -20px;
     width: 100%;
   }
-  .similarListingsGrid{
-        grid-template-columns: repeat(1, 1fr);
+  .similarListingsGrid {
+    grid-template-columns: repeat(1, 1fr);
   }
-  .ratings-container{
+  .ratings-container {
     flex-direction: column;
   }
-   .detailPagePropertyContainer {
+  .detailPagePropertyContainer {
     width: auto;
-    position: static; 
+    position: static;
     top: auto;
   }
-  .similarListingsCard{
+  .similarListingsCard {
     width: 100%;
     max-width: 300px;
   }
-  .similarListingsGrid{
-  align-items: center;
-  justify-content: center;
-}
-
-}
-@media (max-width:380px){
-  .imageGrid{
-        grid-template-columns: repeat(3, 3fr);
+  .similarListingsGrid {
+    align-items: center;
+    justify-content: center;
   }
-  .similarListingsCard{
+}
+@media (max-width: 380px) {
+  .imageGrid {
+    grid-template-columns: repeat(3, 3fr);
+  }
+  .similarListingsCard {
     width: 100%;
     max-width: 300px;
   }
-.similarListingsGrid{
-  align-items: center;
-  justify-content: center;
+  .similarListingsGrid {
+    align-items: center;
+    justify-content: center;
+  }
 }
-}
-
-
-
-
-
-
