@@ -6,7 +6,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import { TbShare } from "react-icons/tb";
 import Property from "../assets/property.jpg";
 import Property1 from "../assets/property1.jpg";
-import { Button,Modal } from "antd";
+import { Button, Modal } from "antd";
 import { LuBedDouble } from "react-icons/lu";
 import { PiBathtub } from "react-icons/pi";
 import { AiOutlineHome, AiOutlineCalendar } from "react-icons/ai";
@@ -53,10 +53,10 @@ import { Pagination } from "swiper/modules";
 import { signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, googleProvider } from "../firebase";
-import { FcGoogle } from "react-icons/fc"
+import { FcGoogle } from "react-icons/fc";
 
 export default function DetailsPage() {
-   const [user] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const toggleFullScreen = () => setIsFullScreen((v) => !v);
@@ -65,24 +65,24 @@ export default function DetailsPage() {
   const [favoriteMap, setFavoriteMap] = useState({});
   const navigate = useNavigate();
   const handleHeartClick = (propertyId) => {
-  setFavoriteMap((prev) => {
-    const updated = {
-      ...prev,
-      [propertyId]: !prev[propertyId],
-    };
-    localStorage.setItem("favorites", JSON.stringify(updated));
-    return updated;
-  });
-};
-useEffect(() => {
-  if (!user) {
-    setIsModalOpen(true);
-  }
-}, [user]);
-useEffect(() => {
-  const stored = localStorage.getItem("favorites");
-  if (stored) setFavoriteMap(JSON.parse(stored));
-}, []);
+    setFavoriteMap((prev) => {
+      const updated = {
+        ...prev,
+        [propertyId]: !prev[propertyId],
+      };
+      localStorage.setItem("favorites", JSON.stringify(updated));
+      return updated;
+    });
+  };
+  useEffect(() => {
+    if (!user) {
+      setIsModalOpen(true);
+    }
+  }, [user]);
+  useEffect(() => {
+    const stored = localStorage.getItem("favorites");
+    if (stored) setFavoriteMap(JSON.parse(stored));
+  }, []);
   const handleEnquiryClick = () => {
     navigate("/contact");
   };
@@ -124,8 +124,8 @@ useEffect(() => {
       facing: "East",
       specs: {
         bedrooms: "2.5/3/Duplex",
-        bedroomsDisplay:"2.5 & 3 BHK / Duplex",
-        bathsDisplay:"2-4",
+        bedroomsDisplay: "2.5 & 3 BHK / Duplex",
+        bathsDisplay: "2-4",
         baths: "2/3/4",
         sqft: "1492-2897 Sqft",
       },
@@ -147,7 +147,7 @@ useEffect(() => {
       },
       detailedInfo: {
         bedrooms: "2.5 & 3 BHK / Duplex",
-       baths: "2-4",
+        baths: "2-4",
         sqft: "1492-2897 Sqft",
         facing: "East & West",
         description:
@@ -160,11 +160,11 @@ useEffect(() => {
         point4: "Nestled behind the soon-to-come XB Mall",
         point5: "Crafted with red bricks and river sand",
         point6: "No wall sharing",
-         point7:"Vaastu Complaints",
-         point8:"Rooms with double-layer brick walls."
+        point7: "Vaastu Complaints",
+        point8: "Rooms with double-layer brick walls.",
       },
       filterData: {
-        constructionStatus: "ready to move",
+        constructionStatus: ["ready to move", "new launch"],
         localities: "Velachery",
         purchaseType: "new booking",
         amenities: ["parking", "gymnasium"],
@@ -220,7 +220,7 @@ useEffect(() => {
           "Beach Property, just 10m from Uthandi Toll(ECR), in a secure gated community",
       },
       filterData: {
-        constructionStatus: "under construction",
+        constructionStatus: ["under construction", "new launch"],
         localities: "Uthandi",
         purchaseType: "new booking",
         amenities: ["security personnel"],
@@ -291,22 +291,22 @@ useEffect(() => {
   };
 
   const handleShare = () => {
-  const shareData = {
-    id: property?.id,
-    title: property?.name,
-    text: `Check out this property: ${property?.name} in ${property?.location}`,
-    url: window?.location?.href,
-  };
+    const shareData = {
+      id: property?.id,
+      title: property?.name,
+      text: `Check out this property: ${property?.name} in ${property?.location}`,
+      url: window?.location?.href,
+    };
 
-  if (navigator.share) {
-    navigator.share(shareData).catch((err) => {
-      console.error("Share failed:", err);
-    });
-  } else {
-    navigator.clipboard.writeText(window.location.href);
-    alert("Link copied to clipboard!");
-  }
-};
+    if (navigator.share) {
+      navigator.share(shareData).catch((err) => {
+        console.error("Share failed:", err);
+      });
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link copied to clipboard!");
+    }
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -323,18 +323,17 @@ useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
 
-   const handleGoogleSignIn = async () => {
-  try {
-    const result = await signInWithPopup(auth, googleProvider);
-    const user = result.user;
-    console.log("Google User Data:", user); // Log user data
-    alert("Google Sign-In successful!");
-     setIsModalOpen(false);
-  } catch (error) {
-    alert("Google Sign-In failed: " + error.message);
-  }
-};
-
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      console.log("Google User Data:", user); // Log user data
+      alert("Google Sign-In successful!");
+      setIsModalOpen(false);
+    } catch (error) {
+      alert("Google Sign-In failed: " + error.message);
+    }
+  };
 
   return (
     <div>
@@ -346,7 +345,6 @@ useEffect(() => {
 
             <div className="detailPageImgContainer">
               <div className="detailPageImageWrapper">
-                 
                 <Swiper
                   modules={[Pagination]}
                   pagination={{ clickable: true }}
@@ -369,7 +367,11 @@ useEffect(() => {
                 <p className="detailPageVerifiedTag">Verified</p>
                 <p className="propertySale">{property?.status}</p>
                 <div className="detailPageIcons">
-                  <TbShare color="white" className="detailPageShareIcon"  onClick={handleShare} />
+                  <TbShare
+                    color="white"
+                    className="detailPageShareIcon"
+                    onClick={handleShare}
+                  />
 
                   <div onClick={() => handleHeartClick(property?.id)}>
                     {favoriteMap[property?.id] ? (
@@ -429,7 +431,9 @@ useEffect(() => {
                 </div>
                 <div className="detailPageDivider" />
                 <div className="detailPageAgentContainer">
-                  <p className="detailPageAgentName">{property?.company?.name}</p>
+                  <p className="detailPageAgentName">
+                    {property?.company?.name}
+                  </p>
                   <p className="detailPageAgentListedDate">
                     Listed on: {property?.listedOn}
                   </p>
@@ -475,7 +479,6 @@ useEffect(() => {
             )}
             {/* houseInfo */}
             <div className="detailPageHouseInfoContainer">
-
               {property?.iconType.map((type, idx) => (
                 <div className="detailPagHouseInfoItem" key={type + idx}>
                   {type === "bed" && <LuBedDouble color="#001C6B" />}
@@ -488,7 +491,8 @@ useEffect(() => {
                   {/* Add more icon types as needed */}
                   <span className="text">
                     {type === "bed" && property?.specs?.bedroomsDisplay}
-                        {type === "bath" && `${property?.specs?.bathsDisplay} Baths`}
+                    {type === "bath" &&
+                      `${property?.specs?.bathsDisplay} Baths`}
                     {type === "sqfts" && property?.detailedInfo?.sqfts}
                     {type === "sqft" && property?.specs?.sqft}
                     {type === "grounds" && property?.specs?.sqft}
@@ -578,44 +582,43 @@ useEffect(() => {
                 </div>
                 <div className="detailPageDivider" />
                 {/* floor plans */}
-               
-               
-                <div className="detailPageFloorPlanSlider">
-  <button
-    className="detailPageFloorPlanArrow"
-    onClick={() =>
-      setFloorPlanIndex(
-        floorPlanIndex === 0
-          ? floorPlans.length - 1
-          : floorPlanIndex - 1
-      )
-    }
-  >
-    <FaChevronLeft color="#001C6B" size={18} />
-  </button>
-  <div className="detailPageFloorPlanSingle">
-    <p>{floorPlans[floorPlanIndex].label}</p>
-    <img
-      src={floorPlans[floorPlanIndex].src}
-      className="detailPageFloorPlanImage"
-      alt={floorPlans[floorPlanIndex].label}
-      onClick={toggleFullScreen}
-      style={{ cursor: "zoom-in" }}
-    />
-  </div>
-  <button
-    className="detailPageFloorPlanArrow"
-    onClick={() =>
-      setFloorPlanIndex(
-        (floorPlanIndex + 1) % floorPlans.length
-      )
-    }
-  >
-    <FaChevronRight color="#001C6B" size={18} />
-  </button>
-</div>
 
-{/* {isFullScreen && (
+                <div className="detailPageFloorPlanSlider">
+                  <button
+                    className="detailPageFloorPlanArrow"
+                    onClick={() =>
+                      setFloorPlanIndex(
+                        floorPlanIndex === 0
+                          ? floorPlans.length - 1
+                          : floorPlanIndex - 1
+                      )
+                    }
+                  >
+                    <FaChevronLeft color="#001C6B" size={18} />
+                  </button>
+                  <div className="detailPageFloorPlanSingle">
+                    <p>{floorPlans[floorPlanIndex].label}</p>
+                    <img
+                      src={floorPlans[floorPlanIndex].src}
+                      className="detailPageFloorPlanImage"
+                      alt={floorPlans[floorPlanIndex].label}
+                      onClick={toggleFullScreen}
+                      style={{ cursor: "zoom-in" }}
+                    />
+                  </div>
+                  <button
+                    className="detailPageFloorPlanArrow"
+                    onClick={() =>
+                      setFloorPlanIndex(
+                        (floorPlanIndex + 1) % floorPlans.length
+                      )
+                    }
+                  >
+                    <FaChevronRight color="#001C6B" size={18} />
+                  </button>
+                </div>
+
+                {/* {isFullScreen && (
   <div className="fullScreen" onClick={toggleFullScreen}>
     <div
       className="detailPageFloorPlanSingle"
@@ -633,91 +636,93 @@ useEffect(() => {
     </div>
   </div>
 )} */}
-{isFullScreen && (
-  <div className="fullScreen" onClick={toggleFullScreen}>
-    <div
-      className="detailPageFloorPlanSingle"
-      onClick={e => e.stopPropagation()}
-      style={{
-        background: "#fff",
-        borderRadius: 18,
-        padding: 24,
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        minWidth: 320,
-      }}
-    >
-      {/* Close Icon */}
-      <button
-        onClick={toggleFullScreen}
-       className="closeIcon"
-        aria-label="Close"
-      >
-        &times;
-      </button>
-      {/* Left Arrow */}
-      <button
-        className="detailPageFloorPlanArrow"
-        onClick={e => {
-          e.stopPropagation();
-          setFloorPlanIndex(
-            floorPlanIndex === 0
-              ? floorPlans.length - 1
-              : floorPlanIndex - 1
-          );
-        }}
-        style={{
-          position: "absolute",
-          left: 12,
-          top: "50%",
-          transform: "translateY(-50%)",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          color: "#001C6B",
-          zIndex: 2,
-        }}
-        aria-label="Previous"
-      >
-        <FaChevronLeft size={24} />
-      </button>
-      {/* Right Arrow */}
-      <button
-        className="detailPageFloorPlanArrow"
-        onClick={e => {
-          e.stopPropagation();
-          setFloorPlanIndex(
-            (floorPlanIndex + 1) % floorPlans.length
-          );
-        }}
-        style={{
-          position: "absolute",
-          right: 12,
-          top: "50%",
-          transform: "translateY(-50%)",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          color: "#001C6B",
-          zIndex: 2,
-        }}
-        aria-label="Next"
-      >
-        <FaChevronRight size={24} />
-      </button>
-      <p style={{ marginBottom: 16 }}>{floorPlans[floorPlanIndex].label}</p>
-      <img
-        src={floorPlans[floorPlanIndex].src}
-        className="fullScreenImage"
-        alt={floorPlans[floorPlanIndex].label}
-        style={{ cursor: "zoom-out" }}
-        onClick={toggleFullScreen}
-      />
-    </div>
-  </div>
-)}
+                {isFullScreen && (
+                  <div className="fullScreen" onClick={toggleFullScreen}>
+                    <div
+                      className="detailPageFloorPlanSingle"
+                      onClick={(e) => e.stopPropagation()}
+                      style={{
+                        background: "#fff",
+                        borderRadius: 18,
+                        padding: 24,
+                        position: "relative",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        minWidth: 320,
+                      }}
+                    >
+                      {/* Close Icon */}
+                      <button
+                        onClick={toggleFullScreen}
+                        className="closeIcon"
+                        aria-label="Close"
+                      >
+                        &times;
+                      </button>
+                      {/* Left Arrow */}
+                      <button
+                        className="detailPageFloorPlanArrow"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setFloorPlanIndex(
+                            floorPlanIndex === 0
+                              ? floorPlans.length - 1
+                              : floorPlanIndex - 1
+                          );
+                        }}
+                        style={{
+                          position: "absolute",
+                          left: 12,
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                          color: "#001C6B",
+                          zIndex: 2,
+                        }}
+                        aria-label="Previous"
+                      >
+                        <FaChevronLeft size={24} />
+                      </button>
+                      {/* Right Arrow */}
+                      <button
+                        className="detailPageFloorPlanArrow"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setFloorPlanIndex(
+                            (floorPlanIndex + 1) % floorPlans.length
+                          );
+                        }}
+                        style={{
+                          position: "absolute",
+                          right: 12,
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                          color: "#001C6B",
+                          zIndex: 2,
+                        }}
+                        aria-label="Next"
+                      >
+                        <FaChevronRight size={24} />
+                      </button>
+                      <p style={{ marginBottom: 16 }}>
+                        {floorPlans[floorPlanIndex].label}
+                      </p>
+                      <img
+                        src={floorPlans[floorPlanIndex].src}
+                        className="fullScreenImage"
+                        alt={floorPlans[floorPlanIndex].label}
+                        style={{ cursor: "zoom-out" }}
+                        onClick={toggleFullScreen}
+                      />
+                    </div>
+                  </div>
+                )}
                 <div className="detailPageDivider" />
               </>
             )}
@@ -862,7 +867,10 @@ useEffect(() => {
               <p className="detailPagePropertyTitle">{property?.name}</p>
               <p className="detailPagePropertySubTitle">
                 {property?.type} in{" "}
-                <span className="detailPageLocation"> {property?.location}</span>
+                <span className="detailPageLocation">
+                  {" "}
+                  {property?.location}
+                </span>
               </p>
               <div className="detailPagePriceContainer">
                 <p className="detailStartFrom">{property?.startingFrom}</p>
@@ -1019,7 +1027,8 @@ useEffect(() => {
                         {type === "sqfts" && property?.detailedInfo?.sqfts}
                         {type === "sqft" && property?.specs?.sqft}
                         {type === "grounds" && property?.specs?.sqft}
-                        {type === "frontage" && property?.detailedInfo?.frontage}
+                        {type === "frontage" &&
+                          property?.detailedInfo?.frontage}
                       </span>
                     </div>
                   ))}

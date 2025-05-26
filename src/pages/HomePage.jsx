@@ -46,7 +46,7 @@ import "../styles/HomePage.css";
 import loginHeroImage from "../assets/loginHeroImage.png";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth,googleProvider  } from "../firebase";
+import { auth, googleProvider } from "../firebase";
 
 const propertyType = [
   {
@@ -150,7 +150,7 @@ const currentProperties = [
     highlightsInfo: {
       point1: "Just 100m meters from Puzhuthivakkam Station",
       point2: "Only 700m from Velachery Station",
-      point3: " Opposite to Sunshine School",
+      point3: "Opposite to Sunshine School",
       point4: "Nestled behind the soon-to-come XB Mall",
       point5: "Crafted with red bricks and river sand",
       point6: "No wall sharing",
@@ -158,7 +158,7 @@ const currentProperties = [
       point8: "Rooms with double-layer brick walls.",
     },
     filterData: {
-      constructionStatus: "ready to move",
+      constructionStatus: ["ready to move", "new launch"],
       localities: "Velachery",
       purchaseType: "new booking",
       amenities: ["parking", "gymnasium"],
@@ -214,7 +214,7 @@ const currentProperties = [
         "Beach Property, just 10m from Uthandi Toll(ECR), in a secure gated community",
     },
     filterData: {
-      constructionStatus: "under construction",
+      constructionStatus: ["under construction", "new launch"],
       localities: "Uthandi",
       purchaseType: "new booking",
       amenities: ["security personnel"],
@@ -265,19 +265,19 @@ export default function HomePage() {
     cursor: "pointer",
   });
   const handleHeartClick = (propertyId) => {
-   setFavoriteMap((prev) => {
-     const updated = {
-       ...prev,
-       [propertyId]: !prev[propertyId],
-     };
-     localStorage.setItem("favorites", JSON.stringify(updated));
-     return updated;
-   });
- };
- useEffect(() => {
-   const stored = localStorage.getItem("favorites");
-   if (stored) setFavoriteMap(JSON.parse(stored));
- }, []);
+    setFavoriteMap((prev) => {
+      const updated = {
+        ...prev,
+        [propertyId]: !prev[propertyId],
+      };
+      localStorage.setItem("favorites", JSON.stringify(updated));
+      return updated;
+    });
+  };
+  useEffect(() => {
+    const stored = localStorage.getItem("favorites");
+    if (stored) setFavoriteMap(JSON.parse(stored));
+  }, []);
 
   const handleViewAll = () => {
     navigate("/listings");
@@ -386,7 +386,7 @@ export default function HomePage() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-    const handleGoogleSignIn = async () => {
+  const handleGoogleSignIn = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
@@ -500,8 +500,11 @@ export default function HomePage() {
                         })),
                       }}
                     >
-                      <Space className="HomeformItem" style={{ color: searchType ? "black" : "#bfbfbf" }} >
-                         {searchType || "Property Type"}
+                      <Space
+                        className="HomeformItem"
+                        style={{ color: searchType ? "black" : "#bfbfbf" }}
+                      >
+                        {searchType || "Property Type"}
                         <DownOutlined />
                       </Space>
                     </Dropdown>
@@ -514,9 +517,11 @@ export default function HomePage() {
                         })),
                       }}
                     >
-                      <Space className="HomeformItem" style={{ color: searchSize ? "black" : "#bfbfbf" }} >
-                        
-                     {searchSize || "Property Size"}
+                      <Space
+                        className="HomeformItem"
+                        style={{ color: searchSize ? "black" : "#bfbfbf" }}
+                      >
+                        {searchSize || "Property Size"}
                         <DownOutlined />
                       </Space>
                     </Dropdown>
@@ -528,7 +533,7 @@ export default function HomePage() {
                       placeholder="Min Range 5L"
                       value={minRange}
                       onChange={(e) => setMinRange(e.target.value)}
-                       style={{ color: minRange ? "#1b1b1b" : "#bfbfbf" }}
+                      style={{ color: minRange ? "#1b1b1b" : "#bfbfbf" }}
                     />
 
                     <Input
@@ -537,7 +542,7 @@ export default function HomePage() {
                       placeholder="Enter Max Range 50Cr"
                       value={maxRange}
                       onChange={(e) => setMaxRange(e.target.value)}
-                       style={{ color: maxRange ? "#1b1b1b" : "#bfbfbf" }}
+                      style={{ color: maxRange ? "#1b1b1b" : "#bfbfbf" }}
                     />
                   </div>
                 </div>
@@ -571,7 +576,10 @@ export default function HomePage() {
                     })),
                   }}
                 >
-                  <Space className="HomeformItem" style={{ color: searchType ? "black" : "#bfbfbf" }}>
+                  <Space
+                    className="HomeformItem"
+                    style={{ color: searchType ? "black" : "#bfbfbf" }}
+                  >
                     {searchType || "Property Type"}
                     <DownOutlined />
                   </Space>
@@ -585,7 +593,10 @@ export default function HomePage() {
                     })),
                   }}
                 >
-                  <Space className="HomeformItem"  style={{ color: searchSize ? "black" : "#bfbfbf" }}>
+                  <Space
+                    className="HomeformItem"
+                    style={{ color: searchSize ? "black" : "#bfbfbf" }}
+                  >
                     {searchSize || "Property Size"}
                     <DownOutlined />
                   </Space>
@@ -890,8 +901,8 @@ export default function HomePage() {
               <img src={loginHeroImage} className="modalImg" />
             </div>
             <div className="modalRight">
-                 <img src={Logo} className="modalLogo" alt="Logo" />
-               <div className="modalImgTextBottom">
+              <img src={Logo} className="modalLogo" alt="Logo" />
+              <div className="modalImgTextBottom">
                 <p style={{ margin: 0 }}>Welcome to Esthell Properties</p>
               </div>
               <Button className="modalButton" onClick={handleGoogleSignIn}>
@@ -909,11 +920,7 @@ export default function HomePage() {
           </p>
           <div className="hpPropCardGrid">
             {currentProperties.map((property, index) => (
-              <div
-                key={property.id}
-                className="hpPropCard"
-               
-              >
+              <div key={property.id} className="hpPropCard">
                 <div className="hpPropImgContainer">
                   <div className="hpPropImageWrapper">
                     <Swiper

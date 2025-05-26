@@ -151,7 +151,7 @@ export default function ListingsPage() {
         point8: "Rooms with double-layer brick walls.",
       },
       filterData: {
-        constructionStatus: "ready to move",
+        constructionStatus: ["ready to move", "new launch"],
         localities: "Velachery",
         purchaseType: "new booking",
         amenities: ["parking", "gymnasium"],
@@ -207,7 +207,7 @@ export default function ListingsPage() {
           "Beach Property, just 10m from Uthandi Toll(ECR), in a secure gated community",
       },
       filterData: {
-        constructionStatus: "under construction",
+        constructionStatus: ["under construction", "new launch"],
         localities: "Uthandi",
         purchaseType: "new booking",
         amenities: ["security personnel"],
@@ -973,7 +973,9 @@ export default function ListingsPage() {
 
         if (
           selectedStatuses.length > 0 &&
-          !selectedStatuses.includes(property.filterData.constructionStatus)
+          !property.filterData.constructionStatus.some((status) =>
+            selectedStatuses.includes(status)
+          )
         ) {
           return false;
         }
