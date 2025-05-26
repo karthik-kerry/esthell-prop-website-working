@@ -764,7 +764,8 @@
     width: 110px;
   }
   .propertyItem {
-    width: auto;
+    width: 100%;
+    max-width: 300px;
   }
   .ListingLocation {
     height: 44px;
@@ -826,12 +827,15 @@
   }
   .propertyItem {
     flex-direction: column;
+    width: 100%;
+    max-width: 300px;
   }
   .filterContainer {
     display: none;
   }
   .propertySpecs {
     flex-wrap: wrap;
+    gap: 5px;
   }
   .propertyImage {
     width: 100%;
@@ -1015,10 +1019,13 @@
     padding: 20px;
   }
   .propertyItem {
+    width: 100%;
+    max-width: 300px;
     flex-direction: column;
   }
   .propertySpecs {
     flex-wrap: wrap;
+    gap: 5px;
   }
   .filterContainer {
     display: none;
