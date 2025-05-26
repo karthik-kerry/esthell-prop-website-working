@@ -47,7 +47,7 @@ export default function ListingsPage() {
   const [disabled, setDisabled] = useState(false);
   const [selectedLocations, setSelectedLocations] = useState([]);
   const [areaValue, setAreaValue] = useState([500, 15000]);
-  const [budgetValue, setBudgetValue] = useState([500000, 25000000]);
+  const [budgetValue, setBudgetValue] = useState([500000, 500000000]);
   const [activeButton, setActiveButton] = useState("buy");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
@@ -267,7 +267,7 @@ export default function ListingsPage() {
       button21: false,
     });
     setAreaValue([500, 15000]);
-    setBudgetValue([500000, 25000000]);
+    setBudgetValue([500000, 500000000]);
     setSelectedLocations([]);
   };
   const handleHeartClick = (propertyId) => {
