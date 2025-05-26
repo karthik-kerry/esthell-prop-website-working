@@ -86,6 +86,7 @@ export default function ListingsPage() {
       const user = result.user;
       console.log("Google User Data:", user);
       alert("Google Sign-In successful!");
+      setIsLoginModalOpen(false);
     } catch (error) {
       alert("Google Sign-In failed: " + error.message);
     }

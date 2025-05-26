@@ -392,7 +392,7 @@ export default function HomePage() {
       const user = result.user;
       console.log("Google User Data:", user);
       alert("Google Sign-In successful!");
-      // You can redirect or update UI here
+      setIsModalOpen(false);
     } catch (error) {
       alert("Google Sign-In failed: " + error.message);
     }
