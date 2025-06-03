@@ -6,6 +6,10 @@ import { FaChevronLeft } from "react-icons/fa";
 import { TbShare } from "react-icons/tb";
 import Property from "../assets/property.jpg";
 import Property1 from "../assets/property1.jpg";
+import JumeirahResidences from "../assets/JumeirahResidences.png";
+import JumeirahResidences1 from "../assets/JumeirahResidences1.jpg";
+import JumeirahResidences2 from "../assets/JumeirahResidences2.jpg";
+import JumeirahResidences3 from "../assets/JumeirahResidences3.jpg";
 import { Button, Modal } from "antd";
 import { LuBedDouble } from "react-icons/lu";
 import { PiBathtub } from "react-icons/pi";
@@ -110,6 +114,7 @@ export default function DetailsPage() {
     { src: Parking, name: "Visitor Car Parking" },
     { src: Games, name: "Indoor Games" },
   ];
+  // change here
   const currentProperties = [
     {
       id: 1,
@@ -229,6 +234,80 @@ export default function DetailsPage() {
       startingFrom: "",
       iconType: ["sqfts", "grounds", "frontage"],
       map: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin",
+    },
+    {
+      id: 3,
+      name: "Jumeirah Residences Emirates",
+      location: "Sheikh Zayed Rd, Dubai, UAE",
+      address:
+        "Sheikh Zayed Rd - Trade Centre - Trade Centre 2 - Dubai - United Arab Emirates",
+      price: "3.51 M",
+      type: "Apartment ",
+      images: [
+        JumeirahResidences,
+        JumeirahResidences1,
+        JumeirahResidences2,
+        JumeirahResidences3,
+      ],
+      builtStatus: "Ready To Occupy",
+      facing: false,
+      specs: {
+        bedrooms: "1/2/3/4",
+        bedroomsDisplay: "1-4 BHK",
+        bathsDisplay: "1-6 Baths",
+        baths: "1/2/3/4/5/6",
+        sqft: "861.76-6,369.33 Sqft",
+      },
+      details: {
+        specification: "2BHK +2 T + S",
+        furnishing: "No",
+        flatNo: "-",
+        FloorNo: "-",
+        builtUpArea: "1492",
+      },
+      highlights: ["Sky Pool & Terrace", "Private Cinema & Lounge"],
+      description:
+        "Spacious layouts, modern interiors, private balconies, and world-class amenities like a sky pool and wellness spaces.",
+      status: "ready to occupy",
+      listedOn: "03 June 2025",
+      company: {
+        name: "Jumeirah Residences Emirates Towers",
+        logo: "/logo.png",
+      },
+      detailedInfo: {
+        bedrooms: "1/2/3/4",
+        baths: "1-6",
+        sqft: "861.76-6,369.33 Sqft",
+        description:
+          "Spacious layouts, modern interiors, private balconies, and world-class amenities like a sky pool and wellness spaces.",
+      },
+      highlightsInfo: {
+        point1: "Sky Pool & Terrace",
+        point2: "Private Cinema & Lounge",
+        point3: "Wellness & Fitness Studios",
+        point4: "Nearby Jumeirah Beach",
+        point5: "Nearby Museum of the Future",
+        point6: "Nearby Downtown Dubai",
+      },
+      filterData: {
+        constructionStatus: ["ready to move", "new launch"],
+        localities: "Dubai",
+        purchaseType: "new booking",
+        amenities: [
+          "parking",
+          "gymnasium",
+          "Restaurant",
+          "Playground",
+          "Pet Lawn",
+          "Family Pool",
+          "Infinity Pool",
+          "Social Hall",
+        ],
+        furnishing: "Unfurnished",
+      },
+      startingFrom: "Starting From",
+      iconType: ["bed", "bath", "sqft"],
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3002.0276592160058!2d80.2106945!3d12.9747379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dde1051c295%3A0xdefad79426dff8db!2sEsthell%20Homes!5e1!3m2!1sen!2sin!4v1747815401006!5m2!1sen!2sin",
     },
   ];
   const progressWidth = (rating / 5) * 100;

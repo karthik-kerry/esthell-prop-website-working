@@ -47,6 +47,7 @@
   position: absolute;
   top: 60%;
   left: 50%;
+  text-align: center;
   transform: translateX(-50%);
   z-index: 100;
 }
@@ -110,7 +111,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: white;
@@ -128,11 +129,12 @@
 
 .missionSection {
   display: flex;
-  gap: 30px;
+  gap: 130px;
 }
 
 .missionText {
   font-weight: 600;
+  margin-top: 80px;
   font-size: 42px;
 }
 
@@ -199,21 +201,23 @@
   flex-direction: column;
   justify-content: flex-start;
   padding: 20px;
- border: 1px solid #e0e0e0;
+  border: 1px solid #e0e0e0;
 }
 .coreValueItem:nth-child(3n) {
-  border-right: none; 
+  border-right: none;
   border-top: none;
 }
-.coreValueItem:nth-child(2n),.coreValueItem:nth-child(1n) {
+.coreValueItem:nth-child(2n),
+.coreValueItem:nth-child(1n) {
   border-top: none;
 }
-.coreValueItem:nth-child(4n),.coreValueItem:nth-child(1n) {
+.coreValueItem:nth-child(4n),
+.coreValueItem:nth-child(1n) {
   border-left: none;
 }
 
-.coreValueItem:nth-last-child(-n+3) {
-  border-bottom: none; 
+.coreValueItem:nth-last-child(-n + 3) {
+  border-bottom: none;
 }
 .coreValueIcon {
   width: 20px;
@@ -380,340 +384,338 @@
   height: 32px;
 }
 
-
 @media (max-width: 980px) {
-
-.sectionContainer1{
-  flex-direction: column;
-}
-.statisticsContainer{
-   padding-left: 50px;
-  padding-right: 50px;
-}
-.whyChooseUsContainer{
-  flex-direction: column;
-}
-.whyChooseUsTextContainer{
-  align-items: center;
-  justify-items: center;
-}
-.clientsSayContainer{
-  margin-top: 0;
-}
+  .sectionContainer1 {
+    flex-direction: column;
+  }
+  .statisticsContainer {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .whyChooseUsContainer {
+    flex-direction: column;
+  }
+  .whyChooseUsTextContainer {
+    align-items: center;
+    justify-items: center;
+  }
+  .clientsSayContainer {
+    margin-top: 0;
+  }
 }
 @media (max-width: 480px) {
-  .aboutcontentWrapper{
+  .aboutcontentWrapper {
     padding-left: 30px;
     padding-right: 30px;
   }
-  .aboutHeroTitle{
-    width:70%;
+  .aboutHeroTitle {
+    width: 70%;
     font-size: 32px;
   }
-  .aboutHeroDescription{
+  .aboutHeroDescription {
     width: 80%;
   }
   .whoAreWeImg {
-          height: 240px;
-        width: 320px;
-}
-.whoAreWeHeading {
-  text-align: center;
-  font-weight: 600;
-  font-size: 24px;
-}
+    height: 240px;
+    width: 320px;
+  }
+  .whoAreWeHeading {
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+  }
 
-.sectionContainer1{
-  flex-direction: column;
-}
-.statisticsContainer{
-   padding-left: 50px;
-  padding-right: 50px;
-   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
-  grid-template-rows: repeat(2, 1fr); /* Creates 2 rows */
-  gap: 20px; /* Space between the grid items */
-  padding: 20px;
-}
-.statisticsNumber{
-  font-size: 42px;
-}
-.statisticsDescription{
-  margin-top:-40px;
-  font-size: 14px;
-  align-items:center ;
-}
-.whyChooseUsContainer{
-  flex-direction: column;
-}
-.whyChooseUsTextContainer{
-  width: 100%;
-  align-items: center;
-  justify-items: center;
-}
-.whoAreWeParagraph1{
-  text-align:center ;
-   margin-top:0;
-}
-.whoAreWeParagraph2 {
-  text-align:center ;
-}
-
-.clientsSayContainer{
-  margin-top: 0;
-}
-.whoAreWeButton{
-   width:100% !important;
-}
-.ourMissionContainer{
-  margin-top: 0;
-  gap: 50px;
-}
-.missionSection{
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-   gap:20px;
-}
-.visionSection{
-   flex-direction: column;
+  .sectionContainer1 {
+    flex-direction: column;
+  }
+  .statisticsContainer {
+    padding-left: 50px;
+    padding-right: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
+    grid-template-rows: repeat(2, 1fr); /* Creates 2 rows */
+    gap: 20px; /* Space between the grid items */
+    padding: 20px;
+  }
+  .statisticsNumber {
+    font-size: 42px;
+  }
+  .statisticsDescription {
+    margin-top: -40px;
+    font-size: 14px;
     align-items: center;
-  justify-content: center;
-  gap:20px;
-}
-.missionImage {
- height: 300px;
-  width: 300px;
-}
-.visionImage{
-  height: 300px;
-  width: 300px;
-  margin-top: 0;
-}
-.visionText {
-  font-weight: 600;
-  font-size: 24px;
-  text-align: center;
-}
-.missionText {
-  font-weight: 600;
-  font-size: 24px;
-  text-align: center;
-}
-.missionParagraph{
-  text-align: center;
-}
-.visionParagraph{
-   text-align: center;
-}
-.coreValuesTitle{
-  font-weight: 600;
-  font-size: 24px;
-  text-align: center;
-}
-.coreValuesSubtitle{
-  text-align: center;
-   font-weight: 400;
-  font-size: 16px;
-  margin-top: 0;
-  margin-bottom: 40px;
-}
-.coreValuesGrid{
-   grid-template-columns: repeat(1, 1fr);
-}
-.coreValueItem{
-   border-right:hidden;
-  border-bottom: 1px solid #e0e0e0;
-}
-.whyChooseUsImage {
-  height: 300px;
-  width: 425px;
-}
-.whyChooseUsTitle {
-  text-align:center;
-  font-weight: 600;
-  font-size: 24px;
-}
-.whyChooseUsSubtitle {
-  font-weight: 400;
-  font-size: 16px;
-  margin-top: 0;
-}
-.whyChooseUsPoints {
-  text-align:left;
-  font-weight: 400;
-  font-size: 16px;
-}
-.clientsSayTitle{
-  text-align:center;
-  font-weight: 600;
-  font-size: 24px;
-}
-.clientsSaySubtitle {
-  text-align: center;
-  font-weight: 400;
-  font-size: 16px;
-  margin-top:0;
-  margin-bottom: 50px;
-}
-.clientsSayCardsContainer{
-  flex-direction: column;
-}
+  }
+  .whyChooseUsContainer {
+    flex-direction: column;
+  }
+  .whyChooseUsTextContainer {
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+  }
+  .whoAreWeParagraph1 {
+    text-align: center;
+    margin-top: 0;
+  }
+  .whoAreWeParagraph2 {
+    text-align: center;
+  }
+
+  .clientsSayContainer {
+    margin-top: 0;
+  }
+  .whoAreWeButton {
+    width: 100% !important;
+  }
+  .ourMissionContainer {
+    margin-top: 0;
+    gap: 50px;
+  }
+  .missionSection {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .visionSection {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .missionImage {
+    height: 300px;
+    width: 300px;
+  }
+  .visionImage {
+    height: 300px;
+    width: 300px;
+    margin-top: 0;
+  }
+  .visionText {
+    font-weight: 600;
+    font-size: 24px;
+    text-align: center;
+  }
+  .missionText {
+    font-weight: 600;
+    font-size: 24px;
+    text-align: center;
+  }
+  .missionParagraph {
+    text-align: center;
+  }
+  .visionParagraph {
+    text-align: center;
+  }
+  .coreValuesTitle {
+    font-weight: 600;
+    font-size: 24px;
+    text-align: center;
+  }
+  .coreValuesSubtitle {
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+  .coreValuesGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .coreValueItem {
+    border-right: hidden;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .whyChooseUsImage {
+    height: 300px;
+    width: 425px;
+  }
+  .whyChooseUsTitle {
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  .whyChooseUsSubtitle {
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 0;
+  }
+  .whyChooseUsPoints {
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+  }
+  .clientsSayTitle {
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  .clientsSaySubtitle {
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+  .clientsSayCardsContainer {
+    flex-direction: column;
+  }
 }
 @media (max-width: 380px) {
-   .aboutcontentWrapper{
+  .aboutcontentWrapper {
     padding-left: 30px;
     padding-right: 30px;
   }
-   .aboutHeroTitle{
-    top:20%;
-    width:70%;
+  .aboutHeroTitle {
+    top: 20%;
+    width: 70%;
     font-size: 32px;
   }
-  .aboutHeroDescription{
+  .aboutHeroDescription {
     width: 80%;
   }
-.whoAreWeImg {
-  height: 240px;
-  width: 340px;
-}
-.whoAreWeHeading {
-  text-align: center;
-  font-weight: 600;
-  font-size: 24px;
-}
+  .whoAreWeImg {
+    height: 240px;
+    width: 340px;
+  }
+  .whoAreWeHeading {
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+  }
 
-.sectionContainer1{
-  flex-direction: column;
-}
-.statisticsContainer{
-   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
-  grid-template-rows: repeat(2, 1fr); /* Creates 2 rows */
-  gap: 20px; /* Space between the grid items */
-  padding: 20px;
-}
-.statisticsDescription{
-   margin-top:-40px;
-  font-size: 14px;
-  align-items:center ;
-}
-.statisticsNumber{
-  font-size: 42px;
-}
-.whyChooseUsContainer{
-  flex-direction: column;
-}
-.whyChooseUsTextContainer{
-  width: 100%;
-  align-items: center;
-  justify-items: center;
-}
-.whoAreWeParagraph1{
-  text-align:center ;
-   margin-top:0;
-}
-.whoAreWeParagraph2 {
-  text-align:center ;
-}
-
-.clientsSayContainer{
-  margin-top: 0;
-}
-.whoAreWeButton{
-   width:100% !important;
-}
-.ourMissionContainer{
-  margin-top: 0;
-  gap: 50px;
-}
-.missionSection{
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-   gap:20px;
-}
-.visionSection{
-   flex-direction: column;
+  .sectionContainer1 {
+    flex-direction: column;
+  }
+  .statisticsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
+    grid-template-rows: repeat(2, 1fr); /* Creates 2 rows */
+    gap: 20px; /* Space between the grid items */
+    padding: 20px;
+  }
+  .statisticsDescription {
+    margin-top: -40px;
+    font-size: 14px;
     align-items: center;
-  justify-content: center;
-  gap:20px;
-}
-.visionImage{
-   width: 270px;
-  height: 280px;
-}
-.missionImage {
-  width: 270px;
-  height: 280px;
-}
-.visionText {
-  font-weight: 600;
-  font-size: 24px;
-  text-align: center;
-}
-.missionText {
-  font-weight: 600;
-  font-size: 24px;
-  text-align: center;
-}
-.missionParagraph{
-  text-align: center;
-}
-.visionParagraph{
-   text-align: center;
-}
-.coreValuesTitle{
-  font-weight: 600;
-  font-size: 24px;
-  text-align: center;
-}
-.coreValuesSubtitle{
-  text-align: center;
-   font-weight: 400;
-  font-size: 16px;
-  margin-top: 0;
-  margin-bottom: 40px;
-}
-.coreValuesGrid{
-   grid-template-columns: repeat(1, 1fr);
-}
-.coreValueItem{
-   border-right:hidden;
-  border-bottom: 1px solid #e0e0e0;
-}
-.whyChooseUsImage {
-  height: 200px;
-  width: 325px;
-}
-.whyChooseUsTitle {
-  text-align:center;
-  font-weight: 600;
-  font-size: 24px;
-}
-.whyChooseUsSubtitle {
-  font-weight: 400;
-  font-size: 16px;
-  margin-top: 0;
-}
-.whyChooseUsPoints {
-  text-align:left;
-  font-weight: 400;
-  font-size: 16px;
-}
-.clientsSayTitle{
-  text-align:center;
-  font-weight: 600;
-  font-size: 24px;
-}
-.clientsSaySubtitle {
-  text-align: center;
-  font-weight: 400;
-  font-size: 16px;
-  margin-top:0;
-  margin-bottom: 50px;
-}
-.clientsSayCardsContainer{
-  flex-direction: column;
-}
+  }
+  .statisticsNumber {
+    font-size: 42px;
+  }
+  .whyChooseUsContainer {
+    flex-direction: column;
+  }
+  .whyChooseUsTextContainer {
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+  }
+  .whoAreWeParagraph1 {
+    text-align: center;
+    margin-top: 0;
+  }
+  .whoAreWeParagraph2 {
+    text-align: center;
+  }
+
+  .clientsSayContainer {
+    margin-top: 0;
+  }
+  .whoAreWeButton {
+    width: 100% !important;
+  }
+  .ourMissionContainer {
+    margin-top: 0;
+    gap: 50px;
+  }
+  .missionSection {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .visionSection {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .visionImage {
+    width: 270px;
+    height: 280px;
+  }
+  .missionImage {
+    width: 270px;
+    height: 280px;
+  }
+  .visionText {
+    font-weight: 600;
+    font-size: 24px;
+    text-align: center;
+  }
+  .missionText {
+    font-weight: 600;
+    font-size: 24px;
+    text-align: center;
+  }
+  .missionParagraph {
+    text-align: center;
+  }
+  .visionParagraph {
+    text-align: center;
+  }
+  .coreValuesTitle {
+    font-weight: 600;
+    font-size: 24px;
+    text-align: center;
+  }
+  .coreValuesSubtitle {
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+  .coreValuesGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .coreValueItem {
+    border-right: hidden;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .whyChooseUsImage {
+    height: 200px;
+    width: 325px;
+  }
+  .whyChooseUsTitle {
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  .whyChooseUsSubtitle {
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 0;
+  }
+  .whyChooseUsPoints {
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+  }
+  .clientsSayTitle {
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  .clientsSaySubtitle {
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+  .clientsSayCardsContainer {
+    flex-direction: column;
+  }
 }
