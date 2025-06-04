@@ -545,7 +545,7 @@
 .similarListingsCard {
   height: auto;
   width: 100%;
-  max-width: 330px;
+  max-width: 380px;
   border-radius: 20px;
   background-color: white;
   border-style: solid;
@@ -561,7 +561,7 @@
 }
 .similarListingsImageWrapper {
   position: relative;
-  max-width: 330px;
+  max-width: 100%;
   margin: 0 auto;
   width: 100%;
 }
@@ -569,7 +569,7 @@
 .similarListingsImage {
   height: 289px;
   width: 100%;
-  max-width: 330px;
+
   border-radius: 12px;
   object-fit: cover;
 }

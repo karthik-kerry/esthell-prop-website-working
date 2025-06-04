@@ -6,10 +6,6 @@ import { FaChevronLeft } from "react-icons/fa";
 import { TbShare } from "react-icons/tb";
 import Property from "../assets/property.jpg";
 import Property1 from "../assets/property1.jpg";
-import JumeirahResidences from "../assets/JumeirahResidences.png";
-import JumeirahResidences1 from "../assets/JumeirahResidences1.jpg";
-import JumeirahResidences2 from "../assets/JumeirahResidences2.jpg";
-import JumeirahResidences3 from "../assets/JumeirahResidences3.jpg";
 import { Button, Modal } from "antd";
 import { LuBedDouble } from "react-icons/lu";
 import { PiBathtub } from "react-icons/pi";
@@ -35,6 +31,10 @@ import GroundFloorPlan from "../assets/GroundFloorPlan.svg";
 import SitePlan from "../assets/SitePlan.svg";
 import TypicalFloorPlan from "../assets/TypicalFloorPlan.svg";
 import OliveSands1 from "../assets/OliveSands1.jpg";
+import JumeirahResidences from "../assets/JumeirahResidences.png";
+import JumeirahResidences1 from "../assets/JumeirahResidences1.jpg";
+import JumeirahResidences2 from "../assets/JumeirahResidences2.jpg";
+import JumeirahResidences3 from "../assets/JumeirahResidences3.jpg";
 import { IoMdMail } from "react-icons/io";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { LiaRoadSolid } from "react-icons/lia";
@@ -241,7 +241,7 @@ export default function DetailsPage() {
       location: "Sheikh Zayed Rd, Dubai, UAE",
       address:
         "Sheikh Zayed Rd - Trade Centre - Trade Centre 2 - Dubai - United Arab Emirates",
-      price: "3.51 M",
+      price: "AED 3.51 M",
       type: "Apartment ",
       images: [
         JumeirahResidences,
@@ -250,7 +250,7 @@ export default function DetailsPage() {
         JumeirahResidences3,
       ],
       builtStatus: "Ready To Occupy",
-      facing: false,
+      facing: "East",
       specs: {
         bedrooms: "1/2/3/4",
         bedroomsDisplay: "1-4 BHK",
@@ -307,7 +307,7 @@ export default function DetailsPage() {
       },
       startingFrom: "Starting From",
       iconType: ["bed", "bath", "sqft"],
-      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3002.0276592160058!2d80.2106945!3d12.9747379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dde1051c295%3A0xdefad79426dff8db!2sEsthell%20Homes!5e1!3m2!1sen!2sin!4v1747815401006!5m2!1sen!2sin",
+      map: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin",
     },
   ];
   const progressWidth = (rating / 5) * 100;
