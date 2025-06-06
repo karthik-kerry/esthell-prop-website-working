@@ -254,7 +254,7 @@ export default function DetailsPage() {
       specs: {
         bedrooms: "1/2/3/4",
         bedroomsDisplay: "1-4 BHK",
-        bathsDisplay: "1-6 Baths",
+        bathsDisplay: "1-6 ",
         baths: "1/2/3/4/5/6",
         sqft: "861.76-6,369.33 Sqft",
       },
@@ -310,6 +310,30 @@ export default function DetailsPage() {
       map: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin",
     },
   ];
+  // amenitiesImages: [
+  //     AcGym,
+  //     PowerBackup,
+  //     MultiPuposeHall,
+  //     VideoDoorPhone,
+  //     SwimmingPool,
+  //     CCTV,
+  //     AccessEntry,
+  //     ModernLandscaping,
+  //     Parking,
+  //     Games,
+  //   ],
+  //   amenitiesNames: [
+  //     "Air-Conditioned Gymnasium",
+  //     "Power Backup",
+  //     "Air-Conditioned Multipurpose Hall",
+  //     "Video Door Phone",
+  //     "Swimming Pool",
+  //     "CCTV",
+  //     "Access Controlled Entry",
+  //     "Landscaping",
+  //     "Visitor Car Parking",
+  //     "Indoor Games",
+  //   ],
   const progressWidth = (rating / 5) * 100;
   const images = [Property, Property1];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -474,15 +498,17 @@ export default function DetailsPage() {
               onMouseUp={handleMouseUpOrLeave}
               onMouseLeave={handleMouseUpOrLeave}
             >
-              {/* {property.images.map((img, idx) => (
-  <img
-    key={idx}
-    src={img}
-    className={`detailPageImage${idx === 0 ? " detailPageImageClickable" : ""}`}
-    alt={property.name}
-  />
-))} */}
-              {[...Array(2)].map((_, idx) => (
+              {property.images.map((img, idx) => (
+                <img
+                  key={idx}
+                  src={img}
+                  className={`detailPageImage${
+                    idx === 0 ? " detailPageImageClickable" : ""
+                  }`}
+                  alt={property.name}
+                />
+              ))}
+              {/* {[...Array(2)].map((_, idx) => (
                 <img
                   key={idx}
                   src={property?.images[idx % property?.images.length]}
@@ -491,7 +517,7 @@ export default function DetailsPage() {
                   }`}
                   alt={property?.name}
                 />
-              ))}
+              ))} */}
             </div>
             {/* mobile static */}
             {isMobile && (

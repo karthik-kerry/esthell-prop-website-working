@@ -18,6 +18,16 @@ import OfficeIcon from "../assets/office.png";
 import Property from "../assets/property.jpg";
 import Property1 from "../assets/property1.jpg";
 import OliveSands1 from "../assets/OliveSands1.jpg";
+import AccessEntry from "../assets/AccessEntry.png";
+import AcGym from "../assets/AcGym.png";
+import CCTV from "../assets/CCTV.png";
+import Games from "../assets/Games.png";
+import ModernLandscaping from "../assets/ModernLandscaping.png";
+import MultiPuposeHall from "../assets/MultiPuposeHall.png";
+import Parking from "../assets/Parking.png";
+import PowerBackup from "../assets/PowerBackup.png";
+import SwimmingPool from "../assets/SwimmingPool.png";
+import VideoDoorPhone from "../assets/VideoDoorPhone.png";
 import JumeirahResidences from "../assets/JumeirahResidences.png";
 import JumeirahResidences1 from "../assets/JumeirahResidences1.jpg";
 import JumeirahResidences2 from "../assets/JumeirahResidences2.jpg";
@@ -224,6 +234,30 @@ const currentProperties = [
       amenities: ["security personnel"],
       furnishing: "Unfurnished",
     },
+    amenitiesImages: [
+      AcGym,
+      PowerBackup,
+      MultiPuposeHall,
+      VideoDoorPhone,
+      SwimmingPool,
+      CCTV,
+      AccessEntry,
+      ModernLandscaping,
+      Parking,
+      Games,
+    ],
+    amenitiesNames: [
+      "Air-Conditioned Gymnasium",
+      "Power Backup",
+      "Air-Conditioned Multipurpose Hall",
+      "Video Door Phone",
+      "Swimming Pool",
+      "CCTV",
+      "Access Controlled Entry",
+      "Landscaping",
+      "Visitor Car Parking",
+      "Indoor Games",
+    ],
     startingFrom: "",
     iconType: ["sqfts", "grounds", "frontage"],
     map: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin",
@@ -247,7 +281,7 @@ const currentProperties = [
     specs: {
       bedrooms: "1/2/3/4",
       bedroomsDisplay: "1-4 BHK",
-      bathsDisplay: "1-6 Baths",
+      bathsDisplay: "1-6 ",
       baths: "1/2/3/4/5/6",
       sqft: "861.76-6,369.33 Sqft",
     },
@@ -298,6 +332,30 @@ const currentProperties = [
       ],
       furnishing: "Unfurnished",
     },
+    amenitiesImages: [
+      AcGym,
+      PowerBackup,
+      MultiPuposeHall,
+      VideoDoorPhone,
+      SwimmingPool,
+      CCTV,
+      AccessEntry,
+      ModernLandscaping,
+      Parking,
+      Games,
+    ],
+    amenitiesNames: [
+      "Air-Conditioned Gymnasium",
+      "Power Backup",
+      "Air-Conditioned Multipurpose Hall",
+      "Video Door Phone",
+      "Swimming Pool",
+      "CCTV",
+      "Access Controlled Entry",
+      "Landscaping",
+      "Visitor Car Parking",
+      "Indoor Games",
+    ],
     startingFrom: "Starting From",
     iconType: ["bed", "bath", "sqft"],
     map: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d27448.868116775036!2d55.2505402!3d25.2128602!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f4292f9132cbd%3A0x653a96f2ced0a490!2sJumeirah%20Emirates%20Towers!5e1!3m2!1sen!2sin!4v1749013777107!5m2!1sen!2sin",
