@@ -14,6 +14,7 @@ import { AiOutlineCompass } from "react-icons/ai";
 import "leaflet/dist/leaflet.css";
 import "../styles/DetailsPage.css";
 import { IoLocationOutline } from "react-icons/io5";
+import { MdOutlineFileDownload } from "react-icons/md";
 import AccessEntry from "../assets/AccessEntry.png";
 import AcGym from "../assets/AcGym.png";
 import CCTV from "../assets/CCTV.png";
@@ -24,12 +25,21 @@ import Parking from "../assets/Parking.png";
 import PowerBackup from "../assets/PowerBackup.png";
 import SwimmingPool from "../assets/SwimmingPool.png";
 import VideoDoorPhone from "../assets/VideoDoorPhone.png";
+import bbqAreas from "../assets/BBQareas.svg";
+import lounges from "../assets/lounges.svg";
+import OutdoorCinema from "../assets/OutdoorCinema.svg";
+import restaurant from "../assets/restaurant.svg";
+import spas from "../assets/spas.svg";
 import DuplexLower from "../assets/DuplexLower.svg";
 import DuplexUpper from "../assets/DuplexUpper.svg";
 import FirstFloorPlan from "../assets/FirstFloorPlan.svg";
 import GroundFloorPlan from "../assets/GroundFloorPlan.svg";
 import SitePlan from "../assets/SitePlan.svg";
 import TypicalFloorPlan from "../assets/TypicalFloorPlan.svg";
+import Bedroom1 from "../assets/Bedroom1.svg";
+import Bedroom2 from "../assets/Bedroom2.svg";
+import Bedroom3 from "../assets/Bedroom3.svg";
+import Bedroom4 from "../assets/Bedroom4.svg";
 import OliveSands1 from "../assets/OliveSands1.jpg";
 import JumeirahResidences from "../assets/JumeirahResidences.png";
 import JumeirahResidences1 from "../assets/JumeirahResidences1.jpg";
@@ -39,6 +49,9 @@ import { IoMdMail } from "react-icons/io";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { LiaRoadSolid } from "react-icons/lia";
 import { IoExpandOutline } from "react-icons/io5";
+import JumeiraPrice from "../assets/JumeiraPrice.pdf";
+import JumeiraFloorPlans from "../assets/JumeiraFloorPlans.pdf";
+import EsthellBrochure from "../assets/EsthellBrochure.pdf";
 import {
   FaCarSide,
   FaUtensils,
@@ -102,24 +115,34 @@ export default function DetailsPage() {
     { progress: 0, label: "2", filled: false },
     { progress: 0, label: "1", filled: false },
   ];
-  const image = [
-    { src: AcGym, name: "Air-Conditioned Gymnasium" },
-    { src: PowerBackup, name: "Power Backup" },
-    { src: MultiPuposeHall, name: "Air-Conditioned Multipurpose Hall" },
-    { src: VideoDoorPhone, name: "Video Door Phone" },
-    { src: SwimmingPool, name: "Swimming Pool" },
-    { src: CCTV, name: "CCTV" },
-    { src: AccessEntry, name: "Access Controlled Entry" },
-    { src: ModernLandscaping, name: "Landscaping" },
-    { src: Parking, name: "Visitor Car Parking" },
-    { src: Games, name: "Indoor Games" },
-  ];
+
   // change here
   const currentProperties = [
     {
       id: 1,
       name: "Esthell Homes",
       location: "Velachery, Chennai",
+      floorPlans: [
+        { label: "SITE PLAN", src: SitePlan },
+        { label: "GROUND FLOOR PLAN", src: GroundFloorPlan },
+        { label: "FIRST FLOOR PLAN", src: FirstFloorPlan },
+        { label: "TYPICAL FLOOR PLAN", src: TypicalFloorPlan },
+        { label: "DUPLEX LOWER", src: DuplexLower },
+        { label: "DUPLEX UPPER", src: DuplexUpper },
+      ],
+      amenities: [
+        { src: AcGym, name: "Air-Conditioned Gymnasium" },
+        { src: PowerBackup, name: "Power Backup" },
+        { src: MultiPuposeHall, name: "Air-Conditioned Multipurpose Hall" },
+        { src: VideoDoorPhone, name: "Video Door Phone" },
+        { src: SwimmingPool, name: "Swimming Pool" },
+        { src: CCTV, name: "CCTV" },
+        { src: AccessEntry, name: "Access Controlled Entry" },
+        { src: ModernLandscaping, name: "Landscaping" },
+        { src: Parking, name: "Visitor Car Parking" },
+        { src: Games, name: "Indoor Games" },
+      ],
+      pdfs: [EsthellBrochure],
       address:
         "Esthell Golden Square TS, No: 1/10, No: 176, Inner Ring Road (South Segment), Opp. Sunshine School, Velachery, Chennai – 600 042 Tamil Nadu, India.",
       price: "₹1.64 Cr",
@@ -239,6 +262,22 @@ export default function DetailsPage() {
       id: 3,
       name: "Jumeirah Residences Emirates",
       location: "Sheikh Zayed Rd, Dubai, UAE",
+      floorPlans: [
+        { label: "BEDROOM 1", src: Bedroom1 },
+        { label: "BEDROOM 2", src: Bedroom2 },
+        { label: "BEDROOM 3", src: Bedroom3 },
+        { label: "BEDROOM 4", src: Bedroom4 },
+      ],
+      amenities: [
+        { src: SwimmingPool, name: "Swimming Pool" },
+        { src: AcGym, name: "fitness centers" },
+        { src: restaurant, name: "Restaurant" },
+        { src: lounges, name: "Lounges" },
+        { src: spas, name: "Spas" },
+        { src: OutdoorCinema, name: "Outdoor Cinema" },
+        { src: bbqAreas, name: "BBQ Areas" },
+      ],
+      pdfs: [JumeiraFloorPlans, JumeiraPrice],
       address:
         "Sheikh Zayed Rd - Trade Centre - Trade Centre 2 - Dubai - United Arab Emirates",
       price: "AED 3.51 M",
@@ -310,30 +349,7 @@ export default function DetailsPage() {
       map: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin",
     },
   ];
-  // amenitiesImages: [
-  //     AcGym,
-  //     PowerBackup,
-  //     MultiPuposeHall,
-  //     VideoDoorPhone,
-  //     SwimmingPool,
-  //     CCTV,
-  //     AccessEntry,
-  //     ModernLandscaping,
-  //     Parking,
-  //     Games,
-  //   ],
-  //   amenitiesNames: [
-  //     "Air-Conditioned Gymnasium",
-  //     "Power Backup",
-  //     "Air-Conditioned Multipurpose Hall",
-  //     "Video Door Phone",
-  //     "Swimming Pool",
-  //     "CCTV",
-  //     "Access Controlled Entry",
-  //     "Landscaping",
-  //     "Visitor Car Parking",
-  //     "Indoor Games",
-  //   ],
+
   const progressWidth = (rating / 5) * 100;
   const images = [Property, Property1];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -346,14 +362,7 @@ export default function DetailsPage() {
     },
     zoom: 11,
   };
-  const floorPlans = [
-    { label: "SITE PLAN", src: SitePlan },
-    { label: "GROUND FLOOR PLAN", src: GroundFloorPlan },
-    { label: "FIRST FLOOR PLAN", src: FirstFloorPlan },
-    { label: "TYPICAL FLOOR PLAN", src: TypicalFloorPlan },
-    { label: "DUPLEX LOWER", src: DuplexLower },
-    { label: "DUPLEX UPPER", src: DuplexUpper },
-  ];
+
   const [floorPlanIndex, setFloorPlanIndex] = useState(0);
   const similarListings = currentProperties
     .filter((p) => p.id !== property.id)
@@ -391,6 +400,24 @@ export default function DetailsPage() {
   };
   const handleCardClick = () => {
     navigate("/details");
+  };
+
+  const handleDownloadPropertyPdfs = (property) => {
+    console.log("Downloading PDFs for property:", property);
+    if (!property?.pdfs || property.pdfs.length === 0) {
+      alert("No PDFs available for this property.");
+      return;
+    }
+
+    property.pdfs.forEach((pdfUrl, index) => {
+      const link = document.createElement("a");
+      link.href = pdfUrl;
+      const fileName = pdfUrl.split("/").pop() || `document-${index + 1}.pdf`;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
   };
 
   const handleShare = () => {
@@ -609,12 +636,14 @@ export default function DetailsPage() {
                 <AiOutlineCalendar className="detailPageInfoIcon" />
                 <p className="detailsInfoText"> {property?.builtStatus}</p>
               </div>
-              <div className="detailPagHouseInfoItem">
-                <AiOutlineCompass className="detailPageInfoIcon" />
-                <p className="detailsInfoText">
-                  Facing:{property?.detailedInfo?.facing}
-                </p>
-              </div>
+              {property?.detailedInfo?.facing && (
+                <div className="detailPagHouseInfoItem">
+                  <AiOutlineCompass className="detailPageInfoIcon" />
+                  <p className="detailsInfoText">
+                    Facing: {property?.detailedInfo?.facing}
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* content */}
@@ -638,7 +667,7 @@ export default function DetailsPage() {
             {/* details */}
             <div>
               <p className="detailPageDetailsHeader">Details</p>
-              <div className="detailPageDetailsContainer">
+              {/* <div className="detailPageDetailsContainer">
                 {[
                   { label: "Type", value: property?.detailedInfo?.bedrooms },
                   {
@@ -664,170 +693,200 @@ export default function DetailsPage() {
                     </div>
                   </div>
                 ))}
+              </div> */}
+              <div className="detailPageDetailsContainer">
+                {[
+                  { label: "Type", value: property?.detailedInfo?.bedrooms },
+                  {
+                    label: "Super Built-up area sqft",
+                    value: property?.detailedInfo?.sqft,
+                  },
+                  { label: "Furnishing", value: property?.details?.furnishing },
+                  { label: "Bathrooms", value: property?.detailedInfo?.baths },
+                  { label: "Facing", value: property?.detailedInfo?.facing },
+                  // { label: "Flat No", value: property.details?.flatNo },
+                  // { label: "Floor", value: property.details?.FloorNo },
+                ]
+                  .filter(
+                    (item) =>
+                      item.value && item.value !== "-" && item.value !== " "
+                  )
+                  .map((item, index) => (
+                    <div key={index} className="detailPageDetailItem">
+                      <div className="detailPageDetailLabel">
+                        <p className="detailPageDetailText">{item.label}</p>
+                      </div>
+                      <div className="detailPageDetailValue">
+                        <p>:</p>
+                      </div>
+                      <div className="detailPageDetailValue">
+                        <p className="detailPageDetailText">{item.value}</p>
+                      </div>
+                    </div>
+                  ))}
               </div>
             </div>
             <div className="detailPageDivider" />
             {/*Amenities */}
-            {property?.id !== 2 && (
+            {property?.amenities && property.amenities.length > 0 && (
               <>
                 <div>
                   <p className="detailPageAmenitiesHeader">Amenities</p>
                   <div className="imageGrid">
-                    {image.map((image, index) => (
-                      <div key={index} className="imageContainer">
+                    {property.amenities.map((amenity, idx) => (
+                      <div key={idx} className="imageContainer">
                         <img
-                          src={image.src}
-                          alt={image.name}
+                          src={amenity.src}
+                          alt={amenity.name}
                           className="gridImage"
                         />
-                        <p className="imageName">{image.name}</p>
+                        <p className="imageName">{amenity.name}</p>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div className="detailPageDivider" />
                 {/* floor plans */}
-
-                <div className="detailPageFloorPlanSlider">
-                  <button
-                    className="detailPageFloorPlanArrow"
-                    onClick={() =>
-                      setFloorPlanIndex(
-                        floorPlanIndex === 0
-                          ? floorPlans.length - 1
-                          : floorPlanIndex - 1
-                      )
-                    }
-                  >
-                    <FaChevronLeft color="#001C6B" size={18} />
-                  </button>
-                  <div className="detailPageFloorPlanSingle">
-                    <p>{floorPlans[floorPlanIndex].label}</p>
-                    <img
-                      src={floorPlans[floorPlanIndex].src}
-                      className="detailPageFloorPlanImage"
-                      alt={floorPlans[floorPlanIndex].label}
-                      onClick={toggleFullScreen}
-                      style={{ cursor: "zoom-in" }}
-                    />
-                  </div>
-                  <button
-                    className="detailPageFloorPlanArrow"
-                    onClick={() =>
-                      setFloorPlanIndex(
-                        (floorPlanIndex + 1) % floorPlans.length
-                      )
-                    }
-                  >
-                    <FaChevronRight color="#001C6B" size={18} />
-                  </button>
-                </div>
-
-                {/* {isFullScreen && (
-  <div className="fullScreen" onClick={toggleFullScreen}>
-    <div
-      className="detailPageFloorPlanSingle"
-      onClick={e => e.stopPropagation()}
-      style={{ background: "#fff", borderRadius: 18, padding: 24 }}
-    >
-      <p>{floorPlans[floorPlanIndex].label}</p>
-      <img
-        src={floorPlans[floorPlanIndex].src}
-        className="fullScreenImage"
-        alt={floorPlans[floorPlanIndex].label}
-        style={{ cursor: "zoom-out" }}
-        onClick={toggleFullScreen}
-      />
-    </div>
-  </div>
-)} */}
-                {isFullScreen && (
-                  <div className="fullScreen" onClick={toggleFullScreen}>
-                    <div
-                      className="detailPageFloorPlanSingle"
-                      onClick={(e) => e.stopPropagation()}
-                      style={{
-                        background: "#fff",
-                        borderRadius: 18,
-                        padding: 24,
-                        position: "relative",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        minWidth: 320,
-                      }}
+                {property?.floorPlans && property.floorPlans.length > 0 && (
+                  <div className="detailPageFloorPlanSlider">
+                    <button
+                      className="detailPageFloorPlanArrow"
+                      onClick={() =>
+                        setFloorPlanIndex(
+                          floorPlanIndex === 0
+                            ? property.floorPlans.length - 1
+                            : floorPlanIndex - 1
+                        )
+                      }
                     >
-                      {/* Close Icon */}
-                      <button
-                        onClick={toggleFullScreen}
-                        className="closeIcon"
-                        aria-label="Close"
-                      >
-                        &times;
-                      </button>
-                      {/* Left Arrow */}
-                      <button
-                        className="detailPageFloorPlanArrow"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setFloorPlanIndex(
-                            floorPlanIndex === 0
-                              ? floorPlans.length - 1
-                              : floorPlanIndex - 1
-                          );
-                        }}
-                        style={{
-                          position: "absolute",
-                          left: 12,
-                          top: "50%",
-                          transform: "translateY(-50%)",
-                          background: "none",
-                          border: "none",
-                          cursor: "pointer",
-                          color: "#001C6B",
-                          zIndex: 2,
-                        }}
-                        aria-label="Previous"
-                      >
-                        <FaChevronLeft size={24} />
-                      </button>
-                      {/* Right Arrow */}
-                      <button
-                        className="detailPageFloorPlanArrow"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setFloorPlanIndex(
-                            (floorPlanIndex + 1) % floorPlans.length
-                          );
-                        }}
-                        style={{
-                          position: "absolute",
-                          right: 12,
-                          top: "50%",
-                          transform: "translateY(-50%)",
-                          background: "none",
-                          border: "none",
-                          cursor: "pointer",
-                          color: "#001C6B",
-                          zIndex: 2,
-                        }}
-                        aria-label="Next"
-                      >
-                        <FaChevronRight size={24} />
-                      </button>
-                      <p style={{ marginBottom: 16 }}>
-                        {floorPlans[floorPlanIndex].label}
-                      </p>
+                      <FaChevronLeft color="#001C6B" size={18} />
+                    </button>
+                    <div className="detailPageFloorPlanSingle">
+                      <p>{property.floorPlans[floorPlanIndex].label}</p>
                       <img
-                        src={floorPlans[floorPlanIndex].src}
-                        className="fullScreenImage"
-                        alt={floorPlans[floorPlanIndex].label}
-                        style={{ cursor: "zoom-out" }}
+                        src={property.floorPlans[floorPlanIndex].src}
+                        className="detailPageFloorPlanImage"
+                        alt={property.floorPlans[floorPlanIndex].label}
                         onClick={toggleFullScreen}
+                        style={{ cursor: "zoom-in" }}
                       />
                     </div>
+                    <button
+                      className="detailPageFloorPlanArrow"
+                      onClick={() =>
+                        setFloorPlanIndex(
+                          (floorPlanIndex + 1) % property.floorPlans.length
+                        )
+                      }
+                    >
+                      <FaChevronRight color="#001C6B" size={18} />
+                    </button>
                   </div>
                 )}
+                {isFullScreen &&
+                  property?.floorPlans &&
+                  property.floorPlans.length > 0 && (
+                    <div className="fullScreen" onClick={toggleFullScreen}>
+                      <div
+                        className="detailPageFloorPlanSingle"
+                        onClick={(e) => e.stopPropagation()}
+                        style={{
+                          background: "#fff",
+                          borderRadius: 18,
+                          padding: 24,
+                          position: "relative",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          minWidth: 320,
+                        }}
+                      >
+                        {/* Close Icon */}
+                        <button
+                          onClick={toggleFullScreen}
+                          className="closeIcon"
+                          aria-label="Close"
+                        >
+                          &times;
+                        </button>
+                        {/* Left Arrow */}
+                        <button
+                          className="detailPageFloorPlanArrow"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setFloorPlanIndex(
+                              floorPlanIndex === 0
+                                ? property.floorPlans.length - 1
+                                : floorPlanIndex - 1
+                            );
+                          }}
+                          style={{
+                            position: "absolute",
+                            left: 12,
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            background: "none",
+                            border: "none",
+                            cursor: "pointer",
+                            color: "#001C6B",
+                            zIndex: 2,
+                          }}
+                          aria-label="Previous"
+                        >
+                          <FaChevronLeft size={24} />
+                        </button>
+                        {/* Right Arrow */}
+                        <button
+                          className="detailPageFloorPlanArrow"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setFloorPlanIndex(
+                              (floorPlanIndex + 1) % property.floorPlans.length
+                            );
+                          }}
+                          style={{
+                            position: "absolute",
+                            right: 12,
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            background: "none",
+                            border: "none",
+                            cursor: "pointer",
+                            color: "#001C6B",
+                            zIndex: 2,
+                          }}
+                          aria-label="Next"
+                        >
+                          <FaChevronRight size={24} />
+                        </button>
+                        <p style={{ marginBottom: 16 }}>
+                          {property.floorPlans[floorPlanIndex].label}
+                        </p>
+                        <img
+                          src={property.floorPlans[floorPlanIndex].src}
+                          className="fullScreenImage"
+                          alt={property.floorPlans[floorPlanIndex].label}
+                          style={{ cursor: "zoom-out" }}
+                          onClick={toggleFullScreen}
+                        />
+                      </div>
+                    </div>
+                  )}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Button
+                    onClick={() => handleDownloadPropertyPdfs(property)}
+                    className="downloadButton"
+                  >
+                    Download
+                    <MdOutlineFileDownload />
+                  </Button>
+                </div>
                 <div className="detailPageDivider" />
               </>
             )}
@@ -853,10 +912,10 @@ export default function DetailsPage() {
             </div>
             <div className="detailPageDivider" />
             {/* locality review */}
-            <div>
+            {/* <div>
               <p style={{ fontWeight: 500, fontSize: 18 }}>Locality Review</p>
               <div className="ratings-container">
-                {/* Left Section - Average Rating */}
+               
                 <div className="left-panel">
                   <div className="average-score">
                     4.2<span className="small"> / 5</span>
@@ -893,7 +952,7 @@ export default function DetailsPage() {
                   </a>
                 </div>
 
-                {/* Right Section - Feature Ratings */}
+            
                 <div className="right-panel">
                   <h3>Ratings by Features</h3>
                   <div className="features">
@@ -963,7 +1022,7 @@ export default function DetailsPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* static */}

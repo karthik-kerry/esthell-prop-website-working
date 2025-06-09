@@ -28,6 +28,20 @@
   height: 1px;
   background-color: #ccc;
 }
+.downloadButton {
+  width: 25%;
+  height: 48px;
+  border-radius: 12px;
+  background-color: #001c6b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+}
 /* image view */
 
 .detailPageImgContainer {
@@ -545,7 +559,7 @@
 .similarListingsCard {
   height: auto;
   width: 100%;
-  max-width: 380px;
+  max-width: 330px;
   border-radius: 20px;
   background-color: white;
   border-style: solid;

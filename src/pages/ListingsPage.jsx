@@ -24,6 +24,21 @@ import Parking from "../assets/Parking.png";
 import PowerBackup from "../assets/PowerBackup.png";
 import SwimmingPool from "../assets/SwimmingPool.png";
 import VideoDoorPhone from "../assets/VideoDoorPhone.png";
+import bbqAreas from "../assets/BBQareas.svg";
+import lounges from "../assets/lounges.svg";
+import OutdoorCinema from "../assets/OutdoorCinema.svg";
+import restaurant from "../assets/restaurant.svg";
+import spas from "../assets/spas.svg";
+import DuplexLower from "../assets/DuplexLower.svg";
+import DuplexUpper from "../assets/DuplexUpper.svg";
+import FirstFloorPlan from "../assets/FirstFloorPlan.svg";
+import GroundFloorPlan from "../assets/GroundFloorPlan.svg";
+import SitePlan from "../assets/SitePlan.svg";
+import TypicalFloorPlan from "../assets/TypicalFloorPlan.svg";
+import Bedroom1 from "../assets/Bedroom1.svg";
+import Bedroom2 from "../assets/Bedroom2.svg";
+import Bedroom3 from "../assets/Bedroom3.svg";
+import Bedroom4 from "../assets/Bedroom4.svg";
 import JumeirahResidences from "../assets/JumeirahResidences.png";
 import JumeirahResidences1 from "../assets/JumeirahResidences1.jpg";
 import JumeirahResidences2 from "../assets/JumeirahResidences2.jpg";
@@ -47,6 +62,9 @@ import loginHeroImage from "../assets/loginHeroImage.png";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, googleProvider } from "../firebase";
+import JumeiraPrice from "../assets/JumeiraPrice.pdf";
+import JumeiraFloorPlans from "../assets/JumeiraFloorPlans.pdf";
+import EsthellBrochure from "../assets/EsthellBrochure.pdf";
 
 export default function ListingsPage() {
   const [user] = useAuthState(auth);
@@ -117,6 +135,27 @@ export default function ListingsPage() {
       id: 1,
       name: "Esthell Homes",
       location: "Velachery, Chennai",
+      floorPlans: [
+        { label: "SITE PLAN", src: SitePlan },
+        { label: "GROUND FLOOR PLAN", src: GroundFloorPlan },
+        { label: "FIRST FLOOR PLAN", src: FirstFloorPlan },
+        { label: "TYPICAL FLOOR PLAN", src: TypicalFloorPlan },
+        { label: "DUPLEX LOWER", src: DuplexLower },
+        { label: "DUPLEX UPPER", src: DuplexUpper },
+      ],
+      amenities: [
+        { src: AcGym, name: "Air-Conditioned Gymnasium" },
+        { src: PowerBackup, name: "Power Backup" },
+        { src: MultiPuposeHall, name: "Air-Conditioned Multipurpose Hall" },
+        { src: VideoDoorPhone, name: "Video Door Phone" },
+        { src: SwimmingPool, name: "Swimming Pool" },
+        { src: CCTV, name: "CCTV" },
+        { src: AccessEntry, name: "Access Controlled Entry" },
+        { src: ModernLandscaping, name: "Landscaping" },
+        { src: Parking, name: "Visitor Car Parking" },
+        { src: Games, name: "Indoor Games" },
+      ],
+      pdfs: [EsthellBrochure],
       address:
         "Esthell Golden Square TS, No: 1/10, No: 176, Inner Ring Road (South Segment), Opp. Sunshine School, Velachery, Chennai – 600 042 Tamil Nadu, India.",
       price: "₹1.64 Cr",
@@ -228,30 +267,6 @@ export default function ListingsPage() {
         amenities: ["security personnel"],
         furnishing: "Unfurnished",
       },
-      amenitiesImages: [
-        AcGym,
-        PowerBackup,
-        MultiPuposeHall,
-        VideoDoorPhone,
-        SwimmingPool,
-        CCTV,
-        AccessEntry,
-        ModernLandscaping,
-        Parking,
-        Games,
-      ],
-      amenitiesNames: [
-        "Air-Conditioned Gymnasium",
-        "Power Backup",
-        "Air-Conditioned Multipurpose Hall",
-        "Video Door Phone",
-        "Swimming Pool",
-        "CCTV",
-        "Access Controlled Entry",
-        "Landscaping",
-        "Visitor Car Parking",
-        "Indoor Games",
-      ],
       startingFrom: "",
       iconType: ["sqfts", "grounds", "frontage"],
       map: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin",
@@ -260,6 +275,22 @@ export default function ListingsPage() {
       id: 3,
       name: "Jumeirah Residences Emirates",
       location: "Sheikh Zayed Rd, Dubai, UAE",
+      floorPlans: [
+        { label: "BEDROOM 1", src: Bedroom1 },
+        { label: "BEDROOM 2", src: Bedroom2 },
+        { label: "BEDROOM 3", src: Bedroom3 },
+        { label: "BEDROOM 4", src: Bedroom4 },
+      ],
+      amenities: [
+        { src: SwimmingPool, name: "Swimming Pool" },
+        { src: AcGym, name: "fitness centers" },
+        { src: restaurant, name: "Restaurant" },
+        { src: lounges, name: "Lounges" },
+        { src: spas, name: "Spas" },
+        { src: OutdoorCinema, name: "Outdoor Cinema" },
+        { src: bbqAreas, name: "BBQ Areas" },
+      ],
+      pdfs: [JumeiraFloorPlans, JumeiraPrice],
       address:
         "Sheikh Zayed Rd - Trade Centre - Trade Centre 2 - Dubai - United Arab Emirates",
       price: "AED 3.51 M",
@@ -326,36 +357,11 @@ export default function ListingsPage() {
         ],
         furnishing: "Unfurnished",
       },
-      amenitiesImages: [
-        AcGym,
-        PowerBackup,
-        MultiPuposeHall,
-        VideoDoorPhone,
-        SwimmingPool,
-        CCTV,
-        AccessEntry,
-        ModernLandscaping,
-        Parking,
-        Games,
-      ],
-      amenitiesNames: [
-        "Air-Conditioned Gymnasium",
-        "Power Backup",
-        "Air-Conditioned Multipurpose Hall",
-        "Video Door Phone",
-        "Swimming Pool",
-        "CCTV",
-        "Access Controlled Entry",
-        "Landscaping",
-        "Visitor Car Parking",
-        "Indoor Games",
-      ],
       startingFrom: "Starting From",
       iconType: ["bed", "bath", "sqft"],
       map: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin",
     },
   ];
-
   const [activeButtons, setActiveButtons] = useState({
     button1: false,
     button2: false,
@@ -1021,8 +1027,9 @@ export default function ListingsPage() {
           priceNum = priceNum * 10000000;
         } else if (priceLower.includes("l")) {
           priceNum = priceNum * 100000;
+        } else if (priceLower.includes("m")) {
+          priceNum = priceNum * 1000000;
         }
-
         priceNum = Math.round(priceNum);
 
         if (priceNum < budgetValue[0] || priceNum > budgetValue[1]) {
