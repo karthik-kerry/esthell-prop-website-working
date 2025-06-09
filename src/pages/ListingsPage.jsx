@@ -85,6 +85,10 @@ export default function ListingsPage() {
   const [isMobileView, setIsMobileView] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [favoriteMap, setFavoriteMap] = useState({});
+  const [searchType, setSearchType] = useState("");
+  const [searchSize, setSearchSize] = useState("");
+  const [minRange, setMinRange] = useState("");
+  const [maxRange, setMaxRange] = useState("");
   const buttonStyles = (isActive) => ({
     display: "flex",
     alignItems: "center",
@@ -130,6 +134,61 @@ export default function ListingsPage() {
       setIsLoginModalOpen(true);
     }
   };
+  const propertyType = [
+    {
+      key: "1",
+      label: "1 -2 BHK",
+      value: "1 -2 BHK",
+    },
+    {
+      key: "2",
+      label: "2 -3 BHK",
+      value: "2 -3 BHK",
+    },
+    {
+      key: "3",
+      label: "3 -4 BHK",
+      value: "3 -4 BHK",
+    },
+    {
+      key: "4",
+      label: "4 -5 BHK",
+      value: "4 -5 BHK",
+    },
+    {
+      key: "5",
+      label: "5+ BHK",
+      value: "5+ BHK",
+    },
+  ];
+
+  const propertySize = [
+    {
+      key: "1",
+      label: "500-1500 Sqft",
+      value: "500-1500 Sqft",
+    },
+    {
+      key: "2",
+      label: "1500-3000 Sqft",
+      value: "1500-3000 Sqft",
+    },
+    {
+      key: "3",
+      label: "3000-5000 Sqft",
+      value: "3000-5000 Sqft",
+    },
+    {
+      key: "4",
+      label: "5000-8000 Sqft",
+      value: "5000-8000 Sqft",
+    },
+    {
+      key: "5",
+      label: "8000+ Sqft",
+      value: "8000+ Sqft",
+    },
+  ];
   const currentProperties = [
     {
       id: 1,
@@ -1183,33 +1242,56 @@ export default function ListingsPage() {
 
               <div className="listingGrid">
                 <div className="ListingGrid1">
-                  <Dropdown menu={{ items: dropDownItems }}>
-                    <a onClick={(e) => e.preventDefault()}>
-                      <Space className="ListingformItem">
-                        Property Type
-                        <DownOutlined />
-                      </Space>
-                    </a>
+                  <Dropdown
+                    menu={{
+                      items: propertyType.map((item) => ({
+                        ...item,
+                        onClick: () => setSearchType(item.value),
+                      })),
+                    }}
+                  >
+                    <Space
+                      className="ListingformItem"
+                      style={{ color: searchType ? "black" : "#bfbfbf" }}
+                    >
+                      {searchType || "Property Type"}
+                      <DownOutlined />
+                    </Space>
                   </Dropdown>
-
-                  <Dropdown menu={{ items: dropDownItems }}>
-                    <a onClick={(e) => e.preventDefault()}>
-                      <Space className="ListingformItem">
-                        Property Size
-                        <DownOutlined />
-                      </Space>
-                    </a>
+                  <Dropdown
+                    menu={{
+                      items: propertySize.map((item) => ({
+                        ...item,
+                        onClick: () => setSearchSize(item.value),
+                      })),
+                    }}
+                  >
+                    <Space
+                      className="ListingformItem"
+                      style={{ color: searchSize ? "black" : "#bfbfbf" }}
+                    >
+                      {searchSize || "Property Size"}
+                      <DownOutlined />
+                    </Space>
                   </Dropdown>
                 </div>
                 <div className="ListingGrid2">
                   <Input
+                    prefix="₹"
                     className="ListingformItemInput"
-                    placeholder="Enter Min Range"
+                    placeholder="Min Range 5L"
+                    value={minRange}
+                    onChange={(e) => setMinRange(e.target.value)}
+                    style={{ color: minRange ? "#1b1b1b" : "#bfbfbf" }}
                   />
 
                   <Input
+                    prefix="₹"
                     className="ListingformItemInput"
-                    placeholder="Enter Max Range"
+                    placeholder="Enter Max Range 50Cr"
+                    value={maxRange}
+                    onChange={(e) => setMaxRange(e.target.value)}
+                    style={{ color: maxRange ? "#1b1b1b" : "#bfbfbf" }}
                   />
                 </div>
               </div>
@@ -1222,32 +1304,55 @@ export default function ListingsPage() {
             <div className="ListingSearchForm">
               <Input className="ListingLocation" placeholder="Location" />
 
-              <Dropdown menu={{ items: dropDownItems }}>
-                <a onClick={(e) => e.preventDefault()}>
-                  <Space className="ListingformItem">
-                    Property Type
-                    <DownOutlined />
-                  </Space>
-                </a>
+              <Dropdown
+                menu={{
+                  items: propertyType.map((item) => ({
+                    ...item,
+                    onClick: () => setSearchType(item.value),
+                  })),
+                }}
+              >
+                <Space
+                  className="ListingformItem"
+                  style={{ color: searchType ? "black" : "#bfbfbf" }}
+                >
+                  {searchType || "Property Type"}
+                  <DownOutlined />
+                </Space>
               </Dropdown>
 
-              <Dropdown menu={{ items: dropDownItems }}>
-                <a onClick={(e) => e.preventDefault()}>
-                  <Space className="ListingformItem">
-                    Property Size
-                    <DownOutlined />
-                  </Space>
-                </a>
+              <Dropdown
+                menu={{
+                  items: propertySize.map((item) => ({
+                    ...item,
+                    onClick: () => setSearchSize(item.value),
+                  })),
+                }}
+              >
+                <Space
+                  className="ListingformItem"
+                  style={{ color: searchSize ? "black" : "#bfbfbf" }}
+                >
+                  {searchSize || "Property Size"}
+                  <DownOutlined />
+                </Space>
               </Dropdown>
-
               <Input
+                prefix="₹"
                 className="ListingformItemInput"
                 placeholder="Enter Min Range"
+                value={minRange}
+                onChange={(e) => setMinRange(e.target.value)}
+                style={{ color: minRange ? "#1b1b1b" : "#bfbfbf" }}
               />
 
               <Input
+                prefix="₹"
                 className="ListingformItemInput"
                 placeholder="Enter Max Range"
+                value={maxRange}
+                onChange={(e) => setMaxRange(e.target.value)}
+                style={{ color: maxRange ? "#1b1b1b" : "#bfbfbf" }}
               />
 
               <Button className="ListingSearchButton" onClick={() => {}}>

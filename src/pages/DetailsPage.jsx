@@ -403,7 +403,6 @@ export default function DetailsPage() {
   };
 
   const handleDownloadPropertyPdfs = (property) => {
-    console.log("Downloading PDFs for property:", property);
     if (!property?.pdfs || property.pdfs.length === 0) {
       alert("No PDFs available for this property.");
       return;
