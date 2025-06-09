@@ -418,7 +418,7 @@ export default function ListingsPage() {
       },
       startingFrom: "Starting From",
       iconType: ["bed", "bath", "sqft"],
-      map: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3889.7442069845783!2d80.248454!3d12.859791000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDUxJzM1LjMiTiA4MMKwMTQnNTQuNCJF!5e0!3m2!1sen!2sin!4v1747815143397!5m2!1sen!2sin",
+      map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3611.7706416625597!2d55.18921127402284!3d25.14344393387834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b5624716593%3A0x2dd613f31e304f3d!2sJumeirah%20Residences%20Marsa%20Al%20Arab!5e0!3m2!1sen!2sin!4v1749470166428!5m2!1sen!2sin",
     },
   ];
   const [activeButtons, setActiveButtons] = useState({
