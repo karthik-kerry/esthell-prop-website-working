@@ -2,7 +2,7 @@
   "name": "esthell-prop-website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://xbmtech.info/",
+  "homepage": "https://xbmtech.info/esthell/",
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
     "@emailjs/browser": "^4.4.1",
