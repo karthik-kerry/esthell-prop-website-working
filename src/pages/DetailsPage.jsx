@@ -296,7 +296,7 @@ export default function DetailsPage() {
         bedroomsDisplay: "1-4 BHK",
         bathsDisplay: "1-6 ",
         baths: "1/2/3/4/5/6",
-        sqft: "861.76-6,369.33 Sqft",
+        sqft: "861.76-6369.33 Sqft",
       },
       details: {
         specification: "2BHK +2 T + S",
@@ -317,7 +317,7 @@ export default function DetailsPage() {
       detailedInfo: {
         bedrooms: "1/2/3/4",
         baths: "1-6",
-        sqft: "861.76-6,369.33 Sqft",
+        sqft: "861.76-6369.33 Sqft",
         description:
           "Spacious layouts, modern interiors, private balconies, and world-class amenities like a sky pool and wellness spaces.",
       },
