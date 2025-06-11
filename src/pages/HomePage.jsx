@@ -299,7 +299,7 @@ const currentProperties = [
     pdfs: [JumeiraFloorPlans, JumeiraPrice],
     address:
       "Sheikh Zayed Rd - Trade Centre - Trade Centre 2 - Dubai - United Arab Emirates",
-    price: "$ 955K",
+    price: "$955 K",
     type: "Apartment ",
     images: [
       JumeirahResidences,
