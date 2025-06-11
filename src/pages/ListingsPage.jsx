@@ -1084,6 +1084,8 @@ export default function ListingsPage() {
 
         if (priceLower.includes("cr")) {
           priceNum = priceNum * 10000000;
+        } else if (priceLower.includes("k")) {
+          priceNum = priceNum * 1000;
         } else if (priceLower.includes("l")) {
           priceNum = priceNum * 100000;
         } else if (priceLower.includes("m")) {
