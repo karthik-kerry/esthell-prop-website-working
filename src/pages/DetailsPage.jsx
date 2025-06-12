@@ -116,7 +116,6 @@ export default function DetailsPage() {
     { progress: 0, label: "1", filled: false },
   ];
 
-  // change here
   const currentProperties = [
     {
       id: 1,
