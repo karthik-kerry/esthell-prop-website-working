@@ -498,6 +498,20 @@ export default function HomePage() {
       setIsModalOpen(true);
     }
   };
+  const handleHomeSearch = () => {
+    if (isLoggedIn) {
+      const searchState = {};
+      if (searchLocation.trim()) searchState.location = searchLocation.trim();
+      if (searchType) searchState.type = searchType;
+      if (searchSize) searchState.size = searchSize;
+      if (minRange) searchState.minRange = minRange;
+      if (maxRange) searchState.maxRange = maxRange;
+
+      navigate("/listings", { state: searchState });
+    } else {
+      setIsModalOpen(true);
+    }
+  };
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 480) {
@@ -693,20 +707,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <Button
-                  className="HomeSearchButton"
-                  onClick={() => {
-                    const searchState = {};
-                    if (searchLocation.trim())
-                      searchState.location = searchLocation.trim();
-                    if (searchType) searchState.type = searchType;
-                    if (searchSize) searchState.size = searchSize;
-                    if (minRange) searchState.minRange = minRange;
-                    if (maxRange) searchState.maxRange = maxRange;
-
-                    navigate("/listings", { state: searchState });
-                  }}
-                >
+                <Button className="HomeSearchButton" onClick={handleHomeSearch}>
                   Search
                 </Button>
               </div>
@@ -771,20 +772,7 @@ export default function HomePage() {
                   style={{ color: maxRange ? "#1b1b1b" : "#bfbfbf" }}
                 />
 
-                <Button
-                  className="HomeSearchButton"
-                  onClick={() => {
-                    const searchState = {};
-                    if (searchLocation.trim())
-                      searchState.location = searchLocation.trim();
-                    if (searchType) searchState.type = searchType;
-                    if (searchSize) searchState.size = searchSize;
-                    if (minRange) searchState.minRange = minRange;
-                    if (maxRange) searchState.maxRange = maxRange;
-
-                    navigate("/listings", { state: searchState });
-                  }}
-                >
+                <Button className="HomeSearchButton" onClick={handleHomeSearch}>
                   Search
                 </Button>
               </div>
