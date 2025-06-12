@@ -79,6 +79,7 @@ import { auth, googleProvider } from "../firebase";
 import JumeiraPrice from "../assets/JumeiraPrice.pdf";
 import JumeiraFloorPlans from "../assets/JumeiraFloorPlans.pdf";
 import EsthellBrochure from "../assets/EsthellBrochure.pdf";
+import { MdClose } from "react-icons/md";
 
 const propertyType = [
   {
@@ -391,6 +392,8 @@ export default function HomePage() {
   const [minRange, setMinRange] = useState("");
   const [maxRange, setMaxRange] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [fullscreenIndex, setFullscreenIndex] = useState(null);
+  const [fullscreenImageIndex, setFullscreenImageIndex] = useState(0);
 
   const buttonStyles = (isActive) => ({
     display: "flex",
@@ -693,15 +696,15 @@ export default function HomePage() {
                 <Button
                   className="HomeSearchButton"
                   onClick={() => {
-                    navigate("/listings", {
-                      state: {
-                        location: searchLocation,
-                        type: searchType,
-                        size: searchSize,
-                        minRange,
-                        maxRange,
-                      },
-                    });
+                    const searchState = {};
+                    if (searchLocation.trim())
+                      searchState.location = searchLocation.trim();
+                    if (searchType) searchState.type = searchType;
+                    if (searchSize) searchState.size = searchSize;
+                    if (minRange) searchState.minRange = minRange;
+                    if (maxRange) searchState.maxRange = maxRange;
+
+                    navigate("/listings", { state: searchState });
                   }}
                 >
                   Search
@@ -709,7 +712,12 @@ export default function HomePage() {
               </div>
             ) : (
               <div className="HomeSearchForm">
-                <Input className="HomeLocation" placeholder="Location" />
+                <Input
+                  className="HomeLocation"
+                  placeholder="Location"
+                  value={searchLocation}
+                  onChange={(e) => setSearchLocation(e.target.value)}
+                />
 
                 <Dropdown
                   menu={{
@@ -766,15 +774,15 @@ export default function HomePage() {
                 <Button
                   className="HomeSearchButton"
                   onClick={() => {
-                    navigate("/listings", {
-                      state: {
-                        location: searchLocation,
-                        type: searchType,
-                        size: searchSize,
-                        minRange,
-                        maxRange,
-                      },
-                    });
+                    const searchState = {};
+                    if (searchLocation.trim())
+                      searchState.location = searchLocation.trim();
+                    if (searchType) searchState.type = searchType;
+                    if (searchSize) searchState.size = searchSize;
+                    if (minRange) searchState.minRange = minRange;
+                    if (maxRange) searchState.maxRange = maxRange;
+
+                    navigate("/listings", { state: searchState });
                   }}
                 >
                   Search
@@ -1072,6 +1080,10 @@ export default function HomePage() {
                       spaceBetween={10}
                       slidesPerView={1}
                       style={{ borderRadius: 12 }}
+                      onSlideChange={(swiper) => {
+                        if (fullscreenIndex === index)
+                          setFullscreenImageIndex(swiper.activeIndex);
+                      }}
                     >
                       {property.images.map((img, idx) => (
                         <SwiperSlide key={idx}>
@@ -1079,11 +1091,94 @@ export default function HomePage() {
                             src={img}
                             alt={property.name}
                             className="hpPropImage"
+                            style={{ cursor: "zoom-in" }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setFullscreenIndex(index);
+                              setFullscreenImageIndex(idx);
+                            }}
                           />
                         </SwiperSlide>
                       ))}
                     </Swiper>
                   </div>
+                  {fullscreenIndex !== null && (
+                    <div
+                      className="fullScreen"
+                      style={{
+                        position: "fixed",
+                        zIndex: 9999,
+                        top: 0,
+                        left: 0,
+                        width: "100vw",
+                        height: "100vh",
+                        background: "rgba(30, 30, 30, 0.572)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                      onClick={() => setFullscreenIndex(null)}
+                    >
+                      <div
+                        style={{
+                          background: "#fff",
+                          borderRadius: 18,
+                          padding: 24,
+                          position: "relative",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          minWidth: 320,
+                          maxWidth: 600,
+                          width: "90vw",
+                        }}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Button
+                          className="closeIcon"
+                          onClick={() => setFullscreenIndex(null)}
+                          style={{
+                            position: "absolute",
+                            top: 16,
+                            right: 16,
+                            zIndex: 10,
+                          }}
+                        >
+                          <MdClose size={24} />
+                        </Button>
+                        <Swiper
+                          modules={[Pagination]}
+                          pagination={{ clickable: true }}
+                          spaceBetween={10}
+                          slidesPerView={1}
+                          initialSlide={fullscreenImageIndex}
+                          onSlideChange={(swiper) =>
+                            setFullscreenImageIndex(swiper.activeIndex)
+                          }
+                          style={{ width: "100%", maxWidth: 560 }}
+                        >
+                          {currentProperties[fullscreenIndex].images.map(
+                            (img, idx) => (
+                              <SwiperSlide key={idx}>
+                                <img
+                                  src={img}
+                                  alt={currentProperties[fullscreenIndex].name}
+                                  className="fullScreenImage"
+                                  style={{
+                                    width: "100%",
+                                    maxHeight: "70vh",
+                                    objectFit: "contain",
+                                    cursor: "zoom-out",
+                                  }}
+                                  onClick={() => setFullscreenIndex(null)}
+                                />
+                              </SwiperSlide>
+                            )
+                          )}
+                        </Swiper>
+                      </div>
+                    </div>
+                  )}
                   <div className="homePageLabelContainer">
                     <p className="homePageVerifiedLabel">Verified</p>
                     <p className="homePageSaleLabel">{property.status}</p>

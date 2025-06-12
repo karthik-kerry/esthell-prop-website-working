@@ -52,6 +52,8 @@ import { IoExpandOutline } from "react-icons/io5";
 import JumeiraPrice from "../assets/JumeiraPrice.pdf";
 import JumeiraFloorPlans from "../assets/JumeiraFloorPlans.pdf";
 import EsthellBrochure from "../assets/EsthellBrochure.pdf";
+import { MdClose } from "react-icons/md";
+
 import {
   FaCarSide,
   FaUtensils,
@@ -77,9 +79,12 @@ export default function DetailsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const toggleFullScreen = () => setIsFullScreen((v) => !v);
+  const [isImageFullScreen, setIsImageFullScreen] = useState(false);
+  const toggleImageFullScreen = () => setIsImageFullScreen((v) => !v);
   const location = useLocation();
   const property = location.state?.property;
   const [favoriteMap, setFavoriteMap] = useState({});
+
   const navigate = useNavigate();
   const handleHeartClick = (propertyId) => {
     setFavoriteMap((prev) => {
@@ -474,7 +479,14 @@ export default function DetailsPage() {
             {/* detailes image view */}
 
             <div className="detailPageImgContainer">
-              <div className="detailPageImageWrapper">
+              <div
+                className="detailPageImageWrapper"
+                onClick={() => {
+                  setFloorPlanIndex(0);
+                  setIsImageFullScreen(true);
+                }}
+                style={{ cursor: "zoom-in" }}
+              >
                 <Swiper
                   modules={[Pagination]}
                   pagination={{ clickable: true }}
@@ -493,6 +505,59 @@ export default function DetailsPage() {
                   ))}
                 </Swiper>
               </div>
+
+              {/* Fullscreen Swiper for images */}
+              {isImageFullScreen &&
+                property?.images &&
+                property.images.length > 0 && (
+                  <div className="fullScreen" onClick={toggleImageFullScreen}>
+                    <div
+                      className="detailPageFloorPlanSingle"
+                      onClick={(e) => e.stopPropagation()}
+                      style={{
+                        background: "#fff",
+                        borderRadius: 18,
+                        padding: 24,
+                        position: "relative",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        minWidth: 320,
+                        height: "70%",
+                      }}
+                    >
+                      <Button
+                        className="closeIcon"
+                        onClick={toggleImageFullScreen}
+                      >
+                        <MdClose size={24} />
+                      </Button>
+                      <Swiper
+                        modules={[Pagination]}
+                        pagination={{ clickable: true }}
+                        spaceBetween={10}
+                        slidesPerView={1}
+                        initialSlide={floorPlanIndex}
+                        onSlideChange={(swiper) =>
+                          setFloorPlanIndex(swiper.activeIndex)
+                        }
+                        style={{ width: "100%", maxWidth: 600 }}
+                      >
+                        {property.images.map((img, idx) => (
+                          <SwiperSlide key={idx}>
+                            <img
+                              src={img}
+                              className="fullScreenImage"
+                              alt={property.name}
+                              style={{ cursor: "zoom-out" }}
+                              onClick={toggleImageFullScreen}
+                            />
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+                  </div>
+                )}
               <div className="detailPageInfoContainer">
                 <p className="detailPageVerifiedTag">Verified</p>
                 <p className="propertySale">{property?.status}</p>
@@ -783,6 +848,7 @@ export default function DetailsPage() {
                     </button>
                   </div>
                 )}
+
                 {isFullScreen &&
                   property?.floorPlans &&
                   property.floorPlans.length > 0 && (
@@ -790,88 +856,41 @@ export default function DetailsPage() {
                       <div
                         className="detailPageFloorPlanSingle"
                         onClick={(e) => e.stopPropagation()}
-                        style={{
-                          background: "#fff",
-                          borderRadius: 18,
-                          padding: 24,
-                          position: "relative",
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          minWidth: 320,
-                        }}
                       >
-                        {/* Close Icon */}
-                        <button
-                          onClick={toggleFullScreen}
+                        <Button
                           className="closeIcon"
-                          aria-label="Close"
-                        >
-                          &times;
-                        </button>
-                        {/* Left Arrow */}
-                        <button
-                          className="detailPageFloorPlanArrow"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setFloorPlanIndex(
-                              floorPlanIndex === 0
-                                ? property.floorPlans.length - 1
-                                : floorPlanIndex - 1
-                            );
-                          }}
-                          style={{
-                            position: "absolute",
-                            left: 12,
-                            top: "50%",
-                            transform: "translateY(-50%)",
-                            background: "none",
-                            border: "none",
-                            cursor: "pointer",
-                            color: "#001C6B",
-                            zIndex: 2,
-                          }}
-                          aria-label="Previous"
-                        >
-                          <FaChevronLeft size={24} />
-                        </button>
-                        {/* Right Arrow */}
-                        <button
-                          className="detailPageFloorPlanArrow"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setFloorPlanIndex(
-                              (floorPlanIndex + 1) % property.floorPlans.length
-                            );
-                          }}
-                          style={{
-                            position: "absolute",
-                            right: 12,
-                            top: "50%",
-                            transform: "translateY(-50%)",
-                            background: "none",
-                            border: "none",
-                            cursor: "pointer",
-                            color: "#001C6B",
-                            zIndex: 2,
-                          }}
-                          aria-label="Next"
-                        >
-                          <FaChevronRight size={24} />
-                        </button>
-                        <p style={{ marginBottom: 16 }}>
-                          {property.floorPlans[floorPlanIndex].label}
-                        </p>
-                        <img
-                          src={property.floorPlans[floorPlanIndex].src}
-                          className="fullScreenImage"
-                          alt={property.floorPlans[floorPlanIndex].label}
-                          style={{ cursor: "zoom-out" }}
                           onClick={toggleFullScreen}
-                        />
+                        >
+                          <MdClose size={24} />
+                        </Button>
+
+                        <Swiper
+                          modules={[Pagination]}
+                          pagination={{ clickable: true }}
+                          spaceBetween={10}
+                          slidesPerView={1}
+                          initialSlide={floorPlanIndex}
+                          onSlideChange={(swiper) =>
+                            setFloorPlanIndex(swiper.activeIndex)
+                          }
+                          className="floorPlanSwiper"
+                        >
+                          {property.floorPlans.map((plan, idx) => (
+                            <SwiperSlide key={idx}>
+                              <p className="floorPlanLabel">{plan.label}</p>
+                              <img
+                                src={plan.src}
+                                className="fullScreenImage"
+                                alt={plan.label}
+                                onClick={toggleFullScreen}
+                              />
+                            </SwiperSlide>
+                          ))}
+                        </Swiper>
                       </div>
                     </div>
                   )}
+
                 <div
                   style={{
                     display: "flex",
