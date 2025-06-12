@@ -67,14 +67,13 @@ import JumeiraFloorPlans from "../assets/JumeiraFloorPlans.pdf";
 import EsthellBrochure from "../assets/EsthellBrochure.pdf";
 
 export default function ListingsPage() {
+  const location = useLocation();
+  const search = location.state || {};
   const [user] = useAuthState(auth);
   const isLoggedIn = !!user;
   console.log("User is logged in:", isLoggedIn);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const { Panel } = Collapse;
-  const totalProperties = 8;
-  const pageSize = 5;
-  const [currentPage, setCurrentPage] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [selectedLocations, setSelectedLocations] = useState([]);
@@ -85,10 +84,17 @@ export default function ListingsPage() {
   const [isMobileView, setIsMobileView] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [favoriteMap, setFavoriteMap] = useState({});
+  const [searchLocation, setSearchLocation] = useState("");
   const [searchType, setSearchType] = useState("");
   const [searchSize, setSearchSize] = useState("");
   const [minRange, setMinRange] = useState("");
   const [maxRange, setMaxRange] = useState("");
+  const effectiveLocation = searchLocation || search.location || "";
+  const effectiveType = searchType || search.type || "";
+  const effectiveSize = searchSize || search.size || "";
+  const effectiveMinRange = minRange || search.minRange || "";
+  const effectiveMaxRange = maxRange || search.maxRange || "";
+
   const buttonStyles = (isActive) => ({
     display: "flex",
     alignItems: "center",
@@ -107,14 +113,17 @@ export default function ListingsPage() {
   const showLoginModal = () => {
     setIsLoginModalOpen(true);
   };
-
+  console.log("Search state from HomePage:", search);
   const handleOk = () => {
     setIsLoginModalOpen(false);
   };
-  const location = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+  // useEffect(() => {
+  //   setSearchLocation(search.location || "");
+  // }, [search.location]);
 
   const handleGoogleSignIn = async () => {
     try {
@@ -133,6 +142,18 @@ export default function ListingsPage() {
     } else {
       setIsLoginModalOpen(true);
     }
+  };
+
+  const handleListingSearch = () => {
+    navigate("/listings", {
+      state: {
+        location: searchLocation,
+        type: searchType,
+        size: searchSize,
+        minRange,
+        maxRange,
+      },
+    });
   };
   const propertyType = [
     {
@@ -352,7 +373,7 @@ export default function ListingsPage() {
       pdfs: [JumeiraFloorPlans, JumeiraPrice],
       address:
         "Sheikh Zayed Rd - Trade Centre - Trade Centre 2 - Dubai - United Arab Emirates",
-      price: "AED 3.51 M",
+      price: "$955 K",
       type: "Apartment ",
       images: [
         JumeirahResidences,
@@ -1047,156 +1068,289 @@ export default function ListingsPage() {
       ),
     },
   ];
+  function parsePrice(str) {
+    if (!str) return 0;
+    let s = str.toString().replace(/,/g, "").trim().toLowerCase();
+    let n = parseFloat(s.replace(/[^0-9.]/g, ""));
+    if (s.includes("cr")) return n * 10000000;
+    if (s.includes("l")) return n * 100000;
+    if (s.includes("k")) return n * 1000;
+    return n;
+  }
 
-  const isAnyFilterActive =
-    areaValue[0] !== 500 ||
-    areaValue[1] !== 15000 || // Area
-    budgetValue[0] !== 500000 ||
-    budgetValue[1] !== 25000000; // Budget
+  function parseSqft(str) {
+    if (!str) return [0, 0];
+    let s = str.replace(/,/g, "").toLowerCase();
+    if (s.includes("ground")) {
+      let grounds = parseFloat(s);
+      return [grounds * 2400, grounds * 2400];
+    }
+    let match = s.match(/(\d+(\.\d+)?)-(\d+(\.\d+)?)/);
+    if (match) {
+      return [parseFloat(match[1]), parseFloat(match[3])];
+    }
+    let num = parseFloat(s);
+    return [num, num];
+  }
+
+  const searchFilteredProperties = currentProperties.filter((property) => {
+    // Location
+    if (
+      effectiveLocation &&
+      !property.location
+        .toLowerCase()
+        .trim()
+        .includes(effectiveLocation.trim().toLowerCase())
+    ) {
+      return false;
+    }
+
+    // Type (BHK)
+    if (effectiveType) {
+      let plusMatch = effectiveType.match(/(\d+)\+\s*BHK/i);
+      if (plusMatch) {
+        let minBHK = parseInt(plusMatch[1]);
+        let bhkValues = String(property.specs.bedrooms)
+          .split("/")
+          .map((v) => {
+            if (v.toLowerCase().includes("duplex")) return null;
+            const num = parseInt(v);
+            return isNaN(num) ? null : num;
+          })
+          .filter((v) => v !== null);
+        if (!bhkValues.some((bhk) => bhk >= minBHK)) {
+          return false;
+        }
+      } else {
+        let bhkMatch = effectiveType.match(/(\d+)\s*-\s*(\d+)/);
+        if (bhkMatch) {
+          let minBHK = parseInt(bhkMatch[1]);
+          let maxBHK = parseInt(bhkMatch[2]);
+          let bhkValues = String(property.specs.bedrooms)
+            .split("/")
+            .map((v) => {
+              if (v.toLowerCase().includes("duplex")) return null;
+              const num = parseInt(v);
+              return isNaN(num) ? null : num;
+            })
+            .filter((v) => v !== null);
+          if (!bhkValues.some((bhk) => bhk >= minBHK && bhk <= maxBHK)) {
+            return false;
+          }
+        } else if (
+          !(
+            property.type &&
+            property.type.toLowerCase().includes(effectiveType.toLowerCase())
+          )
+        ) {
+          return false;
+        }
+      }
+    }
+
+    // Size (Sqft)
+    if (effectiveSize) {
+      let searchMin = 0,
+        searchMax = 0;
+      if (/(\d+)-(\d+)/.test(effectiveSize)) {
+        let sizeMatch = effectiveSize.match(/(\d+)-(\d+)/);
+        searchMin = parseInt(sizeMatch[1]);
+        searchMax = parseInt(sizeMatch[2]);
+      } else if (/(\d+)\+/.test(effectiveSize)) {
+        let plusMatch = effectiveSize.match(/(\d+)\+/);
+        searchMin = parseInt(plusMatch[1]);
+        searchMax = Infinity;
+      }
+      let [propMin, propMax] = parseSqft(property.specs?.sqft || "");
+      if (searchMin && (propMax < searchMin || propMin > searchMax)) {
+        return false;
+      }
+    }
+
+    // Price
+    if (effectiveMinRange) {
+      const priceNum = parsePrice(property.price);
+      if (priceNum < parsePrice(effectiveMinRange)) return false;
+    }
+    if (effectiveMaxRange) {
+      const priceNum = parsePrice(property.price);
+      if (priceNum > parsePrice(effectiveMaxRange)) return false;
+    }
+
+    return true;
+  });
   const selectedBHKs = [];
   if (activeButtons.button1) selectedBHKs.push(1);
   if (activeButtons.button2) selectedBHKs.push(2);
   if (activeButtons.button3) selectedBHKs.push(3);
   if (activeButtons.button4) selectedBHKs.push(4);
+
   const selectedStatuses = [];
   if (activeButtons.button5) selectedStatuses.push("new launch");
   if (activeButtons.button6) selectedStatuses.push("under construction");
   if (activeButtons.button7) selectedStatuses.push("ready to move");
+
   const selectedPurchaseTypes = [];
   if (activeButtons.button12) selectedPurchaseTypes.push("resale");
   if (activeButtons.button13) selectedPurchaseTypes.push("new booking");
+
   const selectedAmenities = [];
   if (activeButtons.button14) selectedAmenities.push("vaastu compliant");
   if (activeButtons.button15) selectedAmenities.push("security personnel");
   if (activeButtons.button16) selectedAmenities.push("gymnasium");
   if (activeButtons.button17) selectedAmenities.push("park");
   if (activeButtons.button18) selectedAmenities.push("parking");
+
   const selectedFurnishings = [];
   if (activeButtons.button19) selectedFurnishings.push("furnished");
   if (activeButtons.button20) selectedFurnishings.push("unfurnished");
   if (activeButtons.button21) selectedFurnishings.push("semifurnished");
-  const filteredProperties = isAnyFilterActive
-    ? currentProperties.filter((property) => {
-        // budget filter
-        let priceStr = property.price.replace(/[^0-9.]/g, "");
-        let priceNum = parseFloat(priceStr);
-        const priceLower = property.price.trim().toLowerCase();
+  const isAnyFilterActive =
+    areaValue[0] !== 500 ||
+    areaValue[1] !== 15000 ||
+    budgetValue[0] !== 500000 ||
+    budgetValue[1] !== 1000000000 ||
+    selectedLocations.length > 0 ||
+    selectedBHKs.length > 0 ||
+    selectedStatuses.length > 0 ||
+    selectedPurchaseTypes.length > 0 ||
+    selectedAmenities.length > 0 ||
+    selectedFurnishings.length > 0;
 
-        if (priceLower.includes("cr")) {
-          priceNum = priceNum * 10000000;
-        } else if (priceLower.includes("l")) {
-          priceNum = priceNum * 100000;
-        } else if (priceLower.includes("m")) {
-          priceNum = priceNum * 1000000;
+  const filterPanelProperties = currentProperties.filter((property) => {
+    // Budget filter
+    let priceStr = property.price.replace(/[^0-9.]/g, "");
+    let priceNum = parseFloat(priceStr);
+    const priceLower = property.price.trim().toLowerCase();
+
+    if (priceLower.includes("cr")) {
+      priceNum = priceNum * 10000000;
+    } else if (priceLower.includes("k")) {
+      priceNum = priceNum * 1000;
+    } else if (priceLower.includes("l")) {
+      priceNum = priceNum * 100000;
+    } else if (priceLower.includes("m")) {
+      priceNum = priceNum * 1000000;
+    }
+    priceNum = Math.round(priceNum);
+
+    if (priceNum < budgetValue[0] || priceNum > budgetValue[1]) {
+      return false;
+    }
+
+    // BHK filter
+    if (selectedBHKs.length > 0) {
+      const bhkValues = String(property.specs.bedrooms)
+        .split("/")
+        .map((v) => {
+          if (v.toLowerCase().includes("duplex")) return 4;
+          const num = parseInt(v);
+          return isNaN(num) ? null : num;
+        })
+        .filter((v) => v !== null);
+      if (!selectedBHKs.some((bhk) => bhkValues.includes(bhk))) {
+        return false;
+      }
+    }
+
+    // Area filter
+    if (areaValue[0] !== 500 || areaValue[1] !== 15000) {
+      let minSqft = 0,
+        maxSqft = 0;
+      if (
+        typeof property.specs.sqft === "string" &&
+        property.specs.sqft.toLowerCase().includes("ground")
+      ) {
+        const grounds = parseFloat(property.specs.sqft);
+        if (!isNaN(grounds)) {
+          minSqft = maxSqft = grounds * 2400;
         }
-        priceNum = Math.round(priceNum);
+      } else if (
+        typeof property.specs.sqft === "string" &&
+        property.specs.sqft.includes("-")
+      ) {
+        const [min, max] = property.specs.sqft
+          .replace(/[^\d\.\-]/g, "")
+          .split("-")
+          .map(Number);
+        minSqft = min;
+        maxSqft = max;
+      } else {
+        minSqft = maxSqft = parseInt(
+          String(property.specs.sqft).replace(/[^0-9]/g, "")
+        );
+      }
 
-        if (priceNum < budgetValue[0] || priceNum > budgetValue[1]) {
-          return false;
-        }
-        //  BHK
+      if (areaValue[1] < minSqft || areaValue[0] > maxSqft) {
+        return false;
+      }
+    }
 
-        if (selectedBHKs.length > 0) {
-          const bhkValues = String(property.specs.bedrooms)
-            .split("/")
-            .map((v) => {
-              if (v.toLowerCase().includes("duplex")) return 4;
-              const num = parseInt(v);
-              return isNaN(num) ? null : num;
-            })
-            .filter((v) => v !== null);
-          if (!selectedBHKs.some((bhk) => bhkValues.includes(bhk))) {
-            return false;
-          }
-        }
+    // Localities filter
+    if (
+      selectedLocations.length > 0 &&
+      !selectedLocations.some((loc) =>
+        property.filterData.localities.toLowerCase().includes(loc.toLowerCase())
+      )
+    ) {
+      return false;
+    }
+    // Purchase type filter
+    if (
+      selectedPurchaseTypes.length > 0 &&
+      !selectedPurchaseTypes.includes(property.filterData.purchaseType)
+    ) {
+      return false;
+    }
 
-        // Area filter
+    // Amenities filter
+    if (
+      selectedAmenities.length > 0 &&
+      !property.filterData.amenities
+        .map((a) => a.toLowerCase())
+        .some((amenity) => selectedAmenities.includes(amenity))
+    ) {
+      return false;
+    }
+    // Construction status filter
+    if (
+      selectedStatuses.length > 0 &&
+      !property.filterData.constructionStatus.some((status) =>
+        selectedStatuses.includes(status)
+      )
+    ) {
+      return false;
+    }
 
-        if (areaValue[0] !== 500 || areaValue[1] !== 15000) {
-          let minSqft = 0,
-            maxSqft = 0;
-          if (
-            typeof property.specs.sqft === "string" &&
-            property.specs.sqft.toLowerCase().includes("ground")
-          ) {
-            const grounds = parseFloat(property.specs.sqft);
-            if (!isNaN(grounds)) {
-              minSqft = maxSqft = grounds * 2400;
-            }
-          } else if (
-            typeof property.specs.sqft === "string" &&
-            property.specs.sqft.includes("-")
-          ) {
-            const [min, max] = property.specs.sqft
-              .replace(/[^\d\.\-]/g, "")
-              .split("-")
-              .map(Number);
-            minSqft = min;
-            maxSqft = max;
-          } else {
-            minSqft = maxSqft = parseInt(
-              String(property.specs.sqft).replace(/[^0-9]/g, "")
-            );
-          }
+    // Furnishing status filter
+    if (
+      selectedFurnishings.length > 0 &&
+      !selectedFurnishings.includes(
+        property.filterData.furnishing.toLowerCase()
+      )
+    ) {
+      return false;
+    }
 
-          if (areaValue[1] < minSqft || areaValue[0] > maxSqft) {
-            return false;
-          }
-        }
+    return true;
+  });
 
-        // Localities filter
-        if (
-          selectedLocations.length > 0 &&
-          !selectedLocations.some((loc) =>
-            property.filterData.localities
-              .toLowerCase()
-              .includes(loc.toLowerCase())
-          )
-        ) {
-          return false;
-        }
-        // Purchase type filter
-        if (
-          selectedPurchaseTypes.length > 0 &&
-          !selectedPurchaseTypes.includes(property.filterData.purchaseType)
-        ) {
-          return false;
-        }
-
-        // amenities
-        if (
-          selectedAmenities.length > 0 &&
-          !property.filterData.amenities
-            .map((a) => a.toLowerCase())
-            .some((amenity) => selectedAmenities.includes(amenity))
-        ) {
-          return false;
-        }
-        //  constructionStatus
-
-        if (
-          selectedStatuses.length > 0 &&
-          !property.filterData.constructionStatus.some((status) =>
-            selectedStatuses.includes(status)
-          )
-        ) {
-          return false;
-        }
-
-        // Furnishing status filter
-        if (
-          selectedFurnishings.length > 0 &&
-          !selectedFurnishings.includes(
-            property.filterData.furnishing.toLowerCase()
-          )
-        ) {
-          return false;
-        }
-
-        return true;
-      })
+  const propertiesToShow = isAnyFilterActive
+    ? filterPanelProperties
+    : search.location ||
+      search.type ||
+      search.size ||
+      search.minRange ||
+      search.maxRange
+    ? searchFilteredProperties
     : currentProperties;
 
+  const totalProperties = propertiesToShow.length;
+  const pageSize = 5;
+  const [currentPage, setCurrentPage] = useState(1);
+  const startIdx = (currentPage - 1) * pageSize;
+  const endIdx = startIdx + pageSize;
+  const paginatedProperties = propertiesToShow.slice(startIdx, endIdx);
   return (
     <div>
       <Header />
@@ -1238,7 +1392,12 @@ export default function ListingsPage() {
 
           {isMobileView ? (
             <div className="ListingSearchForm">
-              <Input className="ListingLocation" placeholder="Location" />
+              <Input
+                className="ListingLocation"
+                placeholder="Location"
+                value={searchLocation}
+                onChange={(e) => setSearchLocation(e.target.value)}
+              />
 
               <div className="listingGrid">
                 <div className="ListingGrid1">
@@ -1296,13 +1455,21 @@ export default function ListingsPage() {
                 </div>
               </div>
 
-              <Button className="ListingSearchButton" onClick={() => {}}>
+              <Button
+                className="ListingSearchButton"
+                onClick={handleListingSearch}
+              >
                 Search
               </Button>
             </div>
           ) : (
             <div className="ListingSearchForm">
-              <Input className="ListingLocation" placeholder="Location" />
+              <Input
+                className="ListingLocation"
+                placeholder="Location"
+                value={searchLocation}
+                onChange={(e) => setSearchLocation(e.target.value)}
+              />
 
               <Dropdown
                 menu={{
@@ -1445,7 +1612,7 @@ export default function ListingsPage() {
             </Button>
           </div>
           <div className="propertyList">
-            {filteredProperties.map((property, index) => (
+            {paginatedProperties.map((property, index) => (
               <div
                 key={property.id}
                 className="propertyItem"
