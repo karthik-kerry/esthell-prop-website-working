@@ -68,6 +68,7 @@
   object-fit: cover;
   display: block;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .detailPagePrevButton,
@@ -352,6 +353,7 @@
 .floorPlanLabel {
   font-size: 14px;
   text-align: center;
+  color: white;
 }
 
 .floorPlanSwiper {
@@ -366,6 +368,19 @@
   cursor: pointer;
   color: #001c6b;
   z-index: 2;
+  border: none;
+  box-shadow: none;
+}
+
+.closeIcon,
+.closeIcon:hover,
+.closeIcon:focus,
+.closeIcon:active {
+  color: #001c6b !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
 .detailPageFloorPlansHeader {
   font-weight: 500;
@@ -383,6 +398,7 @@
 .detailPageFloorPlanImage {
   width: 100%;
   height: 250px;
+  cursor: pointer;
 }
 .detailPageFloorPlanSlider {
   display: flex;
@@ -390,7 +406,7 @@
   justify-content: center;
   gap: 16px;
 }
-.detailPageFloorPlanSingle {
+/* .detailPageFloorPlanSingle {
   background: #fff;
   border-radius: 18px;
   position: relative;
@@ -399,7 +415,7 @@
   align-items: center;
   min-width: 320px;
   padding: 24px;
-}
+} */
 
 .detailPageFloorPlanArrow {
   background: #f4f4f4;
@@ -1076,6 +1092,7 @@ h4 {
   .floorPlanLabel {
     font-size: 14px;
     text-align: center;
+    color: white;
   }
 
   .floorPlanSwiper {

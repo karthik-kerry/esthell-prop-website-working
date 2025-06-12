@@ -396,6 +396,7 @@
   max-width: 100%;
   border-radius: 12px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .homePagePrevButton,

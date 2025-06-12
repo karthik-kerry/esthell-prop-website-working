@@ -1079,7 +1079,6 @@ export default function HomePage() {
                             src={img}
                             alt={property.name}
                             className="hpPropImage"
-                            style={{ cursor: "zoom-in" }}
                             onClick={(e) => {
                               e.stopPropagation();
                               setFullscreenIndex(index);
@@ -1108,18 +1107,18 @@ export default function HomePage() {
                       onClick={() => setFullscreenIndex(null)}
                     >
                       <div
-                        style={{
-                          background: "#fff",
-                          borderRadius: 18,
-                          padding: 24,
-                          position: "relative",
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          minWidth: 320,
-                          maxWidth: 600,
-                          width: "90vw",
-                        }}
+                        // style={{
+                        //   background: "#fff",
+                        //   borderRadius: 18,
+                        //   padding: 24,
+                        //   position: "relative",
+                        //   display: "flex",
+                        //   flexDirection: "column",
+                        //   alignItems: "center",
+                        //   minWidth: 320,
+                        //   maxWidth: 600,
+                        //   width: "90vw",
+                        // }}
                         onClick={(e) => e.stopPropagation()}
                       >
                         <Button
@@ -1132,7 +1131,7 @@ export default function HomePage() {
                             zIndex: 10,
                           }}
                         >
-                          <MdClose size={24} />
+                          <MdClose size={24} color="white" />
                         </Button>
                         <Swiper
                           modules={[Pagination]}
