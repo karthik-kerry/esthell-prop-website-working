@@ -85,7 +85,7 @@ export default function Footer() {
         <div className="CategoryContainer">
           <div>
             <p className="footerCategory">Explore</p>
-            {["Listings", "Listings", "Listings", "Listings", "Listings"].map(
+            {["Home", "Listings", "About Us", "Contact Us"].map(
               (item, index) => (
                 <Link key={index} to="/" className="footerLinkItem">
                   <FaChevronRight size={16} color="white" />

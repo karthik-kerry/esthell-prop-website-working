@@ -1806,7 +1806,7 @@ export default function ListingsPage() {
               </div>
               <div className="positionStyle">
                 <p className="startFrom">Starts From</p>
-                <p className="startPrice">1.62 Cr + Regn</p>
+                <p className="startPrice">1.62 Cr</p>
                 <p className="subText">2.5 & 3 BHK, Duplex & penthouse</p>
               </div>
               <div className="cardButtons">
@@ -1853,7 +1853,7 @@ export default function ListingsPage() {
               </div>
               <div className="positionStyle">
                 <p className="startFrom">Starts From</p>
-                <p className="startPrice">1.62 Cr + Regn</p>
+                <p className="startPrice">1.62 Cr</p>
                 <p className="subText">2.5 & 3 BHK, Duplex & penthouse</p>
               </div>
               <img src={EsthellFlats} className="cardImage" />
