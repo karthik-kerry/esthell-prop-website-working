@@ -1096,11 +1096,10 @@ export default function ListingsPage() {
   function parsePrice(str) {
     if (!str) return 0;
     let s = str.toString().replace(/,/g, "").trim().toLowerCase();
-    // Handle USD prices
     if (s.startsWith("$")) {
       s = s.replace("$", "");
       let n = parseFloat(s.replace(/[^0-9.]/g, ""));
-      if (s.includes("k")) return n * 1000 * 85; // USD to INR approx
+      if (s.includes("k")) return n * 1000 * 85;
       return n * 85;
     }
     let n = parseFloat(s.replace(/[^0-9.]/g, ""));

@@ -13,6 +13,12 @@ import { MdMail } from "react-icons/md";
 import "../styles/Component.css";
 
 export default function Footer() {
+  const quickLinks = [
+    { label: "Home", to: "/" },
+    { label: "Listings", to: "/listings" },
+    { label: "About Us", to: "/about" },
+    { label: "Contact Us", to: "/contact" },
+  ];
   return (
     <div>
       <div className="footerTop">
@@ -84,15 +90,13 @@ export default function Footer() {
         </div>
         <div className="CategoryContainer">
           <div>
-            <p className="footerCategory">Explore</p>
-            {["Home", "Listings", "About Us", "Contact Us"].map(
-              (item, index) => (
-                <Link key={index} to="/" className="footerLinkItem">
-                  <FaChevronRight size={16} color="white" />
-                  {item}
-                </Link>
-              )
-            )}
+            <p className="footerCategory">Quick Links</p>
+            {quickLinks.map((item, index) => (
+              <Link key={index} to={item.to} className="footerLinkItem">
+                <FaChevronRight size={16} color="white" />
+                {item.label}
+              </Link>
+            ))}
           </div>
           <div>
             <p className="footerCategory">Categories</p>
@@ -117,8 +121,8 @@ export default function Footer() {
             )}
           </div>
           <div>
-            <p className="footerCategory">Quick Links</p>
-            {["About", "FAQ", "Terms & Conditions", "Privacy Policy"].map(
+            <p className="footerCategory">Terms and Conditions</p>
+            {["FAQ", "Terms & Conditions", "Privacy Policy"].map(
               (item, index) => (
                 <Link key={index} to="/" className="footerLinkItem">
                   <FaChevronRight size={16} color="white" />
