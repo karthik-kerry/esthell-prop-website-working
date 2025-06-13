@@ -736,7 +736,7 @@ export default function HomePage() {
                         <Slider
                           range
                           min={500000} // Minimum 5 Lakhs
-                          max={1000000000} // Maximum 100 Crore
+                          max={500000000} // Maximum 50 Crore
                           step={100000} // Step 1 Lakh
                           value={priceRange}
                           onChange={(value) => {
@@ -847,7 +847,7 @@ export default function HomePage() {
                       <Slider
                         range
                         min={500000} // Minimum 5 Lakhs
-                        max={1000000000} // Maximum 100 Crore
+                        max={500000000} // Maximum 50 Crore
                         step={100000} // Step 1 Lakh
                         value={priceRange}
                         onChange={(value) => {
