@@ -598,6 +598,7 @@
   border-width: 1px;
   border-color: #00000029;
   padding: 20px;
+  cursor: pointer;
 }
 
 .similarListingsImageContainer {

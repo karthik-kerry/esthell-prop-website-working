@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import HomeBg from "../assets/HomeBg.png";
 import HomeBg1 from "../assets/HomeBg1.png";
 import HeroImg from "../assets/hero_img.png";
-import { Button, Dropdown, Input, Space, Modal } from "antd";
+import { Button, Dropdown, Input, Space, Modal, Slider } from "antd";
 import { TbHomeDollar } from "react-icons/tb";
 import { DownOutlined } from "@ant-design/icons";
 import SearchIcon from "../assets/search.png";
@@ -394,6 +394,7 @@ export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [fullscreenIndex, setFullscreenIndex] = useState(null);
   const [fullscreenImageIndex, setFullscreenImageIndex] = useState(0);
+  const [priceRange, setPriceRange] = useState([500000, 100000000]); // Example default
 
   const buttonStyles = (isActive) => ({
     display: "flex",
@@ -504,8 +505,10 @@ export default function HomePage() {
       if (searchLocation.trim()) searchState.location = searchLocation.trim();
       if (searchType) searchState.type = searchType;
       if (searchSize) searchState.size = searchSize;
-      if (minRange) searchState.minRange = minRange;
-      if (maxRange) searchState.maxRange = maxRange;
+      if (priceRange && priceRange.length === 2) {
+        searchState.minRange = priceRange[0];
+        searchState.maxRange = priceRange[1];
+      }
 
       navigate("/listings", { state: searchState });
     } else {
@@ -557,6 +560,20 @@ export default function HomePage() {
       alert("Google Sign-In failed: " + error.message);
     }
   };
+  function parsePriceInput(input) {
+    if (!input) return 0;
+    let str = input.toString().replace(/,/g, "").trim().toLowerCase();
+    if (str.startsWith("$")) {
+      // Remove $ and handle K (thousand)
+      str = str.replace("$", "");
+      if (str.endsWith("k")) return parseFloat(str) * 1000 * 85; // Rough INR conversion
+      return parseFloat(str) * 85; // fallback
+    }
+    if (str.endsWith("l")) return parseFloat(str) * 100000;
+    if (str.endsWith("cr")) return parseFloat(str) * 10000000;
+    if (str.endsWith("k")) return parseFloat(str) * 1000;
+    return parseFloat(str);
+  }
 
   const filterProperties = () => {
     return currentProperties.filter((property) => {
@@ -576,13 +593,14 @@ export default function HomePage() {
         return false;
       }
       // Min/Max price filter (convert price to number for comparison)
-      if (minRange) {
-        const priceNum = Number(property.price.replace(/[^0-9.]/g, ""));
-        if (priceNum < Number(minRange)) return false;
-      }
-      if (maxRange) {
-        const priceNum = Number(property.price.replace(/[^0-9.]/g, ""));
-        if (priceNum > Number(maxRange)) return false;
+      if (priceRange && priceRange.length === 2) {
+        const priceNum = parsePriceInput(property.price);
+        if (
+          isNaN(priceNum) ||
+          priceNum < priceRange[0] ||
+          priceNum > priceRange[1]
+        )
+          return false;
       }
       return true;
     });
@@ -686,8 +704,9 @@ export default function HomePage() {
                       </Space>
                     </Dropdown>
                   </div>
-                  <div className="homeGrid2">
-                    <Input
+                </div>
+                <div className="homeGrid2">
+                  {/* <Input
                       prefix="₹"
                       className="HomeformItemInput"
                       placeholder="Min Range 5L"
@@ -703,8 +722,60 @@ export default function HomePage() {
                       value={maxRange}
                       onChange={(e) => setMaxRange(e.target.value)}
                       style={{ color: maxRange ? "#1b1b1b" : "#bfbfbf" }}
-                    />
-                  </div>
+                    /> */}
+                  <Dropdown
+                    trigger={["click"]}
+                    overlay={
+                      <div
+                        style={{
+                          padding: 16,
+                          width: 240,
+                          backgroundColor: "#fff",
+                        }}
+                      >
+                        <Slider
+                          range
+                          min={500000} // Minimum 5 Lakhs
+                          max={1000000000} // Maximum 100 Crore
+                          step={100000} // Step 1 Lakh
+                          value={priceRange}
+                          onChange={(value) => {
+                            setPriceRange(value);
+                            setMinRange(value[0]);
+                            setMaxRange(value[1]);
+                          }}
+                          className="sliderContainer"
+                          trackStyle={{ backgroundColor: "#001C6B" }}
+                          handleStyle={{
+                            backgroundColor: "#001C6B",
+                            borderColor: "#001C6B",
+                            color: "#001C6B",
+                          }}
+                          tooltip={{
+                            formatter: (value) =>
+                              `₹${
+                                value >= 10000000
+                                  ? (value / 10000000).toFixed(2) + " Cr"
+                                  : value >= 100000
+                                  ? (value / 100000).toFixed(2) + " L"
+                                  : value.toLocaleString()
+                              }`,
+                            placement: "bottom",
+                          }}
+                        />
+                      </div>
+                    }
+                  >
+                    <Space
+                      className="HomeformItemMobile"
+                      style={{ width: 220, cursor: "pointer" }}
+                    >
+                      {`₹${Number(priceRange[0]).toLocaleString()} - ₹${Number(
+                        priceRange[1]
+                      ).toLocaleString()}`}
+                      <DownOutlined />
+                    </Space>
+                  </Dropdown>
                 </div>
 
                 <Button className="HomeSearchButton" onClick={handleHomeSearch}>
@@ -754,23 +825,77 @@ export default function HomePage() {
                   </Space>
                 </Dropdown>
 
-                <Input
+                {/* <Input
                   prefix="₹"
                   className="HomeformItemInput"
                   placeholder="Enter Min Range"
                   value={minRange}
                   onChange={(e) => setMinRange(e.target.value)}
                   style={{ color: minRange ? "#1b1b1b" : "#bfbfbf" }}
-                />
+                /> */}
 
-                <Input
+                <Dropdown
+                  trigger={["click"]}
+                  overlay={
+                    <div
+                      style={{
+                        padding: 16,
+                        width: 240,
+                        backgroundColor: "#fff",
+                      }}
+                    >
+                      <Slider
+                        range
+                        min={500000} // Minimum 5 Lakhs
+                        max={1000000000} // Maximum 100 Crore
+                        step={100000} // Step 1 Lakh
+                        value={priceRange}
+                        onChange={(value) => {
+                          setPriceRange(value);
+                          setMinRange(value[0]);
+                          setMaxRange(value[1]);
+                        }}
+                        className="sliderContainer"
+                        trackStyle={{ backgroundColor: "#001C6B" }}
+                        handleStyle={{
+                          backgroundColor: "#001C6B",
+                          borderColor: "#001C6B",
+                          color: "#001C6B",
+                        }}
+                        tooltip={{
+                          formatter: (value) =>
+                            `₹${
+                              value >= 10000000
+                                ? (value / 10000000).toFixed(2) + " Cr"
+                                : value >= 100000
+                                ? (value / 100000).toFixed(2) + " L"
+                                : value.toLocaleString()
+                            }`,
+                          placement: "bottom",
+                        }}
+                      />
+                    </div>
+                  }
+                >
+                  <Space
+                    className="HomeformItem"
+                    style={{ width: 220, cursor: "pointer" }}
+                  >
+                    {`₹${Number(priceRange[0]).toLocaleString()} - ₹${Number(
+                      priceRange[1]
+                    ).toLocaleString()}`}
+                    <DownOutlined />
+                  </Space>
+                </Dropdown>
+
+                {/* <Input
                   prefix="₹"
                   className="HomeformItemInput"
                   placeholder="Enter Max Range"
                   value={maxRange}
                   onChange={(e) => setMaxRange(e.target.value)}
                   style={{ color: maxRange ? "#1b1b1b" : "#bfbfbf" }}
-                />
+                /> */}
 
                 <Button className="HomeSearchButton" onClick={handleHomeSearch}>
                   Search
@@ -1534,7 +1659,7 @@ export default function HomePage() {
                 </div>
                 <div className="positionStyle">
                   <p className="startFrom">Starts From</p>
-                  <p className="startPrice">1.62 Cr + Regn</p>
+                  <p className="startPrice">1.62 Cr</p>
                   <p className="subText">2.5 & 3 BHK, Duplex & penthouse</p>
                 </div>
                 <div className="cardButtons">
@@ -1585,7 +1710,7 @@ export default function HomePage() {
                 </div>
                 <div className="positionStyle">
                   <p className="startFrom">Starts From</p>
-                  <p className="startPrice">1.62 Cr + Regn</p>
+                  <p className="startPrice">1.62 Cr</p>
                   <p className="subText">2.5 & 3 BHK, Duplex & penthouse</p>
                 </div>
                 <img src={EsthellFlats} className="cardImage" />

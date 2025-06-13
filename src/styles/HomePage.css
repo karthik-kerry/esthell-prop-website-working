@@ -937,8 +937,26 @@
   .hpPropContainer {
     padding: 30px;
   }
+  .HomeSearchForm {
+    flex-direction: column;
+  }
   .HomeHeroForm {
     top: 55%;
+  }
+  .HomeformItemMobile {
+    height: 44px;
+    width: 282px !important;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0a51a333;
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #bfbfbf;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 10px;
   }
   .HomeHeroDescription {
     bottom: 25%;
@@ -1130,7 +1148,7 @@
   }
   .HomeGrid {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
   }
   .homeGrid1,
