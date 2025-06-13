@@ -1374,7 +1374,7 @@ export default function HomePage() {
           </Button>
         </div>
         {/* Cities with listing */}
-        <div className="citiesWithListingContainer">
+        {/* <div className="citiesWithListingContainer">
           <h2 className="citiesTitle">Cities With Listing</h2>
           <p className="citiesSubtitle">Destinations we love the most</p>
           <div className="citiesScrollContainer">
@@ -1435,14 +1435,14 @@ export default function HomePage() {
               ].map((city, index) => (
                 <div key={index} className="cityCard">
                   <img src={city.src} alt={city.label} className="cityImage" />
-                  {/* Black Blur Overlay */}
+                 
                   <div className="cityOverlay" />
-                  {/* Text at Bottom Left */}
+                
                   <p className="cityLabel">{city.label}</p>
                   <p className="cityProperties">{city.properties}</p>
                 </div>
               ))}
-              {/* Duplicate the cards for seamless scrolling */}
+             
               {[
                 {
                   src: Chennai,
@@ -1484,9 +1484,9 @@ export default function HomePage() {
               ].map((city, index) => (
                 <div key={`duplicate-${index}`} className="cityCard">
                   <img src={city.src} alt={city.label} className="cityImage" />
-                  {/* Black Blur Overlay */}
+                 
                   <div className="cityOverlay" />
-                  {/* Text at Bottom Left */}
+                 
                   <p className="cityLabel">{city.label}</p>
                   <p className="cityProperties">{city.properties}</p>
                 </div>
@@ -1551,14 +1551,14 @@ export default function HomePage() {
               ].map((city, index) => (
                 <div key={index} className="cityCard">
                   <img src={city.src} alt={city.label} className="cityImage" />
-                  {/* Black Blur Overlay */}
+                 
                   <div className="cityOverlay" />
-                  {/* Text at Bottom Left */}
+                  
                   <p className="cityLabel">{city.label}</p>
                   <p className="cityProperties">{city.properties}</p>
                 </div>
               ))}
-              {/* Duplicate the cards for seamless scrolling */}
+              
               {[
                 {
                   src: Chennai,
@@ -1600,9 +1600,9 @@ export default function HomePage() {
               ].map((city, index) => (
                 <div key={`duplicate-${index}`} className="cityCard">
                   <img src={city.src} alt={city.label} className="cityImage" />
-                  {/* Black Blur Overlay */}
+                 
                   <div className="cityOverlay" />
-                  {/* Text at Bottom Left */}
+                  
                   <p className="cityLabel">{city.label}</p>
                   <p className="cityProperties">{city.properties}</p>
                 </div>
@@ -1629,7 +1629,7 @@ export default function HomePage() {
             }
           `}
           </style>
-        </div>
+        </div> */}
         {/* Info Card */}
         <div className="cardContainer">
           <div
