@@ -355,7 +355,6 @@ export default function DetailsPage() {
     },
   ];
 
-  //update
   const progressWidth = (rating / 5) * 100;
   const images = [Property, Property1];
   const [currentIndex, setCurrentIndex] = useState(0);
