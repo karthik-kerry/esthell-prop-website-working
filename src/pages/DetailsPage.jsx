@@ -355,6 +355,7 @@ export default function DetailsPage() {
     },
   ];
 
+  //update
   const progressWidth = (rating / 5) * 100;
   const images = [Property, Property1];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -484,7 +485,6 @@ export default function DetailsPage() {
                   setFloorPlanIndex(0);
                   setIsImageFullScreen(true);
                 }}
-                style={{ cursor: "zoom-in" }}
               >
                 <Swiper
                   modules={[Pagination]}
@@ -513,23 +513,23 @@ export default function DetailsPage() {
                     <div
                       className="detailPageFloorPlanSingle"
                       onClick={(e) => e.stopPropagation()}
-                      style={{
-                        background: "#fff",
-                        borderRadius: 18,
-                        padding: 24,
-                        position: "relative",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        minWidth: 320,
-                        height: "70%",
-                      }}
+                      // style={{
+                      //   background: "#fff",
+                      //   borderRadius: 18,
+                      //   padding: 24,
+                      //   position: "relative",
+                      //   display: "flex",
+                      //   flexDirection: "column",
+                      //   alignItems: "center",
+                      //   minWidth: 320,
+                      //   height: "70%",
+                      // }}
                     >
                       <Button
                         className="closeIcon"
                         onClick={toggleImageFullScreen}
                       >
-                        <MdClose size={24} />
+                        <MdClose size={24} color="white" />
                       </Button>
                       <Swiper
                         modules={[Pagination]}
@@ -813,38 +813,31 @@ export default function DetailsPage() {
                 {/* floor plans */}
                 {property?.floorPlans && property.floorPlans.length > 0 && (
                   <div className="detailPageFloorPlanSlider">
-                    <button
-                      className="detailPageFloorPlanArrow"
-                      onClick={() =>
-                        setFloorPlanIndex(
-                          floorPlanIndex === 0
-                            ? property.floorPlans.length - 1
-                            : floorPlanIndex - 1
-                        )
+                    <Swiper
+                      modules={[Pagination]}
+                      pagination={{ clickable: true }}
+                      spaceBetween={10}
+                      slidesPerView={1}
+                      onSlideChange={(swiper) =>
+                        setFloorPlanIndex(swiper.activeIndex)
                       }
+                      initialSlide={floorPlanIndex}
+                      style={{ borderRadius: 12, width: "100%" }}
                     >
-                      <FaChevronLeft color="#001C6B" size={18} />
-                    </button>
-                    <div className="detailPageFloorPlanSingle">
-                      <p>{property.floorPlans[floorPlanIndex].label}</p>
-                      <img
-                        src={property.floorPlans[floorPlanIndex].src}
-                        className="detailPageFloorPlanImage"
-                        alt={property.floorPlans[floorPlanIndex].label}
-                        onClick={toggleFullScreen}
-                        style={{ cursor: "zoom-in" }}
-                      />
-                    </div>
-                    <button
-                      className="detailPageFloorPlanArrow"
-                      onClick={() =>
-                        setFloorPlanIndex(
-                          (floorPlanIndex + 1) % property.floorPlans.length
-                        )
-                      }
-                    >
-                      <FaChevronRight color="#001C6B" size={18} />
-                    </button>
+                      {property.floorPlans.map((plan, idx) => (
+                        <SwiperSlide key={idx}>
+                          <div className="detailPageFloorPlanSingle">
+                            <p>{plan.label}</p>
+                            <img
+                              src={plan.src}
+                              className="detailPageFloorPlanImage"
+                              alt={plan.label}
+                              onClick={toggleFullScreen}
+                            />
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
                   </div>
                 )}
 
@@ -860,7 +853,7 @@ export default function DetailsPage() {
                           className="closeIcon"
                           onClick={toggleFullScreen}
                         >
-                          <MdClose size={24} />
+                          <MdClose size={24} color="white" />
                         </Button>
 
                         <Swiper

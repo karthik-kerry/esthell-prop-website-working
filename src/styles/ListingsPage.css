@@ -347,6 +347,7 @@
   width: 500px;
   border-radius: 12px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .imageContainer {

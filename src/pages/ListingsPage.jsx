@@ -94,7 +94,11 @@ export default function ListingsPage() {
   const effectiveSize = searchSize || search.size || "";
   const effectiveMinRange = minRange || search.minRange || "";
   const effectiveMaxRange = maxRange || search.maxRange || "";
-
+  const [searchBudgetValue, setSearchBudgetValue] = useState([
+    500000, 1000000000,
+  ]);
+  const [searchMinRange, setSearchMinRange] = useState(500000);
+  const [searchMaxRange, setSearchMaxRange] = useState(1000000000);
   const buttonStyles = (isActive) => ({
     display: "flex",
     alignItems: "center",
@@ -124,6 +128,19 @@ export default function ListingsPage() {
   // useEffect(() => {
   //   setSearchLocation(search.location || "");
   // }, [search.location]);
+  // useEffect(() => {
+  //   // Set location, type, size from navigation state if present
+  //   if (search.location) setSearchLocation(search.location);
+  //   if (search.type) setSearchType(search.type);
+  //   if (search.size) setSearchSize(search.size);
+
+  //   // Set price range from navigation state if present
+  //   if (search.minRange && search.maxRange) {
+  //     setSearchBudgetValue([Number(search.minRange), Number(search.maxRange)]);
+  //     setSearchMinRange(Number(search.minRange));
+  //     setSearchMaxRange(Number(search.maxRange));
+  //   }
+  // }, [search]);
 
   const handleGoogleSignIn = async () => {
     try {
@@ -623,6 +640,14 @@ export default function ListingsPage() {
       window.removeEventListener("resize", checkScreenWidth);
     };
   }, []);
+  // useEffect(() => {
+  //   if (search.minRange && search.maxRange) {
+  //     setSearchBudgetValue([Number(search.minRange), Number(search.maxRange)]);
+  //     setSearchMinRange(Number(search.minRange));
+  //     setSearchMaxRange(Number(search.maxRange));
+  //   }
+  // }, [search.minRange, search.maxRange]);
+
   const dropDownItems = [
     {
       key: "1",
@@ -1071,6 +1096,13 @@ export default function ListingsPage() {
   function parsePrice(str) {
     if (!str) return 0;
     let s = str.toString().replace(/,/g, "").trim().toLowerCase();
+    // Handle USD prices
+    if (s.startsWith("$")) {
+      s = s.replace("$", "");
+      let n = parseFloat(s.replace(/[^0-9.]/g, ""));
+      if (s.includes("k")) return n * 1000 * 85; // USD to INR approx
+      return n * 85;
+    }
     let n = parseFloat(s.replace(/[^0-9.]/g, ""));
     if (s.includes("cr")) return n * 10000000;
     if (s.includes("l")) return n * 100000;
@@ -1092,6 +1124,59 @@ export default function ListingsPage() {
     let num = parseFloat(s);
     return [num, num];
   }
+  // const effectivePriceRange =
+  //   searchBudgetValue &&
+  //   (searchBudgetValue[0] !== 500000 || searchBudgetValue[1] !== 1000000000)
+  //     ? searchBudgetValue
+  //     : budgetValue;
+
+  const selectedBHKs = [];
+  if (activeButtons.button1) selectedBHKs.push(1);
+  if (activeButtons.button2) selectedBHKs.push(2);
+  if (activeButtons.button3) selectedBHKs.push(3);
+  if (activeButtons.button4) selectedBHKs.push(4);
+
+  const selectedStatuses = [];
+  if (activeButtons.button5) selectedStatuses.push("new launch");
+  if (activeButtons.button6) selectedStatuses.push("under construction");
+  if (activeButtons.button7) selectedStatuses.push("ready to move");
+
+  const selectedPurchaseTypes = [];
+  if (activeButtons.button12) selectedPurchaseTypes.push("resale");
+  if (activeButtons.button13) selectedPurchaseTypes.push("new booking");
+
+  const selectedAmenities = [];
+  if (activeButtons.button14) selectedAmenities.push("vaastu compliant");
+  if (activeButtons.button15) selectedAmenities.push("security personnel");
+  if (activeButtons.button16) selectedAmenities.push("gymnasium");
+  if (activeButtons.button17) selectedAmenities.push("park");
+  if (activeButtons.button18) selectedAmenities.push("parking");
+
+  const selectedFurnishings = [];
+  if (activeButtons.button19) selectedFurnishings.push("furnished");
+  if (activeButtons.button20) selectedFurnishings.push("unfurnished");
+  if (activeButtons.button21) selectedFurnishings.push("semifurnished");
+  const isAnyFilterActive =
+    areaValue[0] !== 500 ||
+    areaValue[1] !== 15000 ||
+    budgetValue[0] !== 500000 ||
+    budgetValue[1] !== 1000000000 ||
+    selectedLocations.length > 0 ||
+    selectedBHKs.length > 0 ||
+    selectedStatuses.length > 0 ||
+    selectedPurchaseTypes.length > 0 ||
+    selectedAmenities.length > 0 ||
+    selectedFurnishings.length > 0;
+  const isSearchBarPriceChanged =
+    searchMinRange !== 500000 || searchMaxRange !== 1000000000;
+
+  const effectivePriceRange = isAnyFilterActive
+    ? budgetValue
+    : isSearchBarPriceChanged
+    ? [searchMinRange, searchMaxRange]
+    : search.minRange && search.maxRange
+    ? [Number(search.minRange), Number(search.maxRange)]
+    : [500000, 1000000000];
 
   const searchFilteredProperties = currentProperties.filter((property) => {
     // Location
@@ -1168,54 +1253,16 @@ export default function ListingsPage() {
     }
 
     // Price
-    if (effectiveMinRange) {
-      const priceNum = parsePrice(property.price);
-      if (priceNum < parsePrice(effectiveMinRange)) return false;
-    }
-    if (effectiveMaxRange) {
-      const priceNum = parsePrice(property.price);
-      if (priceNum > parsePrice(effectiveMaxRange)) return false;
+    let priceNum = parsePrice(property.price);
+    if (
+      priceNum < effectivePriceRange[0] ||
+      priceNum > effectivePriceRange[1]
+    ) {
+      return false;
     }
 
     return true;
   });
-  const selectedBHKs = [];
-  if (activeButtons.button1) selectedBHKs.push(1);
-  if (activeButtons.button2) selectedBHKs.push(2);
-  if (activeButtons.button3) selectedBHKs.push(3);
-  if (activeButtons.button4) selectedBHKs.push(4);
-
-  const selectedStatuses = [];
-  if (activeButtons.button5) selectedStatuses.push("new launch");
-  if (activeButtons.button6) selectedStatuses.push("under construction");
-  if (activeButtons.button7) selectedStatuses.push("ready to move");
-
-  const selectedPurchaseTypes = [];
-  if (activeButtons.button12) selectedPurchaseTypes.push("resale");
-  if (activeButtons.button13) selectedPurchaseTypes.push("new booking");
-
-  const selectedAmenities = [];
-  if (activeButtons.button14) selectedAmenities.push("vaastu compliant");
-  if (activeButtons.button15) selectedAmenities.push("security personnel");
-  if (activeButtons.button16) selectedAmenities.push("gymnasium");
-  if (activeButtons.button17) selectedAmenities.push("park");
-  if (activeButtons.button18) selectedAmenities.push("parking");
-
-  const selectedFurnishings = [];
-  if (activeButtons.button19) selectedFurnishings.push("furnished");
-  if (activeButtons.button20) selectedFurnishings.push("unfurnished");
-  if (activeButtons.button21) selectedFurnishings.push("semifurnished");
-  const isAnyFilterActive =
-    areaValue[0] !== 500 ||
-    areaValue[1] !== 15000 ||
-    budgetValue[0] !== 500000 ||
-    budgetValue[1] !== 1000000000 ||
-    selectedLocations.length > 0 ||
-    selectedBHKs.length > 0 ||
-    selectedStatuses.length > 0 ||
-    selectedPurchaseTypes.length > 0 ||
-    selectedAmenities.length > 0 ||
-    selectedFurnishings.length > 0;
 
   const filterPanelProperties = currentProperties.filter((property) => {
     // Budget filter
@@ -1435,7 +1482,7 @@ export default function ListingsPage() {
                   </Dropdown>
                 </div>
                 <div className="ListingGrid2">
-                  <Input
+                  {/* <Input
                     prefix="₹"
                     className="ListingformItemInput"
                     placeholder="Min Range 5L"
@@ -1451,7 +1498,60 @@ export default function ListingsPage() {
                     value={maxRange}
                     onChange={(e) => setMaxRange(e.target.value)}
                     style={{ color: maxRange ? "#1b1b1b" : "#bfbfbf" }}
-                  />
+                  /> */}
+                  <Dropdown
+                    trigger={["click"]}
+                    overlay={
+                      <div
+                        style={{
+                          padding: 16,
+                          width: 240,
+                          backgroundColor: "#fff",
+                        }}
+                      >
+                        <Slider
+                          range
+                          min={500000} // Minimum 5 Lakhs
+                          max={1000000000} // Maximum 100 Crore
+                          step={100000} // Step 1 Lakh
+                          value={searchBudgetValue}
+                          onChange={(value) => {
+                            setSearchBudgetValue(value);
+                            setSearchMinRange(value[0]);
+                            setSearchMaxRange(value[1]);
+                          }}
+                          className="sliderContainer"
+                          trackStyle={{ backgroundColor: "#001C6B" }}
+                          handleStyle={{
+                            backgroundColor: "#001C6B",
+                            borderColor: "#001C6B",
+                            color: "#001C6B",
+                          }}
+                          tooltip={{
+                            formatter: (value) =>
+                              `₹${
+                                value >= 10000000
+                                  ? (value / 10000000).toFixed(2) + " Cr"
+                                  : value >= 100000
+                                  ? (value / 100000).toFixed(2) + " L"
+                                  : value.toLocaleString()
+                              }`,
+                            placement: "bottom",
+                          }}
+                        />
+                      </div>
+                    }
+                  >
+                    <Space
+                      className="HomeformItemMobile"
+                      style={{ width: 220, cursor: "pointer" }}
+                    >
+                      {`₹${Number(searchMinRange).toLocaleString()} - ₹${Number(
+                        searchMaxRange
+                      ).toLocaleString()}`}
+                      <DownOutlined />
+                    </Space>
+                  </Dropdown>
                 </div>
               </div>
 
@@ -1504,7 +1604,7 @@ export default function ListingsPage() {
                   <DownOutlined />
                 </Space>
               </Dropdown>
-              <Input
+              {/* <Input
                 prefix="₹"
                 className="ListingformItemInput"
                 placeholder="Enter Min Range"
@@ -1520,9 +1620,66 @@ export default function ListingsPage() {
                 value={maxRange}
                 onChange={(e) => setMaxRange(e.target.value)}
                 style={{ color: maxRange ? "#1b1b1b" : "#bfbfbf" }}
-              />
+              /> */}
 
-              <Button className="ListingSearchButton" onClick={() => {}}>
+              <Dropdown
+                trigger={["click"]}
+                overlay={
+                  <div
+                    style={{
+                      padding: 16,
+                      width: 240,
+                      backgroundColor: "#fff",
+                    }}
+                  >
+                    <Slider
+                      range
+                      min={500000}
+                      max={1000000000}
+                      step={100000}
+                      value={searchBudgetValue}
+                      onChange={(value) => {
+                        setSearchBudgetValue(value);
+                        setSearchMinRange(value[0]);
+                        setSearchMaxRange(value[1]);
+                      }}
+                      className="sliderContainer"
+                      trackStyle={{ backgroundColor: "#001C6B" }}
+                      handleStyle={{
+                        backgroundColor: "#001C6B",
+                        borderColor: "#001C6B",
+                        color: "#001C6B",
+                      }}
+                      tooltip={{
+                        formatter: (value) =>
+                          `₹${
+                            value >= 10000000
+                              ? (value / 10000000).toFixed(2) + " Cr"
+                              : value >= 100000
+                              ? (value / 100000).toFixed(2) + " L"
+                              : value.toLocaleString()
+                          }`,
+                        placement: "bottom",
+                      }}
+                    />
+                  </div>
+                }
+              >
+                <Space
+                  className="HomeformItem"
+                  style={{ width: 220, cursor: "pointer" }}
+                >
+                  {`₹${Number(searchMinRange).toLocaleString()} - ₹${Number(
+                    searchMaxRange
+                  ).toLocaleString()}`}
+                  <DownOutlined />
+                </Space>
+              </Dropdown>
+
+              <Button
+                className="ListingSearchButton"
+                onClick={handleListingSearch}
+              >
                 Search
               </Button>
             </div>
