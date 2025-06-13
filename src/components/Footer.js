@@ -92,7 +92,12 @@ export default function Footer() {
           <div>
             <p className="footerCategory">Quick Links</p>
             {quickLinks.map((item, index) => (
-              <Link key={index} to={item.to} className="footerLinkItem">
+              <Link
+                key={index}
+                to={item.to}
+                className="footerLinkItem"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 <FaChevronRight size={16} color="white" />
                 {item.label}
               </Link>
