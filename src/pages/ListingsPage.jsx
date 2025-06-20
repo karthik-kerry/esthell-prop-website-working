@@ -683,7 +683,7 @@ export default function ListingsPage() {
         <Slider
           range
           min={500000} // Minimum range is 5 Lakhs
-          max={1000000000} // Maximum range is 100 Crore
+          max={500000000} // Maximum range is 50 Crore
           step={100000} // Step size set to 1 Lakh (100,000)
           value={budgetValue}
           onChange={onBudgetChange}
@@ -1511,7 +1511,7 @@ export default function ListingsPage() {
                         <Slider
                           range
                           min={500000} // Minimum 5 Lakhs
-                          max={1000000000} // Maximum 100 Crore
+                          max={500000000} // Maximum 50 Crore
                           step={100000} // Step 1 Lakh
                           value={searchBudgetValue}
                           onChange={(value) => {
