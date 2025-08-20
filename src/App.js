@@ -7,8 +7,6 @@ import ContactPage from "./pages/ContactPage";
 import DetailsPage from "./pages/DetailsPage";
 import TermsAndConditions from "./pages/TermsAndConditions";
 
-//privacy policy screen update
-
 function App() {
   return (
     <BrowserRouter>
