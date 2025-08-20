@@ -1,0 +1,90 @@
+.TacTitle {
+  font-family: "Poppins", sans-serif;
+  color: #2e2e2e;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 15%;
+  text-transform: uppercase;
+}
+.Title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 44px;
+  color: #001c6b;
+  margin-top: -35px;
+}
+.subTitle {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #001c6b;
+}
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.description {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 18px;
+  color: #1b1b1be5;
+  margin-top: -35px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.paragraph {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #1b1b1be5;
+  margin-top: -35px;
+}
+.list {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1b1b1be5;
+}
+.highlight {
+  font-family: "Poppins", sans-serif;
+  color: #3f9ef1;
+  font-weight: 600;
+  font-size: 18px;
+}
+.introText {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #1b1b1be5;
+  margin-bottom: -10px;
+}
+.nestedSection {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.nestedSection .description strong {
+  display: block;
+  font-weight: 700;
+  margin: 8px 0 4px 0;
+  color: #1b1b1be5;
+  font-size: 16px;
+}
+.nestedSection ul {
+  list-style-type: disc;
+  margin: 0 0 10px 20px;
+  padding: 0;
+}
+.nestedSection .list {
+  margin-bottom: 4px;
+  font-size: 16px;
+  color: #333;
+}
+.tandcPageDivider {
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-bottom: 40px;
+}

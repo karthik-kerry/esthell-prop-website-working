@@ -125,16 +125,25 @@ export default function Footer() {
               )
             )}
           </div>
+
           <div>
             <p className="footerCategory">Terms and Conditions</p>
-            {["FAQ", "Terms & Conditions", "Privacy Policy"].map(
-              (item, index) => (
-                <Link key={index} to="/" className="footerLinkItem">
-                  <FaChevronRight size={16} color="white" />
-                  {item}
-                </Link>
-              )
-            )}
+            {[
+              { label: "FAQ", id: "faq" },
+              { label: "Cancellation Policy", id: "cancellation" },
+              { label: "Payment Terms", id: "payment" },
+              { label: "Privacy Policy", id: "privacy" },
+              { label: "Terms of Service", id: "terms" },
+            ].map((item, index) => (
+              <Link
+                key={index}
+                to={`/termsandconditions#${item.id}`}
+                className="footerLinkItem"
+              >
+                <FaChevronRight size={16} color="white" />
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

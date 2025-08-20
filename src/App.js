@@ -4,10 +4,10 @@ import HomePage from "./pages/HomePage";
 import ListingsPage from "./pages/ListingsPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
-import DetailsPage from "./pages/DetailsPage"
+import DetailsPage from "./pages/DetailsPage";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 function App() {
-
   return (
     <BrowserRouter>
       <Routes>
@@ -16,6 +16,7 @@ function App() {
         <Route path="about" element={<AboutPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="details" element={<DetailsPage />} />
+        <Route path="termsandconditions" element={<TermsAndConditions />} />
       </Routes>
     </BrowserRouter>
   );
