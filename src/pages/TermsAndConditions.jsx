@@ -339,7 +339,10 @@ export default function TermsAndConditions() {
   return (
     <div>
       <Header />
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div
+        style={{ display: "flex", flexDirection: "column" }}
+        id="cancellation"
+      >
         {/* section1 */}
         <div
           style={{
@@ -354,9 +357,7 @@ export default function TermsAndConditions() {
             <p className="TacTitle">Esthell Hotels & Resorts</p>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <p className="Title" id="cancellation">
-              Esthell App — Cancellation Policy
-            </p>
+            <p className="Title">Esthell App — Cancellation Policy</p>
 
             <div style={{ marginTop: -60 }}>
               {sections1.map((section, index) => (
@@ -374,6 +375,7 @@ export default function TermsAndConditions() {
               ))}
             </div>
           </div>
+          <div id="payment"></div>
         </div>
 
         {/* section2 */}
@@ -388,9 +390,7 @@ export default function TermsAndConditions() {
         >
           <div className="tandcPageDivider" />
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <p className="Title" id="payment">
-              Esthell App — Payment Terms
-            </p>
+            <p className="Title">Esthell App — Payment Terms</p>
 
             <div style={{ marginTop: -60 }}>
               <p className="introText">
@@ -449,6 +449,7 @@ export default function TermsAndConditions() {
               ))}
             </div>
           </div>
+          <div id="privacy"></div>
         </div>
 
         {/* section3 */}
@@ -463,9 +464,7 @@ export default function TermsAndConditions() {
         >
           <div className="tandcPageDivider" />
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <p className="Title" id="privacy">
-              Esthell App — Privacy Policy
-            </p>
+            <p className="Title">Esthell App — Privacy Policy</p>
 
             <div style={{ marginTop: -60 }}>
               <p className="introText">
@@ -543,6 +542,7 @@ export default function TermsAndConditions() {
               ))}
             </div>
           </div>
+          <div id="terms"></div>
         </div>
 
         {/* section4 */}
@@ -557,9 +557,7 @@ export default function TermsAndConditions() {
         >
           <div className="tandcPageDivider" />
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <p className="Title" id="terms">
-              Esthell App — Terms of Service
-            </p>
+            <p className="Title">Esthell App — Terms of Service</p>
 
             <div style={{ marginTop: -60 }}>
               <p className="introText">
