@@ -10,11 +10,9 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.24.9",
-    "express": "^5.1.0",
     "firebase": "^11.8.1",
     "google-map-react": "^2.2.1",
     "leaflet": "^1.9.4",
-    "prerender-node": "^3.8.3",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.5",
     "react": "18",
@@ -34,7 +32,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "serve": "node server.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
