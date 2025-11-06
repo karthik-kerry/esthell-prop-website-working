@@ -73,6 +73,7 @@ import { signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, googleProvider } from "../firebase";
 import { FcGoogle } from "react-icons/fc";
+import { Helmet } from "react-helmet";
 
 export default function DetailsPage() {
   const [user] = useAuthState(auth);
@@ -471,6 +472,10 @@ export default function DetailsPage() {
 
   return (
     <div>
+      <Helmet>
+        <title>Details — Esthell Properties</title>
+        <meta name="description" content="Learn about Esthell Properties..." />
+      </Helmet>
       <Header />
       <div className="detailPageWrapper">
         <div className="detailPageContent">

@@ -18,20 +18,38 @@
     "react": "18",
     "react-dom": "18",
     "react-firebase-hooks": "^5.1.1",
+    "react-helmet": "^6.1.0",
     "react-icons": "^5.5.0",
     "react-image-gallery": "^1.4.0",
     "react-leaflet": "3",
     "react-router-dom": "^7.6.0",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.9.3",
+    "react-snap": "^1.23.0",
+    "sitemap": "^9.0.0",
     "swiper": "^11.2.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "postbuild": "react-snap",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "reactSnap": {
+    "inlineCss": true,
+    "minifyHtml": true,
+    "crawl": true,
+    "include": [
+      "/",
+      "/listings",
+      "/about",
+      "/details",
+      "/contact",
+      "/termsandconditions"
+    ]
   },
   "eslintConfig": {
     "extends": [

@@ -80,6 +80,7 @@ import JumeiraPrice from "../assets/JumeiraPrice.pdf";
 import JumeiraFloorPlans from "../assets/JumeiraFloorPlans.pdf";
 import EsthellBrochure from "../assets/EsthellBrochure.pdf";
 import { MdClose } from "react-icons/md";
+import { Helmet } from "react-helmet";
 
 const propertyType = [
   {
@@ -607,6 +608,13 @@ export default function HomePage() {
   };
   return (
     <div>
+      <Helmet>
+        <title>Esthell Properties | Luxury Residential Projects</title>
+        <meta
+          name="description"
+          content="Luxury homes and apartments by Esthell Properties in Chennai."
+        />
+      </Helmet>
       <Header />
       {/* Hero Section */}
       <div>

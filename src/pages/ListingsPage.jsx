@@ -65,6 +65,7 @@ import { auth, googleProvider } from "../firebase";
 import JumeiraPrice from "../assets/JumeiraPrice.pdf";
 import JumeiraFloorPlans from "../assets/JumeiraFloorPlans.pdf";
 import EsthellBrochure from "../assets/EsthellBrochure.pdf";
+import { Helmet } from "react-helmet";
 
 export default function ListingsPage() {
   const location = useLocation();
@@ -1399,6 +1400,10 @@ export default function ListingsPage() {
   const paginatedProperties = propertiesToShow.slice(startIdx, endIdx);
   return (
     <div>
+      <Helmet>
+        <title>Listings — Esthell Properties</title>
+        <meta name="description" content="Learn about Esthell Properties..." />
+      </Helmet>
       <Header />
       {/* hero section */}
       <div className="ListingHeroContainer">

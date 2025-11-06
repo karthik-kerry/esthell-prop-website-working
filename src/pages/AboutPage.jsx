@@ -20,6 +20,7 @@ import Client3 from "../assets/Client3.jpg";
 import { ImQuotesRight } from "react-icons/im";
 import "../styles/AboutPage.css";
 import { Carousel } from "antd";
+import { Helmet } from "react-helmet";
 
 const contentStyle = {
   height: "160px",
@@ -46,6 +47,10 @@ export default function AboutPage() {
   }, []);
   return (
     <div>
+      <Helmet>
+        <title>About — Esthell Properties</title>
+        <meta name="description" content="Learn about Esthell Properties..." />
+      </Helmet>
       <Header />
       <div className="aboutHeroContainer">
         <img src={HeroBg} className="aboutHeroImage" />
@@ -84,11 +89,12 @@ export default function AboutPage() {
             <div className="whoAreWeTextContainer">
               <p className="whoAreWeHeading">Who We Are</p>
               <p className="whoAreWeParagraph1">
-                Founded in <b>2015</b>, Esthell Properties is a real estate builders
-                & construction company based in Chennai, Tamil Nadu. With deep
-                market knowledge and a passion for excellence, we specialize in
-                premium residential properties including apartments, villas, Malls, Hotels & Resorts and
-                gated communities.
+                Founded in <b>2015</b>, Esthell Properties is a real estate
+                builders & construction company based in Chennai, Tamil Nadu.
+                With deep market knowledge and a passion for excellence, we
+                specialize in premium residential properties including
+                apartments, villas, Malls, Hotels & Resorts and gated
+                communities.
               </p>
               <p className="whoAreWeParagraph2">
                 We're not just about transactions we're about relationships.
@@ -189,32 +195,8 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="coreValueItem" 
-                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#001C6B";
-                  e.currentTarget.style.color = "white";
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.transition = "all 0.3s ease-in-out";
-                  e.currentTarget
-                    .querySelectorAll("p")
-                    .forEach((p) => (p.style.color = "white"));
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#f2f6fa";
-                  e.currentTarget.style.color = "#001C6B";
-                  e.currentTarget
-                    .querySelectorAll("p")
-                    .forEach((p) => (p.style.color = "#001C6B"));
-                }}>
-                <img src={Trust} className="coreValueIcon" />
-                <p className="coreValueText">Trust & Reliability</p>
-                <p className="coreValueDescription">
-                   We build long-lasting relationships by delivering on our
-                  promises consistently.
-                </p>
-              </div>
-
-              <div className="coreValueItem"
+              <div
+                className="coreValueItem"
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = "#001C6B";
                   e.currentTarget.style.color = "white";
@@ -230,7 +212,35 @@ export default function AboutPage() {
                   e.currentTarget
                     .querySelectorAll("p")
                     .forEach((p) => (p.style.color = "#001C6B"));
-                }}>
+                }}
+              >
+                <img src={Trust} className="coreValueIcon" />
+                <p className="coreValueText">Trust & Reliability</p>
+                <p className="coreValueDescription">
+                  We build long-lasting relationships by delivering on our
+                  promises consistently.
+                </p>
+              </div>
+
+              <div
+                className="coreValueItem"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#001C6B";
+                  e.currentTarget.style.color = "white";
+                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.transition = "all 0.3s ease-in-out";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "white"));
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#f2f6fa";
+                  e.currentTarget.style.color = "#001C6B";
+                  e.currentTarget
+                    .querySelectorAll("p")
+                    .forEach((p) => (p.style.color = "#001C6B"));
+                }}
+              >
                 <img src={Transparency} className="coreValueIcon" />
                 <p className="coreValueText">Transparency</p>
                 <p className="coreValueDescription">
@@ -239,8 +249,9 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="coreValueItem"
-                 onMouseEnter={(e) => {
+              <div
+                className="coreValueItem"
+                onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = "#001C6B";
                   e.currentTarget.style.color = "white";
                   e.currentTarget.style.transform = "scale(1)";
@@ -255,7 +266,8 @@ export default function AboutPage() {
                   e.currentTarget
                     .querySelectorAll("p")
                     .forEach((p) => (p.style.color = "#001C6B"));
-                }}>
+                }}
+              >
                 <img src={Excellence} className="coreValueIcon" />
                 <p className="coreValueText">Excellence</p>
                 <p className="coreValueDescription">
@@ -264,7 +276,8 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="coreValueItem"
+              <div
+                className="coreValueItem"
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = "#001C6B";
                   e.currentTarget.style.color = "white";
@@ -280,16 +293,18 @@ export default function AboutPage() {
                   e.currentTarget
                     .querySelectorAll("p")
                     .forEach((p) => (p.style.color = "#001C6B"));
-                }}>
+                }}
+              >
                 <img src={CustomerCentric} className="coreValueIcon" />
                 <p className="coreValueText">Customer-Centric Approach</p>
                 <p className="coreValueDescription">
-                 Your needs, goals, and satisfaction are our top priority —
+                  Your needs, goals, and satisfaction are our top priority —
                   always.
                 </p>
               </div>
 
-              <div className="coreValueItem"
+              <div
+                className="coreValueItem"
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = "#001C6B";
                   e.currentTarget.style.color = "white";
@@ -305,11 +320,12 @@ export default function AboutPage() {
                   e.currentTarget
                     .querySelectorAll("p")
                     .forEach((p) => (p.style.color = "#001C6B"));
-                }}>
+                }}
+              >
                 <img src={Innovation} className="coreValueIcon" />
                 <p className="coreValueText">Innovation</p>
                 <p className="coreValueDescription">
-                We adopt modern tools and smart technologies to enhance your
+                  We adopt modern tools and smart technologies to enhance your
                   property journey.
                 </p>
               </div>

@@ -13,6 +13,7 @@ import { Input, Button, Select } from "antd";
 import "../styles/ContactUsPage.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import emailjs from "@emailjs/browser";
+import { Helmet } from "react-helmet";
 
 export default function ContactPage() {
   const { TextArea } = Input;
@@ -47,6 +48,10 @@ export default function ContactPage() {
   };
   return (
     <div>
+      <Helmet>
+        <title>Contact Us — Esthell Properties</title>
+        <meta name="description" content="Learn about Esthell Properties..." />
+      </Helmet>
       <Header />
       {/* hero section */}
       <div className="contactHeroContainer">

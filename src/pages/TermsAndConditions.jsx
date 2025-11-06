@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/TermsAndCondPage.css";
 import Paragraph from "antd/es/skeleton/Paragraph";
+import { Helmet } from "react-helmet";
 export default function TermsAndConditions() {
   const location = useLocation();
 
@@ -338,6 +339,10 @@ export default function TermsAndConditions() {
   ];
   return (
     <div>
+      <Helmet>
+        <title>Terms & Conditions — Esthell Properties</title>
+        <meta name="description" content="Learn about Esthell Properties..." />
+      </Helmet>
       <Header />
       <div
         style={{ display: "flex", flexDirection: "column" }}
