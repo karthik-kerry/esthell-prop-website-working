@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HeroBg from "../assets/hero_bg.png";
 import OfficeLocation from "../assets/officeLocation.svg";
-import { TiSocialFacebook } from "react-icons/ti";
 import { RiInstagramFill } from "react-icons/ri";
 import { IoLogoLinkedin } from "react-icons/io5";
 import { IoLogoWhatsapp } from "react-icons/io";
@@ -11,7 +10,6 @@ import officeMail from "../assets/officeMail.svg";
 import officePhone from "../assets/officePhone.svg";
 import { Input, Button, Select } from "antd";
 import "../styles/ContactUsPage.css";
-import { useNavigate, useLocation } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { Helmet } from "react-helmet";
 

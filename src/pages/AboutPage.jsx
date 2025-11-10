@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HeroBg from "../assets/hero_bg.png";
@@ -19,16 +19,7 @@ import Client3 from "../assets/Client3.jpg";
 
 import { ImQuotesRight } from "react-icons/im";
 import "../styles/AboutPage.css";
-import { Carousel } from "antd";
 import { Helmet } from "react-helmet";
-
-const contentStyle = {
-  height: "160px",
-  color: "#fff",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
-};
 
 export default function AboutPage() {
   const [dotPosition, setDotPosition] = useState("bottom");

@@ -1,12 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { FaChevronRight } from "react-icons/fa6";
-import { FaChevronLeft } from "react-icons/fa";
 import { TbShare } from "react-icons/tb";
 import Property from "../assets/property.jpg";
 import Property1 from "../assets/property1.jpg";
-import { Button, Modal } from "antd";
+import { Button } from "antd";
 import { LuBedDouble } from "react-icons/lu";
 import { PiBathtub } from "react-icons/pi";
 import { AiOutlineHome, AiOutlineCalendar } from "react-icons/ai";
@@ -53,15 +51,6 @@ import JumeiraPrice from "../assets/JumeiraPrice.pdf";
 import JumeiraFloorPlans from "../assets/JumeiraFloorPlans.pdf";
 import EsthellBrochure from "../assets/EsthellBrochure.pdf";
 import { MdClose } from "react-icons/md";
-
-import {
-  FaCarSide,
-  FaUtensils,
-  FaLeaf,
-  FaShieldAlt,
-  FaRegThumbsUp,
-  FaRegThumbsDown,
-} from "react-icons/fa";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -72,7 +61,6 @@ import { Pagination } from "swiper/modules";
 import { signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, googleProvider } from "../firebase";
-import { FcGoogle } from "react-icons/fc";
 import { Helmet } from "react-helmet";
 
 export default function DetailsPage() {

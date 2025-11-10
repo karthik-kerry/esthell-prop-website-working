@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Collapse, Pagination, Dropdown, Input, Space, Modal } from "antd";
@@ -6,8 +6,6 @@ import { DownOutlined, PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import { Slider, Button, Checkbox } from "antd";
 import { TbHomeDollar } from "react-icons/tb";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa6";
-import { FaChevronLeft } from "react-icons/fa";
 import { LuBedDouble } from "react-icons/lu";
 import { PiBathtub } from "react-icons/pi";
 import { AiOutlineHome } from "react-icons/ai";
@@ -44,7 +42,6 @@ import JumeirahResidences1 from "../assets/JumeirahResidences1.jpg";
 import JumeirahResidences2 from "../assets/JumeirahResidences2.jpg";
 import JumeirahResidences3 from "../assets/JumeirahResidences3.jpg";
 import HeroBg from "../assets/hero_bg.png";
-import HeroImg from "../assets/hero_img.png";
 import Logo from "../assets/logo.png";
 import { FaPhone } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
@@ -59,7 +56,7 @@ import "swiper/css/pagination";
 import { FcGoogle } from "react-icons/fc";
 import { Pagination as SwiperPagination } from "swiper/modules";
 import loginHeroImage from "../assets/loginHeroImage.png";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, googleProvider } from "../firebase";
 import JumeiraPrice from "../assets/JumeiraPrice.pdf";
@@ -1067,6 +1064,7 @@ export default function ListingsPage() {
       ),
     },
   ];
+
   function parsePrice(str) {
     if (!str) return 0;
     let s = str.toString().replace(/,/g, "").trim().toLowerCase();

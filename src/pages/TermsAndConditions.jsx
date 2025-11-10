@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/TermsAndCondPage.css";
-import Paragraph from "antd/es/skeleton/Paragraph";
 import { Helmet } from "react-helmet";
 export default function TermsAndConditions() {
   const location = useLocation();
