@@ -392,7 +392,7 @@ export default function DetailsPage() {
     if (!container) return;
     container.isDragging = false;
   };
-  const handleCardClick = () => {
+  const _handleCardClick = () => {
     navigate("/details");
   };
 

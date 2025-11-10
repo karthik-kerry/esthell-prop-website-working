@@ -116,7 +116,7 @@ export default function ListingsPage() {
     setIsLoginModalOpen(true);
   };
   console.log("Search state from HomePage:", search);
-  const handleOk = () => {
+  const _handleOk = () => {
     setIsLoginModalOpen(false);
   };
 
@@ -527,7 +527,7 @@ export default function ListingsPage() {
   const handleEnquiryClick = () => {
     navigate("/contact");
   };
-  const handleCardClick = (property) => {
+  const _handleCardClick = (property) => {
     navigate("/details", { state: { property } });
   };
   const checkScreenWidth = () => {
@@ -547,10 +547,10 @@ export default function ListingsPage() {
   const onPageChange = (page) => {
     setCurrentPage(page);
   };
-  const [currentIndexes, setCurrentIndexes] = useState(
+  const [_currentIndexes, setCurrentIndexes] = useState(
     currentProperties.map(() => 0)
   );
-  const handlePrev = (propertyIdx) => {
+  const _handlePrev = (propertyIdx) => {
     setCurrentIndexes((prev) =>
       prev.map((idx, i) =>
         i === propertyIdx
@@ -562,7 +562,7 @@ export default function ListingsPage() {
     );
   };
 
-  const handleNext = (propertyIdx) => {
+  const _handleNext = (propertyIdx) => {
     setCurrentIndexes((prev) =>
       prev.map((idx, i) =>
         i === propertyIdx
@@ -571,7 +571,7 @@ export default function ListingsPage() {
       )
     );
   };
-  const onShowSizeChange = (current, pageSize) => {
+  const _onShowSizeChange = (current, pageSize) => {
     console.log(current, pageSize);
   };
 
@@ -1378,7 +1378,7 @@ export default function ListingsPage() {
       <Header />
       {/* hero section */}
       <div className="ListingHeroContainer">
-        <img src={HeroBg} className="ListingHeroBackgroundImage" />
+        <img src={HeroBg} alt="" className="ListingHeroBackgroundImage" />
         <div className="ListingHeroBlurEffect" />
         <div className="ListingHeroForm">
           <div className="ListingHeroButtonGroup">
@@ -1720,7 +1720,7 @@ export default function ListingsPage() {
         >
           <div className="modalContainer">
             <div className="modalLeft">
-              <img src={loginHeroImage} className="modalImg" />
+              <img alt="" src={loginHeroImage} className="modalImg" />
             </div>
             <div className="modalRight">
               <img src={Logo} className="modalLogo" alt="Logo" />
@@ -1873,7 +1873,7 @@ export default function ListingsPage() {
                   <p className="propertyDescription">{property.description}</p>
                   <div className="propertyFooter">
                     <div className="propertyFooterLeft">
-                      <img src={Logo} className="propertyLogo" />
+                      <img src={Logo} alt="logo" className="propertyLogo" />
                       <div>
                         <p className="propertyFooterName">
                           {property.company.name}
@@ -1933,7 +1933,7 @@ export default function ListingsPage() {
                   justifyContent: "space-between",
                 }}
               >
-                <img src={Logo} className="cardImg" />
+                <img src={Logo} alt="logo" className="cardImg" />
                 <p className="cardText">Esthell Golden Square</p>
               </div>
               <div className="positionStyle">
@@ -1959,11 +1959,11 @@ export default function ListingsPage() {
                 </div>
               </div>
 
-              <img src={EsthellFlats} className="cardImage" />
+              <img src={EsthellFlats} alt="" className="cardImage" />
             </>
           ) : (
             <>
-              <img src={Logo} className="cardImg" />
+              <img src={Logo} alt="" className="cardImg" />
               <p className="cardText">
                 Esthell Golden
                 <br /> Square
@@ -1988,7 +1988,7 @@ export default function ListingsPage() {
                 <p className="startPrice">1.62 Cr</p>
                 <p className="subText">2.5 & 3 BHK, Duplex & penthouse</p>
               </div>
-              <img src={EsthellFlats} className="cardImage" />
+              <img src={EsthellFlats} alt="" className="cardImage" />
             </>
           )}
         </div>

@@ -53,7 +53,7 @@ export default function ContactPage() {
       <Header />
       {/* hero section */}
       <div className="contactHeroContainer">
-        <img src={HeroBg} className="contactHeroBgImage" />
+        <img src={HeroBg} alt="" className="contactHeroBgImage" />
         <div className="contactOverlay">
           <h1 className="contactHeroTitle">Contact Us</h1>
           <p className="contactHeroDescription">
@@ -124,7 +124,7 @@ export default function ContactPage() {
             <div className="contactInfo">
               <div className="contactUsInfoContainer">
                 <div className="contactUsCard">
-                  <img src={OfficeLocation} className="contactIcon" />
+                  <img src={OfficeLocation} alt="" className="contactIcon" />
                   <p>
                     TS No: 1/10, No: 176, Inner Ring Road (South Segment),,
                     Velachery,, Opp. Sunshine School,, Chennai, Tamil Nadu
@@ -132,11 +132,11 @@ export default function ContactPage() {
                   </p>
                 </div>
                 <div className="contactUsCard">
-                  <img src={officeMail} className="contactIcon" />
+                  <img src={officeMail} alt="" className="contactIcon" />
                   <p>vpraveen@esthellproperties.com</p>
                 </div>
                 <div className="contactUsCard">
-                  <img src={officePhone} className="contactIcon" />
+                  <img src={officePhone} alt="" className="contactIcon" />
                   <p>+91-72182 12345</p>
                   <p>+91-74182 01555</p>
                 </div>

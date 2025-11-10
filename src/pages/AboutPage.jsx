@@ -44,7 +44,7 @@ export default function AboutPage() {
       </Helmet>
       <Header />
       <div className="aboutHeroContainer">
-        <img src={HeroBg} className="aboutHeroImage" />
+        <img src={HeroBg} alt="aboutHeroImage" className="aboutHeroImage" />
         <div className="aboutHeroOverlay">
           {window.innerWidth <= 480 ? (
             <>
@@ -76,7 +76,7 @@ export default function AboutPage() {
         <div className="aboutcontentWrapper">
           {/* who are we */}
           <div className="sectionContainer1">
-            <img src={AboutUs1} className="whoAreWeImg" />
+            <img src={AboutUs1} alt="whoAreWeImg" className="whoAreWeImg" />
             <div className="whoAreWeTextContainer">
               <p className="whoAreWeHeading">Who We Are</p>
               <p className="whoAreWeParagraph1">
@@ -103,7 +103,11 @@ export default function AboutPage() {
             <div className="missionSection">
               {window.innerWidth <= 480 ? (
                 <>
-                  <img src={Mission1} className="missionImage" />
+                  <img
+                    src={Mission1}
+                    alt="missionImage"
+                    className="missionImage"
+                  />
                   <div>
                     <p className="missionText">Our Mission</p>
                     <p className="missionParagraph">
@@ -125,13 +129,17 @@ export default function AboutPage() {
                       serve.
                     </p>
                   </div>
-                  <img src={Mission1} className="missionImage" />
+                  <img
+                    src={Mission1}
+                    alt="missionImage"
+                    className="missionImage"
+                  />
                 </>
               )}
             </div>
 
             <div className="visionSection">
-              <img src={Mission2} className="visionImage" />
+              <img src={Mission2} alt="missionImage" className="visionImage" />
               <div>
                 <p className="visionText">Our Vision</p>
                 <p className="visionParagraph">
@@ -178,7 +186,7 @@ export default function AboutPage() {
                     .forEach((p) => (p.style.color = "#001C6B"));
                 }}
               >
-                <img src={Integrity} className="coreValueIcon" />
+                <img src={Integrity} alt="" className="coreValueIcon" />
                 <p className="coreValueText">Integrity</p>
                 <p className="coreValueDescription">
                   We operate with honesty, ethics, and accountability in all our
@@ -205,7 +213,7 @@ export default function AboutPage() {
                     .forEach((p) => (p.style.color = "#001C6B"));
                 }}
               >
-                <img src={Trust} className="coreValueIcon" />
+                <img src={Trust} alt="" className="coreValueIcon" />
                 <p className="coreValueText">Trust & Reliability</p>
                 <p className="coreValueDescription">
                   We build long-lasting relationships by delivering on our
@@ -232,7 +240,7 @@ export default function AboutPage() {
                     .forEach((p) => (p.style.color = "#001C6B"));
                 }}
               >
-                <img src={Transparency} className="coreValueIcon" />
+                <img src={Transparency} alt="" className="coreValueIcon" />
                 <p className="coreValueText">Transparency</p>
                 <p className="coreValueDescription">
                   From property details to documentation, we ensure clear and
@@ -259,7 +267,7 @@ export default function AboutPage() {
                     .forEach((p) => (p.style.color = "#001C6B"));
                 }}
               >
-                <img src={Excellence} className="coreValueIcon" />
+                <img src={Excellence} alt="" className="coreValueIcon" />
                 <p className="coreValueText">Excellence</p>
                 <p className="coreValueDescription">
                   We strive for quality and perfection in every project we
@@ -286,7 +294,7 @@ export default function AboutPage() {
                     .forEach((p) => (p.style.color = "#001C6B"));
                 }}
               >
-                <img src={CustomerCentric} className="coreValueIcon" />
+                <img src={CustomerCentric} alt="" className="coreValueIcon" />
                 <p className="coreValueText">Customer-Centric Approach</p>
                 <p className="coreValueDescription">
                   Your needs, goals, and satisfaction are our top priority —
@@ -313,7 +321,7 @@ export default function AboutPage() {
                     .forEach((p) => (p.style.color = "#001C6B"));
                 }}
               >
-                <img src={Innovation} className="coreValueIcon" />
+                <img src={Innovation} alt="" className="coreValueIcon" />
                 <p className="coreValueText">Innovation</p>
                 <p className="coreValueDescription">
                   We adopt modern tools and smart technologies to enhance your
@@ -345,7 +353,7 @@ export default function AboutPage() {
 
           {/* why choose us */}
           <div className="whyChooseUsContainer">
-            <img src={AboutUs2} className="whyChooseUsImage" />
+            <img src={AboutUs2} alt="" className="whyChooseUsImage" />
             <div className="whyChooseUsTextContainer">
               <p className="whyChooseUsTitle">Why Choose Us</p>
               <p className="whyChooseUsSubtitle">
@@ -388,7 +396,7 @@ export default function AboutPage() {
                 </p>
                 <div className="clientInfoContainer">
                   <div className="clientInfo">
-                    <img src={Client1} className="clientImage" />
+                    <img src={Client1} alt="" className="clientImage" />
                     <div>
                       <p className="clientName">Priya</p>
                       <p className="clientLocation">Chennai</p>
@@ -405,7 +413,7 @@ export default function AboutPage() {
                 </p>
                 <div className="clientInfoContainer">
                   <div className="clientInfo">
-                    <img src={Client2} className="clientImage" />
+                    <img src={Client2} alt="" className="clientImage" />
                     <div>
                       <p className="clientName">Karthik</p>
                       <p className="clientLocation">Chennai</p>
@@ -422,7 +430,7 @@ export default function AboutPage() {
                 </p>
                 <div className="clientInfoContainer">
                   <div className="clientInfo">
-                    <img src={Client3} className="clientImage" />
+                    <img src={Client3} alt="" className="clientImage" />
                     <div>
                       <p className="clientName">Meena</p>
                       <p className="clientLocation">Chennai</p>

@@ -421,17 +421,17 @@ export default function HomePage() {
     navigate("/listings");
   };
 
-  const [currentIndexes, setCurrentIndexes] = useState(
+  const [_currentIndexes, setCurrentIndexes] = useState(
     currentProperties.map(() => 0)
   );
-  const showModal = () => {
+  const _showModal = () => {
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
+  const _handleOk = () => {
     setIsModalOpen(false);
   };
-  const handlePrev = (propertyIdx) => {
+  const _handlePrev = (propertyIdx) => {
     setCurrentIndexes((prev) =>
       prev.map((idx, i) =>
         i === propertyIdx
@@ -443,7 +443,7 @@ export default function HomePage() {
     );
   };
 
-  const handleNext = (propertyIdx) => {
+  const _handleNext = (propertyIdx) => {
     setCurrentIndexes((prev) =>
       prev.map((idx, i) =>
         i === propertyIdx
@@ -609,7 +609,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <div>
         <div className="HomeHeroContainer">
-          <img src={imageSrc} className="HomeHeroBackgroundImage" />
+          <img src={imageSrc} alt="" className="HomeHeroBackgroundImage" />
 
           <div className="HomeHeroForm">
             {window.innerWidth <= 480 ? (
@@ -922,7 +922,7 @@ export default function HomePage() {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              <img src={SearchIcon} className="stepIcon" />
+              <img src={SearchIcon} alt="" className="stepIcon" />
               <p className="stepTitle">01. Search for Location</p>
               <p className="stepDescription">
                 Browse listings based on your preferred
@@ -942,7 +942,7 @@ export default function HomePage() {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              <img src={SelectIcon} className="stepIcon" />
+              <img src={SelectIcon} alt="" className="stepIcon" />
               <p className="stepTitle">02. Select Property Type</p>
               <p className="stepDescription">
                 Contact property owners or schedule visits directly through our
@@ -961,7 +961,7 @@ export default function HomePage() {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              <img src={BookIcon} className="stepIcon" />
+              <img src={BookIcon} alt="" className="stepIcon" />
               <p className="stepTitle">03. Book Your Property</p>
               <p className="stepDescription">
                 Complete your deal with full support from our verified agents
@@ -993,22 +993,38 @@ export default function HomePage() {
             onMouseLeave={handleMouseUpOrLeave}
           >
             <div onClick={() => {}} className="exploreByPropertyCard">
-              <img src={HousesIcon} className="exploreByPropertyCardImage" />
+              <img
+                alt=""
+                src={HousesIcon}
+                className="exploreByPropertyCardImage"
+              />
               <p className="exploreByPropertyCardTitle">Houses</p>
               <p className="exploreByPropertyCardDescription">2000+ Property</p>
             </div>
             <div onClick={() => {}} className="exploreByPropertyCard">
-              <img src={ApartmentIcon} className="exploreByPropertyCardImage" />
+              <img
+                alt=""
+                src={ApartmentIcon}
+                className="exploreByPropertyCardImage"
+              />
               <p className="exploreByPropertyCardTitle">Apartment</p>
               <p className="exploreByPropertyCardDescription">1200+ Property</p>
             </div>
             <div onClick={() => {}} className="exploreByPropertyCard">
-              <img src={VillasIcon} className="exploreByPropertyCardImage" />
+              <img
+                alt=""
+                src={VillasIcon}
+                className="exploreByPropertyCardImage"
+              />
               <p className="exploreByPropertyCardTitle">Villas</p>
               <p className="exploreByPropertyCardDescription">1000+ Property</p>
             </div>
             <div onClick={() => {}} className="exploreByPropertyCard">
-              <img src={OfficeIcon} className="exploreByPropertyCardImage" />
+              <img
+                alt=""
+                src={OfficeIcon}
+                className="exploreByPropertyCardImage"
+              />
               <p className="exploreByPropertyCardTitle">Office</p>
               <p className="exploreByPropertyCardDescription">500+ Property</p>
             </div>
@@ -1160,7 +1176,7 @@ export default function HomePage() {
         >
           <div className="modalContainer">
             <div className="modalLeft">
-              <img src={loginHeroImage} className="modalImg" />
+              <img alt="" src={loginHeroImage} className="modalImg" />
             </div>
             <div className="modalRight">
               <img src={Logo} className="modalLogo" alt="Logo" />
@@ -1652,7 +1668,7 @@ export default function HomePage() {
                     justifyContent: "space-between",
                   }}
                 >
-                  <img src={Logo} className="cardImg" />
+                  <img src={Logo} alt="" className="cardImg" />
                   <p className="cardText">Esthell Golden Square</p>
                 </div>
                 <div className="positionStyle">
@@ -1680,11 +1696,11 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <img src={EsthellFlats} className="cardImage" />
+                <img src={EsthellFlats} alt="" className="cardImage" />
               </>
             ) : (
               <>
-                <img src={Logo} className="cardImg" />
+                <img src={Logo} alt="" className="cardImg" />
                 <p className="cardText">
                   Esthell Golden
                   <br /> Square
@@ -1711,7 +1727,7 @@ export default function HomePage() {
                   <p className="startPrice">1.62 Cr</p>
                   <p className="subText">2.5 & 3 BHK, Duplex & penthouse</p>
                 </div>
-                <img src={EsthellFlats} className="cardImage" />
+                <img src={EsthellFlats} alt="" className="cardImage" />
               </>
             )}
           </div>
